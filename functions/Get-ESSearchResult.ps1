@@ -35,7 +35,7 @@ function Get-ESSearchResult {
    #search for files and folders containing the word "test", show results in Out-GridView and copy fullPath of selected item to clipboard
 .EXAMPLE
    search test -OpenItem
-   #search for files and folders containing the word "test", show results in Out-GridView and invoke the selected itm(s) (only applies to files not folders)
+   #search for files and folders containing the word "test", show results in Out-GridView and invoke the selected item(s) (only applies to files not folders)
 .EXAMPLE
    search test -OpenFolder
    #search for files and folders containing the word "test", show results in Out-GridView and opens the folder(s) that contain(s) the selected item in windows explorer
@@ -75,7 +75,7 @@ function Get-ESSearchResult {
 	        { $_.ContainsKey("AsObject") }     { $record | Get-ItemProperty }
 	        default                            { $record | Get-ItemProperty | 
                                                     select Name,DirectoryName,@{Name="Size";Expression={$_.Length | Get-FileSize }},`
-                                                    LastWriteTime | ft -auto
+                                                    LastWriteTime
                                                }
         }
     }
