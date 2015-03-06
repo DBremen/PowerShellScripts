@@ -10,41 +10,6 @@
 }
 
 function Get-ESSearchResult {
-<#
-.Synopsis
-   Wrapper around everything search (http://www.voidtools.com/) commandline es.exe
-.DESCRIPTION
-   PowerShell wrapper around the everything search commandline tool es.exe. Returns the result
-   of the es.exe commandline utility and converts it into FileSystemInfo objects which are then 
-   output via Out-GridView. The selected item(s) in the GridView are output and optionally "actioned"
-   depending on the specified switch parameter (OpenItem, CopyFullPath, OpenFolder, AsObject). 
-   The default (without switch) is the output the selected item(s) Name, DirectoryName, FileSize and LastModifiedDate.
-.PARAMETER OpenItem
-   Switch parameter, if specified the selected item is invoked
-.PARAMETER CopyFullPath
-   Swtich parameter, if specified copies the fullpath of the selected item to the clipboard
-.PARAMETER OpenFolder
-   Switch parameter, if specified opens the folder that contains the selected item in windows explorer
-.PARAMETER AsObject
-   Swtich parameter, if specified outputs the selected item as FileSystemInfo Object
-.EXAMPLE
-   search test 
-   #search for files and folders containing the word "test", show results in Out-GridView and output the selected item(s) Name, DirectoryName, FileSize and LastModifiedDate.
-.EXAMPLE
-   search test -CopyFullPath
-   #search for files and folders containing the word "test", show results in Out-GridView and copy fullPath of selected item to clipboard
-.EXAMPLE
-   search test -OpenItem
-   #search for files and folders containing the word "test", show results in Out-GridView and invoke the selected item(s) (only applies to files not folders)
-.EXAMPLE
-   search test -OpenFolder
-   #search for files and folders containing the word "test", show results in Out-GridView and opens the folder(s) that contain(s) the selected item in windows explorer
-.EXAMPLE
-   search test -AsObject
-   #search for files and folders containing the word "test", show results in Out-GridView and output the item(s) as FileSystemInfo objects
-.Link
-   http://www.voidtools.com/
-#>
     [CmdletBinding()]
     [Alias("search")]
     Param
@@ -74,8 +39,7 @@ function Get-ESSearchResult {
 	        { $_.ContainsKey("OpenFolder") }   {  & "explorer.exe" /select,"$(Split-Path $record)" }
 	        { $_.ContainsKey("AsObject") }     { $record | Get-ItemProperty }
 	        default                            { $record | Get-ItemProperty | 
-                                                    select Name,DirectoryName,@{Name="Size";Expression={$_.Length | Get-FileSize }},`
-                                                    LastWriteTime
+                                                    select Name,DirectoryName,@{Name="Size";Expression={$_.Length | Get-FileSize }},LastWriteTime
                                                }
         }
     }
