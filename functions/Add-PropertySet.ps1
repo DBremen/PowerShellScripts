@@ -34,7 +34,6 @@
     $groupTypes = $input | group { $_.PSTypeNames[0] } -AsHashTable
     foreach ($entry in $groupTypes.GetEnumerator()) {
         $typeName = $entry.Key
-        $fileNamePrefix += $typeName
         $propertySetXML += @"
     <Type>
         <Name>$typeName</Name>
@@ -52,7 +51,7 @@
 "@
     } 
     $propertySetXML += "`n</Types>"
-    $xmlPath = Join-Path (Split-Path $profile.CurrentUserCurrentHost)  ($fileNamePrefix + '.types.ps1xml')
+    $xmlPath = Join-Path (Split-Path $profile.CurrentUserCurrentHost)  ($propertySetName + '.types.ps1xml')
     ([xml]$propertySetXML).Save($xmlPath)    
     Update-TypeData -PrependPath $xmlPath
     $xmlPath
