@@ -1,4 +1,4 @@
-﻿function Get-View{
+﻿function Get-FormatView{
     [CmdletBinding()]
     param( 
     [Parameter(Mandatory=$true, 
@@ -6,24 +6,10 @@
                    Position=0)]   
     $TypeName
     )
-        $typeFiles = Get-ChildItem $psHome -Filter *types.ps1xml
         $formatFiles = dir $psHome -Filter *.format.ps1xml
         if ($TypeName -isnot [string]){
             $TypeName = $Input[0].PSObject.TypeNames[0]
         }
-        #get the propertySets
-        $typefiles | 
-            Select-Xml //PropertySet | 
-            where {
-                $_.Node.ParentNode.ParentNode.Name -ne 'PSStandardMembers' -and (
-                (-not $typeName) -or ($typename -contains $_.Node.ParentNode.ParentNode.Name)
-                )
-            }  | 
-            select @{n='Name'; e= {$_.Node.Name }},
-               @{ n='Type'; e={'PropertySet'}},
-               @{ n='Cmdlet'; e={'Select-Object'}}
-
-        #get the format views
         $formatTypes = $formatFiles | 
             Select-Xml //ViewSelectedBy/TypeName | 
             where { $_.Node.'#text' -eq $TypeName } 
@@ -39,5 +25,7 @@
         }
 }
  
+ gps | Get-FormatView
+
 
 
