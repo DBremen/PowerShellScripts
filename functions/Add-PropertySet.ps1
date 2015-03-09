@@ -18,6 +18,8 @@
 	.EXAMPLE
 		Get-Process | Add-PropertySet RAM ('Name', 'PagedMemorySize', 'PeakWorkingSet')
         Get-Process | select RAM
+    .LINK
+        https://powershellone.wordpress.com/2015/03/06/powershell-propertysets-and-format-views/
     #>
     [CmdletBinding()]
     param(
