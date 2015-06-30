@@ -50,11 +50,11 @@ ID,Name,LastName,Town
 '@ | ConvertFrom-CSV
 $differenceObject=@'
 ID,Name,LastName,Town
-1,sPeter,Peterson,Paris
+1,Peter,Peterson,Paris
 2,Mary,Poppins,Cambridge
 5,Bart,Simpson,Springfield
 4,Sandra,Mulls,London
 '@ | ConvertFrom-CSV
 
-Get-ChangeLog $referenceObject $differenceObject ('ID') | ft
+Get-ChangeLog $referenceObject $differenceObject ('ID') | ft -AutoSize
 
