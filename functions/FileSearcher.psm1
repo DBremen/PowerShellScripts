@@ -30,7 +30,7 @@ function FileSearcher{
          $InputObject
     )
     # f# lib for Search-FileContent cmdlet
-    Import-Module "C:\Scripts\ps1\Utils\SearchFileContent.dll" 
+    Import-Module $PSScriptRoot\SearchFileContent.dll -Force
     Add-Type -AssemblyName System.Windows.Forms
     Add-Type -AssemblyName System.Drawing
     #enable rich visual styles in PowerShell console mode:
