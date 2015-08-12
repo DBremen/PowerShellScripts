@@ -1,4 +1,15 @@
-﻿function Out-DataTable{
+﻿<#
+Requirements:
+    -Everything command line version (requires the UI version to be installed,too) installed to ‘C:\Program Files*\es\es.exe’
+    -The Search-FileContent cmdlet is implemented via the SearchFileContent.dll which can be downloaded from my GitHub repository and needs to reside in the same folder as the FileSearcher.psm1 file.
+    -Because the Search-FileContent cmdlet is written in F# it requires the FSharp.Core assembly to be present which can be downloaded and installed via the following PowerShell code:
+       $webclient = New-Object Net.WebClient
+       $url = 'http://download.microsoft.com/download/E/A/3/EA38D9B8-E00F-433F-AAB5-9CDA28BA5E7D/FSharp_Bundle.exe'
+       $webclient.DownloadFile($url, "$pwd\FSharp_Bundle.exe")
+       .\FSharp_Bundle.exe /install /quiet
+    The ability to open files from the file search content results via double-click with the cursor on the respective line requires Notepad++
+#>
+function Out-DataTable{
 	param($Properties="*")
 	Begin
 	{
