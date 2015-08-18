@@ -10,7 +10,7 @@
         foreach ($prop in $props){
             if ($modification.Group[0].$prop -ne $modification.Group[1].$prop){
                 $output = $modification.Group | where {$_.SideIndicator -eq '<='} |
-                    select ([string[]]("Date", $identifier, "ChangeType", "ChangedProperty", "From","To"))
+                    select (echo Date $identifier ChangeType ChangedProperty From To)
                 $output.Date = $today
                 $output.ChangeType = "Modified"
                 $output.ChangedProperty = $prop
