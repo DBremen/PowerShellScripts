@@ -10,7 +10,7 @@
         .PARAMETER regKey
             A string or a string array representing one or more registry paths. The paths can contain leading abbreviated hive names like HKLM:, HKLM:\, HKCU:...
         .EXAMPLE
-            #the example opens multiple instances of regedit with the provided paths via an argument to the regKey paramater
+            #the example opens multiple instances of regedit with at the specified paths via an argument to the regKey paramater
             $testKeys =@'
 HKLM\Software\Microsoft\Outlook Express
 HKLM\Software\Microsoft\PowerShell
@@ -18,7 +18,7 @@ HKLM\Software\Microsoft\Windows
 '@ -split "`r`n"
             Open-Registry $testKeys
         .EXAMPLE
-            #the example demonstrates the use case if the keys are within the clipboard
+            #the example demonstrates the use case if the keys are in the clipboard
             @'
 HKLM\Software\Microsoft\Outlook Express
 HKLM\Software\Microsoft\PowerShell
@@ -29,7 +29,7 @@ HKLM\Software\Microsoft\Windows
             #the example will open regedit with the run key open as the last part of the path does not represent a key
             Open-Registry HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\skype
         .EXAMPLE
-            #the example provides an invalid path the function (using the alias) resulting in a warning message and no instance of regedit opening
+            #the example provides an invalid path to the function (using the alias) resulting in a warning message and no instance of regedit opening
             regJump HKLMm\xxxxx
         .LINK
     #>
