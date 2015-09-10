@@ -39,12 +39,10 @@ function Get-Choice {
     $buttonWidth = [Math]::Max($minButtonWidth, $buttonWidth)
     $formWidth =  [Windows.Forms.TextRenderer]::MeasureText($Title,$form.Font).Width
     $spaceWidth = ($options.Count+1) * $spacing
-    $formWidth = [Math]::Max($formWidth, $minFormWidth)
-    $formWidth = [Math]::Max($formWidth,($buttonWidth * $Options.Count + $spaceWidth))
+    $formWidth = ($formWidth, $minFormWidth, ($buttonWidth * $Options.Count + $spaceWidth) | Measure-Object -Maximum).Maximum
     $form.ClientSize = New-Object System.Drawing.Size($formWidth,$formHeight)
     $index = 0
     #create the buttons dynamically based on the options
-    $diagResultEnumValues = [Windows.Forms.DialogResult].GetEnumValues()
     foreach ($option in $Options){
         Set-Variable "button$index" -Value (New-Object System.Windows.Forms.Button)
         $temp = Get-Variable "button$index" -ValueOnly
