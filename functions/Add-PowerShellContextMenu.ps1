@@ -1,6 +1,4 @@
-﻿#http://www.howtogeek.com/107965/how-to-add-any-application-shortcut-to-windows-explorers-context-menu/
-
-function Add-PowerShellContextMenu{
+﻿function Add-PowerShellContextMenu{
     [CmdletBinding()]
     param(
         [Parameter(Position=0)]
@@ -73,5 +71,3 @@ function Add-PowerShellContextMenu{
     }
     
 }
-
- Add-PowerShellContextMenu -contextType editWithPowerShellISE -platform x86 -asAdmin

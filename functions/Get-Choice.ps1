@@ -35,7 +35,7 @@ function Get-Choice {
     $buttonHeight = 23
     $buttonY = 12
     $spacing = 10
-    $buttonWidth = [Windows.Forms.TextRenderer]::MeasureText((($Options | sort Length)[-1]),$form.Font).Width
+    $buttonWidth = [Windows.Forms.TextRenderer]::MeasureText((($Options | sort Length)[-1]),$form.Font).Width + 1
     $buttonWidth = [Math]::Max($minButtonWidth, $buttonWidth)
     $formWidth =  [Windows.Forms.TextRenderer]::MeasureText($Title,$form.Font).Width
     $spaceWidth = ($options.Count+1) * $spacing
