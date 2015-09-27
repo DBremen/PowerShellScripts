@@ -270,4 +270,12 @@ $addScriptHelp ={
 #endregion
 
 #testing
-ConvertTo-ISEAddOn -ScriptBlock $addScriptHelp -AddVertically -Visible -DisplayName "Add-ScriptHelp" -addMenu
+#ConvertTo-ISEAddOn -ScriptBlock $addScriptHelp -AddVertically -Visible -DisplayName "Add-ScriptHelp" -addMenu
+#compile to dll
+$dllPath = "$env:USERPROFILE\Desktop\AddScriptHelp.dll"
+ConvertTo-ISEAddOn -ScriptBlock $addScriptHelp -NameSpace ISEUtils -DLLPath $dllPath -class AddScriptHelp
+
+#add this to your profile
+Add-Type -Path $dllPath
+$addScriptHelp = [scriptblock]::Create('$psISE.CurrentPowerShellTab.VerticalAddOnTools.Add("Add-ScriptHelp",[ISEUtils.AddScriptHelp],$true);($psISE.CurrentPowerShellTab.VerticalAddOnTools | where {$_.Name -eq "Add-ScriptHelp"}).IsVisible=$true')
+$psISE.CurrentPowerShellTab.AddOnsMenu.Submenus.Add('Add-ScriptHelp', $addScriptHelp, $null)
