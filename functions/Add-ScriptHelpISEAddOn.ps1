@@ -189,19 +189,43 @@ $index++
 
 #region AddScriptHelp scriptBlock
 $addScriptHelp ={
+    #get the parameters of the enclosing function at the current cursor position if any
+    $lineNumber = $psISE.CurrentPowerShellTab.Files.SelectedFile.Editor.CaretLine
+    $code = $psISE.CurrentPowerShellTab.Files.SelectedFile.Editor.Text
+    $Errors = $Tokens = $null
+    $AST = [System.Management.Automation.Language.Parser]::ParseInput($Code, [ref]$Tokens, [ref]$Errors)
+    $functions = $AST.FindAll({ $args[0].GetType().Name -like "*FunctionDefinition*Ast" }, $true ) 
+    $enclosingFunctionParamNames = -1
+    foreach ($function in $functions){
+        if ($function.Extent.StartLineNumber -le $lineNumber -and $function.Extent.EndLineNumber -ge $lineNumber){
+            $enclosingFunctionParamNames = $function.Parameters.Name.VariablePath.UserPath
+            break
+        }
+    }
+    $dynamicParams = $false
+    if ($enclosingFunctionParamNames -ne -1){
+        $dynamicParams = $true
+    }
     New-StackPanel {
         New-TextBlock -FontSize 17 -Margin "24 2 0 3" -FontWeight Bold -Text "Synopsis"
         New-TextBox -Margin "7, 5, 7, 5" -Name "txtSynopsis"
         New-TextBlock -FontSize 17  -Margin "24 2 0 3" -FontWeight Bold -Text "Description"
         New-TextBox -Margin "7, 5, 7, 5" -Name "txtDescription"
-        New-TextBlock -FontSize 17 -Margin "24 2 0 3" -FontWeight Bold -Text "1. Param"
-        New-TextBox -Margin "7, 5, 7, 5" -Name "txtFirstParamName"
-        New-TextBlock -FontSize 17 -Margin "24 2 0 3" -FontWeight Bold -Text "1. Param Description" 
-        New-TextBox -Margin "7, 5, 7, 5" -Name "txtFirstParamDesc"
-        New-TextBlock -FontSize 17 -Margin "24 2 0 3" -FontWeight Bold -Text "2. Param"
-        New-TextBox -Margin "7, 5, 7, 5" -Name "txtSecondParamName"
-        New-TextBlock -FontSize 17 -Margin "24 2 0 3" -FontWeight Bold -Text "2. Param Description"
-        New-TextBox -Margin "7, 5, 7, 5" -Name "txtSecondParamDesc"
+        if ($dynamicParams){
+            foreach ($paramName in $enclosingFunctionParamNames){
+                New-TextBlock -FontSize 17 -Margin "24 2 0 3" -FontWeight Bold -Text "Parameter description: $paramName" 
+                New-TextBox -Margin "7, 5, 7, 5" -Name ("txt$paramName" + 'Desc')
+            }
+        }
+        else{
+            New-TextBox -Margin "7, 5, 7, 5" -Name "txtFirstParamName"
+            New-TextBlock -FontSize 17 -Margin "24 2 0 3" -FontWeight Bold -Text "1. Param Description" 
+            New-TextBox -Margin "7, 5, 7, 5" -Name "txtFirstParamDesc"
+            New-TextBlock -FontSize 17 -Margin "24 2 0 3" -FontWeight Bold -Text "2. Param"
+            New-TextBox -Margin "7, 5, 7, 5" -Name "txtSecondParamName"
+            New-TextBlock -FontSize 17 -Margin "24 2 0 3" -FontWeight Bold -Text "2. Param Description"
+            New-TextBox -Margin "7, 5, 7, 5" -Name "txtSecondParamDesc"
+        }
         New-TextBlock -FontSize 17 -Margin "24 2 0 3" -FontWeight Bold -Text "Link"
         New-TextBox -Margin "7, 5, 7, 5" -Name "txtLink"
         New-TextBlock -FontSize 17 -Margin "24 2 0 3" -FontWeight Bold -Text "1. Example"
@@ -219,10 +243,18 @@ $addScriptHelp ={
         } -On_Click{
             $txtSynopsis = ($this.Parent.Children | where {$_.Name -eq "txtSynopsis"}).Text 
             $txtDescription = ($this.Parent.Children | where {$_.Name -eq "txtDescription"}).Text
-            $txtFirstParamName = ($this.Parent.Children | where {$_.Name -eq "txtFirstParamName"}).Text
-            $txtFirstParamDesc = ($this.Parent.Children | where {$_.Name -eq "txtFirstParamDesc"}).Text
-            $txtSecondParamName = ($this.Parent.Children | where {$_.Name -eq "txtSecondParamName"}).Text
-            $txtSecondParamDesc = ($this.Parent.Children | where {$_.Name -eq "txtSecondParamDesc"}).Text
+            if ($dynamicParams){
+                foreach ($paramName in $enclosingFunctionParamNames){
+                    Set-Variable ("txt$paramName" + 'Desc') -Value ($this.Parent.Children | 
+                        where {$_.Name -eq ("txt$paramName" + 'Desc')}).Text
+                }
+            }
+            else{
+                $txtFirstParamName = ($this.Parent.Children | where {$_.Name -eq "txtFirstParamName"}).Text
+                $txtFirstParamDesc = ($this.Parent.Children | where {$_.Name -eq "txtFirstParamDesc"}).Text
+                $txtSecondParamName = ($this.Parent.Children | where {$_.Name -eq "txtSecondParamName"}).Text
+                $txtSecondParamDesc = ($this.Parent.Children | where {$_.Name -eq "txtSecondParamDesc"}).Text
+            }
             $txtLink = ($this.Parent.Children | where {$_.Name -eq "txtLink"}).Text 
             $txtFirstExample = ($this.Parent.Children | where {$_.Name -eq "txtFirstExample"}).Text 
             $txtSecondExample = ($this.Parent.Children | where {$_.Name -eq "txtSecondExample"}).Text 
@@ -234,12 +266,21 @@ $addScriptHelp ={
     .DESCRIPTION
         $txtDescription
 "@
-            if ($txtFirstParamName) {
-                $helpText+="`n`t.PARAMETER $txtFirstParamName`n`t`t$txtFirstParamDesc"
+            if ($dynamicParams){
+                foreach ($paramName in $enclosingFunctionParamNames){
+                    $txtParamDesc = Get-Variable -Name ("txt$paramName" + 'Desc') -ValueOnly
+                    $helpText+="`n`t.PARAMETER $paramName`n`t`t$txtParamDesc"
+                }
             }
-            if ($txtSecondParamName) {
-                $helpText+="`n`t.PARAMETER $txtSecondParamName`n`t`t$txtSecondParamDesc"
+            else{
+                if ($txtFirstParamName) {
+                    $helpText+="`n`t.PARAMETER $txtFirstParamName`n`t`t$txtFirstParamDesc"
+                }
+                if ($txtSecondParamName) {
+                    $helpText+="`n`t.PARAMETER $txtSecondParamName`n`t`t$txtSecondParamDesc"
+                }
             }
+
             if ($txtFirstExample) {
                 $helpText+="`n`t.EXAMPLE`n`t`t$txtFirstExample"
             }
@@ -269,13 +310,27 @@ $addScriptHelp ={
 }
 #endregion
 
-#testing
+#for testing
 #ConvertTo-ISEAddOn -ScriptBlock $addScriptHelp -AddVertically -Visible -DisplayName "Add-ScriptHelp" -addMenu
+
 #compile to dll
 $dllPath = "$env:USERPROFILE\Desktop\AddScriptHelp.dll"
 ConvertTo-ISEAddOn -ScriptBlock $addScriptHelp -NameSpace ISEUtils -DLLPath $dllPath -class AddScriptHelp
 
 #add this to your profile
 Add-Type -Path $dllPath
-$addScriptHelp = [scriptblock]::Create('$psISE.CurrentPowerShellTab.VerticalAddOnTools.Add("Add-ScriptHelp",[ISEUtils.AddScriptHelp],$true);($psISE.CurrentPowerShellTab.VerticalAddOnTools | where {$_.Name -eq "Add-ScriptHelp"}).IsVisible=$true')
+$addScriptHelp = {
+    #check if the AddOn if loaded if yes unload and re-load it
+    $currentNameIndex = -1
+    $name = 'Add-ScriptHelp'
+    $currentNames = $psISE.CurrentPowerShellTab.VerticalAddOnTools.Name
+    if ($currentNames){
+        $currentNameIndex = $currentNames.IndexOf($name)
+        if ($currentNameIndex -ne -1){
+            $psISE.CurrentPowerShellTab.VerticalAddOnTools.RemoveAt($currentNameIndex)
+        }
+    }
+    $psISE.CurrentPowerShellTab.VerticalAddOnTools.Add($name,[ISEUtils.AddScriptHelp],$true)
+    ($psISE.CurrentPowerShellTab.VerticalAddOnTools | where {$_.Name -eq $name}).IsVisible=$true
+}
 $psISE.CurrentPowerShellTab.AddOnsMenu.Submenus.Add('Add-ScriptHelp', $addScriptHelp, $null)
