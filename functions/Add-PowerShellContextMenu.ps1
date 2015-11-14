@@ -4,7 +4,7 @@
         [Parameter(Position=0)]
         [ValidateSet('openPowerShellHere','editWithPowerShellISE')]
         $contextType,
-        [switch]$platform='x64',
+        $platform='x64',
         [switch]$noProfile,
         [switch]$asAdmin
     )

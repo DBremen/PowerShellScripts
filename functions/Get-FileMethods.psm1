@@ -107,7 +107,7 @@ function Get-FileWCAsynchronous{
     $destination = Join-Path $destinationFolder $file
     $start = Get-Date 
     $null = Register-ObjectEvent -InputObject $wc -EventName DownloadProgressChanged `
-        -MessageData @{start=$start} `
+        -MessageData @{start=$start;includeStats=$includeStats} `
         -SourceIdentifier WebClient.DownloadProgressChanged -Action { 
             filter Get-FileSize {
 	            "{0:N2} {1}" -f $(
@@ -134,8 +134,8 @@ function Get-FileWCAsynchronous{
             if ($EventArgs.ProgressPercentage -eq 100){
                  Write-Progress -Activity (" $url {0:N2} Mbps" -f $averageSpeed) `
                 -Status 'Done' -Completed
-                if ($includeStats.IsPresent){
-                    [PSCustomObject]@{Name=$MyInvocation.MyCommand;TotalSize=$totalSize;Time=$elapsed}
+                if ($event.MessageData.includeStats.IsPresent){
+                    ([PSCustomObject]@{Name=$MyInvocation.MyCommand;TotalSize=$totalSize;Time=$elapsed}) | Out-Host
                 }
             }
         }    
@@ -186,14 +186,16 @@ function Get-FileWCAsynchronous{
         $remainingSeconds = ($job.BytesTotal - $job.BytesTransferred) * 8 / 1MB / $averageSpeed
         $receivedSize = $job.BytesTransferred | Get-FileSize
         $totalSize = $job.BytesTotal | Get-FileSize 
-        $progressPercentage = [int]($job.BytesTransferred / $job.BytesTotal * 100)      
-        Write-Progress -Activity (" $url {0:N2} Mbps" -f $averageSpeed) `
-            -Status ("{0} of {1} ({2}% in {3})" -f $receivedSize, $totalSize, $progressPercentage, $elapsed) `
-            -SecondsRemaining $remainingSeconds `
-            -PercentComplete $progressPercentage
+        $progressPercentage = [int]($job.BytesTransferred / $job.BytesTotal * 100) 
+        if ($remainingSeconds -as [int]){     
+            Write-Progress -Activity (" $url {0:N2} Mbps" -f $averageSpeed) `
+                -Status ("{0} of {1} ({2}% in {3})" -f $receivedSize, $totalSize, $progressPercentage, $elapsed) `
+                -SecondsRemaining $remainingSeconds `
+                -PercentComplete $progressPercentage
+        }
     } 
     if ($includeStats.IsPresent){
-        [PSCustomObject]@{Name=$MyInvocation.MyCommand;TotalSize=$totalSize;Time=$elapsed}
+        ([PSCustomObject]@{Name=$MyInvocation.MyCommand;TotalSize=$totalSize;Time=$elapsed}) | Out-Host
     }
     
     Write-Progress -Activity (" $url {0:N2} Mbps" -f $averageSpeed) `
