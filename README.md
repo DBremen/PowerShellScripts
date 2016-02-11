@@ -11,4 +11,5 @@ I've documented some of them on my blog:
 * Open-Registry https://powershellone.wordpress.com/2015/09/02/use-powershell-to-open-regedit-at-a-specific-or-regjump-for-powershell/
 * Get-Choice https://powershellone.wordpress.com/2015/09/10/a-nicer-promptforchoice-for-the-powershell-console-host/
 * Add-PowerShellContextMenu https://powershellone.wordpress.com/2015/09/16/adding-edit-with-powershell-ise-and-open-powershell-here-as-admin-to-the-context-menu/
-* Get-FileMethods 
+* Get-FileMethods https://powershellone.wordpress.com/2015/10/27/review-of-methods-to-download-files-using-powershell/
+* Set-OOTO
