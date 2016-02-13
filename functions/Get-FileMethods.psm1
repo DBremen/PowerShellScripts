@@ -95,10 +95,12 @@ function Get-FileBitsTransferSynchronous{
 }
 
 function Get-FileWCAsynchronous{
+    [CmdletBinding()]
+    [Alias('download')]
     param(
         [Parameter(Mandatory=$true)]
         $url, 
-        $destinationFolder="$env:USERPROFILE\Downloads", 
+        $destinationFolder="$env:USERPROFILE\Desktop", 
         [switch]$includeStats
     )
     $wc = New-Object Net.WebClient
@@ -212,12 +214,12 @@ function Get-FileWCAsynchronous{
     }
 }
 
-$url = 'http://speedtest.reliableservers.com/10MBtest.bin'
+#$url = 'http://speedtest.reliableservers.com/10MBtest.bin'
 #Get-FileWCSynchronous $url 
 #Get-FileVB $url
-Get-FileBitsTransferSynchronous $url
-Get-FileWCAsynchronous $url -includeStats
-Get-FileBitsTransferAsynchronous $url -includeStats
+#Get-FileBitsTransferSynchronous $url
+#Get-FileWCAsynchronous $url -includeStats
+#Get-FileBitsTransferAsynchronous $url -includeStats
 
 
 
