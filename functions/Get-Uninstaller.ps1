@@ -43,7 +43,27 @@ function Get-Uninstaller {
 }
 
 
-<#v5 version
+<#requires -Version 5
+Get-Package | foreach{
+    $attributes = $_.meta.attributes
+    $htProps = [Ordered]@{msiGUID=''}
+    for ($i=0;$i -lt $attributes.keys.count;$i++){
+        $htProps.Add($attributes.keys[$i].LocalName,$attributes.values[$i])
+    }
+    if ($htProps.Contains('DisplayName')){
+        $uninstallString = $htProps.UninstallString
+        $modifyPath = $htProps.ModifyPath
+        if($uninstallString -match "^msiexec"){
+            $htProps.msiGUID = [regex]::match($uninstallString,'\{(.*?\})')
+        }
+        elseif($modifyPath -match "^msiexec"){
+            $htProps.msiGUID = [regex]::match($modfiyPath,'\{(.*?\})')
+        }
+        New-Object PSObject -Property $htProps #| select DisplayName, UninstallString, msiGUID, InstallLocation, Version
+    }
+}
+#>
+#requires -Version 5
 Get-Package | foreach{
     $attributes = $_.meta.attributes
     $htProps = [Ordered]@{msiGUID=''}
