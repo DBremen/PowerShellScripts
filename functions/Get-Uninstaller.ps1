@@ -19,6 +19,7 @@ function Get-Uninstaller {
             foreach($subKey in $subKeys){
                 if($subKey.DisplayName -like "$DisplayName" -and $subKey.UninstallString){
                     $uninstallString = $subKey.UninstallString
+                    $modifyPath = $subKey.ModifyPath
                     $htProps = [Ordered]@{
                         RegistryHive=$currHive
                         DisplayName=$subKey.DisplayName;
@@ -30,6 +31,9 @@ function Get-Uninstaller {
 
                     if($uninstallString -match "^msiexec"){
                         $htProps.msiGUID = [regex]::match($uninstallString,'\{(.*?\})')
+                    }
+                    elseif($modifyPath -match "^msiexec"){
+                        $htProps.msiGUID = [regex]::match($modfiyPath,'\{(.*?\})')
                     }
                     New-Object PSObject -Property $htProps
                 }
