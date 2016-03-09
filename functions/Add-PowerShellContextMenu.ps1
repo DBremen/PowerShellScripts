@@ -14,7 +14,7 @@
         $powerShellExe = 'PowerShell_ISE.exe' 
          $versionToOpen = 'PowerShell ISE (x64)'
     }
-    $powerShellPath = "$env:WINDIR\sysWOW64\WindowsPowerShell\v1.0\$powershellExe"
+    $powerShellPath = "$env:WINDIR\System32\WindowsPowerShell\v1.0\$powershellExe"
     if ($platform -eq 'x86'){ 
         $powerShellPath = "$env:WINDIR\sysWOW64\WindowsPowerShell\v1.0\$powershellExe" 
         $versionToOpen = $versionToOpen -replace 'x64','x86'
