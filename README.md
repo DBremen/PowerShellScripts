@@ -13,4 +13,5 @@ I've documented some of them on my blog:
 * Add-PowerShellContextMenu https://powershellone.wordpress.com/2015/09/16/adding-edit-with-powershell-ise-and-open-powershell-here-as-admin-to-the-context-menu/
 * Get-FileMethods https://powershellone.wordpress.com/2015/10/27/review-of-methods-to-download-files-using-powershell/
 * Set-OOTO https://powershellone.wordpress.com/2016/02/11/use-powershell-to-set-exchange-out-of-office-status-from-any-pc/
-* Get-Uninstaller
+* Get-Uninstaller https://powershellone.wordpress.com/2016/02/13/retrieve-uninstallstrings-to-fix-installer-issues/
+* Clear-Clipboard https://powershellone.wordpress.com/2016/02/25/fix-clipboard-is-not-working-restart-process-with-powershell/

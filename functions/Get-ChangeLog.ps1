@@ -25,7 +25,11 @@
     foreach ($removalAddition in $removalAdditions){
         $ht = [ordered]@{}
         $ht.Add('Date',$today)
-        $ht.Add($identifier,$removalAddition.Name)
+        $i = 0
+        foreach ($id in $identifier){
+            $ht.Add($id,$removalAddition.Name.Split(',')[$i])
+            $i++
+        }
         $ht.Add('ChangeType','')
         $ht.Add('ChangedProperty','')
         $ht.Add('From','')
@@ -41,23 +45,10 @@
         New-Object PSObject -Property $ht
     }
 }
-$referenceObject=@'
-ID,Name,LastName,Town
-1,Peter,Peterson,Paris
-2,Mary,Poppins,London
-3,Dave,Wayne,Texas
-4,Sandra,Mulls,Berlin
-'@ | ConvertFrom-CSV
-$differenceObject=@'
-ID,Name,LastName,Town
-1,Peter,Peterson,Paris
-2,Mary,Poppins,Cambridge
-5,Bart,Simpson,Springfield
-4,Sandra,Mulls,London
-'@ | ConvertFrom-CSV
+
 
 #Get-ChangeLog $referenceObject $differenceObject ('ID') | ft -AutoSize
- 
+Get-ChangeLog $test $test2 ('ScriptSet','FolderName','Name') | where {$_.ChangeType -in ('Removed')
 
 
 
