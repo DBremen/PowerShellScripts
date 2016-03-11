@@ -4,20 +4,20 @@
         [Parameter(Position=0)]
         [ValidateSet('openPowerShellHere','editWithPowerShellISE')]
         $contextType,
+        [ValidateSet('x86','x64')]
         $platform='x64',
         [switch]$noProfile,
         [switch]$asAdmin
     )
-    $versionToOpen = 'PowerShell (x64)'
+    $versionToOpen = "PowerShell ($platform)"
     $powerShellExe = 'powershell.exe'
     if ($contextType -eq 'editWithPowerShellISE') { 
         $powerShellExe = 'PowerShell_ISE.exe' 
-         $versionToOpen = 'PowerShell ISE (x64)'
+        $versionToOpen = "PowerShell ISE ($platform)"
     }
-    $powerShellPath = "$env:WINDIR\sysWOW64\WindowsPowerShell\v1.0\$powershellExe"
+    $powerShellPath = "$env:WINDIR\System32\WindowsPowerShell\v1.0\$powershellExe"
     if ($platform -eq 'x86'){ 
         $powerShellPath = "$env:WINDIR\sysWOW64\WindowsPowerShell\v1.0\$powershellExe" 
-        $versionToOpen = $versionToOpen -replace 'x64','x86'
     }
     if ($contextType -eq 'openPowerShellHere'){
         $menu = "Open Windows $versionToOpen here"
