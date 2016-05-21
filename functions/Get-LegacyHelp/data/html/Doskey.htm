@@ -1,0 +1,401 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Doskey</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Doskey</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Vista,Windows Server 2008</p>
+<p>Calls Doskey.exe (which recalls previously entered command-line commands), edits command lines, and creates macros.</p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>doskey [/reinstall] [/listsize=&lt;Size&gt;] [/macros:[all | &lt;ExeName&gt;] [/history] [/insert | /overstrike] [/exename=&lt;ExeName&gt;] [/macrofile=&lt;FileName&gt;] [&lt;MacroName&gt;=[&lt;Text&gt;]]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p> /reinstall </p>
+</td>
+<td colspan="1">
+<p>Installs a new copy of Doskey.exe and clears the command history buffer.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /listsize=&lt;Size&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the maximum number of commands in the history buffer.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /macros  </p>
+</td>
+<td colspan="1">
+<p>Displays a list of all <b>doskey</b> macros. You can use the redirection symbol (<b>&gt;</b>) with <b>/macros</b> to redirect the list to a file. You can abbreviate <b>/macros</b> to <b>/m</b>.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /macros:all </p>
+</td>
+<td colspan="1">
+<p>Displays <b>doskey</b> macros for all executables.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /macros:&lt;ExeName&gt; </p>
+</td>
+<td colspan="1">
+<p>Displays <b>doskey</b> macros for the executable specified by <i>ExeName</i>.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /history </p>
+</td>
+<td colspan="1">
+<p>Displays all commands that are stored in memory. You can use the redirection symbol (<b>&gt;</b>) with <b>/history</b> to redirect the list to a file. You can abbreviate <b>/history</b> as <b>/h</b>.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>[/insert | /overstrike] </p>
+</td>
+<td colspan="1">
+<p>Specifies whether to insert or overwrite text as you type. If you use <b>/insert</b>, new text that you type on a line is inserted into the midst of the existing text. If you use <b>/overstrike</b>, new text replaces existing text. The default setting is <b>/overstrike</b>.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /exename=&lt;ExeName&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the program (that is, executable) in which the <b>doskey</b> macro runs.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /macrofile=&lt;FileName&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies a file that contains the macros that you want to install.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> &lt;MacroName&gt;=[&lt;Text&gt;] </p>
+</td>
+<td colspan="1">
+<p>Creates a macro that carries out the commands specified by <i>Text</i>. <i>MacroName</i> specifies the name you want to assign to the macro. <i>Text</i> specifies the commands you want to record. If <i>Text</i> is left blank, <i>MacroName</i> is cleared of any assigned commands.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /? </p>
+</td>
+<td colspan="1">
+<p>Displays help at the command prompt.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+Using Doskey.exe<br><br>
+
+Doskey.exe is always available for all character-based, interactive programs (such as program debuggers or file transfer programs), and it maintains a command history buffer and macros for each program that it starts. You cannot use <b>doskey</b> command-line options from a program. You must run <b>doskey</b> command-line options before you start a program. Program key assignments override <b>doskey</b> key assignments.<br><br>
+</li><li class="unordered">
+Recalling a command <br><br>
+
+To recall a command, you can use any of the following keys after you start Doskey.exe. If you use Doskey.exe within a program, that program's key assignments take precedence.<br><br>
+
+<h3 class="subHeading"></h3><table><tr>
+<th colspan="1">
+Key
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>UP ARROW </p>
+</td>
+<td colspan="1">
+<p>Recalls the command that you used before the one that is displayed.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>DOWN ARROW</p>
+</td>
+<td colspan="1">
+<p>Recalls the command that you used after the one that is displayed.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>PAGE UP</p>
+</td>
+<td colspan="1">
+<p>Recalls the first command that you used in the current session.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>PAGE DOWN</p>
+</td>
+<td colspan="1">
+<p>Recalls the most recent command that you used in the current session.</p>
+</td></tr></table>
+</li><li class="unordered">
+Editing the command line <br><br>
+
+With Doskey.exe, you can edit the current command line. If you use Doskey.exe within a program, that program's key assignments take precedence and some Doskey.exe editing keys might not work. <br><br>
+
+The following table lists <b>doskey</b> editing keys and their functions.<br><br>
+
+<h3 class="subHeading"></h3><table><tr>
+<th colspan="1">
+Key or key combination
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>LEFT ARROW</p>
+</td>
+<td colspan="1">
+<p>Moves the insertion point back one character. </p>
+</td></tr><tr>
+<td colspan="1">
+<p>RIGHT ARROW</p>
+</td>
+<td colspan="1">
+<p>Moves the insertion point forward one character.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>CTRL+LEFT ARROW</p>
+</td>
+<td colspan="1">
+<p>Moves the insertion point back one word.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>CTRL+RIGHT ARROW</p>
+</td>
+<td colspan="1">
+<p>Moves the insertion point forward one word.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>HOME</p>
+</td>
+<td colspan="1">
+<p>Moves the insertion point to the beginning of the line.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>END</p>
+</td>
+<td colspan="1">
+<p>Moves the insertion point to the end of the line.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>ESC</p>
+</td>
+<td colspan="1">
+<p>Clears the command from the display.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>F1</p>
+</td>
+<td colspan="1">
+<p>Copies one character from a column in the template to the same column in the Command Prompt window. (The template is a memory buffer that holds the last command you typed.)</p>
+</td></tr><tr>
+<td colspan="1">
+<p>F2</p>
+</td>
+<td colspan="1">
+<p>Searches forward in the template for the next key that you type after you press F2. Doskey.exe inserts the text from the template—up to, but not including, the character you specify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>F3</p>
+</td>
+<td colspan="1">
+<p>Copies the remainder of the template to the command line. Doskey.exe begins copying characters from the position in the template that corresponds to the position indicated by the insertion point on the command line.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>F4</p>
+</td>
+<td colspan="1">
+<p>Deletes all characters from the current insertion point position up to, but not including, the next occurrence of the character that you type after you press F4. </p>
+</td></tr><tr>
+<td colspan="1">
+<p>F5</p>
+</td>
+<td colspan="1">
+<p>Copies the template into the current command line.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>F6</p>
+</td>
+<td colspan="1">
+<p>Places an end-of-file character (CTRL+Z) at the current insertion point position.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>F7</p>
+</td>
+<td colspan="1">
+<p>Displays (in a dialog box) all commands for this program that are stored in memory. Use the UP ARROW key and the DOWN ARROW key to select the command you want, and press ENTER to run the command. You can also note the sequential number in front of the command and use this number in conjunction with the F9 key.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>ALT+F7</p>
+</td>
+<td colspan="1">
+<p>Deletes all commands stored in memory for the current history buffer.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>F8</p>
+</td>
+<td colspan="1">
+<p>Displays all commands in the history buffer that start with the characters in the current command.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>F9</p>
+</td>
+<td colspan="1">
+<p>Prompts you for a history buffer command number, and then displays the command associated with the number that you specify. Press ENTER to run the command. To display all the numbers and their associated commands, press F7.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>ALT+F10</p>
+</td>
+<td colspan="1">
+<p>Deletes all macro definitions.</p>
+</td></tr></table>
+</li><li class="unordered">
+Using <b>doskey</b> within a program <br><br>
+
+Certain character-based, interactive programs, such as program debuggers or file transfer programs (FTP) automatically use Doskey.exe. To use Doskey.exe, a program must be a console process and use buffered input. Program key assignments override <b>doskey</b> key assignments. For example, if the program uses the F7 key for a function, you cannot get a <b>doskey</b> command history in a pop-up window.<br><br>
+
+With Doskey.exe, you can maintain a command history for each program that you start or repeat. You can edit previous commands at the program's prompt, and start <b>doskey</b> macros created for the program. If you exit and then restart a program from the same Command Prompt window, the command history from the previous program session is available.<br><br>
+
+You must run Doskey.exe before you start a program. You cannot use <b>doskey</b> command-line options from a program's command prompt, even if the program has a shell command.<br><br>
+
+If you want to customize how Doskey.exe works with a program and create <b>doskey</b> macros for that program, you can create a batch program that modifies Doskey.exe and starts the program.<br><br>
+</li><li class="unordered">
+Specifying a default Insert mode <br><br>
+
+If you press the INSERT key, you can type text on the <b>doskey</b> command line in the midst of existing text without replacing the text. However, after you press ENTER, Doskey.exe returns your keyboard to Replace mode. You must press INSERT again to return to Insert mode. <br><br>
+
+Use <b>/insert</b> to switch your keyboard to Insert mode each time you press ENTER. Your keyboard effectively remains in Insert mode until you use <b>/overstrike</b>. You can temporarily return to Replace mode by pressing the INSERT key, but after you press ENTER, Doskey.exe returns your keyboard to Insert mode. <br><br>
+
+The insertion point changes shape when you use the INSERT key to change from one mode to the other. <br><br>
+</li><li class="unordered">
+Creating a macro <br><br>
+
+You can use Doskey.exe to create macros that carry out one or more commands. The following table lists special characters that you can use to control command operations when you define a macro.<br><br>
+
+<h3 class="subHeading"></h3><table><tr>
+<th colspan="1">
+Character
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>$G or $g</p>
+</td>
+<td colspan="1">
+<p>Redirects output. Use either of these special characters to send output to a device or a file instead of to the screen. This character is equivalent to the redirection symbol for output (<b>&gt;</b>).</p>
+</td></tr><tr>
+<td colspan="1">
+<p>$G$G or $g$g</p>
+</td>
+<td colspan="1">
+<p>Appends output to the end of a file. Use either of these double characters to append output to an existing file instead of replacing the data in the file. These double characters are equivalent to the append redirection symbol for output (<b>&gt;&gt;</b>).</p>
+</td></tr><tr>
+<td colspan="1">
+<p>$L or $l</p>
+</td>
+<td colspan="1">
+<p>Redirects input. Use either of these special characters to read input from a device or a file instead of from the keyboard. This character is equivalent to the redirection symbol for input (<b>&lt;</b>).</p>
+</td></tr><tr>
+<td colspan="1">
+<p>$B or $b</p>
+</td>
+<td colspan="1">
+<p>Sends macro output to a command. These special characters are equivalent to using the pipe (<b>|</b>) on a command line.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>$T or $t </p>
+</td>
+<td colspan="1">
+<p>Separates commands. Use either of these special characters to separate commands when you create macros or type commands on the <b>doskey</b> command line. These special characters are equivalent to using the ampersand (<b>&amp;</b>) on a command line.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>$$</p>
+</td>
+<td colspan="1">
+<p>Specifies the dollar-sign character (<b>$</b>).</p>
+</td></tr><tr>
+<td colspan="1">
+<p>$1 through $9</p>
+</td>
+<td colspan="1">
+<p>Represent any command-line information you want to specify when you run the macro. The special characters <b>$1</b> through <b>$9</b> are batch parameters that enable you to use different data on the command line each time you run the macro. The <b>$1</b> character in a <b>doskey</b> command is similar to the <b>%1</b> character in a batch program.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>$*</p>
+</td>
+<td colspan="1">
+<p>Represents all the command-line information that you want to specify when you type the macro name. The special character <b>$*</b> is a replaceable parameter that is similar to the batch parameters <b>$1</b> through <b>$9</b>, with one important difference: everything you type on the command line after the macro name is substituted for the <b>$*</b> in the macro.</p>
+</td></tr></table>
+</li><li class="unordered">
+Running a <b>doskey</b> macro <br><br>
+
+To run a macro, type the macro name at the command prompt, starting at the first position. If the macro was defined with <b>$*</b> or any of the batch parameters <b>$1</b> through <b>$9</b>, use a space to separate the parameters. You cannot run a <b>doskey</b> macro from a batch program. <br><br>
+</li><li class="unordered">
+Creating a macro with the same name as a Windows Server 2003 family command <br><br>
+
+If you always use a particular command with specific command-line options, you can create a macro that has the same name as the command. To specify whether you want to run the macro or the command, follow these guidelines: <br><br>
+
+<ul><li class="unordered">
+To run the macro, type the macro name at the command prompt. Do not add a space before the macro name.<br><br>
+</li><li class="unordered">
+To run the command, insert one or more spaces at the command prompt, and then type the command name.<br><br>
+</li></ul>
+</li><li class="unordered">
+Deleting a macro <br><br>
+
+To delete a macro, type: <br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>doskey &lt;MacroName&gt; =</pre></td></tr></table></span></div>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="4874fd43-d5ea-45f3-ae24-388ae925ed76#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">The <b>/macros</b> and <b>/history</b> command-line options are useful for creating batch programs to save macros and commands. For example, to store all current <b>doskey</b> macros, type: </p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>doskey /macros &gt; macinit </pre></td></tr></table></span></div>
+
+<p xmlns="">To use the macros stored in Macinit, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>doskey /macrofile=macinit </pre></td></tr></table></span></div>
+
+<p xmlns="">To create a batch program named Tmp.bat that contains recently used commands, type: </p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>doskey /history&gt; tmp.bat </pre></td></tr></table></span></div>
+
+<p xmlns="">To define a macro with multiple commands, use <b>$t</b> to separate commands, as follows: </p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>doskey tx=cd temp$tdir/w $*</pre></td></tr></table></span></div>
+
+<p xmlns="">In the preceding example, the TX macro changes the current directory to Temp and then displays a directory listing in wide display format. You can use <b>$*</b> at the end of the macro to append other command-line options to <b>dir </b>when you run TX. </p>
+
+<p xmlns="">The following macro uses a batch parameter for a new directory name: </p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>doskey mc=md $1$tcd $1</pre></td></tr></table></span></div>
+
+<p xmlns="">The macro creates a new directory and then changes to the new directory from the current directory.</p>
+
+<p xmlns="">To use the preceding macro to create and change to a directory named Books, type: </p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>mc books</pre></td></tr></table></span></div>
+
+<p xmlns="">To create a <b>doskey</b> macro for a program called Ftp.exe, include <b>/exename</b> as follows:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>doskey /exename=ftp.exe go=open 172.27.1.100$tmget *.TXT c:\reports$tbye </pre></td></tr></table></span></div>
+
+<p xmlns="">To use the preceding macro, start FTP. At the FTP prompt, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>go</pre></td></tr></table></span></div>
+
+<p xmlns="">FTP runs the <b>open</b>, <b>mget</b>, and <b>bye</b> commands.</p>
+
+<p xmlns="">To create a macro that quickly and unconditionally formats a disk, type: </p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>doskey qf=format $1 /q /u</pre></td></tr></table></span></div>
+
+<p xmlns="">To quickly and unconditionally format a disk in drive A, type: </p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>qf a:</pre></td></tr></table></span></div>
+
+<p xmlns="">To delete a macro called vlist, type: </p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>doskey vlist =</pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+</content></div>
+</sections></div>
+</sections></div><div id="sectionSection4" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

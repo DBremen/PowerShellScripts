@@ -1,0 +1,136 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Ftp</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Ftp</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows 7,Windows Vista,Windows Server 2008,Windows Server 2008 R2</p>
+				<p>Transfers files to and from a computer running a File Transfer Protocol (FTP) server service. <b>Ftp</b> can be used interactively or in batch mode by processing ASCII text files. For examples of how this command can be used, see <b>Examples</b>.</p>
+			<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>ftp [-v] [-d] [-i] [-n] [-g] [-s:&lt;FileName&gt;] [-a] [-A] [-x:&lt;SendBuffer&gt;] [-r:&lt;RecvBuffer&gt;] [-b:&lt;AsyncBuffers&gt;][-w:&lt;WindowsSize&gt;]  [-?] [&lt;Host&gt;]</pre></td></tr></table></span></div>
+				</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<h3 class="subHeading" xmlns="">Parameters</h3><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+										<th>
+											Parameter
+										</th>
+										<th>
+											Description
+										</th>
+									</tr><tr>
+									<td>
+										<p>-v</p>
+									</td>
+									<td>
+										<p>Suppresses display of remote server responses.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>-n</p>
+									</td>
+									<td>
+										<p>Suppresses auto-login upon initial connection.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>-g</p>
+									</td>
+									<td>
+										<p>Disables file name globbing.  <b>Glob</b> permits the use of the asterisk (*) and question mark (?) as wildcard characters in local file and path names. For more information, see <a href="#BKMK_AdditionalRef">Additional references</a>.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>-s:&lt;FileName&gt;</p>
+									</td>
+									<td>
+										<p>Specifies a text file that contains <b>ftp</b> commands. These commands run automatically after <b>ftp</b> starts. This parameter allows no spaces. Use this parameter instead of redirection (<b>&lt;</b>).</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>-a</p>
+									</td>
+									<td>
+										<p>Specifies that any local interface can be used when binding the FTP data connection.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>-A</p>
+									</td>
+									<td>
+										<p>Logs onto the FTP server as anonymous.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>-x:&lt;SendBuffer&gt;</p>
+									</td>
+									<td>
+										<p>Overrides the default SO_SNDBUF size of 8192.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>-r:&lt;RecvBuffer&gt;</p>
+									</td>
+									<td>
+										<p>Overrides the default SO_RCVBUF size of 8192.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>-b:&lt;AsyncBuffers&gt;</p>
+									</td>
+									<td>
+										<p>Overrides the default async buffer count of 3.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>-w:&lt;WindowsSize&gt;</p>
+									</td>
+									<td>
+										<p>Specifies the size of the transfer buffer. The default window size is 4096 bytes.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>-?</p>
+									</td>
+									<td>
+										<p>Displays help at the command prompt.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>&lt;host&gt;</p>
+									</td>
+									<td>
+										<p>Specifies the computer name, IP address, or IPv6 address of the FTP server to which to connect. The host name or address, if specified, must be the last parameter on the line.</p>
+									</td>
+								</tr></table>
+						</content></div>
+				</sections></div><h2 class="heading">Remarks</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<ul xmlns=""><li class="unordered">
+							For more information about <b>ftp</b> commands on Windows Server 2003, see <b>Ftp</b>.<br><br>
+						</li><li class="unordered">
+							
+								<b>Ftp</b> command-line parameters are case-sensitive.<br><br>
+						</li><li class="unordered">
+							This command is available only if the <b>Internet Protocol (TCP/IP)</b> protocol is installed as a component in the properties of a network adapter in Network Connections.<br><br>
+						</li><li class="unordered">
+							
+								<b>Ftp</b> can be used interactively. After it is started, <b>ftp</b> creates a sub-environment in which you can use <b>ftp</b> commands. You can return to the command prompt by typing the <b>quit</b> command. When the <b>ftp</b> sub-environment is running, it is indicated by the <b>ftp &gt;</b> command prompt. For more information see the <b>ftp</b> commands.<br><br>
+						</li><li class="unordered">
+							
+								<b>Ftp</b> supports the use of IPv6 when the IPv6 protocol is installed. For more information, see <a href="#BKMK_AdditionalRef">Additional references</a>.  <br><br>
+						</li></ul>
+				</content></div><a name="BKMK_Examples"></a><a name="758335e1-fd8d-448c-a654-993126239dd9#BKMK_Examples"></a><h2 class="heading">Examples</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">To log on to the FTP server named ftp.example.microsoft.com, type:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>ftp ftp.example.microsoft.com</pre></td></tr></table></span></div>
+					<p xmlns="">To log on to the FTP server named ftp.example.microsoft.com and run the <b>ftp</b> commands contained in a file named resync.txt, type:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>ftp -s:resync.txt ftp.example.microsoft.com</pre></td></tr></table></span></div>
+				</content></div><a name="BKMK_AdditionalRef"></a><a name="758335e1-fd8d-448c-a654-993126239dd9#BKMK_AdditionalRef"></a><h2 class="heading">Additional references</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<ul xmlns=""><li>
+							
+								<b>IP version 6</b>
+							<br><br>
+						</li><li>
+							
+								<b>IPv6 applications</b>
+							<br><br>
+						</li><li>
+							
+								<a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a>
+							<br><br>
+						</li></ul>
+				</content></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

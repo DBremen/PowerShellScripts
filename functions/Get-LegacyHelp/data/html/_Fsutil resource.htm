@@ -1,0 +1,195 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Fsutil resource</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Fsutil resource</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008 R2,Windows Server 2008,Windows Vista,Windows 7</p>
+				<p>Creates a Secondary Transactional Resource Manager, starts or stops a Transactional Resource Manager, or displays information about a Transactional Resource Manager and modifies the following behavior:</p>
+				<ul><li class="unordered">
+						Whether a default Transactional Resource Manager will clean its transactional metadata at the next mount <br><br>
+					</li><li class="unordered">
+						The specified Transactional Resource Manager to prefer consistency over availability<br><br>
+					</li><li class="unordered">
+						The specified Transaction Resource Manager to prefer availability over consistency<br><br>
+					</li><li class="unordered">
+						The characteristics of a running Transactional Resource Manager<br><br>
+					</li></ul>
+				<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a> .</p>
+			<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>fsutil resource [create] &lt;RmRootPathname&gt;
+fsutil resource [info] &lt;RmRootPathname&gt;
+fsutil resource [setautoreset] {true|false} &lt;DefaultRmRootPathname&gt;
+fsutil resource [setavailable] &lt;RmRootPathname&gt;
+fsutil resource [setconsistent] &lt;RmRootPathname&gt;
+fsutil resource [setlog] [growth {&lt;Containers&gt; containers|&lt;Percent&gt; percent} &lt;RmRootPathname&gt;] [maxextents &lt;Containers&gt; &lt;RmRootPathname&gt;] [minextents &lt;Containers&gt; &lt;RmRootPathname&gt;] [mode {full|undo} &lt;RmRootPathname&gt;] [rename &lt;RmRootPathname&gt;] [shrink &lt;percent&gt; &lt;RmRootPathname&gt;] [size &lt;Containers&gt; &lt;RmRootPathname&gt;]
+fsutil resource [start] &lt;RmRootPathname&gt; [&lt;RmLogPathname&gt; &lt;TmLogPathname&gt;
+fsutil resource [stop] &lt;RmRootPathname&gt;
+</pre></td></tr></table></span></div>
+				</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<h3 class="subHeading" xmlns="">Parameters</h3><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+										<th colspan="1">
+											Parameter
+										</th>
+										<th colspan="1">
+											Description
+										</th>
+									</tr><tr>
+									<td colspan="1">
+										<p>create</p>
+									</td>
+									<td colspan="1">
+										<p>Creates a secondary Transactional Resource Manager.</p>
+									</td>
+								</tr><tr>
+									<td colspan="1">
+										<p>&lt;RmRootPathname&gt;</p>
+									</td>
+									<td colspan="1">
+										<p>Specifies the full path to a Transactional Resource Manager root directory.</p>
+									</td>
+								</tr><tr>
+									<td colspan="1">
+										<p>info</p>
+									</td>
+									<td colspan="1">
+										<p>Displays the specified Transactional Resource Manager’s information.</p>
+									</td>
+								</tr><tr>
+									<td colspan="1">
+										<p>setautoreset</p>
+									</td>
+									<td colspan="1">
+										<p>Specifies whether a default Transactional Resource Manager will clean the transactional metadata on the next mount. </p>
+										<ul><li class="unordered">
+												Set the <b>setautoreset</b> parameter to <b>true</b> to specify that the Transaction Resource Manager will clean the transactional metadata on the next mount, by default. <br><br>
+											</li><li class="unordered">
+												Set the <b>setautoreset</b> parameter to <b>false</b> to specify that the Transaction Resource Manager will not clean the transactional metadata on the next mount, by default.<br><br>
+											</li></ul>
+									</td>
+								</tr><tr>
+									<td colspan="1">
+										<p>&lt;DefaultRmRootPathname&gt;</p>
+									</td>
+									<td colspan="1">
+										<p>Specifies the drive name followed by a colon.</p>
+									</td>
+								</tr><tr>
+									<td colspan="1">
+										<p>setavailable</p>
+									</td>
+									<td colspan="1">
+										<p>Specifies that a Transactional Resource Manager will prefer availability over consistency.</p>
+									</td>
+								</tr><tr>
+									<td colspan="1">
+										<p>setconsistent</p>
+									</td>
+									<td colspan="1">
+										<p>Specifies that a Transactional Resource Manager will prefer consistency over availability.</p>
+									</td>
+								</tr><tr>
+									<td colspan="1">
+										<p>setlog</p>
+									</td>
+									<td colspan="1">
+										<p>Changes the characteristics of a Transactional Resource Manager that is already running.</p>
+									</td>
+								</tr><tr>
+									<td colspan="1">
+										<p>growth</p>
+									</td>
+									<td colspan="1">
+										<p>Specifies the amount by which the Transactional Resource Manager log can grow.</p>
+										<p>The growth parameter can be specified as follows:</p>
+										<ul><li class="unordered">
+												Number of containers using the format: <i>Containers</i> <b>containers</b><br><br>
+											</li><li class="unordered">
+												Percentage using the format: <i>Percent</i> <b>percent</b><br><br>
+											</li></ul>
+									</td>
+								</tr><tr>
+									<td>
+										<p>&lt;containers&gt;</p>
+									</td>
+									<td>
+										<p>Specifies the data objects that are used by the Transactional Resource Manager.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>maxextent</p>
+									</td>
+									<td>
+										<p>Specifies the maximum number of containers for the specified Transactional Resource Manager.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>minextent</p>
+									</td>
+									<td>
+										<p>Specifies the minimum number of containers for the specified Transactional Resource Manager.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>mode {full|undo}</p>
+									</td>
+									<td>
+										<p>Specifies whether all transactions are logged ( <b>full</b>) or only rolled back events are logged (<b>undo</b>).</p>
+									</td>
+								</tr><tr>
+									<td colspan="1">
+										<p>rename</p>
+									</td>
+									<td colspan="1">
+										<p>Changes the GUID for the Transactional Resource Manager.</p>
+									</td>
+								</tr><tr>
+									<td colspan="1">
+										<p>shrink</p>
+									</td>
+									<td colspan="1">
+										<p>Specifies percentage by which the Transactional Resource Manager log can automatically decrease.</p>
+									</td>
+								</tr><tr>
+									<td colspan="1">
+										<p>size</p>
+									</td>
+									<td colspan="1">
+										<p>Specifies the size of the Transactional Resource Manager as a specified number of <i>Containers</i>.</p>
+									</td>
+								</tr><tr>
+									<td colspan="1">
+										<p>start</p>
+									</td>
+									<td colspan="1">
+										<p>Starts the specified Transactional Resource Manager. </p>
+									</td>
+								</tr><tr>
+									<td colspan="1">
+										<p>stop</p>
+									</td>
+									<td colspan="1">
+										<p>Stops the specified Transactional Resource Manager.</p>
+									</td>
+								</tr></table>
+						</content></div>
+					<h3 class="subHeading" xmlns="">Examples</h3><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<p xmlns="">To set the log for the Transactional Resource Manager that is specified by c:\test, to have an automatic growth of five containers, type:</p>
+							<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>fsutil resource setlog growth 5 containers c:test</pre></td></tr></table></span></div>
+							<p xmlns="">To set the log for the Transactional Resource Manager that is specified by c:\test, to have an automatic growth of two percent, type:</p>
+							<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>fsutil resource setlog growth 2 percent c:test</pre></td></tr></table></span></div>
+							<p xmlns="">To specify that the default Transactional Resource Manager will clean the transactional metadata on the next mount on drive C, type:</p>
+							<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>fsutil resource setautoreset true c:\  </pre></td></tr></table></span></div>
+						</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+								</content></div>
+						</sections></div>
+					<h3 class="subHeading" xmlns="">Additional references</h3><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<p xmlns="">
+								<a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a>
+							</p>
+							<p xmlns="">
+								<a href="097de37c-812c-47b0-872b-4b55ea32b27f.htm">Fsutil</a>
+							</p>
+							<p xmlns="">
+								<a href="http://go.microsoft.com/fwlink/?LinkID=165402" alt="" target="_blank"><linktext xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">Transactional NTFS</linktext></a>
+							</p>
+						</content></div>
+				</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

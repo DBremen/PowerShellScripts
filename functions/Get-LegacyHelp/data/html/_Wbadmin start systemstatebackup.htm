@@ -1,0 +1,59 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Wbadmin start systemstatebackup</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Wbadmin start systemstatebackup</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008,Windows Server 2008 R2</p>
+				<p>Creates a system state backup of the local computer and stores it on the location specified.</p>
+				<div class="alert"><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>
+					This subcommand applies only to Windows Server 2008 and Windows Server 2008 R2.<p>
+					Windows Server Backup does not back up or recover registry user hives (HKEY_CURRENT_USER) as part of system state backup or system state recovery.<p>
+				</td></tr></table><p></div>
+				<p>To perform a system state backup with this subcommand, you must be a member of the <b>Backup Operators</b> group or the <b>Administrators</b> group, or you must have been delegated the appropriate permissions. In addition, you must run <b>wbadmin</b> from an elevated command prompt. (To open an elevated command prompt, click <b>Start</b>, right-click <b>Command Prompt</b>, and then click <b>Run as administrator</b>.)</p>
+				<p>For examples of how to use this subcommand, see <a href="#BKMK_examples">Examples</a>.</p>
+			<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>wbadmin start systemstatebackup
+-backupTarget:&lt;VolumeName&gt;
+[-quiet]</pre></td></tr></table></span></div>
+				</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+								<th colspan="1">
+									Parameter
+								</th>
+								<th colspan="1">
+									Description
+								</th>
+							</tr><tr>
+							<td colspan="1">
+								<p>-backupTarget</p>
+							</td>
+							<td colspan="1">
+								<p>Specifies the location where you want to store the backup. The storage location requires a drive letter or a GUID-based volume of the format: \\?\Volume{<i>GUID</i>}.</p>
+								<p>A system state backup to a shared network folder is not supported.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-quiet</p>
+							</td>
+							<td colspan="1">
+								<p>Runs the subcommand with no prompts to the user.</p>
+							</td>
+						</tr></table>
+				</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">For information about saving a system state backup to a volume that, in turn, contains system state files, see article 944530 in the Microsoft Knowledge Base (<a href="http://go.microsoft.com/fwlink/?LinkId=110439" alt="" target="_blank"><linktext xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">http://go.microsoft.com/fwlink/?LinkId=110439</linktext></a>).</p>
+				</content></div><a name="BKMK_examples"></a><a name="998366c1-0a64-45e6-9ed3-4c3f5b8406f0#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">To create a system state backup and store it on volume f, type:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>wbadmin start systemstatebackup -backupTarget:f:</pre></td></tr></table></span></div>
+				</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+						</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<ul xmlns=""><li class="unordered">
+											
+												<a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a>
+											<br><br>
+										</li><li class="unordered">
+											
+												<a href="4b0b3f32-d21f-4861-84bb-b2eadbf1e7b8.htm">Wbadmin</a>
+											<br><br>
+										</li></ul>
+								</content></div>
+						</sections></div>
+				</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

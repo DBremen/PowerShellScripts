@@ -1,0 +1,207 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Dsmod contact</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Dsmod contact</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008</p>
+<p>Modifies attributes of one or more existing contacts in the directory.</p>
+
+<p><b>Dsmod</b> is a command-line tool that is built into Windows Server 2008. It is available if you have the Active Directory Domain Services (AD DS) server role installed. To use <b>dsmod</b>, you must run the <b>dsmod</b> command from an elevated command prompt. To open an elevated command prompt, click <b>Start</b>, right-click <b>Command Prompt</b>, and then click <b>Run as administrator</b>.</p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>dsmod contact &lt;ContactDN&gt; ... [-fn &lt;FirstName&gt;] [-mi &lt;Initial&gt;] [-ln &lt;LastName&gt;] [-display &lt;DisplayName&gt;] [-desc &lt;Description&gt;] [-office &lt;Office&gt;] [-tel &lt;PhoneNumber&gt;] [-email &lt;Email&gt;] [-hometel &lt;HomePhoneNumber&gt;] [-pager &lt;PagerNumber&gt;] [-mobile &lt;CellPhoneNumber&gt;] [-fax &lt;FaxNumber&gt;] [-iptel &lt;IPPhoneNumber&gt;] [-title &lt;Title&gt;] [-dept &lt;Department&gt;] [-company &lt;Company&gt;] [{-s &lt;Server&gt; | -d &lt;Domain&gt;}] [-u &lt;UserName&gt;][-p {&lt;Password&gt; | *}] [-c] [-q] [{-uc | -uco | -uci}]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="3">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>&lt;ContactDN&gt; </p>
+</td>
+<td colspan="1">
+<p>Required. Specifies the distinguished names of the contacts that you want to modify. If values are omitted, they are obtained through standard input (stdin) to support piping of output from another command to input of this command. </p>
+</td></tr><tr>
+<td colspan="1">
+<p>-fn &lt;FirstName&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the first name of the contact that you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-mi &lt;Initial&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the middle initial of the contact that you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-ln &lt;LastName&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the last name of the contact that you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-display &lt;DisplayName&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the display name of the contact that you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-desc &lt;Description&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the description of the contact that you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-office &lt;Office&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the office location of the contact that you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-tel &lt;PhoneNumber&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the telephone number of the contact that you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-email &lt;Email&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the e-mail address of the contact that you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-hometel &lt;HomePhoneNumber&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the home telephone number of the contact that you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-pager &lt;PagerNumber&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the pager number of the contact that you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-mobile &lt;CellPhoneNumber&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the mobile number of the contact that you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-fax &lt;FaxNumber&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the fax number of the contact that you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-iptel &lt;IPPhoneNumber&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the IP phone number of the contact that you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-title &lt;Title&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the title of the contact that you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-dept &lt;Department&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the department of the contact that you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-company &lt;Company&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the company information of the contact that you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>{-s &lt;Server&gt; | -d &lt;Domain&gt;} </p>
+</td>
+<td colspan="1">
+<p>Connects a computer to a remote server or domain that you specify. By default, <b>dsmod</b> connects the computer to the domain controller in the logon domain.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-u &lt;UserName&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the user name with which the user logs on to a remote server. By default, <b>-u</b> uses the user name with which the user logged on. You can use any of the following formats to specify a user name: </p>
+
+<ul><li class="unordered">
+user name (for example, Linda)<br><br>
+</li><li class="unordered">
+domain\user name (for example, widgets\Linda)<br><br>
+</li><li class="unordered">
+user principal name (UPN) (for example, Linda@widgets.contoso.com)<br><br>
+</li></ul>
+</td></tr><tr>
+<td colspan="1">
+<p>-p {&lt;Password&gt; | *} </p>
+</td>
+<td colspan="1">
+<p>Specifies to use either a password or an asterisk (*) to log on to a remote server. If you type <b>*</b>, <b>dsmod</b> prompts you for a password.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-c </p>
+</td>
+<td colspan="1">
+<p>Reports errors, but continues with the next object in the argument list when you specify multiple target objects (continuous operation mode). If you do not supply this parameter, <b>dsmod </b>exits when the first error occurs.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-q </p>
+</td>
+<td colspan="1">
+<p>Suppresses all output to standard output (quiet mode).</p>
+</td></tr><tr>
+<td colspan="1">
+<p>{-uc | -uco | -uci} </p>
+</td>
+<td colspan="2">
+<p>Specifies that <b>dsmod</b> formats output or input data in Unicode. The following list explains each format. </p>
+
+<ul><li class="unordered"><b>-uc</b>: Specifies a Unicode format for input from or output to a pipe (|).<br><br></li><li class="unordered"><b>-uco </b>: Specifies a Unicode format for output to a pipe (|) or a file.<br><br></li><li class="unordered"><b>-uci</b>: Specifies a Unicode format for input from a pipe (|) or a file.<br><br></li></ul>
+</td></tr><tr>
+<td colspan="1">
+<p>/? </p>
+</td>
+<td colspan="1">
+<p>Displays help at the command prompt.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+If a value that you supply contains spaces, use quotation marks around the text, for example, "CN=Mike Danseglio,OU=Contacts,DC=Contoso,DC=Com".<br><br>
+</li><li class="unordered">
+If you supply multiple values for a parameter, use spaces to separate the values, for example, a list of distinguished names.<br><br>
+</li><li class="unordered">
+<b>Dsmod</b> does not support the addition of security principals in one forest to groups that are located in another forest when a forest trust is between both forests. You can use Active Directory Users and Computers to add security principals across a forest trust.<br><br>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="e5b9bf28-485e-46ba-a140-b0e86e285927#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">To set the company information of multiple contacts, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>dsmod contact "CN=Mike Danseglio,OU=Contacts,DC=Contoso,DC=Com" "CN=Denise Smith,OU=Contacts,DC=Contoso,DC=Com" -company Contoso</pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+
+<p xmlns=""><a href="c25f43ea-d9d4-47fa-b7a9-70ea76b34cb1.htm">Dsmod</a></p>
+
+<p xmlns=""><a href="553d610d-fd97-4e4f-98e0-a026a9cd640b.htm">Dsmod computer</a></p>
+
+<p xmlns=""><a href="c2bc9dfd-b7b3-470e-b302-aac9e6c4b0fd.htm">Dsmod group</a></p>
+
+<p xmlns=""><a href="869e3862-0f18-486f-ae56-ec93c9a85121.htm">Dsmod ou</a></p>
+
+<p xmlns=""><a href="ce6f1528-718a-40ee-aec0-65a0a83ce40f.htm">Dsmod server</a></p>
+
+<p xmlns=""><a href="d9f6d73b-e030-4c20-9567-cf40d9fee7f2.htm">Dsmod user</a></p>
+
+<p xmlns=""><a href="56b42d79-30a7-4691-abb5-fa0a276ef4ee.htm">Dsmod quota</a></p>
+
+<p xmlns=""><a href="2f9be6c7-935d-4bc7-b424-2d82a3df4c3b.htm">Dsmod partition</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

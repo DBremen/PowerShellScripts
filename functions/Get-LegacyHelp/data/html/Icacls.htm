@@ -1,0 +1,242 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Icacls</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Icacls</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008</p>
+<p>Displays or modifies discretionary access control lists (DACLs) on specified files, and applies stored DACLs to files in specified directories. </p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>icacls &lt;FileName&gt; [/grant[:r] &lt;Sid&gt;:&lt;Perm&gt;[...]] [/deny &lt;Sid&gt;:&lt;Perm&gt;[...]] [/remove[:g|:d]] &lt;Sid&gt;[...]] [/t] [/c] [/l] [/q] [/setintegritylevel &lt;Level&gt;:&lt;Policy&gt;[...]]
+icacls &lt;Directory&gt; [/substitute &lt;SidOld&gt; &lt;SidNew&gt; [...]] [/restore &lt;ACLfile&gt; [/c] [/l] [/q]]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>&lt;FileName&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the file for which to display DACLs.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;Directory&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the directory for which to display DACLs.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/t </p>
+</td>
+<td colspan="1">
+<p>Performs the operation on all specified files in the current directory and its subdirectories.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/c </p>
+</td>
+<td colspan="1">
+<p>Continues the operation despite any file errors. Error messages will still be displayed.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/l</p>
+</td>
+<td colspan="1">
+<p>Performs the operation on a symbolic link versus its destination.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/q</p>
+</td>
+<td colspan="1">
+<p>Suppresses success messages.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>[/save &lt;ACLfile&gt; [/t] [/c] [/l] [/q]]</p>
+</td>
+<td colspan="1">
+<p>Stores DACLs for all matching files into <i>ACLfile</i> for later use with <b>/restore</b>.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>[/setowner &lt;Username&gt; [/t] [/c] [/l] [/q]]</p>
+</td>
+<td colspan="1">
+<p>Changes the owner of all matching files to the specified user.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>[/findSID &lt;Sid&gt; [/t] [/c] [/l] [/q]]</p>
+</td>
+<td colspan="1">
+<p>Finds all matching files that contain a DACL explicitly mentioning the specified security identifier (SID).</p>
+</td></tr><tr>
+<td colspan="1">
+<p>[/verify [/t] [/c] [/l] [/q]]</p>
+</td>
+<td colspan="1">
+<p>Finds all files with ACLs that are not canonical or have lengths inconsistent with ACE (access control entry) counts.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>[/reset [/t] [/c] [/l] [/q]]</p>
+</td>
+<td colspan="1">
+<p>Replaces ACLs with default inherited ACLs for all matching files.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>[/grant[:r] &lt;Sid&gt;:&lt;Perm&gt;[...]]</p>
+</td>
+<td colspan="1">
+<p>Grants specified user access rights. Permissions replace previously granted explicit permissions.</p>
+
+<p>Without <b>:r</b>, permissions are added to any previously granted explicit permissions.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>[/deny &lt;Sid&gt;:&lt;Perm&gt;[...]]</p>
+</td>
+<td colspan="1">
+<p>Explicitly denies specified user access rights. An explicit deny ACE is added for the stated permissions and the same permissions in any explicit grant are removed.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>[/remove[:g|:d]] &lt;Sid&gt;[...]] [/t] [/c] [/l] [/q]</p>
+</td>
+<td colspan="1">
+<p>Removes all occurrences of the specified SID from the DACL. </p>
+
+<p><b>:g</b> removes all occurrences of granted rights to the specified SID. </p>
+
+<p><b>:d</b> removes all occurrences of denied rights to the specified SID.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>[/setintegritylevel [(CI)(OI)]&lt;Level&gt;:&lt;Policy&gt;[...]]</p>
+</td>
+<td colspan="1">
+<p>Explicitly adds an integrity ACE to all matching files. <i>Level</i> is specified as:</p>
+
+<ul><li class="unordered">
+<b>L</b>[ow]<br><br>
+</li><li class="unordered">
+<b>M</b>[edium]<br><br>
+</li><li class="unordered">
+<b>H</b>[igh]<br><br>
+</li></ul>
+
+<p>Inheritance options for the integrity ACE may precede the level and are applied only to directories.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>[/substitute &lt;SidOld&gt; &lt;SidNew&gt; [...]]</p>
+</td>
+<td colspan="2">
+<p>Replaces an existing SID (<i>SidOld</i>) with a new SID (<i>SidNew</i>). Requires the <i>Directory</i> parameter.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/restore &lt;ACLfile&gt; [/c] [/l] [/q]</p>
+</td>
+<td colspan="2">
+<p>Applies stored DACLs from <i>ACLfile</i> to files in the specified directory. Requires the <i>Directory</i> parameter.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+SIDs may be in either numerical or friendly name form. If you use a numerical form, affix the wildcard character <b>*</b> to the beginning of the SID.<br><br>
+</li><li class="unordered">
+<b>icacls</b> preserves the canonical order of ACE entries as:<br><br>
+
+<ul><li class="unordered">
+Explicit denials<br><br>
+</li><li class="unordered">
+Explicit grants<br><br>
+</li><li class="unordered">
+Inherited denials<br><br>
+</li><li class="unordered">
+Inherited grants<br><br>
+</li></ul>
+</li><li class="unordered">
+<i>Perm</i> is a permission mask that can be specified in one of the following forms:<br><br>
+
+<ul><li class="unordered">
+A sequence of simple rights:<br><br>
+
+<b>F</b> (full access)<br><br>
+
+<b>M</b> (modify access)<br><br>
+
+<b>RX</b> (read and execute access)<br><br>
+
+<b>R</b> (read-only access)<br><br>
+
+<b>W</b> (write-only access)<br><br>
+</li><li class="unordered">
+A comma-separated list in parenthesis of specific rights:<br><br>
+
+<b>D</b> (delete)<br><br>
+
+<b>RC</b> (read control)<br><br>
+
+<b>WDAC</b> (write DAC)<br><br>
+
+<b>WO</b> (write owner)<br><br>
+
+<b>S</b> (synchronize)<br><br>
+
+<b>AS</b> (access system security)<br><br>
+
+<b>MA</b> (maximum allowed)<br><br>
+
+<b>GR</b> (generic read)<br><br>
+
+<b>GW</b> (generic write)<br><br>
+
+<b>GE</b> (generic execute)<br><br>
+
+<b>GA</b> (generic all)<br><br>
+
+<b>RD</b> (read data/list directory)<br><br>
+
+<b>WD</b> (write data/add file)<br><br>
+
+<b>AD</b> (append data/add subdirectory)<br><br>
+
+<b>REA</b> (read extended attributes)<br><br>
+
+<b>WEA</b> (write extended attributes)<br><br>
+
+<b>X</b> (execute/traverse)<br><br>
+
+<b>DC</b> (delete child)<br><br>
+
+<b>RA</b> (read attributes)<br><br>
+
+<b>WA</b> (write attributes)<br><br>
+</li></ul>
+</li><li class="unordered">
+Inheritance rights may precede either <i>Perm</i> form, and they are applied only to directories:<br><br>
+
+<b>(OI)</b>: object inherit<br><br>
+
+<b>(CI)</b>: container inherit<br><br>
+
+<b>(IO)</b>: inherit only<br><br>
+
+<b>(NP)</b>: do not propagate inherit<br><br>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="403edfcc-328a-479d-b641-80c290ccf73e#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">To save the DACLs for all files in the C:\Windows directory and its subdirectories to the ACLFile file, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>icacls c:\windows\* /save aclfile /t</pre></td></tr></table></span></div>
+
+<p xmlns="">To restore the DACLs for every file within ACLFile that exists in the C:\Windows directory and its subdirectories, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>icacls c:\windows\ /restore aclfile</pre></td></tr></table></span></div>
+
+<p xmlns="">To grant the user User1 Delete and Write DAC permissions to a file named "Test1", type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>icacls test1 /grant User1:(d,wdac)</pre></td></tr></table></span></div>
+
+<p xmlns="">To grant the user defined by SID S-1-1-0 Delete and Write DAC permissions to a file, named "Test2", type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>icacls test2 /grant *S-1-1-0:(d,wdac)</pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

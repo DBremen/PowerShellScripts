@@ -1,0 +1,91 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Tscon</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Tscon</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008,Windows Server 2008 R2,Windows Vista</p>
+<p>Connects to another session on a terminal server.</p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>tscon {&lt;SessionID&gt; | &lt;SessionName&gt;} [/dest:&lt;SessionName&gt;] [/password:&lt;pw&gt; | /password:*] [/v]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>&lt;SessionID&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the ID of the session to which you want to connect. If you use the optional <b>/dest:</b>&lt;<i>SessionName</i>&gt; parameter, this is the ID of the session to which you want to connect.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;SessionName&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the name of the session to which you want to connect.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/dest:&lt;SessionName&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the name of the current session. This session will disconnect when you connect to the new session.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/password:&lt;pw&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the password of the user who owns the session to which you want to connect. This password is required when the connecting user does not own the session.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/password:*</p>
+</td>
+<td colspan="1">
+<p>Prompts for the password of the user who owns the session to which you want to connect.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/v</p>
+</td>
+<td colspan="1">
+<p>Displays information about the actions being performed.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/?</p>
+</td>
+<td colspan="1">
+<p>Displays help at the command prompt.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+You must have Full Control access permission or Connect special access permission to connect to another session. <br><br>
+</li><li class="unordered">
+The <b>/dest:</b>&lt;<i>SessionName</i>&gt; parameter allows you to connect the session of another user to a different session. <br><br>
+</li><li class="unordered">
+If you do not specify a password in the &lt;<i>Password</i>&gt; parameter, and the target session belongs to a user other than the current one, <b>tscon</b> fails.<br><br>
+</li><li class="unordered">
+You cannot connect to the console session.<br><br>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="315a9793-cd10-4987-bb68-89a9d13f7fce#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+To connect to session 12 on the current terminal server and disconnect the current session, type:<br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>tscon 12</pre></td></tr></table></span></div>
+</li><li class="unordered">
+To connect to session 23 on the current terminal server, by using the password mypass, and disconnect the current session, type:<br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>tscon 23 /password:mypass</pre></td></tr></table></span></div>
+</li><li class="unordered">
+To connect the session named TERM03 to the session named TERM05, and then disconnect session TERM05, if it is connected, type:<br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>tscon TERM03 /v /dest:TERM05</pre></td></tr></table></span></div>
+</li></ul>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+
+<p xmlns=""><a href="2f371848-5c48-470c-908c-afbc95d3a805.htm">Terminal Services Command Reference</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

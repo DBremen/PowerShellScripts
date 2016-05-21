@@ -1,0 +1,160 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Cscript</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Cscript</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008 R2,Windows Server 2008,Windows XP,Windows Server 2003 R2,Windows 7,Windows Server 2003,Windows Vista,Windows Server 2000</p>
+				<p>Starts a script so that it runs in a command-line environment.</p>
+			<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>Cscript &lt;Scriptname.extension&gt; [/B] [/D] [/E:&lt;Engine&gt;] [{/H:CScript|/H:WScript}] [/I] [/Job:&lt;Identifier&gt;] [{/Logo|/NoLogo}] [/S] [/T:&lt;Seconds&gt;] [/X] [/U] [/?] [&lt;ScriptArguments …&gt;]</pre></td></tr></table></span></div>
+				</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<h3 class="subHeading" xmlns="">Parameters</h3><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+										<th colspan="1">
+											Parameter
+										</th>
+										<th colspan="1">
+											Description
+										</th>
+									</tr><tr>
+									<td colspan="1">
+										<p>Scriptname.extension </p>
+									</td>
+									<td colspan="1">
+										<p>Specifies the path and file name of the script file with optional file extension.</p>
+									</td>
+								</tr><tr>
+									<td colspan="1">
+										<p>/B </p>
+									</td>
+									<td colspan="1">
+										<p>Specifies batch mode, which does not display alerts, scripting errors, or input prompts.</p>
+									</td>
+								</tr><tr>
+									<td colspan="1">
+										<p>/D</p>
+									</td>
+									<td colspan="1">
+										<p>Starts the debugger.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>E:&lt;Engine&gt;</p>
+									</td>
+									<td>
+										<p>Specifies the engine that is used to run the script.</p>
+									</td>
+								</tr><tr>
+									<td colspan="1">
+										<p>H:CScript</p>
+									</td>
+									<td colspan="1">
+										<p>Registers Cscript.exe as the default script host for running scripts.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>H:WScript</p>
+									</td>
+									<td>
+										<p>Registers Wscript.exe as the default script host for running scripts. This is the default.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>/I</p>
+									</td>
+									<td>
+										<p>Specifies interactive mode, which displays alerts, scripting errors, and input prompts. This is the default and the opposite of <b>/B</b>.</p>
+									</td>
+								</tr><tr>
+									<td colspan="1">
+										<p>/Job:&lt;Identifier&gt;</p>
+									</td>
+									<td colspan="1">
+										<p>Runs the job identified by <i>Identifier</i> in a .wsf script file.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>/Logo</p>
+									</td>
+									<td>
+										<p>Specifies that the Windows Script Host banner is displayed in the console before the script runs. This is the default and the opposite of <b>/Nologo</b>.</p>
+									</td>
+								</tr><tr>
+									<td colspan="1">
+										<p>/Nologo</p>
+									</td>
+									<td colspan="1">
+										<p>Specifies that the Windows Script Host banner is not displayed before the script runs.</p>
+									</td>
+								</tr><tr>
+									<td colspan="1">
+										<p>/S</p>
+									</td>
+									<td colspan="1">
+										<p>Saves the current command-prompt options for the current user.</p>
+									</td>
+								</tr><tr>
+									<td colspan="1">
+										<p>/T:&lt;Seconds&gt;</p>
+									</td>
+									<td colspan="1">
+										<p>Specifies the maximum time the script can run (in seconds). You can specify up to 32,767 seconds. The default is no time limit.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>/U</p>
+									</td>
+									<td>
+										<p>Specifies Unicode for input and output that is redirected from the console.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>/X</p>
+									</td>
+									<td>
+										<p>Starts the script in the debugger.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>/?</p>
+									</td>
+									<td>
+										<p>Displays available command parameters and provides help for using them. This is the same as typing <b>Cscript.exe</b> with no parameters and no script.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>ScriptArguments</p>
+									</td>
+									<td>
+										<p>Specifies the arguments passed to the script. Each script argument must be preceded by a slash (<b>/</b>).</p>
+									</td>
+								</tr></table>
+						</content></div>
+					<h3 class="subHeading" xmlns="">Remarks</h3><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<ul xmlns=""><li class="unordered">
+									Performing this task does not require you to have administrative credentials. Therefore, as a security best practice, consider performing this task as a user without administrative credentials.<br><br>
+								</li><li class="unordered">
+									                 To open a command prompt, click <b>Start</b>, point to <b>All programs</b>, point to <b>Accessories</b>, and then click <b>Command prompt</b>.               <br><br>
+								</li><li class="unordered">
+									Each parameter is optional; however, you cannot specify script arguments without specifying a script. If you do not specify a script or any script arguments, Cscript.exe displays the Cscript.exe syntax and the valid host options.<br><br>
+								</li><li class="unordered">
+									The <b>/T</b> parameter prevents excessive running of scripts by setting a timer. When the run time exceeds the specified value, CScript interrupts the script engine and ends the process.<br><br>
+								</li><li class="unordered">
+									Windows script files usually have one of the following file name extensions: .wsf, .vbs, .js.<br><br>
+								</li><li class="unordered">
+									You can set properties for individual scripts. See Related Topics for more information.<br><br>
+								</li><li class="unordered">
+									Windows Script Host can use .wsf script files. Each .wsf file can use multiple scripting engines and perform multiple jobs.<br><br>
+								</li><li class="unordered">
+									If you double-click a script file with an extension that has no association, the <b>Open With</b> dialog box appears. Select Wscript or Cscript, and then select <b>Always use this program to open this file type</b>. This registers Wscript.exe or Cscript as the default script host for files of this file type.<br><br>
+								</li><li class="unordered">
+									You can set properties for individual scripts. See <a href="#BKMK_references">Additional References</a> for more information.<br><br>
+								</li><li class="unordered">
+									Windows Script Host can use .wsf script files. Each .wsf file can use multiple scripting engines and perform multiple jobs.<br><br>
+								</li></ul>
+						</content></div>
+				</sections></div><a name="BKMK_references"></a><a name="fba3cbca-594e-4663-bb22-4ee0f63a1ac6#BKMK_references"></a><h2 class="heading">Additional References</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">
+						<b>Windows Script Host overview</b>
+					</p>
+					<p xmlns="">
+						<a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a>
+					</p>
+				</content></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

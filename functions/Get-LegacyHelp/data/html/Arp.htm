@@ -1,0 +1,45 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Arp</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Arp</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008</p>
+<p>Displays and modifies entries in the Address Resolution Protocol (ARP) cache, which contains one or more tables that are used to store IP addresses and their resolved Ethernet or Token Ring physical addresses. There is a separate table for each Ethernet or Token Ring network adapter installed on your computer. Used without parameters, <b>arp</b> displays help.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">         <b>arp</b>[<b>-a </b>[<i>InetAddr</i>] [<b>-N</b><i>IfaceAddr</i>]] [<b>-g </b>[<i>InetAddr</i>] [<b>-N</b><i>IfaceAddr</i>]] [<b>-d</b><i>InetAddr </i> [<i>IfaceAddr</i>]] [<b>-s</b><i>InetAddr EtherAddr </i> [<i>IfaceAddr</i>]]</p>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h5 class="subHeading" xmlns="">Parameters</h5><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<dl xmlns=""><dt> <b>-a</b>[ <i>InetAddr</i>] [ <b>-N</b><i>IfaceAddr</i>] </dt><br><dd>
+Displays current ARP cache tables for all interfaces. To display the ARP cache entry for a specific IP address, use <b>arp -a</b> with the <i>InetAddr</i> parameter, where <i>InetAddr</i> is an IP address. If <i>InetAddr</i> is not specified, the first applicable interface is used. To display the ARP cache table for a specific interface, use the <b>-N</b><i>IfaceAddr</i> parameter in conjunction with the <b>-a</b> parameter where <i>IfaceAddr</i> is the IP address assigned to the interface. The <b>-N</b> parameter is case-sensitive.<p>
+</dd></dl><dl xmlns=""><dt> <b>-g</b>[ <i>InetAddr</i>] [ <b>-N</b><i>IfaceAddr</i>] </dt><br><dd>
+Identical to <b>-a</b>.<p>
+</dd></dl><dl xmlns=""><dt> <b>-d </b><i>InetAddr</i>[ <i>IfaceAddr</i>] </dt><br><dd>
+Deletes an entry with a specific IP address, where <i>InetAddr</i> is the IP address. To delete an entry in a table for a specific interface, use the <i>IfaceAddr</i> parameter where <i>IfaceAddr</i> is the IP address assigned to the interface. To delete all entries, use the asterisk (*) wildcard character in place of <i>InetAddr</i>.<p>
+</dd></dl><dl xmlns=""><dt> <b>-s </b><i>InetAddr EtherAddr </i>[ <i>IfaceAddr</i>] </dt><br><dd>
+Adds a static entry to the ARP cache that resolves the IP address <i>InetAddr</i> to the physical address <i>EtherAddr</i>. To add a static ARP cache entry to the table for a specific interface, use the <i>IfaceAddr</i> parameter where <i>IfaceAddr</i> is an IP address assigned to the interface.<p>
+</dd></dl><dl xmlns=""><dt> <b>/?</b> </dt><br><dd>
+Displays help at the command prompt.<p>
+</dd></dl>
+</content></div>
+</sections></div>
+</sections></div>
+</sections></div><h2 class="heading">Remarks</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+The IP addresses for <i>InetAddr</i> and <i>IfaceAddr</i> are expressed in dotted decimal notation. <br><br>
+</li><li class="unordered">
+The physical address for <i>EtherAddr</i> consists of six bytes expressed in hexadecimal notation and separated by hyphens (for example, 00-AA-00-4F-2A-9C). <br><br>
+</li><li class="unordered">
+Entries added with the <b>-s</b> parameter are static and do not time out of the ARP cache. The entries are removed if the TCP/IP protocol is stopped and started. To create permanent static ARP cache entries, place the appropriate <b>arp</b> commands in a batch file and use Scheduled Tasks to run the batch file at startup. <br><br>
+</li></ul>
+</content></div><h2 class="heading">Examples</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">To display the ARP cache tables for all interfaces, type:</p>
+
+<p xmlns="">         <b>arp -a</b>       </p>
+
+<p xmlns="">To display the ARP cache table for the interface that is assigned the IP address 10.0.0.99, type:</p>
+
+<p xmlns="">         <b>arp -a -N 10.0.0.99</b>       </p>
+
+<p xmlns="">To add a static ARP cache entry that resolves the IP address 10.0.0.80 to the physical address 00-AA-00-4F-2A-9C, type:</p>
+
+<p xmlns="">         <b>arp -s 10.0.0.80 00-AA-00-4F-2A-9C</b>       </p>
+</content></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

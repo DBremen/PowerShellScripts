@@ -1,0 +1,115 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Repadmin /showrepl</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Repadmin /showrepl</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2003 with SP1,Windows Server 2008 R2,Windows Server 2008,Windows Server 2003 R2,Windows Server 2003 with SP2,Windows Server 2003</p>
+<p>Displays the replication status when the specified domain controller last attempted to perform inbound replication of Active Directory partitions. </p>
+
+<p>The <b>repadmin /showrepl </b>command helps you understand the replication topology and replication failures. It reports status for each source domain controller from which the destination has an inbound connection object. The status report is categorized by directory partition. </p>
+
+<p>The administrative workstation on which you run Repadmin must have remote procedure call (RPC) network connectivity to all domain controllers that are targeted by the DSA_LIST parameter. </p>
+
+<p>Replication errors may be caused by the source domain controller; destination domain controller; or any component of the replication process, including the underlying network. </p>
+
+<p>In Windows Server 2003 and Windows Server 2008, Repadmin does not display outbound partners for intrasite replication as it did in the Microsoft Windows 2000 Server operating system. Use the <b>/repsto</b> parameter to display outbound partners.</p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>repadmin /showrepl [DSA_LIST [Source DSA object GUID]] [Naming Context] [/verbose] [/nocache] [/repsto] [/conn] [/all] [/errorsonly] [/intersite] [/csv]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>DSA_LIST</p>
+</td>
+<td colspan="1">
+<p>Specifies the host name of a domain controller or a list of domain controllers that are separated in the list by single spaces. For detailed syntax, see <a href="24cf60ff-6fae-428e-967a-5c24f5f80d31.htm">Repadmin</a>.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>Source DSA object GUID</p>
+</td>
+<td colspan="1">
+<p>Specifies the unique hexadecimal number that identifies the object whose replication events are listed.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>Naming Context</p>
+</td>
+<td colspan="1">
+<p>Specifies the distinguished name of the directory partition to replicate.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/verbose</p>
+</td>
+<td colspan="1">
+<p>Displays additional information about the source partners from which the destination domain controller performs inbound replication. The information includes fully qualified CNAME, invocation ID, replication flags, and update sequence number (USN) values for originating update and replicated updates.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/nocache</p>
+</td>
+<td colspan="1">
+<p>Specifies that globally unique identifiers (GUIDs) are left in hexadecimal form. By default, GUIDs are translated into strings.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/repsto</p>
+</td>
+<td colspan="1">
+<p>Lists the partner domain controllers with which the targeted domain controllers use change notification to perform outbound replication. (Partner domain controllers in this case are domain controllers in the same Active Directory site as the source domain controller and domain controllers that are in remote sites where change notification has been enabled.) This list is appended under OUTBOUND NEIGHBORS FOR CHANGE NOTIFICATIONS of the Repadmin output.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/conn</p>
+</td>
+<td colspan="1">
+<p>Appends a KCC CONNECTION OBJECTS section to the Repadmin output that lists all connections and why they were created.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/all</p>
+</td>
+<td colspan="1">
+<p>Runs both the <b>/repsto</b> and the <b>/conn</b> parameters.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/errorsonly</p>
+</td>
+<td colspan="1">
+<p>Displays replication status only for source domain controllers with which the destination domain controller encounters replication errors.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/intersite</p>
+</td>
+<td colspan="1">
+<p>Displays the replication status for connections from domain controllers in remote sites from which the domain controller that is listed in the DSA_LIST parameter performs inbound replication.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/csv</p>
+</td>
+<td colspan="1">
+<p>Displays the results in a comma-separated-value (CSV) format.</p>
+</td></tr></table>
+</content></div><a name="BKMK_examples"></a><a name="4f5de244-f996-4537-986a-50d0b361dcc0#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">The following example reports the inbound replication status for all domain controllers in the forest output in CSV format that is ideal for viewing forest-wide replication status in a spreadsheet application such as Microsoft Excel:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>repadmin /showrepl * /csv</pre></td></tr></table></span></div>
+
+<div class="alert" xmlns=""><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>
+ For more information about how to import a CSV file to Excel, see Import or export text files (<a href="http://go.microsoft.com/fwlink/?LinkId=104206" alt="" target="_blank"><linktext xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">http://go.microsoft.com/fwlink/?LinkId=104206</linktext></a>).<p>
+</td></tr></table><p></div>
+
+<p xmlns="">The following example reports the inbound replication status for all domain controllers in the forest that are experiencing a replication error:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>repadmin /showrepl * /errorsonly</pre></td></tr></table></span></div>
+
+<p xmlns="">The following example reports the inbound replication status for all domain controllers in the site named HQ that perform inbound replication of a read-only or writable copy of the mayberry.contoso.com domain partition:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>repadmin /showrepl site:HQ DC=Mayberry,DC=Contoso,dc=Com</pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+
+<p xmlns=""><a href="24cf60ff-6fae-428e-967a-5c24f5f80d31.htm">Repadmin</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

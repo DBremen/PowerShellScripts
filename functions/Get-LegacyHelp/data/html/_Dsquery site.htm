@@ -1,0 +1,143 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Dsquery site</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Dsquery site</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008,Windows Server 2008 R2</p>
+<p>Finds sites in the directory that match the search criteria that you specify. If the predefined search criteria in this command are insufficient, use the more general version of the query command, <b>dsquery *.</b></p>
+
+<p><b>Dsquery</b> is a command-line tool that is built into Windows Server 2008. It is available if you have the Active Directory Domain Services (AD DS) server role installed. To use <b>dsquery</b>, you must run the <b>dsquery</b> command from an elevated command prompt. To open an elevated command prompt, click <b>Start</b>, right-click <b>Command Prompt</b>, and then click <b>Run as administrator</b>.</p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>dsquery site [-o {dn | rdn}] [-name &lt;Name&gt;] [-desc &lt;Description&gt;] [{-s &lt;Server&gt; | -d &lt;Domain&gt;}] [-u &lt;UserName&gt;] [-p {&lt;Password&gt; | *}] [-q] [-r] [-gc] [-limit &lt;NumberOfObjects&gt;] [{-uc | -uco | -uci}]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>-o {dn | rdn} </p>
+</td>
+<td colspan="1">
+<p>Specifies the format that <b>dsquery</b> uses to display the search results. A <b>dn</b> value displays the distinguished name of each entry. An <b>rdn</b> value displays the relative distinguished name of each entry.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-name &lt;Name&gt; </p>
+</td>
+<td colspan="1">
+<p>Searches for sites whose name attributes (value of CN attribute) match &lt;Name&gt;. For example, "NA*" or "Europe*".</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-desc &lt;Description&gt; </p>
+</td>
+<td colspan="1">
+<p>Searches for computers whose description attributes match &lt;Description&gt;. For example, "corp*" or "*nch".</p>
+</td></tr><tr>
+<td colspan="1">
+<p>{-s &lt;Server&gt; | -d &lt;Domain&gt;} </p>
+</td>
+<td colspan="1">
+<p>Connects a computer to a remote server or domain that you specify. By default, <b>dsquery</b> connects the computer to the domain controller in the logon domain.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-u &lt;UserName&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the user name with which the user logs on to a remote server. By default, <b>-u</b> uses the user name with which the user logged on. You can use any of the following formats to specify a user name:</p>
+
+<ul><li class="unordered">
+user name (for example, Linda)<br><br>
+</li><li class="unordered">
+domain\user name (for example, widgets\Linda)<br><br>
+</li><li class="unordered">
+user principal name (UPN) (for example, Linda@widgets.contoso.com)<br><br>
+</li></ul>
+</td></tr><tr>
+<td colspan="1">
+<p>-p {Password | *} </p>
+</td>
+<td colspan="1">
+<p>Specifies to use either a password or an asterisk (*) to log on to a remote server. If you type <b>*</b>, <b>dsquery</b> prompts you for a password.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-q </p>
+</td>
+<td colspan="1">
+<p>Suppresses all output to standard output (quiet mode).</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-r </p>
+</td>
+<td colspan="1">
+<p>Specifies that the search use recursion or follow referrals. By default, the search does not follow referrals during search.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-gc </p>
+</td>
+<td colspan="1">
+<p>Specifies that the search use the Active Directory global catalog.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-limit &lt;NumberOfObjects&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the number of objects to return that matches the criteria that you specify. If you specify a value of <b>0</b> for &lt;NumberOfObjects&gt;, this parameter returns all matching objects. If you do not specify this parameter, <b>dsquery</b> displays the first 100 results by default.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>{-uc | -uco | -uci} </p>
+</td>
+<td colspan="1">
+<p>Specifies that <b>dsquery</b> formats output or input data in Unicode. The following list explains each format.</p>
+
+<ul><li class="unordered"><b>-uc</b>: Specifies a Unicode format for input from or output to a pipe (|).<br><br></li><li class="unordered"><b>-uco </b>: Specifies a Unicode format for output to a pipe (|) or a file.<br><br></li><li class="unordered"><b>-uci</b>: Specifies a Unicode format for input from a pipe (|) or a file.<br><br></li></ul>
+</td></tr><tr>
+<td colspan="1">
+<p>/? </p>
+</td>
+<td colspan="1">
+<p>Displays help at the command prompt.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+The results from a <b>dsquery</b> search can be piped as input to one of the other directory service command-line tools, such as Dsget, Dsmod, Dsmove, or Dsrm.<br><br>
+</li><li class="unordered">
+If a value that you supply contains spaces, use quotation marks around the text, for example, "CN=Mike Danseglio,CN=Users,DC=Contoso,DC=Com".<br><br>
+</li><li class="unordered">
+If you supply multiple values for a parameter, use spaces to separate the values, for example, a list of distinguished names.<br><br>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="b6e27a9a-6ca3-4dd2-b502-106a9e686b3e#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">To find all sites in North America with names that start with "north", and then display their distinguished names, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>dsquery site -name north* </pre></td></tr></table></span></div>
+
+<p xmlns="">To list the relative distinguished names of all sites that are defined in the directory, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>dsquery site -o rdn</pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+
+<p xmlns=""><a href="d9ded34b-7ed0-4280-b524-a55c9c6c7b69.htm">Dsquery</a></p>
+
+<p xmlns=""><a href="518175fa-0ab5-49d1-bdd2-d6784ee8b0f6.htm">Dsquery computer</a></p>
+
+<p xmlns=""><a href="46cb2760-9f62-438e-8142-2783a8782798.htm">Dsquery contact</a></p>
+
+<p xmlns=""><a href="692b373b-02c6-4b93-83cd-6b358a773b8d.htm">Dsquery group</a></p>
+
+<p xmlns=""><a href="0ff187ac-afa9-4071-9d1c-f195591ea2ce.htm">Dsquery ou</a></p>
+
+<p xmlns=""><a href="d65e470a-8158-4f29-abb2-0229f207c57f.htm">Dsquery server</a></p>
+
+<p xmlns=""><a href="2c836857-912a-425c-9112-b58adbf06214.htm">Dsquery user</a></p>
+
+<p xmlns=""><a href="10a23111-3970-46d3-a2c4-5ea52b3a65e7.htm">Dsquery quota</a></p>
+
+<p xmlns=""><a href="f85cda4b-4be1-41e2-afe3-a9815e70fc4d.htm">Dsquery partition</a></p>
+
+<p xmlns=""><a href="5f90d5cd-ef33-47ee-8bc2-0ca70f271378.htm">Dsquery *</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

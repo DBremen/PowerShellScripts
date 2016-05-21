@@ -1,0 +1,152 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>winsat dwm</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">winsat dwm</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008 R2,Windows Server 2008,Windows Vista,Windows 7</p>
+<p>Simulates the composition operations of the Desktop Window Manager and produces a graphics memory throughput (bandwidth) metric that correlates with the performance of desktop composition.</p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>winsat dwm
+winsat dwm &lt;parameters&gt; [options]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameters
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>-normalw &lt;n&gt;</p>
+</td>
+<td colspan="1">
+<p>Specify the number of textures used to represent normal windows in the simulation. Required when any other parameters are specified.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-glassw &lt;n&gt;</p>
+</td>
+<td colspan="1">
+<p>Specify the number of textures used to represent glass windows in the simulation.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-time &lt;n&gt;</p>
+</td>
+<td colspan="1">
+<p>Specify in seconds how long the assessment will run. Required when any other parameters are specified.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-winwidth &lt;n&gt;</p>
+</td>
+<td colspan="1">
+<p>Specify the window width in pixels. The default is 500.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-winheight &lt;n&gt;</p>
+</td>
+<td colspan="1">
+<p>Specify the window height in pixels. The default is 500.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-noupdate</p>
+</td>
+<td colspan="1">
+<p>Call lock and unlock on every window, but skip the CPU update of every pixel.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-nodisp</p>
+</td>
+<td colspan="1">
+<p>Specify that the assessment draws to an off-screen surface, so that the assessment is not visible while running.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-nolock</p>
+</td>
+<td colspan="1">
+<p>Skip locking and unlocking for all windows. This means that there is no window animation and the assessment is all fill-bound.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-width &lt;n&gt;</p>
+</td>
+<td colspan="1">
+<p>Specify the desktop (screen) width in pixels for the assessment. The default is 1024.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-height &lt;n&gt;</p>
+</td>
+<td colspan="1">
+<p>Specify the desktop (screen) height in pixels for the assessment. The default is 768.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-fullscreen</p>
+</td>
+<td colspan="1">
+<p>Specify that the D3D device should be created in full screen mode. By default, the D3D device is created in windowed mode.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-v</p>
+</td>
+<td colspan="1">
+<p>Send verbose output to STDOUT, including status and progress information. Any errors will also be written to the command window.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-xml &lt;file name&gt;</p>
+</td>
+<td colspan="1">
+<p>Save the output of the assessment as the specified XML file. If the specified file exists, it will be overwritten.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-idiskinfo</p>
+</td>
+<td colspan="1">
+<p>Save information about physical volumes and logical disks as part of the <b>&lt;SystemConfig&gt;</b> section in the XML output.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-iguid</p>
+</td>
+<td colspan="1">
+<p>Create a globally unique identifier (GUID) in the XML output file.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-note "note text"</p>
+</td>
+<td colspan="1">
+<p>Add the note text to the <b>&lt;note&gt;</b> section in the XML output file.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-icn</p>
+</td>
+<td colspan="1">
+<p>Include the local computer name in the XML output file.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-eef</p>
+</td>
+<td colspan="1">
+<p>Enumerate extra system information in the XML output file.</p>
+</td></tr></table>
+</content></div><a name="BKMK_examples"></a><a name="ccbd500e-ba96-4f0e-8814-a5e0dce650e6#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+The following example runs the formal DWM assessment, saves the performance data needed by the Desktop Window Manager to the registry, and restarts the Desktop Window Manager:<br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>winsat dwm</pre></td></tr></table></span></div>
+
+<div class="alert"><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>
+This command is useful after upgrading to a driver that supports WDDM in order to ensure the Desktop Window Manager immediately takes advantage of the extended functionality.<p>
+</td></tr></table><p></div>
+</li><li class="unordered">
+The following example runs the DWM assessment with 10 normal windows and 4 glass windows for 10 seconds, writing verbose output and running in full screen mode.<br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>winsat dwm -normalw 10 -glassw 4 -time 10 -v -fullscreen</pre></td></tr></table></span></div>
+</li></ul>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+Membership in the local Administrators group, or equivalent, is the minimum required to use <b>winsat</b>. The command must be executed from an elevated command prompt window.<br><br>
+</li><li class="unordered">
+To open an elevated command prompt window, click <b>Start</b>, click <b>Accessories</b>, right-click <b>Command Prompt</b>, and click <b>Run as administrator</b>.<br><br>
+</li></ul>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="11b0e51f-fe58-4553-9e7c-a562e5385fbb.htm">Winsat</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

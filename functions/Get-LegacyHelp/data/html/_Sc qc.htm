@@ -1,0 +1,75 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Sc qc</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Sc qc</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008 R2,Windows Server 2008,Windows Server 2003 with SP1,Windows Server 2003,Windows Vista,Windows Server 2003 with SP2,Windows 7,Windows Server 2003 R2</p>
+<p>Queries the configuration information for a specified service.</p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>sc [&lt;ServerName&gt;] qc [&lt;ServiceName&gt;] [&lt;BufferSize&gt;]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>&lt;ServerName&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the name of the remote server on which the service is located. The name must use the Universal Naming Convention (UNC) format (for example, \\myserver). To run SC.exe locally, omit this parameter.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;ServiceName&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the service name returned by the <b>getkeyname</b> operation.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;BufferSize&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the size (in bytes) of the buffer. The default buffer size is 1,024 bytes.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/? </p>
+</td>
+<td colspan="1">
+<p>Displays help at the command prompt.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+The <b>qc</b> command displays the following information about a service:  SERVICE_NAME (service's registry subkey name), TYPE, ERROR_CONTROL, BINARY_PATH_NAME, LOAD_ORDER_GROUP, TAG, DISPLAY_NAME, DEPENDENCIES, and SERVICE_START_NAME.<br><br>
+</li><li class="unordered">
+Administrators can use <b>Sc</b> commands to determine the binary name of any service and find out whether it shares a process with other services. They do this by typing the following at the command prompt (where <i>ServiceName</i> is an actual service name):<br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>sc qc ServiceName</pre></td></tr></table></span></div>
+
+<b>Sc</b> can help match up services in the Services node of Microsoft Management Console (MMC) with processes in System Monitor. If the binary name is Services.exe, the service shares the Service Controller process.<br><br>
+
+The Services.exe program starts all services. To conserve system resources, several Win32 services developed for Windows are written to share the Services.exe process. These services are not listed as separate processes in System Monitor or Task Manager. The same is true of Svchost.exe, a service host process that is shared by many operating services.<br><br>
+
+There might not be a process for every Win32 service because third-party Win32 services can also be configured to share processes. You can use <b>Sc</b> to get configuration information about these services. If a service does not share its process with other services, however, there will be a process for it in System Monitor when the service is running.<br><br>
+</li><li class="unordered">
+<b>Sc</b> commands can be useful for developers of services because it provides more detailed and accurate information about services than does Services.exe, which is included with Windows. Services.exe can determine whether a service is running, stopped, or paused. Although these tools are adequate for a debugged application that is running smoothly, the information they provide about a service being developed can be misleading. For example, a service that is starting is shown as started whether it is actually running or not.<br><br>
+
+Note that <b>Sc</b> implements calls to all Windows service control application programming interface (API) functions. Set the parameters to these functions by specifying them at the command prompt.<br><br>
+
+Using <b>Sc</b> commands, you can query the service status and retrieve the values stored in the status structure fields. Services.exe cannot provide you with the complete status of a service, but <b>Sc</b> shows the exact state of the service, as well as the last checkpoint number and wait hint. You can use the checkpoint as a debugging tool because it indicates how far the initialization progressed before the program stopped responding. In addition, <b>Sc</b> enables you to specify the name of a remote computer so that you can call the service API functions or view the service status structures on a remote computer.<br><br>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="2da20fbf-1da5-4a1e-87af-7acfa5eea965#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">To query the configuration information for the NEWSRVICE service running on a remote computer called "MyServer," type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>sc qc \\myserver newsrvice</pre></td></tr></table></span></div>
+
+<p xmlns="">To query the configuration information for the RPCSS service on the local computer, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>sc qc rpcss</pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

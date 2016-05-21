@@ -1,0 +1,240 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Ntdsutil</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Ntdsutil</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008,Windows Server 2008 R2,Windows Server 2003 with SP1,Windows Server 2003,Windows Server 2003 R2</p>
+				<p>Ntdsutil.exe is a command-line tool that provides management facilities for Active Directory Domain Services (AD DS) and Active Directory Lightweight Directory Services (AD LDS). You can use the <b>ntdsutil</b> commands to perform database maintenance of AD DS, manage and control single master operations, and remove metadata left behind by domain controllers that were removed from the network without being properly uninstalled. This tool is intended for use by experienced administrators.</p>
+				<p>Ntdsutil.exe is built into Windows Server 2008 and Windows Server 2008 R2. It is available if you have the AD DS or the AD LDS server role installed. It is also available if you install the Active Directory Domain Services Tools that are part of the Remote Server Administration Tools (RSAT). For more information, see <a href="http://go.microsoft.com/fwlink/?LinkID=177813" alt="" target="_blank"><linktext xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">How to Administer Microsoft Windows Client and Server Computers Locally and Remotely</linktext></a> (http://go.microsoft.com/fwlink/?LinkID=177813). </p>
+				<p>To use Ntdsutil.exe, you must run the <b>ntdsutil</b> command from an elevated command prompt. To open an elevated command prompt, click <b>Start</b>, right-click <b>Command Prompt</b>, and then click <b>Run as administrator</b>.</p>
+				<p>If you have the AD LDS server role installed but not the AD DS server role, you can use the dsdbutil.exe and dsmgmt.exe command-line tools to perform the same tasks that you can perform with ntdsutil.exe. For more information about the <b>dsdbutil</b> command, see <a href="0c7f4cee-53cb-443c-b194-524c9360deac.htm">Dsdbutil</a>. For more information about the <b>dsmgmt</b> command, see <a href="c525f20d-fdcf-4da8-8450-cce9988bc811.htm">Dsmgmt</a>. </p>
+				<p>For most of the Ntdsutil commands, you only need to type the first few characters of the command name instead than the entire command. For example, you can type either of the following commands to activate an instance for AD DS:</p>
+				<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>activate instance ntds
+ac i ntds</pre></td></tr></table></span></div>
+				<p>The short form for each command is listed in the following table. </p>
+			<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>Ntdsutil [activate instance %s | authoritative restore | change service account %s1 %s2 | configurable settings | DS behavior | files | group membership evaluation | Help | ifm | ldap policies | ldap port %d | list instance | local roles | metadata cleanup | partition management | popups on | popups off | quit | roles | security account management | semantic database analysis | set DSRM password | snapshot | SSL port %d]</pre></td></tr></table></span></div>
+				</content></div><h2 class="heading">Commands</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+								<th colspan="1">
+									Command
+								</th>
+								<th colspan="1">
+									Description
+								</th>
+							</tr><tr>
+							<td colspan="1">
+								<p>Activate instance %s</p>
+								<p>short form: ac i %s</p>
+							</td>
+							<td colspan="1">
+								<p>Sets <b>NTDS</b> or a specific AD LDS instance as the active instance.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>
+									<a href="b5416510-9aa5-44e4-8b4b-279dee264183.htm">authoritative restore</a>
+								</p>
+								<p>Short form: au r</p>
+							</td>
+							<td colspan="1">
+								<p>Authoritatively restores the Active Directory database or AD LDS instance.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>Change service account %s1 %s2</p>
+							</td>
+							<td colspan="1">
+								<p>Changes the AD LDS service account to user name %s1 and password %s2. Use "NULL" for a blank password. Use * to prompt the user to enter a password. </p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>
+									<a href="f27dc4c0-0623-401b-b411-48acf995f595.htm">configurable settings</a>
+								</p>
+								<p>Short form: co s</p>
+							</td>
+							<td colspan="1">
+								<p>Manages configurable settings.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>
+									<a href="baa9c5e1-0c26-4d57-8ca9-ff5b15c33d29.htm">DS behavior</a>
+								</p>
+								<p>Short form: ds b</p>
+							</td>
+							<td colspan="1">
+								<p>Views and modifies AD DS or AD LDS behavior.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>
+									<a href="594c47bc-095d-465e-b7cb-3f0234350460.htm">files</a>
+								</p>
+								<p>Short form: f</p>
+							</td>
+							<td colspan="1">
+								<p>Manages AD DS or AD LDS database files.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>
+									<a href="dc3722d8-b6de-4863-b456-1b17139caa42.htm">group membership evaluation</a>
+								</p>
+								<p>Short form: g m e</p>
+							</td>
+							<td colspan="1">
+								<p>Evaluates security IDs (SIDs) in the token for a given user or group.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>Help </p>
+							</td>
+							<td colspan="1">
+								<p>Shows this help information.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>
+									<a href="c705e804-97d5-4a15-8d60-1ba09e5544e6.htm">ifm</a>
+								</p>
+								<p>Short form: i</p>
+							</td>
+							<td colspan="1">
+								<p>Creates installation media for writable (full) and read-only domain controllers (RODCs) and instances of AD LDS.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>
+									<a href="309950c8-5bfa-4b9e-b4a2-706ac63948ec.htm">LDAP policies</a>
+								</p>
+							</td>
+							<td colspan="1">
+								<p>Manages Lightweight Directory Access Protocol (LDAP) protocol policies. </p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>Ldap port %d</p>
+							</td>
+							<td colspan="1">
+								<p>Configures an LDAP port for an AD LDS instance.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>List instances </p>
+								<p>Short form: li i</p>
+							</td>
+							<td colspan="1">
+								<p>Lists all AD LDS instances that are installed on a computer. </p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>
+									<a href="aee69f2f-49bf-49cb-ac0b-eccc26423b1f.htm">local roles</a>
+								</p>
+								<p>Short form: lo r</p>
+							</td>
+							<td colspan="1">
+								<p>Manages local administrative roles on an RODC.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>
+									<a href="8ff66708-2ad0-4f52-982d-376a50a0e2dd.htm">metadata cleanup</a>
+								</p>
+								<p>Short form: m c</p>
+							</td>
+							<td colspan="1">
+								<p>Cleans up objects of decommissioned servers. </p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>
+									<a href="8ee336a2-b784-4743-8500-8d224a372110.htm">partition management</a>
+								</p>
+								<p>Short form: pa m</p>
+							</td>
+							<td colspan="1">
+								<p>Manages directory partitions.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>Popups off</p>
+								<p>Short form: po off</p>
+							</td>
+							<td colspan="1">
+								<p>Disables popups.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>Popups on</p>
+								<p>Short form: po on</p>
+							</td>
+							<td colspan="1">
+								<p>Enables popups.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>Quit</p>
+								<p>Short form: q</p>
+							</td>
+							<td colspan="1">
+								<p>Quits the command.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>
+									<a href="f74c0470-3b2d-422c-bbbc-385cf39ec175.htm">roles</a>
+								</p>
+								<p>Short form: r</p>
+							</td>
+							<td colspan="1">
+								<p>Transfers and seizes operations master roles.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>
+									<a href="1a4153d9-eb6e-4c50-8063-eb4ce961c32c.htm">security account management</a>
+								</p>
+								<p>Short form: sec a m</p>
+							</td>
+							<td colspan="1">
+								<p>Manages SIDs.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>
+									<a href="16b6f806-20b9-47bd-92c5-5cd96645c3bf.htm">semantic database analysis</a>
+								</p>
+								<p>Short form: sem d a</p>
+							</td>
+							<td colspan="1">
+								<p>Verifies integrity of AD DS or AD LDS database files with respect to Active Directory semantics.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>
+									<a href="66fbd855-b3ee-434f-b890-c96858da8178.htm">set DSRM password</a>
+								</p>
+								<p>Short form: set d p</p>
+							</td>
+							<td colspan="1">
+								<p>Resets the Directory Services Restore Mode (DSRM) administrator password.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>
+									<a href="a4b0e355-cbd0-4f48-9484-877fad1789ec.htm">snapshot</a>
+								</p>
+								<p>Short form: sn</p>
+							</td>
+							<td colspan="1">
+								<p>Manages snapshots of the volumes that contain the Active Directory database and log files.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>SSL port %d</p>
+							</td>
+							<td colspan="1">
+								<p>Configures a Secure Sockets Layer (SSL) port for an AD LDS instance. </p>
+							</td>
+						</tr></table>
+				</content></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

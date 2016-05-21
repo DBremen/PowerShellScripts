@@ -1,0 +1,60 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>/convert-RiprepImage</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">/convert-RiprepImage</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008 R2,Windows Server 2008</p>
+<p>Converts an existing Remote Installation Preparation (RIPrep) image to Windows Image (.wim) format.  </p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>WDSUTIL [Options] /Convert-RIPrepImage /FilePath:&lt;File path and name&gt;
+     /DestinationImage
+         /FilePath:&lt;File path and name&gt;
+         [/Name:&lt;Name&gt;]
+         [/Description:&lt;Description&gt;]
+         [/InPlace]
+         [/Overwrite:{Yes | No | Append}]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>/FilePath:&lt;File path and name&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the full path and file name of the .sif file that corresponds to the RIPrep image. This file is typically called Riprep.sif and is found in the \Templates subfolder of the folder that contains the RIPrep image.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/DestinationImage</p>
+</td>
+<td colspan="1">
+<p>Specifies the settings for the destination image, using the following options.</p>
+<ul><li class="unordered">/FilePath:&lt;File path and name&gt; - Sets the full file path for the new file. For example: <b>C:\Temp\convert.wim</b><br><br>
+</li><li class="unordered">[/Name:&lt;Name&gt;] - Sets the display name of the image. If no display name is specified, the display name of the source image will be used.<br><br>
+</li><li class="unordered">[/Description: &lt;Description&gt;] - Sets the description of the image.<br><br>
+</li><li class="unordered">[/InPlace] - Specifies that the conversion should take place on the original RIPrep image and not on a copy of the original image, which is the default behavior.<br><br>
+</li><li class="unordered">[/Overwrite:{Yes | No | Append}] - Determines whether the file specified in the <b>/DestinationImage</b> option should be overwritten if an existing file with that name already exists at /FilePath. <b>Yes</b> overwrites the existing file. <b>No</b> (default) causes an error to occur if another file with the same name already exists. <b>Append</b> attaches the generated image as a new image within the pre-existing .wim file.<br><br>
+</li></ul>
+
+</td></tr></table>
+</content></div><a name="BKMK_examples"></a><a name="88c2b96f-5947-4b64-9dcf-1946b3c013cf#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">To convert the specified RIPrep.sif image to RIPREP.wim, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>WDSUTIL /Convert-RiPrepImage /FilePath:"R:\RemoteInstall\Setup\English
+\Images\Win2k3.SP1\i386\Templates\riprep.sif" /DestinationImage
+/FilePath:"C:\Temp\RIPREP.wim"</pre></td></tr></table></span></div>
+
+<p xmlns="">To convert the specified RIPrep.sif image to RIPREP.wim with the specified name and description, and overwrite it with the new file if a file already exists, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>WDSUTIL /Verbose /Progress /Convert-RiPrepImage /FilePath:"\\Server
+\RemInst\Setup\English\Images\WinXP.SP2\i386\Templates\riprep.sif"
+/DestinationImage /FilePath:"\\Server\Share\RIPREP.wim"
+/Name:"WindowsXP image" /Description:"Converted RIPREP image of WindowsXP"
+/Overwrite:Append</pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

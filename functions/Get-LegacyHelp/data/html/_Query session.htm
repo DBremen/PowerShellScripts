@@ -1,0 +1,111 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Query session</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Query session</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008,Windows Vista</p>
+<p>Displays information about sessions on a terminal server.</p>
+
+<p>The list includes information not only about active sessions but also about other sessions that the server runs.</p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>query session [&lt;SessionName&gt; | &lt;UserName&gt; | &lt;SessionID&gt;] [/server:&lt;ServerName&gt;] [/mode] [/flow] [/connect] [/counter]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>&lt;SessionName&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the name of the session that you want to query.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;UserName&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the name of the user whose sessions you want to query.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;SessionID&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the ID of the session that you want to query.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/server:&lt;ServerName&gt;</p>
+</td>
+<td colspan="1">
+<p>Identifies the terminal server to query. The default is the current server.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/mode</p>
+</td>
+<td colspan="1">
+<p>Displays current line settings.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/flow</p>
+</td>
+<td colspan="1">
+<p>Displays current flow-control settings.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/connect</p>
+</td>
+<td colspan="1">
+<p>Displays current connect settings.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/counter</p>
+</td>
+<td colspan="1">
+<p>Displays current counters information, including the total number of sessions created, disconnected, and reconnected.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/?</p>
+</td>
+<td colspan="1">
+<p>Displays help at the command prompt.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+A user can always query the session to which the user is currently logged on. To query other sessions, the user must have Query Information special access permission.<br><br>
+</li><li class="unordered">
+If you do not specify a session by using &lt;<i>SessionName</i>&gt;, &lt;<i>UserName</i>&gt;, or &lt;<i>SessionID</i>&gt;, <b>query session</b> displays information about all active sessions in the system.<br><br>
+</li><li class="unordered">
+When <b>query session</b> returns information, a greater than (&gt;) symbol is displayed before the current session. Following is sample output for <b>query session</b>:<br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>C:\&gt;query session
+ SESSIONNAME    USERNAME       ID STATE  TYPE   DEVICE
+&gt;console        Administrator1  0 active wdcon
+ rdp-tcp#1      User1           1 active wdtshare
+ rdp-tcp                        2 listen wdtshare
+                                4 idle
+                                5 idle</pre></td></tr></table></span></div>
+
+The greater than (&gt;) symbol indicates the current session. SESSIONNAME specifies the name assigned to the session. USERNAME indicates the user name of the user connected to the session. STATE provides information about the current state of the session. TYPE indicates the session type. DEVICE, which is not present for the console or network-connected sessions, is the device name assigned to the session. The comment following session information is from the session profile. Any sessions in which the initial state is configured as DISABLED do not show up in the <b>query session</b> list until they are enabled.<br><br>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="abc0ace8-0b74-4b6e-a937-a78bb4b61a1f#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+To display information about all active sessions on server SERVER2, type:<br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>query session /server:SERVER2</pre></td></tr></table></span></div>
+</li><li class="unordered">
+To display information about active session MODEM02, type:<br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>query session MODEM02</pre></td></tr></table></span></div>
+</li></ul>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+
+<p xmlns=""><a href="675c5128-f3cf-4e8f-8a3f-b29ab2a8b6de.htm">Query</a></p>
+
+<p xmlns=""><a href="2f371848-5c48-470c-908c-afbc95d3a805.htm">Terminal Services Command Reference</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

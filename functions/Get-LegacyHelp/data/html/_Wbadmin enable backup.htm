@@ -1,0 +1,202 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Wbadmin enable backup</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Wbadmin enable backup</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008 R2,Windows Server 2008</p>
+				<p>Creates and enables a daily backup schedule or modifies an existing backup schedule. With no parameters specified, it displays the currently scheduled backup settings.</p>
+				<div class="alert"><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>
+					This subcommand applies only to Windows Server 2008 and Windows Server 2008 R2.<p>
+				</td></tr></table><p></div>
+				<p>To configure or modify a daily backup schedule, you must be a member of either the <b>Administrators</b> or <b>Backup Operators</b> group. In addition, you must run <b>wbadmin</b> from an elevated command prompt. (To open an elevated command prompt, click <b>Start</b>, right-click <b>Command Prompt</b>, and then click <b>Run as administrator</b>.)</p>
+				<p>For examples of how to use this subcommand, see <a href="#BKMK_examples">Examples</a>.</p>
+			<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">Syntax for Windows Server 2008:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>wbadmin enable backup
+[-addtarget:&lt;BackupTargetDisk&gt;]
+[-removetarget:&lt;BackupTargetDisk&gt;]
+[-schedule:&lt;TimeToRunBackup&gt;]
+[-include:&lt;VolumesToInclude&gt;]
+[-allCritical]
+[-quiet]</pre></td></tr></table></span></div>
+				</content><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">Syntax for Windows Server 2008 R2:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>wbadmin enable backup
+[-addtarget:&lt;BackupTarget&gt;]
+[-removetarget:&lt;BackupTarget&gt;]
+[-schedule:&lt;TimeToRunBackup&gt;]
+[-include:&lt;VolumesToInclude&gt;]
+[-nonRecurseInclude:&lt;ItemsToInclude&gt;]
+[-exclude:&lt;ItemsToExclude&gt;]
+[-nonRecurseExclude:&lt;ItemsToExclude&gt;][-systemState]
+[-allCritical]
+[-vssFull | -vssCopy]
+[-user:&lt;UserName&gt;]
+[-password:&lt;Password&gt;]
+[-quiet]</pre></td></tr></table></span></div>
+				</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+								<th colspan="1">
+									Parameter
+								</th>
+								<th colspan="1">
+									Description
+								</th>
+							</tr><tr>
+							<td colspan="1">
+								<p>-addtarget</p>
+							</td>
+							<td colspan="1">
+								<p>For Windows Server 2008, specifies the storage location for backups. Requires you to specify a destination for backups as a disk identifier (see Remarks). The disk is formatted before use, and any existing data on it is permanently erased.</p>
+								<p>For Windows Server 2008 R2, Specifies the storage location for backups. Requires you to specify the location as a disk, volume, or Universal Naming Convention (UNC) path to a remote shared folder (\\&lt;servername&gt;\&lt;sharename&gt;\). By default, the backup will be saved at:  \\&lt;servername&gt;\&lt;sharename&gt;\WindowsImageBackup\&lt;ComputerBackedUp&gt;\. If you specify a disk, the disk will be formatted before use, and any existing data on it is permanently erased. If you specify a shared folder, you cannot add more locations. You can only specify one shared folder as a storage location at a time. </p>
+								<div class="alert"><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/Important.gif">Important </th></tr><tr><td>
+									If you save a backup to a remote shared folder, that backup will be overwritten if you use the same folder to back up the same computer again. In addition, if the backup operation fails, you may end up with no backup because the older backup will be overwritten, but the newer backup will not be usable. You can avoid this by creating subfolders in the remote shared folder to organize your backups. If you do this, the subfolders will need twice the space of the parent folder.<p>
+								</td></tr></table><p></div>
+								<p>Only one location can be specified in a single command. Multiple volume and disk backup storage locations can be added by running the command again.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-removetarget</p>
+							</td>
+							<td colspan="1">
+								<p>Specifies the storage location that you want to remove from the existing backup schedule. Requires you to specify the location as a disk identifier (see Remarks).</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-schedule</p>
+							</td>
+							<td colspan="1">
+								<p>Specifies times of day to create a backup, formatted as HH:MM and comma delimited.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-include</p>
+							</td>
+							<td colspan="1">
+								<p>For Windows Server 2008, specifies the comma-delimited list of volume drive letters, volume mount points, or GUID-based volume names to include in the backup.</p>
+								<p>For Windows Server 2008 R2, Specifies the comma-delimited list of items to include in the backup. You can include multiple files, folders, or volumes. Volume paths can be specified using volume drive letters, volume mount points, or GUID-based volume names. If you use a GUID-based volume name, it should be terminated with a backslash (\). You can use the wildcard character (*) in the file name when specifying a path to a file.</p>
+							</td>
+						</tr><tr>
+							<td>
+								<p>-nonRecurseInclude</p>
+							</td>
+							<td>
+								<p>For Windows Server 2008 R2, specifies the non-recursive, comma-delimited list of items to include in the backup. You can include multiple files, folders, or volumes. Volume paths can be specified using volume drive letters, volume mount points, or GUID-based volume names. If you use a GUID-based volume name, it should be terminated with a backslash (\). You can use the wildcard character (*) in the file name when specifying a path to a file. Should be used only when the -backupTarget parameter is used.</p>
+							</td>
+						</tr><tr>
+							<td>
+								<p>-exclude</p>
+							</td>
+							<td>
+								<p>For Windows Server 2008 R2, specifies the comma-delimited list of items to exclude from the backup. You can exclude files, folders, or volumes. Volume paths can be specified using volume drive letters, volume mount points, or GUID-based volume names. If you use a GUID-based volume name, it should be terminated with a backslash (\). You can use the wildcard character (*) in the file name when specifying a path to a file.</p>
+							</td>
+						</tr><tr>
+							<td>
+								<p>-nonRecurseExclude</p>
+							</td>
+							<td>
+								<p>For Windows Server 2008 R2, specifies the non-recursive, comma-delimited list of items to exclude from the backup. You can exclude files, folders, or volumes. Volume paths can be specified using volume drive letters, volume mount points, or GUID-based volume names. If you use a GUID-based volume name, it should be terminated with a backslash (\). You can use the wildcard character (*) in the file name when specifying a path to a file.</p>
+							</td>
+						</tr><tr>
+							<td>
+								<p>-systemState</p>
+							</td>
+							<td>
+								<p>For Windows°7 and Windows Server 2008 R2, creates a backup that includes the system state in addition to any other items that you specified with the <b>-include</b> parameter. The system state contains boot files (Boot.ini, NDTLDR, NTDetect.com), the Windows Registry including COM settings, the SYSVOL (Group Policies and Logon Scripts), the Active Directory and NTDS.DIT on Domain Controllers and, if the certificates service is installed, the Certificate Store. If your server has the Web server role installed, the IIS Metadirectory will be included. If the server is part of a cluster, Cluster Service information will also be included. </p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-allCritical</p>
+							</td>
+							<td colspan="1">
+								<p>Specifies that all critical volumes (volumes that contain operating system's state) be included in the backups. This parameter is useful if you are creating a backup for full system or system state recovery. It should be used only when -backupTarget is specified, otherwise the command will fail. Can be used with the <b>-include</b> option. </p>
+								<div class="alert"><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/Tip.gif">Tip </th></tr><tr><td>
+									The target volume for a critical-volume backup can be a local drive, but it cannot be any of the volumes that are included in the backup.<p>
+								</td></tr></table><p></div>
+							</td>
+						</tr><tr>
+							<td>
+								<p>-vssFull</p>
+							</td>
+							<td>
+								<p>For Windows Server 2008 R2, Performs a full back up using the Volume Shadow Copy Service (VSS). All files are backed up, each file's history is updated to reflect that it was backed up, and the logs of previous backups may be truncated. If this parameter is not used wbadmin start backup makes a copy backup, but the history of files being backed up is not updated.</p>
+								<div class="alert"><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/Caution.gif">Caution </th></tr><tr><td>
+									Do not use this parameter if you are using a product other than Windows Server Backup to back up applications that are on the volumes included in the current backup. Doing so can potentially break the incremental, differential, or other type of backups that the other backup product is creating because the history that they are relying on to determine how much data to backup might be missing and they might perform a full backup unnecessarily.<p>
+								</td></tr></table><p></div>
+							</td>
+						</tr><tr>
+							<td>
+								<p>-vssCopy</p>
+							</td>
+							<td>
+								<p>For Windows Server 2008 R2, performs a copy backup using VSS. All files are backed up but the history of the files being backup up is not updated so you preserve the all the information on which files where changed, deleted, and so on, as well as any application log files. Using this type of backup does not affect the sequence of incremental and differential backups that might happen independent of this copy backup. This is the default value.</p>
+								<div class="alert"><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/Warning.gif">Warning </th></tr><tr><td>
+									A copy backup cannot be used for incremental or differential backups or restores.<p>
+								</td></tr></table><p></div>
+							</td>
+						</tr><tr>
+							<td>
+								<p>-user</p>
+							</td>
+							<td>
+								<p>For Windows Server 2008 R2, specifies the user with write permission to the backup storage destination (if it is a remote shared folder). The user needs to be a member of the Administrators group or Backup Operators group on the computer that is getting backed up.</p>
+							</td>
+						</tr><tr>
+							<td>
+								<p>-password</p>
+							</td>
+							<td>
+								<p>For Windows Server 2008 R2, specifies the password for the user name provided by the parameter -user.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-quiet</p>
+							</td>
+							<td colspan="1">
+								<p>Runs the subcommand with no prompts to the user.</p>
+							</td>
+						</tr></table>
+				</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">To view the disk identifier value for your disks, type <b>wbadmin get disks</b>.</p>
+				</content></div><a name="BKMK_examples"></a><a name="c0e57f8a-70fa-4c60-9754-e762e8ad8772#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">The following examples show how the <b>wbadmin enable backup</b> command can be used in different backup scenarios:</p>
+					<p xmlns="">Scenario #1</p>
+					<ul xmlns=""><li class="unordered">
+							Schedule backups of hard disk drives e:, d:\mountpoint, and \\?\Volume{cc566d14-44a0-11d9-9d93-806e6f6e6963}\ <br><br>
+						</li><li class="unordered">
+							Save the files to the disk DiskID<br><br>
+						</li><li class="unordered">
+							Run backups daily at 9:00 A.M. and 6:00 P.M.<br><br>
+						</li></ul>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>wbadmin enable backup -addtarget:DiskID -schedule:09:00,18:00 -include:e:,d:\mountpoint,\\?\Volume{cc566d14-44a0-11d9-9d93-806e6f6e6963}\</pre></td></tr></table></span></div>
+					<p xmlns="">Scenario #2</p>
+					<ul xmlns=""><li class="unordered">
+							Schedule backups of the folder d:\documents to the network location \\backupshare\backup1<br><br>
+						</li><li class="unordered">
+							Use the network credentials for the backup administrator Aaren Ekelund (aekel), who is a member of the domain CONTOSOEAST to authenticate access to the network share. Aaren’s password is <i>$3hM9^5lp</i>. <br><br>
+						</li><li class="unordered">
+							Run backups daily at 12:00 A.M. and 7:00 P.M. <br><br>
+						</li></ul>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>wbadmin enable backup –addtarget:\\backupshare\backup1 –include: d:\documents –user:CONTOSOEAST\aekel –password:$3hM9^5lp –schedule:00:00,19:00</pre></td></tr></table></span></div>
+					<p xmlns="">Scenario #3</p>
+					<ul xmlns=""><li class="unordered">
+							Schedule backups of volume t: and folder d:\documents to the drive h:, but exclude the folder d:\documents\~tmp<br><br>
+						</li><li class="unordered">
+							Perform a full backup using the Volume Shadow Copy Service.<br><br>
+						</li><li class="unordered">
+							Run backups daily at 1:00 A.M.<br><br>
+						</li></ul>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>wbadmin enable backup –addtarget:H: –include T:,D:\documents –exclude D:\documents\~tmp –vssfull –schedule:01:00</pre></td></tr></table></span></div>
+				</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+						</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<ul xmlns=""><li class="unordered">
+											
+												<a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a>
+											<br><br>
+										</li><li class="unordered">
+											
+												<a href="4b0b3f32-d21f-4861-84bb-b2eadbf1e7b8.htm">Wbadmin</a>
+											<br><br>
+										</li></ul>
+								</content></div>
+						</sections></div>
+				</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

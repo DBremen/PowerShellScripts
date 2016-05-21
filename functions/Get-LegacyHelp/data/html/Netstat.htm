@@ -1,0 +1,131 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Netstat</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Netstat</span></td></tr><tr id="headerTableRow3"><td><a href="#seeAlsoNoToggle" onclick="OpenSection(seeAlsoNoToggle)">See Also</a></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008 R2,Windows Server 2008</p>
+			<h2 class="heading">Netstat</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">Displays active TCP connections, ports on which the computer is listening, Ethernet statistics, the IP routing table, IPv4 statistics (for the IP, ICMP, TCP, and UDP protocols), and IPv6 statistics (for the IPv6, ICMPv6, TCP over IPv6, and UDP over IPv6 protocols). Used without parameters, <b>netstat</b> displays active TCP connections.</p>
+				</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+						</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+								</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<h5 class="subHeading" xmlns="">Syntax</h5><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+											<p xmlns="">         <b>netstat</b>[<b>-a</b>] [<b>-e</b>] [<b>-n</b>] [<b>-o</b>] [<b>-p</b><i>Protocol</i>] [<b>-r</b>] [<b>-s</b>] [<i>Interval</i>]</p>
+										</content></div>
+									<h5 class="subHeading" xmlns="">Parameters</h5><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+											<dl xmlns=""><dt> <b>-a </b></dt><br><dd>
+													Displays all active TCP connections and the TCP and UDP ports on which the computer is listening.<p>
+												</dd></dl><dl xmlns=""><dt> <b>-e </b></dt><br><dd>
+													Displays Ethernet statistics, such as the number of bytes and packets sent and received. This parameter can be combined with <b>-s</b>.<p>
+												</dd></dl><dl xmlns=""><dt> <b>-n </b></dt><br><dd>
+													Displays active TCP connections, however, addresses and port numbers are expressed numerically and no attempt is made to determine names.<p>
+												</dd></dl><dl xmlns=""><dt> <b>-o </b></dt><br><dd>
+													Displays active TCP connections and includes the process ID (PID) for each connection. You can find the application based on the PID on the <b>Processes</b> tab in Windows Task Manager. This parameter can be combined with <b>-a</b>, <b>-n</b>, and <b>-p</b>.<p>
+												</dd></dl><dl xmlns=""><dt> <b>-p </b><i>Protocol </i></dt><br><dd>
+													Shows connections for the protocol specified by <i>Protocol</i>. In this case, the <i>Protocol</i> can be <b>tcp</b>, <b>udp</b>, <b>tcpv6</b>, or <b>udpv6</b>. If this parameter is used with <b>-s</b> to display statistics by protocol, <i>Protocol</i> can be <b>tcp</b>, <b>udp</b>, <b>icmp</b>, <b>ip</b>, <b>tcpv6</b>, <b>udpv6</b>, <b>icmpv6</b>, or <b>ipv6</b>.<p>
+												</dd></dl><dl xmlns=""><dt> <b>-s </b></dt><br><dd>
+													Displays statistics by protocol. By default, statistics are shown for the TCP, UDP, ICMP, and IP protocols. If the IPv6 protocol is installed, statistics are shown for the TCP over IPv6, UDP over IPv6, ICMPv6, and IPv6 protocols. The <b>-p</b> parameter can be used to specify a set of protocols.<p>
+												</dd></dl><dl xmlns=""><dt> <b>-r </b></dt><br><dd>
+													Displays the contents of the IP routing table. This is equivalent to the <b>route print</b> command.<p>
+												</dd></dl><dl xmlns=""><dt> <i>Interval </i></dt><br><dd>
+													Redisplays the selected information every <i>Interval</i> seconds. Press CTRL+C to stop the redisplay. If this parameter is omitted, <b>netstat</b> prints the selected information only once.<p>
+												</dd></dl><dl xmlns=""><dt> <b>/?</b> </dt><br><dd>
+													Displays help at the command prompt.<p>
+												</dd></dl>
+										</content></div>
+									<h5 class="subHeading" xmlns="">Remarks</h5><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+											<ul xmlns=""><li class="unordered">
+													Parameters used with this command must be prefixed with a hyphen (<b>-</b>) rather than a slash (<b>/</b>). <br><br>
+												</li><li class="unordered">
+													             <b>Netstat</b> provides statistics for the following: <br><br>
+													<ul><li class="unordered">
+															Proto <br><br>
+															 The name of the protocol (TCP or UDP).<br><br>
+														</li><li class="unordered">
+															Local Address <br><br>
+															 The IP address of the local computer and the port number being used. The name of the local computer that corresponds to the IP address and the name of the port is shown unless the <b>-n</b> parameter is specified. If the port is not yet established, the port number is shown as an asterisk (*).<br><br>
+														</li><li class="unordered">
+															Foreign Address <br><br>
+															 The IP address and port number of the remote computer to which the socket is connected. The names that corresponds to the IP address and the port are shown unless the <b>-n</b> parameter is specified. If the port is not yet established, the port number is shown as an asterisk (*).<br><br>
+														</li><li class="unordered">
+															(state) <br><br>
+															Indicates the state of a TCP connection. The possible states are as follows:<br><br>
+															CLOSE_WAIT<br><br>
+															CLOSED<br><br>
+															ESTABLISHED<br><br>
+															FIN_WAIT_1<br><br>
+															FIN_WAIT_2<br><br>
+															LAST_ACK<br><br>
+															LISTEN<br><br>
+															SYN_RECEIVED<br><br>
+															SYN_SEND<br><br>
+															TIMED_WAIT<br><br>
+															For more information about the states of a TCP connection, see RFC 793.<br><br>
+														</li></ul>
+												</li><li class="unordered">
+													    This command is available only if the <b>Internet Protocol (TCP/IP)</b> protocol is installed as a component in the properties of a network adapter in Network Connections.     <br><br>
+												</li></ul>
+										</content></div>
+									<h5 class="subHeading" xmlns="">Examples</h5><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+											<p xmlns="">To display both the Ethernet statistics and the statistics for all protocols, type:</p>
+											<p xmlns="">         <b>netstat -e -s</b>       </p>
+											<p xmlns="">To display the statistics for only the TCP and UDP protocols, type:</p>
+											<p xmlns="">         <b>netstat -s -p tcp udp</b>       </p>
+											<p xmlns="">To display active TCP connections and the process IDs every 5 seconds, type:</p>
+											<p xmlns="">         <b>netstat -o 5</b>       </p>
+											<p xmlns="">To display active TCP connections and the process IDs using numerical form, type:</p>
+											<p xmlns="">         <b>netstat -n -o</b>       </p>
+										</content></div>
+								</sections></div>
+						</sections></div>
+				</sections></div><h2 class="heading">Formatting legend</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+								<th colspan="1">
+									Format
+								</th>
+								<th colspan="1">
+									Meaning
+								</th>
+							</tr><tr>
+							<td colspan="1">
+								<p>               <i>Italic</i>             </p>
+							</td>
+							<td colspan="1">
+								<p>Information that the user must supply</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>               <b>Bold</b>             </p>
+							</td>
+							<td colspan="1">
+								<p>Elements that the user must type exactly as shown</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>Ellipsis (...)</p>
+							</td>
+							<td colspan="1">
+								<p>Parameter that can be repeated several times in a command line</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>Between brackets ([])</p>
+							</td>
+							<td colspan="1">
+								<p>Optional items</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>Between braces ({}); choices separated by pipe (|). Example: {even|odd}</p>
+							</td>
+							<td colspan="1">
+								<p>Set of choices from which the user must choose only one</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>               <code>Courier font</code>             </p>
+							</td>
+							<td colspan="1">
+								<p>Code or program output</p>
+							</td>
+						</tr></table>
+				</content></div><h2 class="heading"><span id="seeAlsoNoToggle">See Also</span></h2><div id="seeAlsoSection" class="section"><b>Command-line reference A-Z</b><b>Command shell overview</b><br></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

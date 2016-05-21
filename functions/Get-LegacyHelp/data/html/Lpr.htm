@@ -1,0 +1,93 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Lpr</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Lpr</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008,Windows Vista</p>
+<p>Sends a file to a computer or printer sharing device running the Line Printer Daemon (LPD) service in preparation for printing. </p>
+
+<p>For examples of how this command can be used, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>Lpr [-S &lt;ServerName&gt;] -P &lt;PrinterName&gt; [-C &lt;BannerContent&gt;] [-J &lt;JobName&gt;] [-o | "-o l"] [-x] [-d] &lt;filename&gt;</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>-S &lt;ServerName&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies (by name or IP address) the computer or printer sharing device that hosts the LPD print queue with a status that you want to display. Required.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-P &lt;PrinterName&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies (by name) the printer for the print queue with a status that you want to display. Required.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-C &lt;BannerContent&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the content to print on the banner page of the print job. If you do not include this parameter, the name of the computer from which the print job was sent appears on the banner page. </p>
+</td></tr><tr>
+<td colspan="1">
+<p>-J &lt;JobName&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the print job name that will be printed on the banner page. If you do not include this parameter, the name of the file being printed appears on the banner page. </p>
+</td></tr><tr>
+<td colspan="1">
+<p>[-o| "-o l"]</p>
+</td>
+<td colspan="1">
+<p>Specifies the type of file that you want to print. The parameter <b>-o</b> specifies that you want to print a text file. The parameter <b>"-o l"</b> specifies that you want to print a binary file (for example, a PostScript file). </p>
+</td></tr><tr>
+<td colspan="1">
+<p>-d </p>
+</td>
+<td colspan="1">
+<p>Specifies that the data file must be sent before the control file. Use this parameter if your printer requires the data file to be sent first. For more information, see your printer documentation.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-x </p>
+</td>
+<td colspan="1">
+<p>Specifies that the <b>Lpr</b> command must be compatible with the Sun Microsystems operating system (referred to as SunOS) for releases up to and including 4.1.4_u1. </p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;FileName&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies (by name) the file to be printed. Required.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/? </p>
+</td>
+<td colspan="1">
+<p>Displays help at the command prompt.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+To find the name of the printer, open the Printers folder.<br><br>
+</li><li class="unordered">
+The <b>-S</b>, <b>-P</b>, <b>-C</b>, and <b>-J</b> parameters are case sensitive and must be typed in upper-case letters.<br><br>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="afc8790b-8b52-45c4-acdf-be0ffa9da534#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">This example shows how to print the "Document.txt" text file to the LaserPrinter1 printer queue on an LPD host at 10.0.0.45:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>Lpr -S 10.0.0.45 -P LaserPrinter1 -o Document.txt</pre></td></tr></table></span></div>
+
+<p xmlns="">This example shows how to print the "PostScript_file.ps" Adobe PostScript file to the LaserPrinter1 printer queue on an LPD host at 10.0.0.45:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>Lpr -S 10.0.0.45 -P LaserPrinter1 "-o l" PostScript_file.ps</pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+
+<p xmlns=""><a href="88d8fa87-6fa8-4774-9294-080b0157ea8d.htm">Print Command Reference</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

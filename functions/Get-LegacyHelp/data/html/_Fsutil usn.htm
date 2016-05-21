@@ -1,0 +1,159 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Fsutil usn</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Fsutil usn</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2003 R2,Windows 7,Windows Server 2003,Windows Vista,Windows Server 2000,Windows Server 2008,Windows Server 2008 R2</p>
+<p>Manages the update sequence number (USN) change journal.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>fsutil usn [createjournal] m=&lt;MaxSize&gt; a=&lt;AllocationDelta&gt; &lt;VolumePath&gt;
+fsutil usn [deletejournal] {/D | /N} &lt;VolumePath&gt;
+fsutil usn [enumdata] &lt;FileRef&gt; &lt;LowUSN&gt; &lt;HighUSN&gt; &lt;VolumePath&gt;
+fsutil usn [queryjournal] &lt;VolumePath&gt;
+fsutil usn [readdata] &lt;FileName&gt;</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>createjournal </p>
+</td>
+<td colspan="1">
+<p>Creates a USN change journal. </p>
+</td></tr><tr>
+<td colspan="1">
+<p>m=&lt;MaxSize&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the maximum size, in bytes, that NTFS allocates for the change journal. </p>
+</td></tr><tr>
+<td colspan="1">
+<p>a=&lt;AllocationDelta&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the size, in bytes, of memory allocation that is added to the end and removed from the beginning of the change journal. </p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;VolumePath&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the drive letter (followed by a colon).</p>
+</td></tr><tr>
+<td colspan="1">
+<p>deletejournal </p>
+</td>
+<td colspan="1">
+<p>Deletes or disables an active USN change journal.</p>
+
+<div class="alert"><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/Caution.gif">Caution </th></tr><tr><td>
+Deleting the change journal impacts the File Replication service (FRS) and the Indexing Service, because it would require these services to perform a complete (and time-consuming) scan of the volume. This in turn negatively impacts FRS SYSVOL replication and replication between DFS link alternates while the volume is being rescanned.<p>
+</td></tr></table><p></div>
+</td></tr><tr>
+<td colspan="1">
+<p>/d</p>
+</td>
+<td colspan="1">
+<p>Disables an active USN change journal, and returns input/output (I/O) control while the change journal is being disabled.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/n </p>
+</td>
+<td colspan="1">
+<p>Disables an active USN change journal and returns I/O control only after the change journal is disabled.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>enumdata </p>
+</td>
+<td colspan="1">
+<p>Enumerates and lists the change journal entries between two specified boundaries.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;FileRef&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the ordinal position within the files on the volume at which the enumeration is to begin.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;LowUSN&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the lower boundary of the range of USN values used to filter the records that are returned. Only records whose last change journal USN is between or equal to the <i>LowUSN</i> and <i>HighUSN</i> member values are returned.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;HighUSN&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the upper boundary of the range of USN values used to filter the files that are returned.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>queryjournal </p>
+</td>
+<td colspan="1">
+<p>Queries a volume's USN data to gather information about the current change journal, its records, and its capacity.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>readdata </p>
+</td>
+<td colspan="1">
+<p>Reads the USN data for a file.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;FileName&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the full path to the file, including the file name and extension For example: C:\documents\filename.txt</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+About the USN change journal<br><br>
+
+The USN change journal provides a persistent log of all changes made to files on the volume. As files, directories, and other NTFS objects are added, deleted, and modified, NTFS enters records into the USN change journal, one for each volume on the computer. Each record indicates the type of change and the object changed. New records are appended to the end of the stream.<br><br>
+
+Programs can consult the USN change journal to determine all the modifications made to a set of files. The USN change journal is much more efficient than checking time stamps or registering for file notifications. The USN change journal is enabled and used by the Indexing Service, File Replication service (FRS), Remote Installation Services (RIS), and Remote Storage.<br><br>
+</li><li class="unordered">
+Using <b>createjournal</b><br><br>
+
+If a change journal already exists on a volume, the <b>createjournal</b> parameter updates the change journal's <i>MaxSize</i> and <i>AllocationDelta</i> parameters. This enables you to expand the number of records that an active journal maintains without having to disable it. If you specify 0 (zero) for <i>MaxSize</i> and <i>AllocationDelta</i>, the system chooses a default value based on the volume size. <br><br>
+</li><li class="unordered">
+Using <b>m</b><br><br>
+
+The change journal can grow larger than this target value, but the change journal is truncated at the next NTFS checkpoint to less than this value. NTFS examines the change journal and trims it when its size exceeds the value of <i>MaxSize</i> plus the value of <i>AllocationDelta</i>. At NTFS checkpoints, the operating system writes records to the NTFS log file that enable NTFS to determine what processing is required to recover from a failure. <br><br>
+</li><li class="unordered">
+Using <b>a</b><br><br>
+
+The change journal can grow to more than the sum of the values of <i>MaxSize</i> and <i>AllocationDelta</i> before being trimmed.<br><br>
+</li><li class="unordered">
+Using <b>deletejournal</b><br><br>
+
+Deleting or disabling an active change journal is very time consuming, because the system must access all the records in the master file table (MFT) and set the last USN attribute to 0 (zero). This process can take several minutes, and it can continue after the system restarts, if a restart is necessary. During this process, the change journal is not considered active, nor is it disabled. While the system is disabling the journal, it cannot be accessed, and all journal operations return errors. You should use extreme care when disabling an active journal, because it adversely affects other applications that are using the journal.<br><br>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="213d36d1-f4ba-4390-93be-72e23df03a67#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">To create a USN change journal on drive C, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>fsutil usn createjournal m=1000 a=100 c:</pre></td></tr></table></span></div>
+
+<p xmlns="">To delete an active USN change journal on drive C, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>fsutil usn deletejournal /d c:</pre></td></tr></table></span></div>
+
+<p xmlns="">To enumerate and list the change journal entries between two specified boundaries on drive C, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>fsutil usn enumdata 1 0 1 c:</pre></td></tr></table></span></div>
+
+<p xmlns="">To query USN data for a volume on drive C, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>fsutil usn queryjournal c:</pre></td></tr></table></span></div>
+
+<p xmlns="">To read the USN data for a file in the \Temp folder on drive C, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>fsutil usn readdata c:\temp\sample.txt</pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+
+<p xmlns=""><a href="097de37c-812c-47b0-872b-4b55ea32b27f.htm">Fsutil</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

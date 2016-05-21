@@ -1,0 +1,116 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Graftabl</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Graftabl</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008,Windows Vista</p>
+<p>Enables Windows operating systems to display an extended character set in graphics mode. If used without parameters, <b>graftabl</b> displays the previous and the current code page.</p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>graftabl &lt;CodePage&gt;
+graftabl /status</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="2">
+Parameter
+</th>
+<th colspan="2">
+Description
+</th></tr><tr>
+<td colspan="2">
+<p> &lt;CodePage&gt; </p>
+</td>
+<td colspan="2">
+<p>Specifies a code page to define the appearance of extended characters in graphics mode.</p>
+
+<p>Valid code page identification numbers are:</p>
+
+<p>437: United States</p>
+
+<p>850: Multilingual (Latin I)</p>
+
+<p>852: Slavic (Latin II)</p>
+
+<p>855: Cyrillic (Russian)</p>
+
+<p>857: Turkish</p>
+
+<p>860: Portuguese</p>
+
+<p>861: Icelandic</p>
+
+<p>863: Canadian-French</p>
+
+<p>865: Nordic</p>
+
+<p>866: Russian</p>
+
+<p>869: Modern Greek</p>
+</td></tr><tr>
+<td colspan="2">
+<p> /status  </p>
+</td>
+<td colspan="2">
+<p>Displays the current code page that <b>graftabl</b> is using.</p>
+</td></tr><tr>
+<td colspan="2">
+<p> /? </p>
+</td>
+<td colspan="2">
+<p>Displays help at the command prompt.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+<b>Graftabl</b> affects only the monitor display of extended characters of the code page that you specify. It does not change the actual console input code page. To change the console input code page, use the <b>mode</b> or <b>chcp</b> command.<br><br>
+</li><li class="unordered">
+The following table lists each exit code and a brief description of it.<br><br>
+
+<h3 class="subHeading"></h3><table><tr>
+<th colspan="1">
+Exit code
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>0</p>
+</td>
+<td colspan="1">
+<p>Character set was loaded successfully. No previous code page was loaded.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>1</p>
+</td>
+<td colspan="1">
+<p>An incorrect parameter was specified. No action was taken.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>2</p>
+</td>
+<td colspan="1">
+<p>A file error occurred.</p>
+</td></tr></table>
+</li><li class="unordered">
+You can use the ERRORLEVEL environment variable in a batch program to process exit codes that are returned by <b>graftabl</b>.<br><br>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="b08351d4-3d24-490c-86f6-1252da11d923#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">To view the current code page used by <b>graftabl</b>, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>graftabl /status</pre></td></tr></table></span></div>
+
+<p xmlns="">To load the graphics character set for code page 437 (United States) into memory, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>graftabl 437</pre></td></tr></table></span></div>
+
+<p xmlns="">To load the graphics character set for code page 850 (multilingual) into memory, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>graftabl 850</pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+
+<p xmlns=""><a href="91c15166-5baa-4b80-9e0c-4cd815d00530.htm">Freedisk</a></p>
+
+<p xmlns=""><a href="dc7b1c71-7b80-443d-9cf1-9bcf305aa1fd.htm">Chcp</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

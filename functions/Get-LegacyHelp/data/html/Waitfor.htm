@@ -1,0 +1,96 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Waitfor</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Waitfor</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2003 with SP1,Windows XP,Windows Server 2008,Windows Server 2008 R2,Windows Server 2000,Windows Server 2003 with SP2,Windows Server 2003,Windows Vista,Windows 7,Windows Server 2003 R2</p>
+<p>Sends or waits for a signal on a system. <b>Waitfor</b> is used to synchronize computers across a network.</p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>waitfor [/s &lt;Computer&gt; [/u [&lt;Domain&gt;\]&lt;User&gt; [/p [&lt;Password&gt;]]]] /si &lt;SignalName&gt;
+waitfor [/t &lt;Timeout&gt;] &lt;SignalName&gt;</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p> /s &lt;Computer&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the name or IP address of a remote computer (do not use backslashes). The default is the local computer. This parameter applies to all files and folders specified in the command.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /u [&lt;Domain&gt;\]&lt;User&gt;</p>
+</td>
+<td colspan="1">
+<p>Runs the script using the credentials of the specified user account. By default, <b>waitfor</b> uses the current user's credentials.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /p [&lt;Password&gt;]</p>
+</td>
+<td colspan="1">
+<p>Specifies the password of the user account that is specified in the <b>/u</b> parameter.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /si </p>
+</td>
+<td colspan="1">
+<p>Sends the specified signal across the network.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /t &lt;Timeout&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the number of seconds to wait for a signal. By default, <b>waitfor</b> waits indefinitely.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> &lt;SignalName&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the signal that <b>waitfor</b> waits for or sends. <i>SignalName</i> is not case-sensitive.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /? </p>
+</td>
+<td colspan="1">
+<p>Displays help at the command prompt.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+Signal names cannot exceed 225 characters. Valid characters include a-z, A-Z, 0-9, and the ASCII extended character set (128-255).<br><br>
+</li><li class="unordered">
+If you do not use <b>/s</b>, the signal is broadcast to all the systems in a domain. If you use <b>/s</b>, the signal is sent only to the specified system.<br><br>
+</li><li class="unordered">
+You can run multiple instances of <b>waitfor</b> on a single computer, but each instance of <b>waitfor</b> must wait for a different signal. Only one instance of <b>waitfor</b> can wait for a given signal on a given computer.<br><br>
+</li><li class="unordered">
+You can activate a signal manually by using the <b>/si</b> command-line option.<br><br>
+</li><li class="unordered">
+<b>Waitfor</b> runs only on Windows XP and servers running a Windows Server 2003 operating system, but it can send signals to any computer running a Windows operating system.<br><br>
+</li><li class="unordered">
+Computers can only receive signals if they are in the same domain as the computer sending the signal.<br><br>
+</li><li class="unordered">
+You can use <b>waitfor</b> when you test software builds. For example, the compiling computer can send a signal to several computers running <b>waitfor</b> after the compile has completed successfully. On receipt of the signal, the batch file that includes <b>waitfor</b> can instruct the computers to immediately start installing software or running tests on the compiled build.<br><br>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="a48ef70d-4d28-4035-b6b0-7d7b46ac2157#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">To wait until the "espresso\build007" signal is received, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>waitfor espresso\build007</pre></td></tr></table></span></div>
+
+<p xmlns="">By default, <b>waitfor</b> waits indefinitely for a signal. </p>
+
+<p xmlns="">To wait 10 seconds for the "espresso\compile007" signal to be received before timing out, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>waitfor /t 10 espresso\build007</pre></td></tr></table></span></div>
+
+<p xmlns="">To manually activate the "espresso\build007" signal, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>waitfor /si espresso\build007</pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

@@ -1,0 +1,173 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Forfiles</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Forfiles</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Vista,Windows Server 2008</p>
+<p>Selects and executes a command on a file or set of files. This command is useful for batch processing.</p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>forfiles [/p &lt;Path&gt;] [/m &lt;SearchMask&gt;] [/s] [/c "&lt;Command&gt;"] [/d [{+|-}][{&lt;Date&gt;|&lt;Days&gt;}]]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p> /p &lt;Path&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the path from which to start the search. By default, searching starts in the current working directory.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /m &lt;SearchMask&gt; </p>
+</td>
+<td colspan="1">
+<p>Searches files according to the specified search mask. The default search mask is <b>*.*</b>.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /s </p>
+</td>
+<td colspan="1">
+<p>Instructs the <b>forfiles</b> command to search into subdirectories recursively.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /c "&lt;Command&gt;"</p>
+</td>
+<td colspan="1">
+<p>Runs the specified command on each file. Command strings should be enclosed in quotation marks. The default command is <b>"cmd /c echo @file"</b>.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/d [{+|-}][{&lt;Date&gt;|&lt;Days&gt;}]</p>
+</td>
+<td colspan="1">
+<p>Selects files with a last modified date within the specified time frame.</p>
+
+<ul><li class="unordered">
+Selects files with a last modified date later than or equal to (<b>+</b>) or earlier than or equal to (<b>-</b>) the specified date, where <i>Date</i> is in the format MM/DD/YYYY. <br><br>
+</li><li class="unordered">
+Selects files with a last modified date later than or equal to (<b>+</b>) the current date plus the number of days specified, or earlier than or equal to (<b>-</b>) the current date minus the number of days specified. <br><br>
+</li><li class="unordered">
+Valid values for <i>Days</i> include any number in the range 0–32,768. If no sign is specified, <b>+</b> is used by default.<br><br>
+</li></ul>
+</td></tr><tr>
+<td colspan="1">
+<p> /? </p>
+</td>
+<td colspan="1">
+<p>Displays help at the command prompt.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+<b>Forfiles</b> is most commonly used in batch files.<br><br>
+</li><li class="unordered">
+<b>Forfiles /s</b> is similar to <b>dir /s.</b><br><br>
+</li><li class="unordered">
+You can use the following variables in the command string as specified by the <b>/c</b> command-line option. <br><br>
+
+<h3 class="subHeading"></h3><table><tr>
+<th colspan="1">
+Variable
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>@FILE</p>
+</td>
+<td colspan="1">
+<p>File name.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>@FNAME</p>
+</td>
+<td colspan="1">
+<p>File name without extension.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>@EXT</p>
+</td>
+<td colspan="1">
+<p>File name extension.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>@PATH</p>
+</td>
+<td colspan="1">
+<p>Full path of the file.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>@RELPATH</p>
+</td>
+<td colspan="1">
+<p>Relative path of the file.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>@ISDIR</p>
+</td>
+<td colspan="1">
+<p>Evaluates to TRUE if a file type is a directory. Otherwise, this variable evaluates to FALSE.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>@FSIZE</p>
+</td>
+<td colspan="1">
+<p>File size, in bytes.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>@FDATE</p>
+</td>
+<td colspan="1">
+<p>Last modified date stamp on the file.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>@FTIME</p>
+</td>
+<td colspan="1">
+<p>Last modified time stamp on the file.</p>
+</td></tr></table>
+</li><li class="unordered">
+With <b>forfiles</b>, you can run a command on or pass arguments to multiple files. For example, you could run the <b>type</b> command on all files in a tree with the .txt file name extension. Or you could execute every batch file (*.bat) on drive C, with the file name "Myinput.txt" as the first argument.<br><br>
+</li><li class="unordered">
+With <b>forfiles</b>, you can do any of the following: <br><br>
+
+<ul><li class="unordered">
+Select files by an absolute date or a relative date by using the <b>/d</b> parameter.<br><br>
+</li><li class="unordered">
+Build an archive tree of files by using variables such as @FSIZE<b> </b>and @FDATE.<br><br>
+</li><li class="unordered">
+Differentiate files from directories by using the @ISDIR<b> </b>variable.<br><br>
+</li><li class="unordered">
+Include special characters in the command line by using the hexadecimal code for the character, in 0x<i>HH</i> format (for example, 0x09 for a tab).<br><br>
+</li></ul>
+</li><li class="unordered">
+<b>Forfiles</b> works by implementing the <b>recurse subdirectories</b> flag on tools that are designed to process only a single file.<br><br>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="43f6b004-446d-4fdd-91c5-5653613524a4#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">To list all of the batch files on drive C, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>forfiles /p c:\ /s /m *.bat /c "cmd /c echo @file is a batch file"</pre></td></tr></table></span></div>
+
+<p xmlns="">To list all of the directories on drive C, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>forfiles /p c:\ /s /m *.* /c "cmd /c if @isdir==true echo @file is a directory"</pre></td></tr></table></span></div>
+
+<p xmlns="">To list all of the files in the current directory that are at least one year old, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>forfiles /s /m *.* /d -365 /c "cmd /c echo @file is at least one year old."</pre></td></tr></table></span></div>
+
+<p xmlns="">To display the text "<i>File</i> is outdated" for each of the files in the current directory that are older than January 1, 2007, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>forfiles /s /m *.* /d -01/01/2007 /c "cmd /c echo @file is outdated." </pre></td></tr></table></span></div>
+
+<p xmlns="">To list the file name extensions of all the files in the current directory in column format, and add a tab before the extension, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>forfiles /s /m *.* /c "cmd /c echo The extension of @file is 0x09@ext" </pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

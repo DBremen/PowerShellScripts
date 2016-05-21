@@ -1,0 +1,116 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Storrept admin options</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Storrept admin options</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008,Windows Server 2008 R2</p>
+<p>Configures e-mail notification options used by File Server Resource Manager and the <b>Dirquota [LH]</b>, <b>Filescrn [LH]</b>, and<b> </b><a href="4433454c-daa9-4b7a-befd-9b11d46daffa.htm">Storrept</a> commands. If used without parameters, the <b>storrept admin options</b> command displays the values of the options that are currently configured.</p>
+
+<div class="alert"><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>
+To use this command, you must be logged on as an administrator or a member of the Administrators group.<p>
+</td></tr></table><p></div>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>storrept admin options [/smtp:&lt;ServerName&gt;] [/from:&lt;FromEmail&gt;] <br>   [/adminemails:&lt;AdminEmails&gt;] [/screenaudit:{enabled | disabled}] <br>   [/command:{enabled | disabled}] [/runlimitinterval:&lt;NotifyType&gt;,&lt;Interval&gt;] <br>   [/remote:&lt;ComputerName&gt;]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>/smtp:&lt;ServerName&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies <i>ServerName</i> as the Simple Mail Transfer Protocol (SMTP) server to be used when sending e-mail notifications and storage reports.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/from:&lt;FromEmail&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the default e-mail address to be used as the originating e-mail address for notifications and storage reports. This e-mail address will be used for notifications and storage reports for which a different From address is not explicitly specified.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/adminemails:&lt;AdminEmails&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the default list of e-mail addresses for the recipients of notifications and storage reports. This parameter also specifies the value of the <b>[Admin Email]</b> variable used in some File Server Resource Manager notifications. Use a semicolon to separate multiple e-mail addresses, without leaving blank spaces between them.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/screenaudit:{enabled | disabled}</p>
+</td>
+<td colspan="1">
+<p>Enables or disables file screen auditing. When enabled, file screening activity is recorded in an auditing database. You can review information in this database by generating a File Screening Audit report, using either the File Server Resource Manager snap-in or the <a href="4433454c-daa9-4b7a-befd-9b11d46daffa.htm">Storrept</a> command.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/command:{enabled | disabled}</p>
+</td>
+<td colspan="1">
+<p>Enables or disables command-line notifications. </p>
+</td></tr><tr>
+<td colspan="1">
+<p>/runlimitinterval:&lt;NotifyType&gt;,&lt;Interval&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies that notifications of type <i>NotifyType</i> can be raised for the same issue only every <i>Interval</i> minutes. This reduces the number of notifications raised for repeatedly exceeding a quota or detecting an unauthorized file.</p>
+
+<p><i>NotifyType</i> must be one of the following:</p>
+
+<ul><li class="unordered">
+<b>m</b> — an e-mail notification<br><br>
+</li><li class="unordered">
+<b>e</b> — an event log notification<br><br>
+</li><li class="unordered">
+<b>c</b> — a command or script execution<br><br>
+</li><li class="unordered">
+<b>r</b> — a report generation<br><br>
+</li></ul>
+</td></tr><tr>
+<td colspan="1">
+<p>/remote:&lt;ComputerName&gt;</p>
+</td>
+<td colspan="1">
+<p>Performs the operation on the remote computer <i>ComputerName</i>.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+E-mail addresses specified with the <b>/from:</b> and <b>/adminemails:</b> parameters must be in the format <i>account@domain</i>.<br><br>
+</li><li class="unordered">
+The shortest sequence of characters that uniquely identifies a parameter can be used as an abbreviation. For example, the following two commands are equivalent:<br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>storrept ad o /f:admin@contoso.com
+storrept admin options /from:admin@contoso.com</pre></td></tr></table></span></div>
+</li><li class="unordered">
+To perform operations on a remote computer by using the <b>/remote:</b><i>ComputerName</i> parameter:<br><br>
+
+<ul><li class="unordered">
+You must be logged on with a domain account that is a member of the Administrators group on both the local computer and the remote computer.<br><br>
+</li><li class="unordered">
+The remote computer must be running Windows Server 2008, and File Server Resource Manager must be installed.<br><br>
+</li><li class="unordered">
+The <b>Remote File Server Resource Manager Management</b> exception on the remote computer must be enabled. You enable this exception by using Windows Firewall in Control Panel.<br><br>
+</li></ul>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="f2086240-cb33-4759-9b36-1783a20e5204#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+To display currently configured administrative options, type: <br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>storrept admin options</pre></td></tr></table></span></div>
+</li><li class="unordered">
+To configure the default From address and administrative recipients for e-mail notifications and storage reports, type: <br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>storrept admin options /from:admin@contoso.com /adminemails:backup_operator@contoso.com</pre></td></tr></table></span></div>
+</li><li class="unordered">
+To specify that e-mail notifications that are raised for repeatedly exceeding a quota or detecting an unauthorized file be sent only once every two hours, type:<br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>storrept admin options /runlimitinterval:m,120</pre></td></tr></table></span></div>
+</li></ul>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+
+<p xmlns=""><a href="f2086240-cb33-4759-9b36-1783a20e5204.htm">Storrept admin options</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

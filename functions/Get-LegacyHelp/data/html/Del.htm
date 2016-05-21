@@ -1,0 +1,129 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Del</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Del</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008 R2,Windows Server 2008,Windows Vista</p>
+<p>Deletes one or more files. This command is the same as the <b>erase</b> command.</p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>del [/p] [/f] [/s] [/q] [/a[:]&lt;Attributes&gt;] &lt;Names&gt;
+erase [/p] [/f] [/s] [/q] [/a[:]&lt;Attributes&gt;] &lt;Names&gt;</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>&lt;Names&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies a list of one or more files or directories. Wildcards may be used to delete multiple files. If a directory is specified, all files within the directory will be deleted. </p>
+</td></tr><tr>
+<td colspan="1">
+<p>/p </p>
+</td>
+<td colspan="1">
+<p>Prompts for confirmation before deleting the specified file.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/f </p>
+</td>
+<td colspan="1">
+<p>Forces deletion of read-only files.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/s </p>
+</td>
+<td colspan="1">
+<p>Deletes specified files from the current directory and all subdirectories. Displays the names of the files as they are being deleted.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/q </p>
+</td>
+<td colspan="1">
+<p>Specifies quiet mode. You are not prompted for delete confirmation.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/a[:]&lt;Attributes&gt; </p>
+</td>
+<td colspan="1">
+<p>Deletes files based on the following file attributes:</p>
+
+<p><b>   r</b>  Read-only files</p>
+
+<p><b>   h  </b>Hidden files</p>
+
+<p><b>   i   </b>Not content indexed files</p>
+
+<p><b>   s  </b>System files</p>
+
+<p><b>   a  </b>Files ready for archiving</p>
+
+<p>   <b>l</b>  Reparse points             </p>
+
+<p>   -  Prefix meaning 'not'</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/? </p>
+</td>
+<td colspan="1">
+<p>Displays help at the command prompt.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="alert" xmlns=""><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/Caution.gif">Caution </th></tr><tr><td>
+If you use <b>del</b> to delete a file from your disk, you cannot retrieve it.<p>
+</td></tr></table><p></div>
+
+<ul xmlns=""><li class="unordered">
+If you use <b>/p</b>, <b>del</b> displays the name of a file and sends the following message: <br><br>
+
+<code>FileName, Delete (Y/N)?</code><br><br>
+
+To confirm the deletion, press Y. To cancel the deletion and display the next file name (that is, if you specified a group of files), press N. To stop the <b>del</b> command, press CTRL+C.<br><br>
+</li><li class="unordered">
+If you disable command extensions, <b>/s</b> displays the names of any files that were not found instead of displaying the names of files that are being deleted (that is, the behavior is reversed). <br><br>
+</li><li class="unordered">
+If you specify a folder in <i>Names</i>, all of the files in the folder are deleted. For example, the following command deletes all of the files in the \Work folder:<br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>del \work</pre></td></tr></table></span></div>
+</li><li class="unordered">
+You can use wildcards (<b>*</b> and <b>?</b>) to delete more than one file at a time. However, to avoid deleting files unintentionally, you should use wildcards cautiously with the <b>del</b> command. For example, if you type the following command:<br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>del *.*</pre></td></tr></table></span></div>
+
+The <b>del</b> command displays the following prompt: <br><br>
+
+<code>Are you sure (Y/N)?</code><br><br>
+
+To delete all of the files in the current directory, press Y and then press ENTER. To cancel the deletion, press N and then press ENTER. <br><br>
+</li></ul>
+
+<div class="alert" xmlns=""><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>
+Before you use wildcard characters with the <b>del</b> command, use the same wildcard characters with the <b>dir</b> command to list all the files that will be deleted. <p>
+</td></tr></table><p></div>
+
+<ul xmlns=""><li class="unordered">
+The <b>del</b> command, with different parameters, is available from the Recovery Console.<br><br>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="346eede2-2085-44f5-9936-6877b5d5a833#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">To delete all the files in a folder named Test on drive C, type either of the following:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>del c:\test
+del c:\test\*.*</pre></td></tr></table></span></div>
+
+<p xmlns="">To delete all files with the .bat file name extension from the current directory, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>del *.bak</pre></td></tr></table></span></div>
+
+<p xmlns="">To delete all read-only files in the current directory, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>del /a:r *.*</pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

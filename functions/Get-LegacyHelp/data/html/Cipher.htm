@@ -1,0 +1,166 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Cipher</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Cipher</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008,Windows Server 2008 R2,Windows Server 2003 with SP1,Windows Server 2003,Windows Vista,Windows Server 2003 with SP2,Windows Server 2003 R2,Windows 7</p>
+<p>Displays or alters the encryption of directories and files on NTFS volumes. If used without parameters, <b>cipher</b> displays the encryption state of the current directory and any files it contains.</p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>cipher [/e | /d | /c] [/s:&lt;Directory&gt;] [/b] [/h] [PathName [...]]
+cipher /k
+cipher /r:&lt;FileName&gt; [/smartcard]
+cipher /u [/n]
+cipher /w:&lt;Directory&gt;
+cipher /x[:efsfile] [FileName]
+cipher /y
+cipher /adduser [/certhash:&lt;Hash&gt; | /certfile:&lt;FileName&gt;] [/s:Directory] [/b] [/h] [PathName [...]]
+cipher /removeuser /certhash:&lt;Hash&gt; [/s:&lt;Directory&gt;] [/b] [/h] [&lt;PathName&gt; [...]]
+cipher /rekey [PathName [...]]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameters
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p> /b</p>
+</td>
+<td colspan="1">
+<p>Aborts if an error is encountered. By default, <b>cipher</b> continues to run even if errors are encountered.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /c</p>
+</td>
+<td colspan="1">
+<p>Displays information on the encrypted file.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /d</p>
+</td>
+<td colspan="1">
+<p>Decrypts the specified files or directories.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /e </p>
+</td>
+<td colspan="1">
+<p>Encrypts the specified files or directories. Directories are marked so that files that are added afterward will be encrypted. </p>
+</td></tr><tr>
+<td colspan="1">
+<p> /h </p>
+</td>
+<td colspan="1">
+<p>Displays files with hidden or system attributes. By default, these files are not encrypted or decrypted.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /k </p>
+</td>
+<td colspan="1">
+<p>Creates a new certificate and key for use with Encrypting File System (EFS) files. If the <b>/k</b> parameter is specified, all other parameters are ignored.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /r:&lt;FileName&gt; [/smartcard] </p>
+</td>
+<td colspan="1">
+<p>Generates an EFS recovery agent key and certificate, then writes them to a .pfx file (containing certificate and private key) and  a .cer file (containing only the certificate). If <b>/smartcard</b> is specified, it writes the recovery key and certificate to a smart card, and no .pfx file is generated. </p>
+</td></tr><tr>
+<td colspan="1">
+<p> /s:&lt;Directory&gt;</p>
+</td>
+<td colspan="1">
+<p>Performs the specified operation on all subdirectories in the specified <i>Directory</i>.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /u [/n]</p>
+</td>
+<td colspan="1">
+<p>Finds all encrypted files on the local drive(s). If used with the <b>/n</b> parameter, no updates are made. If used without <b>/n</b>, <b>/u</b> compares the user's file encryption key or the recovery agent's key to the current ones, and updates them if they have changed. This parameter works only with <b>/n</b>.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /w:&lt;Directory&gt;</p>
+</td>
+<td colspan="1">
+<p>Removes data from available unused disk space on the entire volume. If you use the <b>/w</b> parameter, all other parameters are ignored. The directory specified can be located anywhere in a local volume. If it is a mount point or points to a directory in another volume, the data on that volume is removed.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /x[:efsfile] [&lt;FileName&gt;]</p>
+</td>
+<td colspan="1">
+<p>Backs up the EFS certificate and keys to the specified file name. If used with <b>:efsfile</b>, <b>/x</b> backs up the user's certificate(s) that were used to encrypt the file. Otherwise, the user's current EFS certificate and keys are backed up.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /y </p>
+</td>
+<td colspan="1">
+<p>Displays your current EFS certificate thumbnail on the local computer.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/adduser [/certhash:&lt;Hash&gt; | /certfile:&lt;FileName&gt;]</p>
+</td>
+<td colspan="1">
+<p>Adds a user to the specified encrypted file(s). If used with <b>/certhash</b>, <b>cipher</b> searches for a certificate with the SHA1 hash specified. If used with <b>/certfile</b>, <b>cipher</b> extracts the certificate from the file name specified.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /rekey </p>
+</td>
+<td colspan="1">
+<p>Updates the specified encrypted file(s) to use the currently configured EFS key.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /removeuser /certhash:&lt;Hash&gt;</p>
+</td>
+<td colspan="1">
+<p>Removes a user from the specified file(s). The <i>Hash</i> provided for <b>/certhash</b> must be the SHA1 hash of the certificate to remove.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /? </p>
+</td>
+<td colspan="1">
+<p>Displays help at the command prompt.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+If the parent directory is not encrypted, an encrypted file could become decrypted when it is modified. Therefore, when you encrypt a file, you should also encrypt the parent directory.<br><br>
+</li><li class="unordered">
+An administrator can add the contents of a .cer file to the EFS recovery policy to create the recovery agent for users, and then import the .pfx file to recover individual files. <br><br>
+</li><li class="unordered">
+You can use multiple directory names and wildcards. <br><br>
+</li><li class="unordered">
+You must put spaces between multiple parameters.<br><br>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="78ef795e-0f87-4acd-8d15-192c972c0f41#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">To display the encryption status of each of the files and subdirectories in the current directory, type: </p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>cipher</pre></td></tr></table></span></div>
+
+<p xmlns="">Encrypted files and directories are marked with an <b>E</b>. Unencrypted files and directories are marked with a <b>U</b>. For example, the following output indicates that the current directory and all its contents are currently unencrypted:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>Listing C:\Users\MainUser\Documents\
+New files added to this directory will not be encrypted.
+U Private
+U hello.doc
+U hello.txt</pre></td></tr></table></span></div>
+
+<p xmlns="">To enable encryption on the Private directory used in the previous example, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>cipher /e private</pre></td></tr></table></span></div>
+
+<p xmlns="">The following output displays:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>Encrypting files in C:\Users\MainUser\Documents\
+Private             [OK]
+1 file(s) [or directorie(s)] within 1 directorie(s) were encrypted.</pre></td></tr></table></span></div>
+
+<p xmlns="">The <b>cipher</b> command displays the following output:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>Listing C:\Users\MainUser\Documents\
+New files added to this directory will not be encrypted.
+E Private
+U hello.doc
+U hello.txt</pre></td></tr></table></span></div>
+
+<p xmlns="">Note that the Private directory is marked as encrypted.</p>
+</content></div><h2 class="heading">Additional References</h2><div id="sectionSection4" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+</content></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

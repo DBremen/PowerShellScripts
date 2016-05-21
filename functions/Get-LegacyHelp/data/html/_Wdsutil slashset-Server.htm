@@ -1,0 +1,476 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>/set-Server</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">/set-Server</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008,Windows Server 2008 R2</p>
+				<p>Configures the settings for a Windows Deployment Services server.</p>
+			<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>WDSUTIL [Options] /Set-Server [/Server:&lt;Server name&gt;]
+    [/Authorize:{Yes | No}]
+    [/RogueDetection:{Yes | No}]
+    [/AnswerClients:{All | Known | None}]
+    [/ResponseDelay:&lt;Time in seconds&gt;]
+    [/AllowN12ForNewClients:{Yes | No}]
+    [/ArchitectureDiscovery:{Yes | No}]
+    [/ResetBootProgram:{Yes | No}]
+    [/DefaultX86X64ImageType:{x86 | x64 | Both}]
+    [/UseDhcpPorts:{Yes | No}]
+    [/DhcpOption60:{Yes | No}]
+    [/RpcPort:&lt;Port number&gt;]
+    [/PxePromptPolicy 
+        [/Known:{OptIn | NoPrompt | OptOut}]
+        [/New:{OptIn | NoPrompt | OptOut}] 
+    [/BootProgram:&lt;Relative path&gt;]
+         /Architecture:{x86 | ia64 | x64}
+    [/N12BootProgram:&lt;Relative path&gt;]
+         /Architecture:{x86 | ia64 | x64}
+    [/BootImage:&lt;Relative path&gt;]
+         /Architecture:{x86 | ia64 | x64}
+    [/PreferredDC:&lt;DC Name&gt;]
+    [/PreferredGC:&lt;GC Name&gt;]
+    [/PrestageUsingMAC:{Yes | No}]
+    [/NewMachineNamingPolicy:&lt;Policy&gt;]
+    [/NewMachineOU]
+         [/Type:{ServerDomain | UserDomain | UserOU | Custom}]
+         [/OU:&lt;Domain name of OU&gt;]
+    [/DomainSearchOrder:{GCOnly | DCFirst}]
+    [/NewMachineDomainJoin:{Yes | No}]
+    [/OSCMenuName:&lt;Name&gt;]
+    [/WdsClientLogging]
+         [/Enabled:{Yes | No}]
+         [/LoggingLevel:{None | Errors | Warnings | Info}]
+    [/WdsUnattend]
+         [/Policy:{Enabled | Disabled}]
+         [/CommandlinePrecedence:{Yes | No}]
+         [/File:&lt;Path&gt;]
+             /Architecture:{x86 | ia64 | x64}
+    [/AutoAddPolicy]
+         [/Policy:{AdminApproval | Disabled}]
+         [/PollInterval:{Time in seconds}]
+         [/MaxRetry:{Retries}]
+         [/Message:&lt;Message&gt;]
+         [/RetentionPeriod]
+             [/Approved:&lt;Time in days&gt;]
+             [/Others:&lt;Time in days&gt;]
+    [/AutoAddSettings]
+         /Architecture:{x86 | ia64 | x64}
+         [/BootProgram:&lt;Relative path&gt;]
+         [/ReferralServer:&lt;Server name&gt;
+         [/WdsClientUnattend:&lt;Relative path&gt;]
+         [/BootImage:&lt;Relative path&gt;]
+         [/User:&lt;Owner&gt;]
+         [/JoinRights:{JoinOnly | Full}]
+         [/JoinDomain:{Yes | No}]
+    [/BindPolicy]
+         [/Policy:{Include | Exclude}]
+         [/Add]
+              /Address:&lt;IP or MAC address&gt;
+              /AddressType:{IP | MAC}
+         [/Remove]
+              /Address:&lt;IP or MAC address&gt;
+              /AddressType:{IP | MAC}
+    [/RefreshPeriod:&lt;Time in seconds&gt;]
+    [/BannedGuidPolicy]
+         [/Add]
+              /Guid:&lt;GUID&gt;
+         [/Remove]
+             /Guid:&lt;GUID&gt;
+    [/BcdRefreshPolicy]
+         [/Enabled:{Yes | No}]
+         [/RefreshPeriod:&lt;Time in minutes&gt;]
+
+    [/Transport]
+         [/ObtainIpv4From:{Dhcp | Range}]
+             [/Start:&lt;Start IP Address&gt;]
+             [/End:&lt;End IP Address&gt;]
+         [/ObtainIpv6From:Range]
+             [/Start:&lt;Start IP Address&gt;]
+             [/End:&lt;End IP Address&gt;]
+         [/StartPort:&lt;Start Port&gt;
+             [/EndPort:&lt;Start Port&gt;
+        [/Profile:{10Mbps | 100Mbps | 1Gbps | Custom}]
+        [/MulticastSessionPolicy]
+             [/Policy:{None | AutoDisconnect | Multistream}]
+                 [/Threshold:&lt;Speed in KBps&gt;]
+                 [/StreamCount:{2 | 3}]
+                 [/Fallback:{Yes | No}]    
+        [/ForceNative]</pre></td></tr></table></span></div>
+				</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+								<th colspan="1">
+									Parameter
+								</th>
+								<th colspan="1">
+									Description
+								</th>
+							</tr><tr>
+							<td colspan="1">
+								<p>[/Server:&lt;Server name&gt;] </p>
+							</td>
+							<td colspan="1">
+								<p>Specifies the name of the server. This can be either the NetBIOS name or the fully qualified domain name (FQDN). If no server name is specified, the local server will be used.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/Authorize:{Yes | No}] </p>
+							</td>
+							<td colspan="1">
+								<p>Specifies whether to authorize this server in Dynamic Host Control Protocol (DHCP).</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/RogueDetection:{Yes | No}] </p>
+							</td>
+							<td colspan="1">
+								<p>Enables or disables DHCP rogue detection.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/AnswerClients:{All | Known | None}] </p>
+							</td>
+							<td colspan="1">
+								<p>Specifies which clients this server will answer. If you set this value to <b>Known</b>, a computer must be prestaged in Active Directory Domain Services (AD DS) before it will be answered by the Windows Deployment Services server.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/ResponseDelay:&lt;Time in seconds&gt;]</p>
+							</td>
+							<td colspan="1">
+								<p>The amount of time that the server will wait before answering a booting client. This setting does not apply to prestaged computers.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/AllowN12ForNewClients:{Yes | No}]</p>
+							</td>
+							<td colspan="1">
+								<p>For Windows Server 2008, specifies that unknown clients will not have to press the F12 key to initiate a network boot. Known clients will receive the boot program specified for the computer or, if not specified, the boot program specified for the architecture.</p>
+								<p>For Windows Server 2008 R2, this option has been replaced with the following command: WDSUTIL /Set-Server /PxePromptPolicy /New:NoPrompt</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/ArchitectureDiscovery:{Yes | No}] </p>
+							</td>
+							<td colspan="1">
+								<p>Enables or disables architecture discovery. This facilitates the discovery of x64-based clients that do not broadcast their architecture correctly.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/ResetBootProgram:{Yes | No}]</p>
+							</td>
+							<td colspan="1">
+								<p>Determines whether the boot path will be erased for a client that has just booted without requiring an F12 key press.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/DefaultX86X64ImageType: {x86 | x64 | Both}] </p>
+							</td>
+							<td colspan="1">
+								<p>Controls which boot images will be shown to x64-based clients.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/UseDhcpPorts:{Yes | No}]</p>
+							</td>
+							<td colspan="1">
+								<p>Specifies whether or not the PXE server should attempt to bind to the DHCP port, TCP port 67. If DHCP and Windows Deployment Services are running on the same computer, you should set this option to <b>No</b> to enable the DHCP server to utilize the port, and set the <b>/DhcpOption60</b> parameter to <b>Yes</b>. The default setting for this value is <b>Yes</b>.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/DhcpOption60:{Yes | No}]</p>
+							</td>
+							<td colspan="1">
+								<p>Specifies whether DHCP option 60 should be configured for PXE support. If DHCP and Windows Deployment Services are running on the same server, set this option to <b>Yes</b> and set the <b>/UseDhcpPorts</b> option to <b>No</b>. The default setting for this value is <b>No</b>.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/RpcPort:&lt;Port number&gt;] </p>
+							</td>
+							<td colspan="1">
+								<p>Specifies the TCP port number to be used to service client requests.</p>
+							</td>
+						</tr><tr>
+							<td>
+								<p>[/PxePromptPolicy]</p>
+							</td>
+							<td>
+								<p>Configures how known (prestaged) and new clients initiate a PXE boot. This option only applies to Windows Server 2008 R2. You set the settings using the following options:</p>
+								<ul><li class="unordered">
+										[/Known:{OptIn|OptOut|NoPrompt}]  - Sets the policy for prestaged clients. <br><br>
+									</li><li class="unordered">
+										[/New:{OptIn|OptOut|NoPrompt}] - Sets the policy for new clients. <br><br>
+									</li></ul>
+								<p> <b>OptIn</b> means the client needs to press a key in order to PXE boot, otherwise it will fall back to the next boot device. </p>
+								<p>
+									<b>NoPrompt</b> means the client will always PXE Boot.</p>
+								<p>
+									<b>OptOut</b> means the client will PXE boot unless the Esc key is pressed.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/BootProgram:&lt;Relative path&gt;] /Architecture:{x86 | ia64 | x64}</p>
+							</td>
+							<td colspan="1">
+								<p>Specifies the relative path to the boot program in the RemoteInstall folder (for example, <b>boot\x86\pxeboot.n12</b>), and specifies the architecture of the boot program. </p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/N12BootProgram:&lt;Relative path&gt;] /Architecture:{x86 | ia64 | x64}</p>
+							</td>
+							<td colspan="1">
+								<p>Specifies the relative path to the boot program that does not require pressing the F12 key (for example, <b>boot\x86\pxeboot.n12</b>), and specifies the architecture of the boot program. </p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/BootImage:&lt;Relative path&gt;] /Architecture:{x86 | ia64 | x64}</p>
+							</td>
+							<td colspan="1">
+								<p>Specifies the relative path to the boot image that booting clients should receive, and specifies the architecture of the boot image. You can specify this for each architecture.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/PreferredDC:&lt;DC Name&gt;] </p>
+							</td>
+							<td colspan="1">
+								<p>Specifies the name of the domain controller that Windows Deployment Services should use. This can be either the NetBIOS name or the FQDN.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/PreferredGC:&lt;GC Name&gt;] </p>
+							</td>
+							<td colspan="1">
+								<p>Specifies the name of the global catalog server that Windows Deployment Services should use. This can be either the NetBIOS name or the FQDN.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/PrestageUsingMAC:{Yes | No}] </p>
+							</td>
+							<td colspan="1">
+								<p>Specifies whether Windows Deployment Services, when creating computer accounts in AD DS, should use the MAC address rather than the GUID/UUID to identify the computer.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/NewMachineNamingPolicy:&lt;Policy&gt;]   </p>
+							</td>
+							<td colspan="1">
+								<p>Specifies the format to use when generating computer names for clients. For information about the format to use for &lt;policy&gt;, right-click the server in the MMC snap-in, click  <b>Properties</b>, and view the <b>Directory Services</b> tab. For example, <b>/NewMachineNamingPolicy: %61Username%#</b>.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/NewMachineOU] </p>
+							</td>
+							<td colspan="1">
+								<p>Used to specify the location in AD DS where client computer accounts will be created. You specify the location using the following options.</p>
+								<ul><li class="unordered">
+										[/Type: ServerDomain | UserDomain | UserOU | Custom ] – Specifies the type of location. <b>ServerDomain</b> creates accounts in the same domain as the Windows Deployment Services server. <b>UserDomain</b> creates accounts in the same domain as the user performing the installation. <b>UserOU</b> creates accounts in the organizational unit of the user performing the installation. <b>Custom</b> allows you to specify a custom location (you must also specify a value for <b>/OU</b> with this option).<br><br>
+									</li><li class="unordered">
+										[/OU:&lt;Domain name of OU&gt;] - If you specify <b>Custom</b> for the <b>/Type</b> option, this option specifies the organizational unit where computer accounts should be created.<br><br>
+									</li></ul>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/DomainSearchOrder:{GCOnly | DCFirst}] </p>
+							</td>
+							<td colspan="1">
+								<p>Specifies the policy for searching computer accounts in AD DS (global catalog or domain controller).</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/NewMachineDomainJoin:{Yes | No}] </p>
+							</td>
+							<td colspan="1">
+								<p>Specifies whether or not a computer that is not already prestaged in AD DS should be joined to the domain during installation. The default setting is <b>Yes</b>.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/WdsClientLogging]</p>
+							</td>
+							<td colspan="1">
+								<p>Specifies the logging level for the server.</p>
+								<ul><li class="unordered">
+										[/Enabled:{Yes | No}] - Enables or disables logging of Windows Deployment Services client actions.<br><br>
+									</li><li class="unordered">
+										[/LoggingLevel: {None | Errors | Warnings | Info} - Sets the logging level. <b>None</b> is equivalent to disabling logging. <b>Errors</b> is the lowest level of logging and indicates that only errors will be logged. <b>Warnings</b> includes both warnings and errors. <b>Info</b> is the highest level of logging and includes errors, warnings, and informational events.<br><br>
+									</li></ul>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/WdsUnattend] </p>
+							</td>
+							<td colspan="1">
+								<p>These settings control the unattended installation behavior of Windows Deployment Services client. You set the settings using the following options:</p>
+								<ul><li class="unordered">
+										[/Policy:{Enabled | Disabled}] - Specifies whether or not unattended installation is used.<br><br>
+									</li><li class="unordered">
+										[/CommandlinePrecedence: {Yes | No}] - Specifies whether an Autounattend.xml file (if present on the client) or an unattended setup file that was passed directly to the Windows Deployment Services client with the /Unattend option will be used instead of an image unattend file during a client installation. The default setting is <b>No</b>.<br><br>
+									</li><li class="unordered">
+										[/File:&lt;Relative path&gt; /Architecture:{x86 | ia64 | x64}] - Specifies the file name, path, and architecture of the unattend file.<br><br>
+									</li></ul>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/AutoAddPolicy] </p>
+							</td>
+							<td colspan="1">
+								<p>These settings control the Auto-Add policy. You define the settings using the following options:</p>
+								<ul><li class="unordered">
+										[/Policy: {AdminApproval | Disabled}] - <b>AdminApprove</b> causes all unknown computers to be added to a pending queue, where the administrator can then review the list of computers and approve or reject each request, as appropriate. <b>Disabled</b> indicates that no additional action is taken when an unknown computer attempts to boots to the server.<br><br>
+									</li><li class="unordered">
+										[/PollInterval:{Time in seconds}] - Specifies the interval (in seconds) at which the network boot program should poll the Windows Deployment Services server.<br><br>
+									</li><li class="unordered">
+										[/MaxRetry: &lt;Number&gt;] - Specifies the number of times the network boot program should poll the Windows Deployment Services server. This value, along with <b>/PollInterval</b>, dictates how long the network boot program will wait for an administrator to approve or reject the computer before timing out. For example, a <b>MaxRetry</b> value of 10 and a <b>PollInterval</b> value of 60 would indicate that the client should poll the server 10 times, waiting 60 seconds between tries. Therefore, the client would time out after 10 minutes (10 x 60 seconds = 10 minutes).<br><br>
+									</li><li class="unordered">
+										[/Message: &lt;Message&gt;] - Specifies the message that is displayed to the client on the network boot program dialog page.<br><br>
+									</li><li class="unordered">
+										[/RetentionPeriod] - Specifies the number of days a computer can be in a pending state before being automatically purged.<br><br>
+									</li><li class="unordered">
+										[/Approved: &lt;Time in days&gt;] - Specifies the retention period for approved computers. You must use this parameter with the <b>/RetentionPeriod</b> option.<br><br>
+									</li><li class="unordered">
+										[/Others: &lt;Time in days&gt;] - Specifies the retention period for unapproved computers (rejected or pending). You must use this parameter with the <b>/RetentionPeriod</b> option.<br><br>
+									</li></ul>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/AutoAddSettings] </p>
+							</td>
+							<td colspan="1">
+								<p>Specifies the default settings to be applied to each computer. You define the settings using the following options:</p>
+								<ul><li class="unordered">
+										/Architecture: {x86 | ia64 | x64} - Specifies the architecture.<br><br>
+									</li><li class="unordered">
+										[/BootProgram: &lt;Relative path&gt;] - Specifies the boot program sent to the approved computer. If no boot program is specified, the default for the architecture of the computer (as specified on the server) will be used.<br><br>
+									</li><li class="unordered">
+										[/WdsClientUnattend: &lt;Relative path&gt;] - Sets the relative path to the unattend file that the approved client should receive.<br><br>
+									</li><li class="unordered">
+										[/ReferralServer: &lt;Server name&gt;] - Specifies the Windows Deployment Services server that the client will use to download images.<br><br>
+									</li><li class="unordered">
+										[/BootImage: &lt;Relative path&gt;] - Specifies the boot image that the approved client will receive.<br><br>
+									</li><li class="unordered">
+										[/User: &lt;Domain\User | User@Domain&gt;] - Sets permissions on the computer account object to give the specified user the necessary rights to join the computer to the domain.<br><br>
+									</li><li class="unordered">
+										[/JoinRights: {JoinOnly | Full}] - Specifies the type of rights to be assigned to the user. <b>JoinOnly</b> requires the administrator to reset the computer account before the user can join the computer to the domain. <b>Full</b> gives full access to the user, including the right to join the computer to the domain.<br><br>
+									</li><li class="unordered">
+										[/JoinDomain: {Yes | No}] - Specifies whether or not the computer should be joined to the domain as this computer account during a Windows Deployment Services installation. The default setting is <b>Yes</b>.<br><br>
+									</li></ul>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/BindPolicy]</p>
+							</td>
+							<td colspan="1">
+								<p>Configures the network interfaces for the PXE provider to listen on. You define the policy using the following options:</p>
+								<ul><li class="unordered">
+										[/Policy: {Include | Exclude}] - Sets the interface bind policy to include or exclude the addresses on the interface list.<br><br>
+									</li><li class="unordered">
+										[/Add] - Adds an interface to the list. You must also specify /AddressType and /Address.<br><br>
+									</li><li class="unordered">
+										[/Remove] - Removes an interface from the list. You must also specify /AddressType and /Address.<br><br>
+									</li><li class="unordered">
+										/Address:&lt;IP or MAC address&gt; - Specifies the IP or MAC address of the interface to add or remove.<br><br>
+									</li><li class="unordered">
+										/AddressType: {IP | MAC} - Indicates the type of address specified in the <b>/Address</b> option.<br><br>
+									</li></ul>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/RefreshPeriod: &lt;seconds&gt;]</p>
+							</td>
+							<td colspan="1">
+								<p>Specifies how often (in seconds) the server will refreshes its settings.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/BannedGuidPolicy]</p>
+							</td>
+							<td colspan="1">
+								<p>Manages the list of banned GUIDs using the following options:</p>
+								<ul><li class="unordered">
+										[/Add] /Guid:&lt;GUID&gt; - Adds the specified GUID to the list of banned GUIDs. Any client with this GUID will be identified by its MAC address instead.<br><br>
+									</li><li class="unordered">
+										[/Remove] /Guid:&lt;GUID&gt; - Removes the specified GUID from the list of banned GUIDs.<br><br>
+									</li></ul>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/BcdRefreshPolicy]</p>
+							</td>
+							<td colspan="1">
+								<p>Configures the settings for refreshing BCD files using the following options:</p>
+								<ul><li class="unordered">
+										[/Enabled:{Yes | No}] - Specifies the BCD refreshing policy. When <b>/Enabled</b> is set to <b>Yes</b>, BCD files are refreshed at the specified time interval.<br><br>
+									</li><li class="unordered">
+										[/RefreshPeriod:&lt;Time in minutes&gt;] - Specifies the time interval at which BCD files are refreshed.<br><br>
+									</li></ul>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/Transport]</p>
+							</td>
+							<td colspan="1">
+								<p>Configures the following options:</p>
+								<ul><li class="unordered">
+										[/ObtainIpv4From: {Dhcp | Range}] - Specifies the source of IPv4 addresses.<br><br>
+										<ul><li class="unordered">
+												[/Start: &lt;Starting Ipv4 address&gt;] - Specifies the start of the IP address range. This option is required and valid only if <b>/ObtainIpv4From</b> is set to <b>Range</b> <br><br>
+											</li><li class="unordered">[/End: &lt;Ending Ipv4 address&gt;] - Specifies the end of the IP address range. This option is required and valid only if <b>/ObtainIpv4From</b> is set to <b>Range</b>.<br><br></li></ul>
+									</li><li class="unordered">
+										[/ObtainIpv6From:Range] [/Start:&lt;Start IP Address&gt;] [/End:&lt;End IP Address&gt;] –Specifies the source of IPv6 addresses. This option only applies to Windows Server 2008 R2 and the only supported value is Range. <br><br>
+									</li><li class="unordered">
+										[/StartPort: &lt;Starting port&gt;] - Specifies the start of the port range.<br><br>
+									</li><li class="unordered">
+										 [/EndPort: &lt;Ending port&gt;] - Specifies the end of the port range.<br><br>
+									</li><li class="unordered">
+										[/Profile: {10Mbps | 100Mbps | 1Gbps | Custom}] - Specifies the network profile to be used. This option is only supported for servers running Windows Server 2008. <br><br>
+									</li><li class="unordered">
+										[/MulticastSessionPolicy]– Configures the transfer settings for multicast transmissions. This command is only available for Windows Server 2008 R2. <br><br>
+										<ul><li class="unordered">
+												[/Policy:{None | AutoDisconnect | Multistream}] - Determines how to handle slow clients. None means to keep all clients in one session at the same speed. AutoDisconnect means that any clients that drop below the specified /Threshold will be disconnected. Multistream means clients will be separated into multiple sessions as specified by /StreamCount.<br><br>
+											</li><li class="unordered">
+												[/Threshold:&lt;Speed in KBps&gt;] - For /Policy:AutoDisconnect, this option sets the minimum transfer rate in KBps. Clients that drop below this rate will be disconnected from multicast transmissions.<br><br>
+											</li><li class="unordered">
+												[/StreamCount:{2 | 3}] [/Fallback:{Yes | No}] - For /Policy:Multistream, this option determines the number of sessions. 2 means two sessions (fast and slow) 3 means three sessions (slow, medium, fast).<br><br>
+											</li><li class="unordered">
+												[/Fallback:{Yes | No}] - Determines whether clients that are disconnected will continue the transfer using another method (if supported by the client). If you are using the WDS client, the computer will fallback to unicasting. Wdsmcast.exe does not support a fallback mechanism. This option also applies to clients that do not support Multistream. In that case, the computer will fall back to another method instead of moving to a slower transfer session.<br><br>
+											</li></ul>
+									</li></ul>
+							</td>
+						</tr></table>
+				</content></div><a name="BKMK_examples"></a><a name="da55c29d-a94a-4d73-877b-af480f906ca0#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">To set the server to answer only known clients, with a response delay of 4 minutes, type:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>WDSUTIL /Set-Server /AnswerClients:Known /ResponseDelay:4</pre></td></tr></table></span></div>
+					<p xmlns="">To set the boot program and architecture for the server, type:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>WDSUTIL /Set-Server /BootProgram:boot\x86\pxeboot.n12 /Architecture:x86</pre></td></tr></table></span></div>
+					<p xmlns="">To enable logging on the server, type:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>WDSUTIL /Set-Server /WdsClientLogging /Enabled:Yes /LoggingLevel:Warnings</pre></td></tr></table></span></div>
+					<p xmlns="">To enable unattend on the server, as well as the architecture and the client unattend file, type:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>WDSUTIL /Set-Server /WdsUnattend /Policy:Enabled /File:WDSClientUnattend \unattend.xml /Architecture:x86</pre></td></tr></table></span></div>
+					<p xmlns="">To set the Pre-Boot Execution Environment (PXE) server to attempt to bind to TCP ports 67 and 60, type: </p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>WDSUTIL /Set-server /UseDhcpPorts:No /DhcpOption60:Yes</pre></td></tr></table></span></div>
+				</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+						</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<p xmlns="">
+										<a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a>
+									</p>
+									<p xmlns="">
+										<a href="b69fcfe0-b744-4794-bc75-2c9218c0ba66.htm">/disable-Server</a>
+									</p>
+									<p xmlns="">
+										<a href="939ffbfb-cf3c-4310-9627-6e7e0c0644d6.htm">/enable-Server</a>
+									</p>
+									<p xmlns="">
+										<a href="bef60db4-d58d-4304-ab4b-be53dd3271c3.htm">/get-Server</a>
+									</p>
+									<p xmlns="">
+										<a href="68a26ad9-5eb2-4490-b782-b7cd46b8000d.htm">/initialize-Server</a>
+									</p>
+									<p xmlns="">
+										<a href="1e4343e2-0a16-4e65-8769-c09adaef5680.htm">/start-Server</a>
+									</p>
+									<p xmlns="">
+										<a href="09f411c0-099f-4591-95fd-b77b3fd9118a.htm">/stop-Server</a>
+									</p>
+									<p xmlns="">
+										<a href="015efb04-fe84-469f-bd81-49d0046296b2.htm">/uninitialize-Server</a>
+									</p>
+								</content></div>
+						</sections></div>
+				</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

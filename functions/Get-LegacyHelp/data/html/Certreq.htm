@@ -1,0 +1,207 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Certreq</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Certreq</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008,Windows Vista</p>
+<p>Certreq can be used to request certificates from a certification authority (CA), to retrieve a response to a previous request from a CA, to create a new request from an .inf file, to accept and install a response to a request, to construct a cross-certification or qualified subordination request from an existing CA certificate or request, and to sign a cross-certification or qualified subordination request. </p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>Certreq [-submit] [-retrieve RequestID] [-new] [-accept] [-policy]
+[-sign] [-attrib AttributeString] [-binary]
+[-config CAMachineName\CAName] [-crl] [-rpc] [-cert CertID]
+[RequestFileIn | CertChainFileIn | FullResponseFileIn | CertFileIn | PolicyFileIn]
+[RequestFileOut | CertChainFileOut | FullResponseFileOut | CertFileOut | PKCS10FileOut]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameters
+</th>
+<th colspan="1">
+Description 
+</th></tr><tr>
+<td colspan="1">
+<p>-submit</p>
+</td>
+<td colspan="1">
+<p>Submits a request to a CA.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-retrieve RequestID</p>
+</td>
+<td colspan="1">
+<p>Retrieves a response to a previous request from a CA.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-new</p>
+</td>
+<td colspan="1">
+<p>Creates a new request from an .inf file.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-accept </p>
+</td>
+<td colspan="1">
+<p>Accepts and installs a response to a certificate request.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-policy</p>
+</td>
+<td colspan="1">
+<p>Sets the policy for a request.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-sign</p>
+</td>
+<td colspan="1">
+<p>Signs a cross-certification or qualified subordination request.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-attrib AttributeString</p>
+</td>
+<td colspan="1">
+<p>Specifies the Name and Value string pairs, separated by a colon. </p>
+
+<p>Separate Name and Value string pairs with \n (for example, Name1:Value1\nName2:Value2).</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-binary </p>
+</td>
+<td colspan="1">
+<p>Formats output files as binary instead of base64-encoded.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-config CAMachineName\CAName</p>
+</td>
+<td colspan="1">
+<p>Processes the operation by using the CA specified in the configuration string, which is CAMachineName\CAName.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-crl </p>
+</td>
+<td colspan="1">
+<p>Includes certificate revocation lists (CRLs) in the output to the base64-encoded PKCS #7 file specified by CertChainFileOut or to the base64-encoded file specified by RequestFileOut.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-rpc</p>
+</td>
+<td colspan="1">
+<p>Instructs Active Directory Certificate Services (AD CS) to use a remote procedure call (RPC) server connection instead of Distributed COM.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-cert CertID </p>
+</td>
+<td colspan="1">
+<p>Specifies the signing certificate by common name, serial number, Secure Hash Algorithm (SHA-1) key, or certificate hash.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>CertChainFileIn </p>
+</td>
+<td colspan="1">
+<p>Specifies the base64-encoded or binary certificate chain input file that you want to use.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>FullResponseFileIn </p>
+</td>
+<td colspan="1">
+<p>Specifies the base64-encoded or binary full response input file that you want to use.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>CertFileIn </p>
+</td>
+<td colspan="1">
+<p>Specifies the base64-encoded or binary certificate input file that you want to use.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>RequestFileIn </p>
+</td>
+<td colspan="1">
+<p>Specifies the base64-encoded or binary input file that you want to use. </p>
+
+<p>The file can be a PKCS #10 certificate request, a PKCS #7 certificate renewal request, a KEYGEN tag format certificate request, a Certificate Management protocol using Cryptographic Message Syntax (CMS) request (this protocol is also known as CMC), or a certificate file of the CA that you want to cross-certify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>PolicyFileIn </p>
+</td>
+<td colspan="1">
+<p>Specifies the .inf input file that contains the extension definitions that you want to use to qualify a request.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>RequestFileOut </p>
+</td>
+<td colspan="1">
+<p>Specifies the base64-encoded file to which you want to send output.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>PKCS10FileOut </p>
+</td>
+<td colspan="1">
+<p>Specifies the base64-encoded PKCS #10 file to which you want to send output.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>CertFileOut</p>
+</td>
+<td colspan="1">
+<p>Specifies the binary or base64-encoded X.509 v3 file to which you want to send output.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>CertChainFileOut</p>
+</td>
+<td colspan="1">
+<p>Specifies the binary or base64-encoded PKCS #7 file to which you want to send output.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>FullResponseFileOut</p>
+</td>
+<td colspan="1">
+<p>Specifies the binary or base64-encoded full response file to which you want to send output.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-? </p>
+</td>
+<td colspan="1">
+<p>Displays a list of certreq commands.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+You must specify the <i>CAComputerName</i> or <i>CAName</i> in <b>-config <i>CAComputerName</i>\<i>CAName</i></b>. Otherwise, the Select Certificate Authority dialog box appears and displays a list of all CAs that are available.<br><br>
+</li><li class="unordered">
+If you use <b>-config -</b> instead of <b>-config <i>CAComputerName</i>\<i>CAName</i></b>, the operation is processed using the default CA.<br><br>
+</li><li class="unordered">
+You can use <code>certreq -retrieve RequestID</code> to retrieve the certificate after the CA has actually issued it. You can also use this command to retrieve any certificate that has ever been issued by the CA, including revoked or expired certificates, without regard to whether the certificate's request was ever in the pending state.<br><br>
+</li><li class="unordered">
+If you submit a request to the CA, the policy module of the CA might leave the request in a pending state and return the <code>RequestID</code> for display. Eventually, the CA's administrator will issue the certificate or deny the request.<br><br>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="3064554b-4c97-4bc4-96a6-38e3443a579f#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">You can use this example to submit a request to a CA.</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>certreq -submit [-attrib AttributeString] [-binary] [-config CAMachineName\CAName] [-crl] [-rpc]
+[RequestFileIn [CertFileOut [CertChainFileOut [FullResponseFileOut]]]]</pre></td></tr></table></span></div>
+
+<p xmlns="">You can use this example to retrieve a response to a previous request from a CA.</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>certreq -retrieve [-binary] [-config CAMachineName\CAName] [-crl]
+[-rpc] RequestID [CertFileOut [CertChainFileOut [FullResponseFileOut]]]</pre></td></tr></table></span></div>
+
+<p xmlns="">You can use this example to create a new request from an .inf file.</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>certreq -new [-attrib AttributeString] [-binary] [-cert CertID] [PolicyFileIn [RequestFileOut]] </pre></td></tr></table></span></div>
+
+<p xmlns="">You can use this example to accept and install a response to a certificate request.</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>certreq -accept [{CertChainFileIn | FullResponseFileIn | CertFileIn}]</pre></td></tr></table></span></div>
+
+<p xmlns="">You can use this example to construct a cross-certification or qualified subordination request from an existing CA certificate or request.</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>certreq -policy [-attrib AttributeString] [-binary] [-cert CertID] [RequestFileIn [PolicyFileIn [RequestFileOut [PKCS10FileOut]]]] 
+</pre></td></tr></table></span></div>
+
+<p xmlns="">You can use this example to sign a cross-certification or qualified subordination request.</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>certreq -sign [-binary] [-certCertID] [-crl]
+[RequestFileIn [RequestFileOut]]</pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

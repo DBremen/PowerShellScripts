@@ -1,0 +1,109 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Dsrm</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Dsrm</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008,Windows Server 2003 with SP1,Windows Server 2003 R2,Windows Server 2003</p>
+<p>Deletes an object of a specific type or any general object from the directory.</p>
+
+<p><b>Dsrm</b> is a command-line tool that is built into Windows Server 2008. It is available if you have the Active Directory Domain Services (AD DS) or Active Directory Lightweight Directory Services (AD LDS) server role installed. To use <b>dsrm</b>, you must run the <b>dsrm</b> command from an elevated command prompt. To open an elevated command prompt, click <b>Start</b>, right-click <b>Command Prompt</b>, and then click <b>Run as administrator</b>. </p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>dsrm &lt;ObjectDN&gt; ... [-subtree [-exclude]] [-noprompt] [{-s &lt;Server&gt; | -d &lt;Domain&gt;}] [-u &lt;UserName&gt;] [-p {&lt;Password&gt; | *}][-c][-q][{-uc | -uco | -uci}]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>&lt;ObjectDN&gt; </p>
+</td>
+<td colspan="1">
+<p>Required. Specifies the distinguished names of objects to delete. If no value is entered at the command prompt, the value will be obtained through standard input.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-subtree [-exclude] </p>
+</td>
+<td colspan="1">
+<p>Specifies that both the object and all objects contained in the subtree under that object should be deleted. If you specify the <b>-exclude</b> parameter, you must also specify the <b>-subtree</b> parameter. When you specify both parameters, <b>dsrm</b> excludes from deletion the base object that the &lt;ObjectDN&gt; parameter supplies when it deletes the objects under the subtree. By default, <b>dsrm</b> deletes only the base object specified.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-noprompt </p>
+</td>
+<td colspan="1">
+<p>Sets the optional silent mode, which prevents prompts that ask you to confirm deletion of each object. By default, <b>dsrm</b> prompts you to confirm each deletion.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>{-s &lt;Server&gt; | -d &lt;Domain&gt;} </p>
+</td>
+<td colspan="1">
+<p>Connects a computer to a remote server or domain that you specify. By default, <b>dsrm</b> connects the computer to the domain controller in the logon domain.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-u &lt;UserName&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the user name with which the user logs on to a remote server. By default, <b>-u</b> uses the user name with which the user logged on. You can use any of the following formats to specify a user name: </p>
+
+<ul><li class="unordered">
+user name (for example, Linda)<br><br>
+</li><li class="unordered">
+domain\user name (for example, widgets\Linda)<br><br>
+</li><li class="unordered">
+user principal name (UPN) (for example, Linda@widgets.contoso.com)<br><br>
+</li></ul>
+</td></tr><tr>
+<td colspan="1">
+<p>-p {&lt;Password&gt; | *} </p>
+</td>
+<td colspan="1">
+<p>Specifies to use either a password or an asterisk (*) to log on to a remote server. If you type <b>*</b>, <b>dsrm</b> prompts you for a password.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-c </p>
+</td>
+<td colspan="1">
+<p>Reports errors, but continues with the next object in the argument list when you specify multiple target objects (continuous operation mode). If you do not supply this parameter, <b>dsrm</b> exits when the first error occurs.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-q </p>
+</td>
+<td colspan="1">
+<p>Suppresses all output to standard output (quiet mode).</p>
+</td></tr><tr>
+<td colspan="1">
+<p>{-uc | -uco | -uci} </p>
+</td>
+<td colspan="1">
+<p>Specifies that <b>dsrm</b> formats output or input data in Unicode. The following list explains each format. </p>
+
+<ul><li class="unordered"><b>-uc</b>: Specifies a Unicode format for input from or output to a pipe (|).<br><br></li><li class="unordered"><b>-uco </b>: Specifies a Unicode format for output to a pipe (|) or a file.<br><br></li><li class="unordered"><b>-uci</b>: Specifies a Unicode format for input from a pipe (|) or a file.<br><br></li></ul>
+</td></tr><tr>
+<td colspan="1">
+<p>/? </p>
+</td>
+<td colspan="1">
+<p>Displays help at the command prompt.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+If a value that you supply contains spaces, use quotation marks around the text, for example, "CN=Mike Danseglio,CN=Users,DC=Contoso,DC=Com".<br><br>
+</li><li class="unordered">
+If you supply multiple values for a parameter, use spaces to separate the values, for example, a list of distinguished names.<br><br>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="ae1694e1-c091-485e-8f0d-a0cd5b4a2c72#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">To remove an organizational unit (OU) named Marketing and all the objects under that OU, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>dsrm -subtree -noprompt -c OU=Marketing,DC=Contoso,DC=Com </pre></td></tr></table></span></div>
+
+<p xmlns="">To remove all objects under an OU named Marketing, but leave the OU intact, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>dsrm -subtree -exclude -noprompt -c "OU=Marketing,DC=Contoso,DC=Com" </pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

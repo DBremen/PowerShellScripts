@@ -1,0 +1,104 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Repadmin /replicate</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Repadmin /replicate</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2003 with SP1,Windows Server 2008 R2,Windows Server 2008,Windows Server 2003 R2,Windows Server 2003 with SP2,Windows Server 2003</p>
+<p>Triggers the immediate replication of the specified directory partition to a destination domain controller from a source domain controller.</p>
+
+<p>The <b>/replicate</b> command tests replication success after you remove suspected fault conditions without waiting for the replication schedule to open. </p>
+
+<p>You can refer to the source or destination domain controller in any of the following ways:</p>
+
+<ul><li class="unordered">
+By its single-label host name<br><br>
+</li><li class="unordered">
+By its fully qualified host name <br><br>
+</li><li class="unordered">
+By the globally unique identifier (GUID) that is assigned to the <b>NTDS Settings</b> object for the domain controller<br><br>
+</li></ul>
+
+<p>You can obtain the GUID for the directory system agent (DSA) object from the header of the output of the following command: </p>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>repadmin /showrepl &lt;<i>name of domain controller</i>&gt;. </pre></td></tr></table></span></div>
+
+<p>The computer where you run Repadmin, the destination domain controller, and the source domain controller must use the same network protocols that are used by the relevant connection object and have network connectivity over the same ports that are used by that connection object.</p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>repadmin /replicate &lt;Dest_DSA_List&gt; &lt;Naming Context&gt; /allsources [/force] [/async] [/full] [/addref] [/readonly]
+repadmin /replicate &lt;Dest_DSA_List&gt; &lt;Source_DSA_Name&gt; &lt;Naming Context&gt; [/force]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>&lt;Dest_DSA_List&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the single-label host name of a domain controller or a list of domain controllers that are separated in the list by single spaces. For detailed syntax, see <a href="24cf60ff-6fae-428e-967a-5c24f5f80d31.htm">Repadmin</a>.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;Source_DSA_Name&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the host name of a source domain controller.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/allsources</p>
+</td>
+<td colspan="1">
+<p>Specifies that replication on the destination domain controllers occurs with all replication partners. </p>
+<div class="alert"><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>In Windows Server 2008 R2, the <b>/allsources</b> parameter is deprecated. <p></td></tr></table><p></div></td></tr><tr>
+<td colspan="1">
+<p>/force</p>
+</td>
+<td colspan="1">
+<p>Allows the caller to override connections that an administrator has disabled by using <b>repadmin /options</b> and allows replication with corrupt and divergent partners. Do not use this parameter if you suspect that Update Sequence Number (USN) Rollback has occurred.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/async</p>
+</td>
+<td colspan="1">
+<p>Specifies that replication is asynchronous. That is, Repadmin starts the replication event, but it does not expect an immediate response from the destination domain controller. Use this parameter to start the KCC, if you do not want to wait for KCC to finish.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/full</p>
+</td>
+<td colspan="1">
+<p>Requests that the source domain controller replicate all changes again for the specified partition. This command resets the up-to-dateness vector (UTDVEC) and the high watermark </p>
+
+<p>This parameter does not remove lingering objects on the destination domain controller.</p>
+
+<p>Do not use this parameter if you suspect USN Rollbacks has occurred.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/addref</p>
+</td>
+<td colspan="1">
+<p>Enables change notification between the source and destination domain controllers.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/readonly</p>
+</td>
+<td colspan="1">
+<p>Specifies that the destination domain controller holds a read-only copy of the partition that is replicated.</p>
+</td></tr></table>
+</content></div><a name="BKMK_examples"></a><a name="d244301a-994a-4c2e-9049-e416908385d7#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">The following example replicates the Contoso naming context from source-dc01 to dest-dc01:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>repadmin /replicate dest-dc01 source-dc01 DC=contoso,DC=com</pre></td></tr></table></span></div>
+
+<p xmlns="">The following command replicates the Mayberry naming context from source-dc01 to dest-dc01 and specifies that the naming context is read-only on the destination domain controller:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>repadmin /replicate dest-dc01 source-dc01 DC=Mayberry,DC=contoso,DC=com /readonly</pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+
+<p xmlns=""><a href="24cf60ff-6fae-428e-967a-5c24f5f80d31.htm">Repadmin</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

@@ -1,0 +1,166 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>partition management</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">partition management</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2003 R2,Windows Server 2003 R2,Windows Server 2003,Windows Server 2003,Windows Server 2003 with SP1,Windows Server 2003 with SP1,Windows Server 2008,Windows Server 2008</p>
+				<p>Manages directory partitions for Active Directory Domain Services (AD DS) or Active Directory Lightweight Directory Services (AD LDS). </p>
+				<p>This is a subcommand of Ntdsutil and Dsmgmt. Ntdsutil and Dsmgmt are command-line tools that are built into Windows Server 2008 and Windows Server 2008 R2. Ntdsutil is available if you have the AD DS or AD LDS server role installed. Dsmgmt is available if you have the AD LDS server role installed. These tools are also available if you install the Active Directory Domain Services Tools that are part of the Remote Server Administration Tools (RSAT). For more information, see <a href="http://go.microsoft.com/fwlink/?LinkID=177813" alt="" target="_blank"><linktext xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">How to Administer Microsoft Windows Client and Server Computers Locally and Remotely</linktext></a> (http://go.microsoft.com/fwlink/?LinkID=177813).  </p>
+				<p>To use either of these tools, you must run them from an elevated command prompt. To open an elevated command prompt, click <b>Start</b>, right-click <b>Command Prompt</b>, and then click <b>Run as administrator</b>.</p>
+				<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+			<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>connections
+[select operation target] [add nc replica %s1 %s2] [create nc %s1 %s2] [create nc %s1 %s2 %s3] [delete nc %s] [list] [list nc information %s] [list nc replicas %s] [precreate %s1 %s2] [remove nc replica %s1 %s2] [set nc reference domain %s1 %s2] [set nc replication notification delay %s %d1 %d2]</pre></td></tr></table></span></div>
+				</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+								<th colspan="1">
+									Parameter
+								</th>
+								<th colspan="1">
+									Description
+								</th>
+							</tr><tr>
+							<td colspan="1">
+								<p>add nc replica %s1 %s2</p>
+							</td>
+							<td colspan="1">
+								<p>Adds the Active Directory domain controller or AD LDS instance with full Domain Name System (DNS) name %s2 to the replica set for the application directory partition with distinguished name %s1. If you specify "NULL" for %s2, then this command uses the currently connected Active Directory domain controller or AD LDS instance. </p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>connections</p>
+							</td>
+							<td colspan="1">
+								<p>Invokes the <b>server connections</b> submenu. See “Remarks” later in this topic for more information.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>create nc %s1 %s2</p>
+							</td>
+							<td colspan="1">
+								<p>Creates the application directory partition with distinguished name %s1, on the Active Directory domain controller or AD LDS instance with full DNS name %s2. If you specify "NULL" for %s2, this command uses the currently connected Active Directory domain controller. </p>
+								<p>Use this command only with AD DS. For AD LDS, use <b>create nc %s1 %s2 %s3</b>.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>create nc %s1 %s2 %s3</p>
+							</td>
+							<td colspan="1">
+								<p>Creates the AD LDS application directory partition with distinguished name %s1 of object class %s2 on a computer named %s3. You should annotate the %s3 value with the Lightweight Directory Access Protocol (LDAP) port number. For example, type <b>adam1.fabrikam.com:389</b>. </p>
+								<p>If you specify "NULL" for %s3, this command uses the currently connected AD LDS instance.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>delete nc %s</p>
+							</td>
+							<td colspan="1">
+								<p>Completely removes the application directory partition or precreated cross-reference with distinguished name %s from AD DS or AD LDS. </p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>list</p>
+							</td>
+							<td colspan="1">
+								<p>Lists known naming contexts. </p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>list nc information %s</p>
+							</td>
+							<td colspan="1">
+								<p>Shows the reference domain and replication delays for the application directory partition with distinguished name %s. </p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>list nc replicas %s</p>
+							</td>
+							<td colspan="1">
+								<p>Shows the list of Active Directory domain controllers or AD LDS instances in the replica set for the application directory partition with distinguished name %s.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>precreate %s1 %s2</p>
+							</td>
+							<td colspan="1">
+								<p>Precreates a cross-reference object for the domain or application directory partition with distinguished name %s1, allowing a server with DNS name %s2 to be promoted as an Active Directory domain controller for the domain or create the application directory partition.</p>
+								<p>This can also be used to precreate cross-reference objects for application directory partitions for AD LDS. For AD LDS, %2 should be hostname:ldapPort:ldapSslPort, such as <b>adam1.fabrikam.com:389:636</b>.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>remove nc replica %s1 %s2</p>
+							</td>
+							<td colspan="1">
+								<p>Deletes the AD DS or AD LDS instance with DNS name %s2 from the replica set of the application directory partition with distinguished name %s1. If you specify "NULL" for %s2, this command uses the currently connected Active Directory domain controller or AD LDS instance.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>select operation target</p>
+							</td>
+							<td colspan="1">
+								<p>Invokes the <b>Select operation target</b> submenu.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>set nc reference domain %s1 %s2 </p>
+							</td>
+							<td colspan="1">
+								<p>Sets the reference domain of application directory partition with distinguished name %s1 to domain with distinguished name %s2. </p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>set nc replication notification delay %s %d1 %d2</p>
+							</td>
+							<td colspan="1">
+								<p>Sets the notification delays of directory partition with distinguished name %s to %d1 and %d2 seconds, where %d1 is the delay between notifying the first Active Directory domain controller or AD LDS instance of changes and %d2 is the delay of notifying subsequent Active Directory domain controllers or AD LDS instances of changes. If you specify -1 in either #d1 or %d2, this command will not modify the corresponding delay (in case you are trying to modify only one delay). If you specify any other negative number, the command will delete the delay. Delays are always set on the naming master.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>quit</p>
+							</td>
+							<td colspan="1">
+								<p>Takes you back to the previous menu, or exits the utility.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>?</p>
+							</td>
+							<td colspan="1">
+								<p>Displays Help at the command prompt.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>Help</p>
+							</td>
+							<td colspan="1">
+								<p>Displays Help at the command prompt.</p>
+							</td>
+						</tr></table>
+				</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<ul xmlns=""><li class="unordered">
+							Before you can run the DS behavior subcommand, connect to a specific AD Ds or AD LDS instance by using the <b>connections</b> parameter. <br><br>
+						</li><li class="unordered">
+							
+								Ntdsutil does not correctly handle special characters, such as the apostrophe character ('), that you can enter at the <b>ntdsutil:</b> prompt at the command line. In some situations, there may be an alternative workaround. For more information, see <a href="http://go.microsoft.com/fwlink/?LinkId=157320" alt="" target="_blank"><maml:linktext xmlns:maml="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">local roles</maml:linktext></a> (http://go.microsoft.com/fwlink/?LinkId=157320).
+							<br><br>
+						</li></ul>
+				</content></div><a name="BKMK_examples"></a><a name="8ee336a2-b784-4743-8500-8d224a372110#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">To create an application directory partition named AppPartition in the contoso.com domain, complete the following steps:</p>
+<ol class="ordered" xmlns=""><li>To open an elevated Command Prompt window, click <b>Start</b>, point to <b>All Programs</b>, click <b>Accessories</b>, right-click <b>Command Prompt</b>, and then click <b>Run as administrator</b>.<br><br></li><li>Type: <br><br><div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>ntdsutil
+</pre></td></tr></table></span></div></li><li>Type: <br><br><div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>Ac in ntds
+</pre></td></tr></table></span></div></li><li>Type: <br><br><div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>partition management
+</pre></td></tr></table></span></div></li><li>Type: <br><br><div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>connections
+</pre></td></tr></table></span></div></li><li>Type: <br><br><div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>Connect to server <i>DC_Name</i>
+</pre></td></tr></table></span></div></li><li>Type: <br><br><div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>quit
+</pre></td></tr></table></span></div></li><li>Type: <br><br><div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>list
+</pre></td></tr></table></span></div>The following partitions will be listed: <br><br>0 CN=Configuration,DC=Contoso,DC=com<br><br>1 DC=Contoso,DC=com<br><br>2 CN=Schema,CN=Configuration,DC=Contoso,DC=com<br><br>3 DC=DomainDnsZones,DC=Contoso,DC=com<br><br>4 DC=ForestDnsZones,DC=Contoso,DC=com<br><br>
+</li><li>At the <code>partition management</code> prompt, type: <br><br><div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>create nc dc=AppPartition,dc=contoso,dc=com ConDc1.contoso.com
+</pre></td></tr></table></span></div>
+</li><li>Run the <code>list</code> command again to refresh the list of partitions. <br><br></li></ol>
+
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+						</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<p xmlns="">
+										<a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a>
+									</p>
+<p xmlns=""><a href="c525f20d-fdcf-4da8-8450-cce9988bc811.htm">Dsmgmt</a></p><p xmlns=""><a href="199cebb9-967c-4307-a9d7-1c0bb50dc75b.htm">Ntdsutil</a></p><p xmlns=""><a href="b5416510-9aa5-44e4-8b4b-279dee264183.htm">authoritative restore</a></p><p xmlns=""><a href="f27dc4c0-0623-401b-b411-48acf995f595.htm">configurable settings</a></p><p xmlns=""><a href="baa9c5e1-0c26-4d57-8ca9-ff5b15c33d29.htm">DS behavior</a></p><p xmlns=""><a href="594c47bc-095d-465e-b7cb-3f0234350460.htm">files</a></p><p xmlns=""><a href="dc3722d8-b6de-4863-b456-1b17139caa42.htm">group membership evaluation</a></p><p xmlns=""><a href="c705e804-97d5-4a15-8d60-1ba09e5544e6.htm">ifm</a></p><p xmlns=""><a href="309950c8-5bfa-4b9e-b4a2-706ac63948ec.htm">LDAP policies</a></p><p xmlns=""><a href="aee69f2f-49bf-49cb-ac0b-eccc26423b1f.htm">local roles</a></p><p xmlns=""><a href="8ff66708-2ad0-4f52-982d-376a50a0e2dd.htm">metadata cleanup</a></p><p xmlns=""><a href="f74c0470-3b2d-422c-bbbc-385cf39ec175.htm">roles</a></p><p xmlns=""><a href="1a4153d9-eb6e-4c50-8063-eb4ce961c32c.htm">security account management</a></p><p xmlns=""><a href="16b6f806-20b9-47bd-92c5-5cd96645c3bf.htm">semantic database analysis</a></p><p xmlns=""><a href="66fbd855-b3ee-434f-b890-c96858da8178.htm">set DSRM password</a></p><p xmlns=""><a href="a4b0e355-cbd0-4f48-9484-877fad1789ec.htm">snapshot</a></p></content></div>
+						</sections></div>
+				</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

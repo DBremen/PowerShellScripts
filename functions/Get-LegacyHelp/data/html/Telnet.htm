@@ -1,0 +1,92 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Telnet</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Telnet</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows 7,Windows Server 2003 R2,Windows Vista,Windows Server 2003,Windows Server 2000,Windows XP,Windows Server 2008 R2,Windows Server 2008</p>
+				<p>Communicates with a computer running the Telnet Server service. For examples of how this command can be used, see <b>Examples</b>.</p>
+			<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>telnet [/a] [/e &lt;EscapeChar&gt;] [/f &lt;FileName&gt;] [/l &lt;UserName&gt;] [/t {vt100 | vt52 | ansi | vtnt}] [&lt;Host&gt; [&lt;Port&gt;]] [/?]</pre></td></tr></table></span></div>
+				</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<h3 class="subHeading" xmlns="">Parameters</h3><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+										<th>
+											Parameter
+										</th>
+										<th>
+											Description
+										</th>
+									</tr><tr>
+									<td>
+										<p>/a</p>
+									</td>
+									<td>
+										<p>Attempt automatic logon. Same as /l option except uses the currently logged on user’s name.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>/e &lt;EscapeChar&gt;</p>
+									</td>
+									<td>
+										<p>Escape character used to enter the Telnet client prompt.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>/f &lt;FileName&gt;</p>
+									</td>
+									<td>
+										<p>File name used for client side logging.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>/l &lt;UserName&gt;</p>
+									</td>
+									<td>
+										<p>Specifies the user name to log on with on the remote computer.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>/t {vt100 | vt52 | ansi | vtnt}</p>
+									</td>
+									<td>
+										<p>Specifies the terminal type. Supported terminal types are vt100, vt52, ansi, and vtnt.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>&lt;Host&gt; [&lt;Port&gt;]</p>
+									</td>
+									<td>
+										<p>Specifies the hostname or IP address of the remote computer to connect to, and optionally the TCP port to use (default is TCP port 23).</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>/?</p>
+									</td>
+									<td>
+										<p>Displays Help at the command prompt. Alternatively, you can type /h.</p>
+									</td>
+								</tr></table>
+						</content></div>
+				</sections></div><h2 class="heading">Remarks</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<ul xmlns=""><li class="unordered">
+							You must install the Telnet client software before you can run this command. For more information, see <b>Installing Telnet</b>.<br><br>
+						</li><li class="unordered">
+							You can run Telnet without parameters to enter the Telnet context, indicated by the Telnet prompt (<b>Microsoft Telnet&gt;</b>). From the Telnet prompt, you can use Telnet commands to manage the computer running the Telnet client.<br><br>
+						</li></ul>
+				</content></div><a name="BKMK_Examples"></a><a name="b70a6156-9413-4300-84ce-a34c467e2b4e#BKMK_Examples"></a><h2 class="heading">Examples</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">Use Telnet to connect to the computer running the Telnet Server Service at telnet.microsoft.com.</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>telnet telnet.microsoft.com</pre></td></tr></table></span></div>
+					<p xmlns="">Use Telnet to connect to the computer running the Telnet Server Service at telnet.microsoft.com on TCP port 44 and log the session activity in a local file called telnetlog.txt</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>telnet /f telnetlog.txt telnet.microsoft.com 44</pre></td></tr></table></span></div>
+				</content></div><h2 class="heading">Additional references</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<ul xmlns=""><li>
+							
+								<b>Installing Telnet</b>
+							<br><br>
+						</li><li>
+							
+								<b>Telnet Technical Reference</b>
+							<br><br>
+						</li><li>
+							
+								<a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a>
+							<br><br>
+						</li></ul>
+				</content></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

@@ -1,0 +1,453 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Netdom trust</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Netdom trust</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008,Windows Server 2008 R2</p>
+				<p>Establishes, verifies, or resets a trust relationship between domains.</p>
+				<p>
+					<b>Netdom</b> is a command-line tool that is built into Windows Server 2008 and Windows Server 2008 R2. It is available if you have the Active Directory Domain Services (AD DS) server role installed. It is also available if you install the Active Directory Domain Services Tools that are part of the Remote Server Administration Tools (RSAT). For more information, see <a href="http://go.microsoft.com/fwlink/?LinkID=177813" alt="" target="_blank"><linktext xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">How to Administer Microsoft Windows Client and Server Computers Locally and Remotely</linktext></a> (http://go.microsoft.com/fwlink/?LinkID=177813). </p>
+				<p>To use <b>netdom</b>, you must run the <b>netdom</b> command from an elevated command prompt. To open an elevated command prompt, click <b>Start</b>, right-click <b>Command Prompt</b>, and then click <b>Run as administrator</b>.</p>
+				<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+				<div class="alert"><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/Important.gif">Important </th></tr><tr><td>
+					
+						<b>Netdom</b> cannot be used to create a forest trust between two AD DS forests.  To create a cross forest trust between two AD DS forests, you can either use a scripting solution or the Active Directory Domains and Trusts snap-in. <p>
+				</td></tr></table><p></div>
+			<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>netdom trust &lt;TrustingDomainName&gt; {/d: | /domain:} &lt;TrustedDomainName&gt; [{/ud: | /userd:}[&lt;Domain&gt;\]&lt;User&gt; [{/pd: | /passwordd:}{&lt;Password&gt;|*}] [{/uo: | /usero:}&lt;User&gt;] [{/po: | /passwordo:}{&lt;Password&gt;|*}] [/verify] [/reset] [/passwordt:&lt;NewRealmTrustPassword&gt;] [/add [/realm]] [/remove [/force]] [/twoway] [/kerberos] [/transitive[:{YES|NO}]] [/oneside:{TRUSTED | TRUSTING}] [/force] [/quarantine[:{YES | NO}]] [/namesuffixes:&lt;TrustName&gt; [/togglesuffix:#]] [/EnableSIDHistory] [/ForestTRANsitive] [/SelectiveAUTH][/AddTLN][/AddTLNEX][/RemoveTLN] [/RemoveTLNEX][{/help | /?}]</pre></td></tr></table></span></div>
+				</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+								<th colspan="1">
+									Parameter
+								</th>
+								<th colspan="1">
+									Description
+								</th>
+							</tr><tr>
+							<td colspan="1">
+								<p>&lt;TrustingDomainName&gt; </p>
+							</td>
+							<td colspan="1">
+								<p>Specifies the name of the trusting domain.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>{/d: | /domain:}&lt;TrustedDomainName&gt;</p>
+							</td>
+							<td colspan="1">
+								<p>Specifies the name of the trusted domain. If you do not specify this parameter, then <b>netdom trust</b> uses the domain to which the current computer belongs.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>{/ud: | /userd:}[&lt;Domain&gt;\]&lt;User&gt;]</p>
+							</td>
+							<td colspan="1">
+								<p>Specifies the user account to use to make the connection with the domain that you specify in the <b>/d</b> or <b>/domain</b> parameter. If you do not specify this parameter, then <b>netdom trust</b> uses the current user account.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/pd:{&lt;Password&gt;|*}</p>
+							</td>
+							<td colspan="1">
+								<p>Specifies the password of the user account that you specify in the <b>/ud</b> or <b>/userd</b>: parameter. If you specify the value of this parameter as a wildcard character (*), this parameter prompts you for the password.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>{/uo: | /usero:}&lt;User&gt;</p>
+							</td>
+							<td colspan="1">
+								<p>Specifies the user account to use to make the connection with the trusting domain. If you do not specify this parameter, then <b>netdom trust</b> uses the current user account.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>{/po: | /passwordo:}{&lt;Password&gt;|*}</p>
+							</td>
+							<td colspan="1">
+								<p>Specifies the password of the user account that you specify in the <b>/uo</b> or <b>/usero</b> parameter. If you specify the value of this parameter as a wildcard character (*), this parameter prompts you for the password.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/verify</p>
+							</td>
+							<td colspan="1">
+								<p>Verifies the secure channel secrets upon which a specific trust relationship is based.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/reset</p>
+							</td>
+							<td colspan="1">
+								<p>Resets the trust secret between trusted domains or between the domain controller and the workstation.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/passwordt:&lt;NewRealmTrustPassword&gt;</p>
+							</td>
+							<td colspan="1">
+								<p>Specifies a new trust password. This parameter is valid only if you specify the <b>/add</b> parameter, and only if one of the domains that you specify is a non-Windows, Kerberos realm. You set the trust password on the Windows domain only, which means that you do not need credentials for the non-Windows domain.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/add</p>
+							</td>
+							<td colspan="1">
+								<p>Specifies to create a trust.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/realm</p>
+							</td>
+							<td colspan="1">
+								<p>Specifies to create the trust for a non-Windows, Kerberos realm. This parameter is valid only if you specify the <b>/add</b> and <b>/passwordt</b> parameters.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/remove</p>
+							</td>
+							<td colspan="1">
+								<p>Specifies to break a trust.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/force</p>
+							</td>
+							<td colspan="1">
+								<p>Removes from the forest both the trusted domain object and the cross-reference object for the domain that you specify. You use this parameter to clean up decommissioned domains that you no longer use and that you cannot remove by using the Active Directory Installation Wizard. This problem can occur if the domain controller for a decommissioned domain is disabled or damaged and there are no additional domain controllers, or if you cannot recover a decommissioned domain controller from backup media. This parameter is valid only if you specify the <b>/remove</b> parameter.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/twoway</p>
+							</td>
+							<td colspan="1">
+								<p>Specifies to establish a two-way trust relationship rather than a one-way trust relationship.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/kerberos </p>
+							</td>
+							<td colspan="1">
+								<p>Specifies to exercise the Kerberos protocol between a workstation and a destination domain. This parameter is valid only if you specify the <b>/verify</b> parameter.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/transitive[:{YES|NO}]</p>
+							</td>
+							<td colspan="1">
+								<p>Specifies to set either a transitive or non-transitive trust. This parameter is valid only for a non-Windows, Kerberos realm. <b>Netdom trust</b> creates non-Windows, Kerberos trusts that are non-transitive. If you do not specify a value for this parameter, then <b>netdom trust</b> displays the current transitivity state. The following list shows the values that you can specify.</p>
+								<ul><li class="unordered">YES: Sets the realm to a transitive trust.<br><br></li><li class="unordered">NO: Sets the realm to a non-transitive trust.<br><br></li></ul>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/oneside:{TRUSTED| TRUSTING}</p>
+							</td>
+							<td colspan="1">
+								<p>Specifies to create or remove the trust object on only one domain. The following list shows the values that you can specify.</p>
+								<ul><li class="unordered">TRUSTED: Specifies to create or remove the trust object on the trusted domain that you specify in the <b>/d</b> or <b>/domain</b> parameter.<br><br></li><li class="unordered">TRUSTING: Specifies to create or remove the trust object on the trusting domain. This value is valid only if you specify the <b>/add</b> or <b>/remove</b> parameter. The <b>/passwordt</b> parameter is required when you use the <b>/add</b> or <b>/remove</b> parameter.<br><br></li></ul>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/quarantine[:{YES | NO}]</p>
+							</td>
+							<td colspan="1">
+								<p>Sets or clears the domain quarantine attribute. If you do not specify a value for this parameter, then <b>netdom trust</b> displays the current quarantine state. The following list shows the values that you can specify.</p>
+								<ul><li class="unordered">YES: Specifies to accept only security identifiers (SIDs) from the directly-trusted domain for authorization data that <b>netdom trust</b> returns during authentication. <b>Netdom trust</b> removes SIDS from any other domains.<br><br></li><li class="unordered">NO: Specifies to accept any SID for authorization data that <b>netdom trust</b> returns during authentication. This is the default value.<br><br></li></ul>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/namesuffixes:&lt;TrustName&gt;</p>
+							</td>
+							<td colspan="1">
+								<p>Lists the routed name suffixes for <i>TrustName</i> on the domain that <i>TrustingDomainName</i> names. You can use the <b>/usero</b> and <b>/passwordo</b> parameters for authentication. The <b>/domain</b> parameter is not required.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/togglesuffix:#</p>
+							</td>
+							<td colspan="1">
+								<p>Changes the status of a name suffix. Used with the <b>/namesuffixes</b> parameter. The number of the name entry specified by the <b>/namesuffixes</b> parameter must be provided to indicate which name will have its status changed. Names that are in conflict cannot have their status changed until the name in the conflicting trust is disabled. Always precede this command with the <b>/namesuffixes</b> parameter because LSA will not always return the names in the same order.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/EnableSIDhistory</p>
+							</td>
+							<td colspan="1">
+								<p>Specifying yes allows users who migrate to the trusted forest from any other forest to use SID history to access resources in this forest. Valid only for an outbound forest trust. </p>
+								<p>
+									<b>Note</b>   Allow migrated users to use SID history only if you can trust the trusted forest administrators to specify SIDs of this forest in the SID history attribute of their users appropriately.</p>
+								<p>Specifying <b>no</b> would disable the ability of the migrated users in the trusted forest to use SID history to access resources in this forest. Specifying <b>/EnableSIDHistory</b> without yes or no will display the current state.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/ForestTRANsitive</p>
+							</td>
+							<td colspan="1">
+								<p>Specifying yes marks this trust as forest transitive. Specifying <b>no</b> marks this trust as not forest transitive. Specifying <b>/ForestTRANsitive</b> without yes or <b>no</b> will display the current state of this trust attribute. Valid only for non-Windows realm trusts and can only be performed on the root domain for a forest. </p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/SelectiveAUTH</p>
+							</td>
+							<td colspan="1">
+								<p>Specifying <b>no</b> disables selective authentification across this trust. Specifying <b>/SelectiveAUTH</b> without yes or no displays the currrent state of this trust attribute. Specifying yes enables selective authentification across this trust. Valid only on outbound forest and external trusts.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/AddTLN</p>
+							</td>
+							<td colspan="1">
+								<p>Adds the specified top level name (DNS name suffix) to the forest trust info for the specified trust. Valid only for a forest transitive non-Windows realm trust and can only be performed on the root domain for a forest. Refer to the <b>/NameSuffixes</b> operation for a list of name suffixes.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/AddTLNEX</p>
+							</td>
+							<td colspan="1">
+								<p>Adds the specified top level name exclusion(DNS name suffix) to the forest trust info for the specified trust. Valid only for a forest transitive non-Windows realm trust and can only be performed on the root domain for a forest. Refer to the <b>/NameSuffixes</b> operation for a list of name suffixes.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/RemoveTLN</p>
+							</td>
+							<td colspan="1">
+								<p>Removes the specified top level name (DNS name suffix) from the forest trust info from the specified trust. Valid only for a forest transitive non-Windows realm trust and can only be performed on the root domain for a forest. Refer to the <b>/NameSuffixes</b> operation for a list of name suffixes.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/RemoveTLNEX</p>
+							</td>
+							<td colspan="1">
+								<p>Removes the specified top level name exclusion (DNS Name Suffix) from the forest trust info from the specified trust. Valid only for a forest transitive non-Windows realm trust and can only be performed on the root domain for a forest. Refer to the <b>/NameSuffixes</b> operation for a list of name suffixes.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>{/help | /?}</p>
+							</td>
+							<td colspan="1">
+								<p>Displays help at the command prompt.</p>
+							</td>
+						</tr></table>
+				</content></div><a name="BKMK_examples"></a><a name="a3dbd761-e54f-4e18-8a54-df431e114289#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">When used with the Trust operation, the <b>/d:</b> parameter always refers to the trusted domain.</p>
+					<p xmlns="">To set the Windows NT 4.0 resource domain USA-Chicago to trust the Windows NT 4.0 account domain Northamerica, type the following command at the command prompt:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>netdom trust /d:Northamerica USA-Chicago /add /Ud:Northamerica\admin /Pd:* /Uo:USA-Chicago\admin /Po:*</pre></td></tr></table></span></div>
+					<p xmlns="">When you press ENTER, you see the following prompt:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>Password for Northamerica\admin:</pre></td></tr></table></span></div>
+					<p xmlns="">Enter the password for Northamerica\admin. When you press ENTER, you see the following prompt:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>Password for USA-Chicago\admin:</pre></td></tr></table></span></div>
+					<p xmlns="">Type the password for USA-Chicago\admin, and then press ENTER.</p>
+					<p xmlns="">The user must have credentials for both domains. You can use the <b>/pd</b> parameter to specify the password for Northamerica\admin and the <b>/po</b> parameter to specify the password for USA-Chicago\admin. If the user does not provide passwords at the command prompt, the user is prompted for both.</p>
+					<p xmlns="">If you want to specify a two-way trust, type the following command at the command prompt</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>netdom trust /d:marketing.contoso.com engineering.contoso.com /add /twoway /Uo:admin@engineering.contoso.com /Ud:admin@marketing.contoso.com</pre></td></tr></table></span></div>
+					<p xmlns="">To establish a one-way trust where Northamerica trusts the non-Windows, Kerberos realm ATHENA, type the following command at the command prompt:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>netdom trust /d:ATHENA Northamerica /add /PT:password /realm</pre></td></tr></table></span></div>
+					<p xmlns="">The <b>/d</b> parameter specifies the trusted domain and the <b>/realm</b> parameter indicates that this is a non-Windows, Kerberos realm. The order of the domains is not important. You can supply credentials to the Windows 2000 domain, if needed.</p>
+					<div class="alert" xmlns=""><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>
+						Verifying a specific trust relationship requires credentials unless the user has domain administrator privileges on both domains.<p>
+					</td></tr></table><p></div>
+					<p xmlns="">If you want to set the Kerberos realm ATHENA to trust the Northamerica domain, type the following command at the command prompt:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>netdom trust /d:Northamerica ATHENA /add</pre></td></tr></table></span></div>
+					<div class="alert" xmlns=""><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>
+						To establish a two-way trust, you can specify the <b>/twoway</b> parameter.<p>
+					</td></tr></table><p></div>
+					<p xmlns="">Non-Windows Kerberos trusts are created as non-transitive. If you want to change the trust from ATHENA to Northamerica as transitive, type the following command at the command prompt:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>netdom trust Northamerica /d:ATHENA /trans:yes</pre></td></tr></table></span></div>
+					<p xmlns="">To display the transitive state, type the following command at the command prompt:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>netdom trust Northamerica /d:ATHENA /trans</pre></td></tr></table></span></div>
+					<p xmlns="">The order of these two domains is not important. Either can be the non-Windows, Kerberos domain.</p>
+					<p xmlns="">To undo the trust that USA-Chicago has for Northamerica, type the following command at the command prompt:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>netdom trust /d:Northamerica USA-Chicago /remove</pre></td></tr></table></span></div>
+					<p xmlns="">To break a two-way trust relationship, type the following command at the command prompt:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>netdom trust /d:marketing.contoso.com Engineering.contoso.com /remove /twoway /Uo:admin@engineering.contoso.com /Ud:admin@marketing.contoso.com</pre></td></tr></table></span></div>
+					<p xmlns="">To verify the one-way trust that USA-Chicago has for Northamerica, type the following command at the command prompt:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>netdom trust /d:Northamerica USA-Chicago /verify</pre></td></tr></table></span></div>
+					<p xmlns="">To verify a two-way trust between the Northamerica and Europe domains, type the following command at the command prompt:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>netdom trust /d:Northamerica EUROPE /verify /twoway</pre></td></tr></table></span></div>
+					<p xmlns="">The <b>/verify</b> parameter checks that the appropriate shared secrets are synchronized between the two domains involved in the trust.</p>
+					<p xmlns="">To reset the secure channel for the one-way trust between Northamerica and USA-Chicago, type the following command at the command prompt:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>netdom trust /d:Northamerica USA-Chicago /Ud:Northamerica\admin /reset </pre></td></tr></table></span></div>
+					<p xmlns="">The <b>/reset</b> parameter synchronizes the appropriate shared secrets if they are not already synchronized.</p>
+					<p xmlns="">To verify that Kerberos authentication occurs successfully between a workstation and a service that is located in the domain devgroup.example.com, type the following command at the command prompt:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>netdom trust /d:devgroup.example.com /verify /KERBEROS</pre></td></tr></table></span></div>
+					<p xmlns="">When you use the <b>netdom </b>Trust operation with the <b>/verify /kerberos</b> parameters, the trust operation searches for a session ticket for the Kerberos Admin service in the target domain. If the search operation is successful, you can conclude that all Kerberos operations, such as KDC referrals, operate correctly between the workstation and the target domain.</p>
+					<div class="alert" xmlns=""><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>
+						You cannot run this trust operation from a remote location. You must run the operation on the workstation that you want to test.<p>
+					</td></tr></table><p></div>
+					<p xmlns="">To list the routed name suffixes for the trust between contoso and the trustpartnerdomain, type the following command at the command prompt:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>netdom trust contoso /namesuffixes:trustpartnerdomain</pre></td></tr></table></span></div>
+					<div class="alert" xmlns=""><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>
+						The <b>/d</b> parameter is not needed for this operation which is an exception from other Trust operations.<p>
+					</td></tr></table><p></div>
+					<p xmlns="">This lists all the routed name suffixes for the trust relationship between contoso and the trustpartnerdomain. The trust relationship must be either a Forest Trust relationship or a Non-Windows Realm trust with the <b>Forest Transitive</b> attribute set.</p>
+					<p xmlns="">The following is sample output:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>C:\nt\ds\netapi\netdom\obj\i386&gt;netdom trust shasandom2 /namesuffixes:powermatic
+
+   Name, Type, Status, Notes
+
+1. *.treyresearch.net, Name Suffix, Enabled
+
+2. *.powermatic.nttest.contoso.com, Name Suffix, Enabled
+
+3. *.adatum.com, Name Suffix, Enabled
+
+4. *.cpandl.com, Name Suffix, Conflicting, With shasandom2.nttest.contoso.com
+
+5. unisaw.powermatic.nttest.contoso.com, Domain DNS name, Enabled
+
+6. UNISAW, Domain NetBIOS name, Enabled, For unisaw.powermatic.nttest.contoso.
+
+com
+
+7. s-1-5-21-1550512861-723516995-420396236, Domain SID, Enabled, For unisaw.powermatic.nttest.contoso.com
+
+8. powermatic.nttest.contoso.com, Domain DNS name, Enabled
+
+9. POWERMATIC, Domain NetBIOS name, Enabled, For powermatic.nttest.contoso.com
+
+10. s-1-5-21-1390067357-1757981266-527237240, Domain SID, Enabled, For powermati
+
+c.nttest.contoso.com
+
+The command completed successfully.
+</pre></td></tr></table></span></div>
+					<p xmlns="">To enable or disable the first routed name suffix in the list generated by the previous command, type the following command at the command prompt:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>netdom trust myTestDomain /namesuffixes:foresttrustpartnerdomain /togglesuffix:1</pre></td></tr></table></span></div>
+					<div class="alert" xmlns=""><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>
+						You must use the <b>/ToggleSuffix</b> parameter with the <b>/NameSuffixes </b>parameter. Use <b>/NameSuffixes</b> immediately before you use <b>/ToggleSuffix</b> because the order in which the name suffixes are listed may change.<p>
+					</td></tr></table><p></div>
+					<p xmlns="">The following is sample output:</p>
+					<div class="alert" xmlns=""><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>
+						The output reflects the routed name suffix list after the Toggling operation.<p>
+					</td></tr></table><p></div>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>C:\nt\ds\netapi\netdom\obj\i386&gt;netdom trust shasandom2 /ns:powermatic /ts:1
+
+   Name, Type, Status, Notes
+
+1. *. Treyresearch.net, Name Suffix, Admin-Disabled
+
+2. *.powermatic.nttest.contoso.com, Name Suffix, Enabled
+
+3. *. adatum.com, Name Suffix, Enabled
+
+4. *. cpandl.com, Name Suffix, Conflicting, With shasandom2.nttest.contoso.com
+
+5. unisaw.powermatic.nttest.contoso.com, Domain DNS name, Enabled
+
+6. UNISAW, Domain NetBIOS name, Enabled, For unisaw.powermatic.nttest.contoso.
+
+com
+
+7. s-1-5-21-1550512861-723516995-420396236, Domain SID, Enabled, For unisaw.powermatic.nttest.contoso.com
+
+8. powermatic.nttest.contoso.com, Domain DNS name, Enabled
+
+9. POWERMATIC, Domain NetBIOS name, Enabled, For powermatic.nttest.contoso.com
+
+10. s-1-5-21-1390067357-1757981266-527237240, Domain SID, Enabled, For powermatic.nttest.contoso.com
+
+The command completed successfully.
+</pre></td></tr></table></span></div>
+					<p xmlns="">To add the DNS name suffix contoso.com to the Forest Trust Info with trustpartnerdomain, type the following command at the command prompt:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>Netdom trust myTestDomain /d:trustPartnerDomain /AddTln:contoso.com</pre></td></tr></table></span></div>
+					<p xmlns="">Adding the DNS name suffix is only allowed for a trust with a Forest Transitive, Non-Windows Realm Trust. This is also true for the following commands:</p>
+					<ul xmlns=""><li class="unordered">
+							Netdom trust myTestDomain /d:trustPartnerDomain /RemoteTln:contoso.com<br><br>
+						</li><li class="unordered">
+							Netdom trust myTestDomain /d:trustPartnerDomain /AddTLNEx:something.contoso.com<br><br>
+							This must have a TLN entry present for the parent naming context, in this case, contoso.com, otherwise the operation is disallowed.)<br><br>
+						</li><li class="unordered">
+							Netdom trust myTestDomain /d:trustPartnerDomain /RemoveTLNEx:something.contoso.com<br><br>
+						</li></ul>
+					<p xmlns="">The following code lists the name suffixes on a Non-Windows Realm Trust:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>C:\nt\ds\netapi\netdom\obj\i386&gt;netdom trust shasandom2 /ns:server.mit.org
+
+   Name, Type, Status, Notes
+
+1. *.cpandl.com, Name Suffix, Enabled
+
+2. *.adatum.com, Name Suffix, Enabled
+
+ 
+
+The command completed successfully.
+</pre></td></tr></table></span></div>
+					<p xmlns="">The following code adds another TLN:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>C:\nt\ds\netapi\netdom\obj\i386&gt;netdom trust shasandom2 /d:domain.mit.org /addtln:dude.com
+
+The TLN or Exclusion was successfully added to the Forest Trust Info.
+
+The command completed successfully.
+</pre></td></tr></table></span></div>
+					<p xmlns="">The following code adds an invalid TLN exclusion:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>C:\nt\ds\netapi\netdom\obj\i386&gt;netdom trust shasandom2 /d:domain.mit.org /addtlnex:dude.com
+
+The Forest Trust Info for the specified trust could not be stored.
+
+The parameter is incorrect.
+
+Try "netdom HELP" for more information.
+</pre></td></tr></table></span></div>
+					<p xmlns="">The following code adds a valid TLN exclusion:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>C:\nt\ds\netapi\netdom\obj\i386&gt;netdom trust shasandom2 /d:domain.mit.org /addtlnex:child.contoso.com
+
+The TLN or Exclusion was successfully added to the Forest Trust Info.
+
+The command completed successfully.
+</pre></td></tr></table></span></div>
+					<p xmlns="">The following code shows the result of previous operations:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>C:\nt\ds\netapi\netdom\obj\i386&gt;netdom trust shasandom2 /ns:server.mit.org
+
+   Name, Type, Status, Notes
+
+1. *.child.contoso.com, Exclusion
+
+2. *.cpandl.com, Name Suffix, Enabled
+
+3. *.adatum.com, Name Suffix, Enabled
+
+4. *.contoso.com, Name Suffix, Enabled
+
+The command completed successfully.
+</pre></td></tr></table></span></div>
+				</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+						</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<p xmlns="">
+										<a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a>
+									</p>
+									<p xmlns="">
+										<a href="ecaf5d86-3d1d-4db1-a3c4-cf4c458f9423.htm">Netdom</a>
+									</p>
+									<p xmlns="">
+										<a href="01c8b1c0-d04f-428c-972d-426ce7f0168a.htm">Netdom add</a>
+									</p>
+									<p xmlns="">
+										<a href="556391c7-a761-47d3-997e-0a0133a92264.htm">Netdom computername</a>
+									</p>
+									<p xmlns="">
+										<a href="38cfe382-a041-44f0-86ca-1e8282311a0b.htm">Netdom join</a>
+									</p>
+									<p xmlns="">
+										<a href="b6cc963b-3198-458b-b215-0860e6f47063.htm">Netdom move</a>
+									</p>
+									<p xmlns="">
+										<a href="fd77d8b3-3b0b-4a7e-a5d1-bd0538d582e6.htm">Netdom query</a>
+									</p>
+									<p xmlns="">
+										<a href="689bdbf9-2e2e-4fc4-986b-0e95ede8af3a.htm">Netdom remove</a>
+									</p>
+									<p xmlns="">
+										<a href="39bbaa77-c4e6-4ce6-bcfe-d5edf357f665.htm">Netdom movent4bdc</a>
+									</p>
+									<p xmlns="">
+										<a href="11b2f2b9-883c-496c-ac88-e5969d6752c9.htm">Netdom renamecomputer</a>
+									</p>
+									<p xmlns="">
+										<a href="67d17094-60ba-4bb0-b75e-e41d876e9ece.htm">Netdom reset</a>
+									</p>
+									<p xmlns="">
+										<a href="ff3ba851-ed5d-46b4-af5e-94e51b8c5818.htm">Netdom resetpwd</a>
+									</p>
+									<p xmlns="">
+										<a href="d04072c8-b17d-4ece-b8b1-a7066d8edc54.htm">Netdom verify</a>
+									</p>
+								</content></div>
+						</sections></div>
+				</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

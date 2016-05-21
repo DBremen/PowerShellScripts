@@ -1,0 +1,210 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>files</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">files</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2003,Windows Server 2003,Windows Server 2003 R2,Windows Server 2003 R2,Windows Server 2008,Windows Server 2008,Windows Server 2003 with SP1,Windows Server 2003 with SP1</p>
+				<p>Provides commands for managing the directory service data and log files. The data file is called Ntds.dit. At the <code>files:</code> prompt, type any of the parameters listed under “Syntax.”</p>
+				<p>This is a subcommand of Ntdsutil and Dsdbutil. Ntdsutil and Dsdbutil are command-line tools that are built into Windows Server 2008 and Windows Server 2008 R2. Ntdsutil is available if you have the Active Directory Domain Services (AD DS) or Active Directory Lightweight Directory Services (AD LDS) server role installed. Dsdbutil is available if you have the AD LDS server role installed. These tools are also available if you install the Active Directory Domain Services Tools that are part of the Remote Server Administration Tools (RSAT). For more information, see <a href="http://go.microsoft.com/fwlink/?LinkID=177813" alt="" target="_blank"><linktext xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">How to Administer Microsoft Windows Client and Server Computers Locally and Remotely</linktext></a> (http://go.microsoft.com/fwlink/?LinkID=177813). </p>
+				<p>To use either of these tools, you must run them command from an elevated command prompt. To open an elevated command prompt, click <b>Start</b>, right-click <b>Command Prompt</b>, and then click <b>Run as administrator</b>.</p>
+				<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+			<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>[checkpoint] [checksum] [compact to %s] [dump page %d] [header] [info] [integrity] [logfile %s] [metadata] [move DB to %s] [move logs to %s] [recover] [set backup exclusion key] [set default folder security] [set path backup %s] [set path db %s] [set path logs %s] [set path working dir %s] [space usage]</pre></td></tr></table></span></div>
+				</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+								<th colspan="1">
+									Parameter
+								</th>
+								<th colspan="2">
+									Description
+								</th>
+							</tr><tr>
+							<td colspan="1">
+								<p>checkpoint</p>
+							</td>
+							<td colspan="2">
+								<p>Dumps the Jet database checkpoint file (edb.chk). This option is intended for use only by support personnel.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>checksum</p>
+							</td>
+							<td colspan="2">
+								<p>Performs Jet database physical integrity check. </p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>compact to %s (where %s identifies an empty target directory) </p>
+							</td>
+							<td colspan="2">
+								<p>Invokes Esentutl.exe to compact the existing data file and writes the compacted file to the specified directory. The directory can be remote, that is, mapped by means of the <b>net use</b> command or similar means. After compaction is complete, archive the old data file and move the newly compacted file back to the original location of the data file. ESENT supports online compaction, but this compaction only rearranges pages within the data file and does not release space back to the file system. (The directory service invokes online compaction regularly.)</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>dump page %d</p>
+							</td>
+							<td colspan="2">
+								<p>Dumps the Jet database page number specified as %d. This option is intended for use only by support personnel.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>header</p>
+							</td>
+							<td colspan="2">
+								<p>Writes the header of the Ntds.dit data file to the screen. This command can help support personnel analyze database problems.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>info</p>
+							</td>
+							<td colspan="2">
+								<p>Analyzes and reports the free space for the disks that are installed in the system, reads the registry, and then reports the sizes of the data and log files. (The directory service maintains the registry, which identifies the location of the data files, log files, and directory service working directory.)</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>integrity</p>
+							</td>
+							<td colspan="2">
+								<p>Invokes Esentutl.exe to perform an integrity check on the data file, which can detect low-level database corruption. It reads every byte of your data file; thus it can take a long time to process large databases. Note that you should always run Recover before performing an integrity check.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>logfile %s</p>
+							</td>
+							<td colspan="2">
+								<p>Dumps the Jet log file %s, where %s can be the absolute path or just the log file name in the Logs folder. This option is intended for use only by support personnel.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>metadata</p>
+							</td>
+							<td colspan="2">
+								<p>Dumps the Jet database metadata. This option is intended for use only by support personnel.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>move DB to %s (where %s identifies a target directory) </p>
+							</td>
+							<td colspan="2">
+								<p>Moves the Ntds.dit data file to the new directory specified by <i>%s</i> and updates the registry so that, upon service restart, the directory service uses the new location.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>move logs to %s (where %s identifies a target directory) </p>
+							</td>
+							<td colspan="2">
+								<p>Moves the directory service log files to the new directory specified by <i>%s</i>, and updates the registry so that, upon service restart, the directory service uses the new location.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>recover</p>
+							</td>
+							<td colspan="2">
+								<p>Invokes Esentutl.exe to perform a soft recovery of the database. Soft recovery scans the log files and ensures all committed transactions therein are also reflected in the data file. Logs are used to ensure committed transactions are not lost if your system fails or if you have unexpected power loss. In essence, transaction data is written first to a log file and then to the data file. When you restart after failure, you can rerun the log to reproduce the transactions that were committed but hadn't made it to the data file.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>set backup exclusion key</p>
+							</td>
+							<td colspan="2">
+								<p>Sets the backup exclusion key for the AD DS or AD LDS instance. This option is intended for use only by support personnel.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>set default folder security</p>
+							</td>
+							<td colspan="2">
+								<p>Resets security on the NTDS folder to default values. </p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>set path backup %s (where %s identifies a target directory) </p>
+							</td>
+							<td colspan="2">
+								<p>Sets the disk-to-disk backup target to the directory specified by <i>%s</i>. The directory service can be configured to perform an online, disk-to-disk backup at scheduled intervals.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>set path db %s (where %s identifies a target directory) </p>
+							</td>
+							<td colspan="2">
+								<p>Updates the part of the registry that identifies the location and file name of the data file. Use this command only to rebuild a domain controller that has lost its data file and that is not being restored by means of normal restoration procedures.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>set path logs %s (where %s identifies a target directory) </p>
+							</td>
+							<td colspan="2">
+								<p>Updates the part of the registry that identifies the location of the log files. Use this command only if you are rebuilding a domain controller that has lost its log files and is not being restored by means of normal restoration procedures.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>set path working dir %s (where %s identifies a target directory) </p>
+							</td>
+							<td colspan="2">
+								<p>Sets the part of the registry that identifies the directory service's working directory to the directory specified by <i>%s</i>.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>%s</p>
+							</td>
+							<td colspan="2">
+								<p>An alphanumeric variable, such as a domain or domain controller name.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>space usage</p>
+							</td>
+							<td colspan="2">
+								<p>Dumps the Jet database space usage.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>quit</p>
+							</td>
+							<td colspan="2">
+								<p>Takes you back to the previous menu or exits the utility.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>?</p>
+							</td>
+							<td colspan="2">
+								<p>Displays Help at the command prompt.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>Help</p>
+							</td>
+							<td colspan="1">
+								<p>Displays Help at the command prompt.</p>
+							</td>
+						</tr></table>
+				</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<ul xmlns=""><li class="unordered">
+							Before you can run the files subcommand, set NTDS or an AD LDS instance as the active instance for Ntdsutil. For example, if the AD LDS instance that you want to restore is named instance 1, type the following command at the <code>ntdsutil:</code> prompt before you run the authoritative restore subcommand, and then press ENTER:<br><br>
+							<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>ac in instance 1</pre></td></tr></table></span></div>
+						</li><li class="unordered">
+							You must stop the AD DS or AD LDS service before you can run the files subcommand. To stop AD DS, click <b>Start</b>, click <b>Server Manager</b>. In the console tree, double-click <b>Configuration</b>, and then click <b>Services</b>. In the details pane, right-click <b>Active Directory Domain Services</b>, and then click <b>Stop</b>. <br><br>
+						</li><li class="unordered">
+							AD DS is implemented on top of an indexed sequential access method (ISAM) table manager. This is the same table manager used by Microsoft Exchange Server, File Replication Service (FRS), the security configuration editor, Active Directory Certificate Services (AD CS), Windows Internet Name Service (WINS), and other Windows components. The version of the database that Windows 2000, Windows Server 2003, and Windows Server 2008 use is called the extensible storage engine (ESENT).<br><br>
+							ESENT is a transacted database system that uses log files to support rollback semantics to ensure that transactions are committed to the database. Ideally, the database and log files should be located on separate drives to improve performance and support recovery of the data if a disk fails.<br><br>
+						</li><li class="unordered">
+							ESENT provides its own tool for certain database file management functions, called Esentutl.exe, which is also installed in the <i>systemroot</i>\System32 folder. Several of the Ntdsutil file management commands invoke Esentutl, reducing the need to learn the tool's command-line arguments. In the cases where Ntdsutil invokes Esentutl, it brings up a separate window configured with a large history so that you can scroll back to see all of the Esentutl progress indicators. <br><br>
+						</li><li class="unordered">
+							
+								Ntdsutil does not correctly handle special characters, such as the apostrophe character ('), that you can enter at the <b>ntdsutil:</b> prompt at the command line. In some situations, there may be an alternative workaround. For more information, see <a href="http://go.microsoft.com/fwlink/?LinkId=157320" alt="" target="_blank"><maml:linktext xmlns:maml="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">local roles</maml:linktext></a> (http://go.microsoft.com/fwlink/?LinkId=157320).
+							<br><br>
+						</li></ul>
+				</content></div><a name="BKMK_examples"></a><a name="594c47bc-095d-465e-b7cb-3f0234350460#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">To perform a Jet database physical integrity check, type the following command, and then press ENTER:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>file maintenance: checksum</pre></td></tr></table></span></div>
+					<p xmlns="">To compact the Active Directory database and write the compacted file to a folder named C:\Windows\NTDS_Old, type the following command, and then press ENTER:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>file maintenance: compact to C:\Windows\NTDS_Old </pre></td></tr></table></span></div>
+				</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+						</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<p xmlns="">
+										<a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a>
+									</p>
+<p xmlns=""><a href="0c7f4cee-53cb-443c-b194-524c9360deac.htm">Dsdbutil</a></p><p xmlns=""><a href="199cebb9-967c-4307-a9d7-1c0bb50dc75b.htm">Ntdsutil</a></p><p xmlns=""><a href="b5416510-9aa5-44e4-8b4b-279dee264183.htm">authoritative restore</a></p><p xmlns=""><a href="f27dc4c0-0623-401b-b411-48acf995f595.htm">configurable settings</a></p><p xmlns=""><a href="baa9c5e1-0c26-4d57-8ca9-ff5b15c33d29.htm">DS behavior</a></p><p xmlns=""><a href="dc3722d8-b6de-4863-b456-1b17139caa42.htm">group membership evaluation</a></p><p xmlns=""><a href="c705e804-97d5-4a15-8d60-1ba09e5544e6.htm">ifm</a></p><p xmlns=""><a href="309950c8-5bfa-4b9e-b4a2-706ac63948ec.htm">LDAP policies</a></p><p xmlns=""><a href="aee69f2f-49bf-49cb-ac0b-eccc26423b1f.htm">local roles</a></p><p xmlns=""><a href="8ff66708-2ad0-4f52-982d-376a50a0e2dd.htm">metadata cleanup</a></p><p xmlns=""><a href="8ee336a2-b784-4743-8500-8d224a372110.htm">partition management</a></p><p xmlns=""><a href="f74c0470-3b2d-422c-bbbc-385cf39ec175.htm">roles</a></p><p xmlns=""><a href="1a4153d9-eb6e-4c50-8063-eb4ce961c32c.htm">security account management</a></p><p xmlns=""><a href="16b6f806-20b9-47bd-92c5-5cd96645c3bf.htm">semantic database analysis</a></p><p xmlns=""><a href="66fbd855-b3ee-434f-b890-c96858da8178.htm">set DSRM password</a></p><p xmlns=""><a href="a4b0e355-cbd0-4f48-9484-877fad1789ec.htm">snapshot</a></p></content></div>
+						</sections></div>
+				</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

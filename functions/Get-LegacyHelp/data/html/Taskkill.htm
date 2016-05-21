@@ -1,0 +1,208 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Taskkill</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Taskkill</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008,Windows Server 2008 R2,Windows XP,Windows Server 2000,Windows Server 2003,Windows Server 2003 R2,Windows 7</p>
+<p>Ends one or more tasks or processes. Processes can be ended by process ID or image name. <b>Taskkill</b> replaces the <b>kill</b> tool.</p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>taskkill [/s &lt;Computer&gt; [/u [&lt;Domain&gt;\]&lt;UserName&gt; [/p [&lt;Password&gt;]]]] {[/fi &lt;Filter&gt;] [...] [/pid &lt;ProcessID&gt; | /im &lt;ImageName&gt;]} [/f] [/t]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>/s &lt;Computer&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the name or IP address of a remote computer (do not use backslashes). The default is the local computer.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/u &lt;Domain&gt;\&lt;UserName&gt;</p>
+</td>
+<td colspan="1">
+<p>Runs the command with the account permissions of the user who is specified by <i>UserName</i> or <i>Domain</i>\<i>UserName</i>. <b>/u</b> can be specified only if <b>/s</b> is specified. The default is the permissions of the user who is currently logged on to the computer that is issuing the command.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/p &lt;Password&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the password of the user account that is specified in the <b>/u</b> parameter.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/fi &lt;Filter&gt;</p>
+</td>
+<td colspan="1">
+<p>Applies a filter to select a set of tasks. You can use more than one filter or use the wildcard character (<b>*</b>) to specify all tasks or image names. See the following <a href="#BKMK_table">table for valid filter names</a>, operators, and values. </p>
+</td></tr><tr>
+<td colspan="1">
+<p>/pid &lt;ProcessID&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the process ID of the process to be terminated.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/im &lt;ImageName&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the image name of the process to be terminated. Use the wildcard character (<b>*</b>) to specify all image names.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/f</p>
+</td>
+<td colspan="1">
+<p>Specifies that processes be forcefully terminated. This parameter is ignored for remote processes; all remote processes are forcefully terminated.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/t</p>
+</td>
+<td colspan="1">
+<p>Terminates the specified process and any child processes started by it.</p>
+</td></tr></table>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<a name="BKMK_table" xmlns=""></a><a name="2b71e792-08b6-46d4-95a5-cb6336a79524#BKMK_table" xmlns=""></a><h4 class="subHeading" xmlns="">Filter names, operators, and values</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Filter Name
+</th>
+<th colspan="1">
+Valid Operators
+</th>
+<th colspan="1">
+Valid Value(s)
+</th></tr><tr>
+<td colspan="1">
+<p>STATUS</p>
+</td>
+<td colspan="1">
+<p>eq, ne</p>
+</td>
+<td colspan="1">
+<p>RUNNING | NOT RESPONDING | UNKNOWN</p>
+</td></tr><tr>
+<td colspan="1">
+<p>IMAGENAME</p>
+</td>
+<td colspan="1">
+<p>eq, ne </p>
+</td>
+<td colspan="1">
+<p>Image name</p>
+</td></tr><tr>
+<td colspan="1">
+<p>PID</p>
+</td>
+<td colspan="1">
+<p>eq, ne, gt, lt, ge, le</p>
+</td>
+<td colspan="1">
+<p>PID value</p>
+</td></tr><tr>
+<td colspan="1">
+<p>SESSION</p>
+</td>
+<td colspan="1">
+<p>eq, ne, gt, lt, ge, le</p>
+</td>
+<td colspan="1">
+<p>Session number</p>
+</td></tr><tr>
+<td colspan="1">
+<p>CPUTIME</p>
+</td>
+<td colspan="1">
+<p>eq, ne, gt, lt, ge, le</p>
+</td>
+<td colspan="1">
+<p>CPU time in the format <i>HH</i><b>:</b><i>MM</i><b>:</b><i>SS</i>, where <i>MM</i> and <i>SS</i> are between 0 and 59 and <i>HH</i> is any unsigned number</p>
+</td></tr><tr>
+<td colspan="1">
+<p>MEMUSAGE</p>
+</td>
+<td colspan="1">
+<p>eq, ne, gt, lt, ge, le</p>
+</td>
+<td colspan="1">
+<p>Memory usage in KB</p>
+</td></tr><tr>
+<td colspan="1">
+<p>USERNAME</p>
+</td>
+<td colspan="1">
+<p>eq, ne</p>
+</td>
+<td colspan="1">
+<p>Any valid user name (<i>User</i> or <i>Domain</i>\<i>User</i>)</p>
+</td></tr><tr>
+<td colspan="1">
+<p>SERVICES</p>
+</td>
+<td colspan="1">
+<p>eq, ne</p>
+</td>
+<td colspan="1">
+<p>Service name </p>
+</td></tr><tr>
+<td colspan="1">
+<p>WINDOWTITLE</p>
+</td>
+<td colspan="1">
+<p>eq, ne</p>
+</td>
+<td colspan="1">
+<p>Window title </p>
+</td></tr><tr>
+<td colspan="1">
+<p>MODULES</p>
+</td>
+<td colspan="1">
+<p>eq, ne</p>
+</td>
+<td colspan="1">
+<p>DLL name</p>
+</td></tr></table>
+</content></div>
+</sections></div>
+</sections></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+The WINDOWTITLE and STATUS filters are not supported when a remote system is specified.<br><br>
+</li><li class="unordered">
+The wildcard character (<b>*</b>) is accepted for the <b>/im</b> option only when a filter is applied.<br><br>
+</li><li class="unordered">
+Termination of remote processes is always carried out forcefully, regardless of whether the <b>/f</b> option is specified.<br><br>
+</li><li class="unordered">
+Supplying a computer name to the HOSTNAME filter causes a shutdown and all processes are stopped.<br><br>
+</li><li class="unordered">
+You can use <b>tasklist</b> to determine the process ID (PID) for the process to be terminated.<br><br>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="2b71e792-08b6-46d4-95a5-cb6336a79524#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">To end the processes with process IDs 1230, 1241, and 1253, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>taskkill /pid 1230 /pid 1241 /pid 1253</pre></td></tr></table></span></div>
+
+<p xmlns="">To forcefully end the process "Notepad.exe" if it was started by the system, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>taskkill /f /fi "USERNAME eq NT AUTHORITY\SYSTEM" /im notepad.exe</pre></td></tr></table></span></div>
+
+<p xmlns="">To end all processes on the remote computer "Srvmain" with an image name beginning with "note," while using the credentials for the user account Hiropln, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>taskkill /s srvmain /u maindom\hiropln /p p@ssW23 /fi "IMAGENAME eq note*" /im *</pre></td></tr></table></span></div>
+
+<p xmlns="">To end the process with the process ID 2134 and any child processes that it started, but only if those processes were started by the Administrator account, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>taskkill /pid 2134 /t /fi "username eq administrator"</pre></td></tr></table></span></div>
+
+<p xmlns="">To end all processes that have a process ID greater than or equal to 1000, regardless of their image names, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>taskkill /f /fi "PID ge 1000" /im *</pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

@@ -1,0 +1,191 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Fsutil behavior</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Fsutil behavior</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2003 R2,Windows 7,Windows Server 2000,Windows Server 2003,Windows Vista,Windows Server 2008,Windows Server 2008 R2</p>
+				<p>Queries or sets NTFS volume behavior, which includes:</p>
+				<ul><li class="unordered">
+						The creation of 8.3 character-length file names<br><br>
+					</li><li class="unordered">
+						Extended character use in 8.3 character-length short file names on NTFS volumes<br><br>
+					</li><li class="unordered">
+						The updating of the Last Access Time stamp when directories are listed on NTFS volumes<br><br>
+					</li><li class="unordered">
+						The frequency with which quota events are written to the system log and to NTFS paged pool and NTFS non-paged pool memory cache levels<br><br>
+					</li><li class="unordered">
+						The size of the master file table zone (MFT Zone) <br><br>
+					</li><li class="unordered">
+						Silent deletion of data when the system encounters corruption on an NTFS volume.<br><br>
+					</li></ul>
+				<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+			<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>fsutil behavior query {allowextchar | bugcheckoncorrupt | disable8dot3 [&lt;VolumePath&gt;] | disablecompression | disableencryption | disablelastaccess | encryptpagingfile | mftzone | memoryusage | quotanotify | symlinkevaluation | disabledeletenotify}
+fsutil behavior set {allowextchar {1|0} | bugcheckoncorrupt {1|0} | disable8dot3 [ &lt;Value&gt; | [&lt;VolumePath&gt; {1|0}] ] | disablecompression {1|0} | disableencryption {1|0} | disablelastaccess {1|0} | encryppagingfile {1|0} | mftzone &lt;Value&gt; | memoryusage &lt;Value&gt; | quotanotify &lt;Frequency&gt; | symlinkevaluation &lt;SymbolicLinkType&gt; | disabledeletenotify {1|0}}</pre></td></tr></table></span></div>
+				</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+								<th colspan="1">
+									Parameter
+								</th>
+								<th colspan="1">
+									Description
+								</th>
+							</tr><tr>
+							<td colspan="1">
+								<p>query </p>
+							</td>
+							<td colspan="1">
+								<p>Queries the file system behavior parameters.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>set </p>
+							</td>
+							<td colspan="1">
+								<p>Changes the file system behavior parameters.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>allowextchar {1|0} </p>
+							</td>
+							<td colspan="1">
+								<p>Allows (<b>1</b>) or disallows (<b>0</b>) characters from the extended character set (including diacritic characters) to be used in 8.3 character-length short file names on NTFS volumes.</p>
+								<p>You must reboot your computer for this parameter to take effect.</p>
+							</td>
+						</tr><tr>
+							<td>
+								<p>Bugcheckoncorrupt {1|0}</p>
+							</td>
+							<td>
+								<p>Allows (<b>1</b>) or disallows (<b>0</b>) generation of a bug check when there is corruption on an NTFS volume. This feature can be used to prevent NTFS from silently deleting data when used with the Self-Healing NTFS feature.</p>
+								<p>You must reboot your computer for this parameter to take effect.</p>
+								<p>This parameter applies to: Windows Server® 2008 R2 and Windows® 7.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>disable8dot3 [&lt;VolumePath&gt;] {1|0} </p>
+							</td>
+							<td colspan="1">
+								<p>Disables (<b>1</b>) or enables (<b>0</b>) the creation of 8.3 character-length file names on FAT- and NTFS-formatted volumes. Optionally, prefix with the <i>VolumePath</i> specified as a drive name followed by a colon or GUID. </p>
+							</td>
+						</tr><tr>
+							<td>
+								<p>disablecompression {1|0}</p>
+							</td>
+							<td>
+								<p>Disables <b>(1)</b> or enables <b>(0)</b> NTFS compression.</p>
+								<p>You must reboot your computer for this parameter to take effect.</p>
+							</td>
+						</tr><tr>
+							<td>
+								<p>disableencryption {1|0}</p>
+							</td>
+							<td>
+								<p>Disables <b>(1)</b> or enables <b>(0)</b> the encryption of folders and files on NTFS volumes.</p>
+								<p>You must reboot your computer for this parameter to take effect.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>disablelastaccess {1|0} </p>
+							</td>
+							<td colspan="1">
+								<p>Disables (<b>1</b>) or enables (<b>0</b>) updates to the Last Access Time stamp on each directory when directories are listed on an NTFS volume.</p>
+								<p>You must reboot your computer for this parameter to take effect.</p>
+							</td>
+						</tr><tr>
+							<td>
+								<p>encryppagingfile {1|0}</p>
+							</td>
+							<td>
+								<p>Encrypts (<b>1</b>) or does not encrypt (<b>0</b>) the memory paging file in the Windows operating system.</p>
+								<p>You must reboot your computer for this parameter to take effect.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>mftzone &lt;Value&gt;</p>
+							</td>
+							<td colspan="1">
+								<p>Sets the size of the MFT Zone, and is expressed as a multiple of 200MB units. Set <i>Value</i> to a number from <b>1</b> (default is 200 MB) to <b>4</b> (maximum is 800 MB).</p>
+								<p>You must reboot your computer for this parameter to take effect.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>memoryusage &lt;Value&gt; </p>
+							</td>
+							<td colspan="1">
+								<p>Configures the internal cache levels of NTFS paged-pool memory and NTFS nonpaged-pool memory. Set to <b>1</b> or <b>2</b>. When set to <b>1</b> (the default), NTFS uses the default amount of paged-pool memory. When set to <b>2</b>, NTFS increases the size of its lookaside lists and memory thresholds. (A lookaside list is a pool of fixed-size memory buffers that the kernel and device drivers create as private memory caches for file system operations, such as reading a file.)</p>
+								<p>You must reboot your computer for this parameter to take effect.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>quotanotify &lt;Frequency&gt;</p>
+							</td>
+							<td colspan="1">
+								<p>Configures how frequently NTFS quota violations are reported in the system log. Valid values for are in the range 0 – 4294967295. The default frequency is 3600 seconds (one hour).</p>
+								<p>You must reboot your computer for this parameter to take effect.</p>
+							</td>
+						</tr><tr>
+							<td>
+								<p>symlinkevaluation &lt;SymbolicLinkType&gt;</p>
+							</td>
+							<td>
+								<p>Controls the kind of symbolic links that can be created on a computer. Valid choices are:</p>
+								<ol class="ordered"><li>
+										Local to local symbolic links, L2L:{0|1}<br><br>
+									</li><li>
+										Local to remote symbolic links, L2R:{0|1}<br><br>
+									</li><li>
+										Remote to local symbolic links, R2R:{0|1}<br><br>
+									</li><li>
+										Remote to remote symbolic links, R2L:{0|1}<br><br>
+									</li></ol>
+							</td>
+						</tr><tr>
+							<td>
+								<p>DisableDeleteNotify</p>
+							</td>
+							<td>
+								<p>Disables (<b>1</b>) or enables (<b>0</b>) delete notifications for all volumes. Delete notification is a feature that notifies the underlying storage device of clusters that have been freed due to a file delete operation.</p>
+								<p>This parameter applies to: Windows Server 2008 R2 and Windows 7.</p>
+							</td>
+						</tr></table>
+				</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<ul xmlns=""><li class="unordered">
+							The MFT Zone is a reserved area that enables the master file table (MFT) to expand as needed to prevent MFT fragmentation. If the average file size on the volume is 2 KB or less, it can be beneficial to set the <b>mftzone</b> value<i> </i>to 2. If the average file size on the volume is 1 KB or less, it can be beneficial to set the <b>mftzone</b> value to 4.<br><br>
+						</li><li class="unordered">
+							When <b>disable8dot3</b> is set to <b>0</b>, every time you create a file with a long file name, NTFS creates a second file entry that has an 8.3 character-length file name. When NTFS creates files in a directory, it must look up the 8.3 character-length file names that are associated with the long file names. This parameter updates the <b>HKLM\SYSTEM\CurrentControlSet\Control\FileSystem\NtfsDisable8dot3NameCreation</b> registry key.<br><br>
+						</li><li class="unordered">
+							The <b>allowextchar </b>parameter updates the <b>HKLM\SYSTEM\CurrentControlSet\Control\FileSystem\NtfsAllowExtendedCharacterIn8dot3Name</b> registry key.<br><br>
+							The <b>disablelastaccess</b> parameter reduces the impact of logging updates to the Last Access Time stamp on files and directories. Disabling the <b>Last Access Time</b> feature improves the speed of file and directory access. This parameter updates the <b>HKLM\SYSTEM\CurrentControlSet\Control\FileSystem\NtfsDisableLastAccessUpdate</b> registry key.<br><br>
+							Notes: <br><br>
+							<ul><li class="unordered">
+									File-based <b>Last Access Time</b> queries are accurate even if all on-disk values are not current. NTFS returns the correct value on queries because the accurate value is stored in memory.<br><br>
+								</li><li class="unordered">
+									One hour is the maximum amount of time that NTFS defers updating <b>Last Access Time</b> on disk. If NTFS updates other file attributes such as <b>Last Modify Time</b>, and a <b>Last Access Time </b>update is pending, NTFS updates <b>Last Access Time</b> with the other updates without additional performance impact.<br><br>
+								</li><li class="unordered">
+									The <b>disablelastaccess</b> parameter can affect programs such as Backup and Remote Storage that rely on this feature.<br><br>
+								</li></ul>
+						</li><li class="unordered">
+							Increasing physical memory does not always increase the amount of paged pool memory available to NTFS. Setting <b>memoryusage</b> to <b>2</b> raises the limit of paged pool memory. This might improve performance if your system is opening and closing many files in the same file set and is not already using large amounts of system memory for other applications or for cache memory. If your computer is already using large amounts of system memory for other applications or for cache memory, increasing the limit of NTFS paged and non-paged pool memory reduces the available pool memory for other processes. This might reduce overall system performance. This parameter updates the <b>HKLM\SYSTEM\CurrentControlSet\Control\FileSystem\NtfsMemoryUsage</b> registry key.<br><br>
+						</li><li class="unordered">
+							The value specified in the <b>mftzone</b> parameter is an approximation of the initial size of the MFT plus the MFT Zone on a new volume, and it is set at mount time for each file system. As space on the volume is used, NTFS adjusts the space reserved for future MFT growth. If the MFT Zone is already large, the full MFT Zone size is not reserved again. Because the MFT Zone is based on the contiguous range past the end of the MFT, it shrinks as the space is used.<br><br>
+							The file system does not determine the new MFT Zone location until the current MFT Zone is completely used. Note that this never occurs on a typical system.<br><br>
+						</li><li class="unordered">
+							Some devices may experience performance degradation when the delete notification feature is turned on. In this case, use the <b>disabledeletenotify</b> option to turn off the notification feature.<br><br>
+						</li></ul>
+				</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"><a name="ac19653e-6082-4d73-b4b4-c1b5f907bb05#BKMK_examples" xmlns=""></a>
+					<h3 class="subHeading" xmlns="">Examples</h3><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<p xmlns="">To query for the disable 8dot3 name behavior for a disk volume specified with the GUID, {928842df-5a01-11de-a85c-806e6f6e6963}, type:</p>
+							<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>fsutil behavior query disable8dot3 Volume{928842df-5a01-11de-a85c-806e6f6e6963}</pre></td></tr></table></span></div>
+							<p xmlns="">You can also query the 8dot3 name behavior by using the <b>8dot3name</b> subcommand.</p>
+						</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<p xmlns="">
+										<a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a>
+									</p>
+									<p xmlns="">
+										<a href="097de37c-812c-47b0-872b-4b55ea32b27f.htm">Fsutil</a>
+									</p>
+									<p xmlns="">
+										<a href="de99ab45-1b22-44d0-9c45-4852abbf8d9b.htm">Fsutil 8dot3name</a>
+									</p>
+								</content></div>
+						</sections></div>
+				</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

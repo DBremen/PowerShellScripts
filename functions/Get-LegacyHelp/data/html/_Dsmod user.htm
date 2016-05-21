@@ -1,0 +1,319 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Dsmod user</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Dsmod user</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008</p>
+<p>Modifies attributes of one or more existing users in the directory.</p>
+
+<p><b>Dsmod</b> is a command-line tool that is built into Windows Server 2008. It is available if you have the Active Directory Domain Services (AD DS) server role installed. To use <b>dsmod</b>, you must run the <b>dsmod</b> command from an elevated command prompt. To open an elevated command prompt, click <b>Start</b>, right-click <b>Command Prompt</b>, and then click <b>Run as administrator</b>.</p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>dsmod user &lt;UserDN&gt; ... [-upn &lt;UPN&gt;] [-fn &lt;FirstName&gt;] [-mi &lt;Initial&gt;] [-ln &lt;LastName&gt;] [-display &lt;DisplayName&gt;] [-empid &lt;EmployeeID&gt;] [-pwd (&lt;Password&gt; | *)] [-desc &lt;Description&gt;] [-office &lt;Office&gt;] [-tel &lt;PhoneNumber&gt;] [-email &lt;E-mailAddress&gt;] [-hometel &lt;HomePhoneNumber&gt;] [-pager &lt;PagerNumber&gt;] [-mobile &lt;CellPhoneNumber&gt;] [-fax &lt;FaxNumber&gt;] [-iptel &lt;IPPhoneNumber&gt;] [-webpg &lt;WebPage&gt;] [-title &lt;Title&gt;] [-dept &lt;Department&gt;] [-company &lt;Company&gt;] [-mgr &lt;Manager&gt;] [-hmdir &lt;HomeDirectory&gt;] [-hmdrv &lt;DriveLetter&gt;:] [-profile &lt;ProfilePath&gt;] [-loscr &lt;ScriptPath&gt;] [-mustchpwd {yes | no}] [-canchpwd {yes | no}] [-reversiblepwd {yes | no}] [-pwdneverexpires {yes | no}] [-acctexpires &lt;NumberOfDays&gt;] [-disabled {yes | no}] [{-s &lt;Server&gt; | -d &lt;Domain&gt;}] [-u &lt;UserName&gt;] [-p {&lt;Password&gt; | *}][-c] [-q] [{-uc | -uco | -uci}]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>&lt;UserDN&gt; </p>
+</td>
+<td colspan="1">
+<p>Required. Specifies the distinguished names of the users that you want to modify. If values are omitted, they are obtained through standard input (stdin) to support piping of output from another command to input of this command. </p>
+</td></tr><tr>
+<td colspan="1">
+<p>-upn &lt;UPN&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the user principal names (UPNs) of the users that you want to modify, for example, Linda@widgets.contoso.com.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-fn &lt;FirstName&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the first names of the user objects you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-mi &lt;Initial&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the middle initials of the user objects you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-ln &lt;LastName&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the last names of the user objects you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-display &lt;DisplayName&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the display names of the user objects you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-empid &lt;EmployeeID&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the employee IDs of the user objects you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-pwd {&lt;Password&gt; | *} </p>
+</td>
+<td colspan="1">
+<p>Resets the passwords for the users that you want to modify as <i>Password</i> or an asterisk (*). If you type <b>*</b>, AD DS prompts you for a user password.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-desc &lt;Description&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the descriptions of the user objects you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-office &lt;Office&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the office locations of the user objects you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-tel &lt;PhoneNumber&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the telephone numbers of the user objects you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-email &lt;E-mailAddress&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the e-mail addresses of the user objects you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-hometel &lt;HomePhoneNumber&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the home telephone numbers of the user objects you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-pager &lt;PagerNumber&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the pager numbers of the user objects you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-mobile &lt;CellPhoneNumber&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the cell numbers of the user objects you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-fax &lt;FaxNumber&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the fax numbers of the user objects you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-iptel &lt;IPPhoneNumber&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the IP phone numbers of the user objects you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-webpg &lt;WebPage&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the Web page URLs of the user objects you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-title &lt;Title&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the titles of the user objects you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-dept &lt;Department&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the departments of the user objects you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-company &lt;Company&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the company information of the user objects you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-mgr &lt;Manager&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the distinguished names of the managers of the user objects you want to modify.</p>
+
+<p>You can only use the distinguished name format to specify the manager.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-hmdir &lt;HomeDirectory&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the home directory locations of the user objects you want to modify. If <i>HomeDirectory</i> is given as a UNC name, you must specify a mapped drive to this path by using the <b>-hmdrv</b> parameter.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-hmdrv &lt;DriveLetter&gt; : </p>
+</td>
+<td colspan="1">
+<p>Specifies the home directory drive letters (for example, E:) of the user objects you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-profile &lt;ProfilePath&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the profile paths of the user objects you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-loscr &lt;ScriptPath&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the logon script paths of the user objects you want to modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-mustchpwd{ yes| no} </p>
+</td>
+<td colspan="1">
+<p>Specifies whether users must change their passwords when they next log on. The available values are <b>yes</b> and <b>no</b>. <b>Yes</b> indicates that users must change their passwords and <b>no</b> indicates that they do not have to change their passwords.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-canchpwd {yes | no} </p>
+</td>
+<td colspan="1">
+<p>Specifies whether users can change their passwords. The available values are <b>yes</b> and <b>no</b>. <b>Yes</b> indicates that users can change their passwords and <b>no</b> indicates that they cannot change their passwords. The value of this parameter must be <b>yes</b> if the value of the <b>-mustchpwd</b><b> </b>parameter is <b>yes</b>.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-reversiblepwd {yes | no} </p>
+</td>
+<td colspan="1">
+<p>Specifies whether AD DS stores user passwords by using reversible encryption. The available values are <b>yes</b> and <b>no</b>. <b>Yes</b> indicates that AD DS stores user passwords by using reversible encryption and <b>no</b> indicates that AD DS does not store user passwords by using reversible encryption.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-pwdneverexpires {yes | no} </p>
+</td>
+<td colspan="1">
+<p>Specifies whether user accounts never expire. The available values are <b>yes</b> and <b>no</b>. <b>Yes</b> indicates that user passwords never expire and <b>no</b> indicates that user passwords do expire.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-acctexpires &lt;NumberOfDays&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the number of days from today that the user accounts expire. A value of <b>0</b> sets expiration at the end of today. A positive value sets expiration in the future. A negative value sets expiration in the past. The value of <b>never</b> sets the account to never expire. For example, a value of <b>0</b> specifies that the account expires at the end of today. A value of <b>-5</b> specifies that the account expires 5 days in the past. A value of <b>5</b> specifies that the account expires 5 days in the future.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-disabled {yes | no} </p>
+</td>
+<td colspan="1">
+<p>Specifies whether AD DS disables user accounts for logon. The available values are <b>yes</b> and <b>no</b>. <b>Yes</b> indicates that AD DS disables user accounts for logon and <b>no</b> indicates that AD DS does not disable user accounts for logon.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>{-s &lt;Server&gt; | -d &lt;Domain&gt;} </p>
+</td>
+<td colspan="1">
+<p>Connects a computer to a remote server or domain that you specify. By default, <b>dsmod</b> connects the computer to the domain controller in the logon domain.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-u &lt;UserName&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the user name with which the user logs on to a remote server. By default, <b>-u</b> uses the user name with which the user logged on. You can use any of the following formats to specify a user name: </p>
+
+<ul><li class="unordered">
+user name (for example, Linda)<br><br>
+</li><li class="unordered">
+domain\user name (for example, widgets\Linda)<br><br>
+</li><li class="unordered">
+user principal name (UPN) (for example, Linda@widgets.contoso.com)<br><br>
+</li></ul>
+</td></tr><tr>
+<td colspan="1">
+<p>-p {&lt;Password&gt; | *} </p>
+</td>
+<td colspan="1">
+<p>Specifies to use either a password or an asterisk (*) to log on to a remote server. If you type <b>*</b>, <b>dsmod</b> prompts you for a password.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-c </p>
+</td>
+<td colspan="1">
+<p>Reports errors, but continues with the next object in the argument list when you specify multiple target objects (continuous operation mode). If you do not supply this parameter, <b>dsmod </b>exits when the first error occurs.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-q </p>
+</td>
+<td colspan="1">
+<p>Suppresses all output to standard output (quiet mode).</p>
+</td></tr><tr>
+<td colspan="1">
+<p>{-uc | -uco | -uci} </p>
+</td>
+<td colspan="1">
+<p>Specifies that output or input data is formatted in Unicode. The following list explains each format. </p>
+
+<ul><li class="unordered"><b>-uc</b>: Specifies a Unicode format for input from or output to a pipe (|).<br><br></li><li class="unordered"><b>-uco </b>: Specifies a Unicode format for output to a pipe (|) or a file.<br><br></li><li class="unordered"><b>-uci</b>: Specifies a Unicode format for input from a pipe (|) or a file.<br><br></li></ul>
+</td></tr><tr>
+<td colspan="1">
+<p>/? </p>
+</td>
+<td colspan="1">
+<p>Displays help at the command prompt.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+If a value that you supply contains spaces, use quotation marks around the text, for example, "CN=Mike Danseglio,CN=Users,DC=Contoso,DC=Com".<br><br>
+</li><li class="unordered">
+If you supply multiple values for a parameter, use spaces to separate the values, for example, a list of distinguished names.<br><br>
+</li><li class="unordered">
+You can use the token $username$ (case insensitive) to replace the Security Accounts Manager (SAM) account name in the value of the <b>-webpg</b>, <b>-profile</b>, <b>-hmdir</b>, and <b>-email</b> parameters. For example, if a SAM account name is Denise, you can use either of the following formats for the <b>-hmdir</b> location parameter:<br><br>
+
+<b>-hmdir \users\Denise\home </b><br><br>
+
+<b>-hmdir \users\$username$\home </b><br><br>
+</li><li class="unordered">
+This command supports only a subset of commonly used object class attributes.<br><br>
+</li><li class="unordered">
+<b>Dsmod</b> does not support the addition of security principals in one forest to groups that are located in another forest when a forest trust joins both forests. You can use Active Directory Users and Computers to add security principals across a forest trust.<br><br>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="d9f6d73b-e030-4c20-9567-cf40d9fee7f2#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">To reset the password for Don Funk and force him to change his password when he next logs on to the network, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>dsmod user "CN=Don Funk,CN=Users,DC=Contoso,DC=Com" -pwd A1b2C3d4 -mustchpwd yes </pre></td></tr></table></span></div>
+
+<p xmlns="">To reset multiple user passwords to a common password and force users to change their passwords when they next log on to the network, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>dsmod user "CN=Don Funk,CN=Users,DC=Contoso,DC=Com" "CN=Denise Smith,CN=Users,DC=Contoso,DC=Com" -pwd A1b2C3d4 -mustchpwd yes </pre></td></tr></table></span></div>
+
+<p xmlns="">To disable multiple user accounts at the same time, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>dsmod user "CN=Don Funk,CN=Users,DC=Contoso,DC=Com" "CN=Denise Smith,CN=Users,DC=Contoso,DC=Com" -disabled yes </pre></td></tr></table></span></div>
+
+<p xmlns="">To modify the profile path of multiple users to a common path using the $username$ token, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>dsmod user "CN=Don Funk,CN=Users,DC=Contoso,DC=Com" "CN=Denise Smith,CN=Users,DC=Contoso,DC=Com" -profile \users\$username$\profile</pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+
+<p xmlns=""><a href="c25f43ea-d9d4-47fa-b7a9-70ea76b34cb1.htm">Dsmod</a></p>
+
+<p xmlns=""><a href="553d610d-fd97-4e4f-98e0-a026a9cd640b.htm">Dsmod computer</a></p>
+
+<p xmlns=""><a href="e5b9bf28-485e-46ba-a140-b0e86e285927.htm">Dsmod contact</a></p>
+
+<p xmlns=""><a href="c2bc9dfd-b7b3-470e-b302-aac9e6c4b0fd.htm">Dsmod group</a></p>
+
+<p xmlns=""><a href="869e3862-0f18-486f-ae56-ec93c9a85121.htm">Dsmod ou</a></p>
+
+<p xmlns=""><a href="ce6f1528-718a-40ee-aec0-65a0a83ce40f.htm">Dsmod server</a></p>
+
+<p xmlns=""><a href="56b42d79-30a7-4691-abb5-fa0a276ef4ee.htm">Dsmod quota</a></p>
+
+<p xmlns=""><a href="2f9be6c7-935d-4bc7-b424-2d82a3df4c3b.htm">Dsmod partition</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

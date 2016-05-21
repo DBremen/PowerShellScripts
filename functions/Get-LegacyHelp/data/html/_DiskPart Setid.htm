@@ -1,0 +1,87 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Set id</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Set id</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Vista,Windows 7,Windows Server 2008 R2,Windows Server 2008</p>
+				<p>Changes the partition type field for the partition with focus.</p>
+				<div class="alert"><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/Important.gif">Important </th></tr><tr><td>
+					This command is intended for use by original equipment manufacturers (OEMs) only. Changing partition type fields with this parameter might cause your computer to fail or be unable to boot. Unless you are an OEM or experienced with GPT disks, you should not change partition type fields on GPT disks by using this parameter. Instead, always use the <a href="3cfc1fca-6515-4a4d-bfae-615fa8045ea9.htm">Create partition efi</a> command to create EFI system partitions, the <a href="04fba033-23cb-4521-bd5d-db96131f2e73.htm">Create partition msr</a> command to create Microsoft Reserved partitions, and the <a href="6d652d8e-3935-4a91-8ced-b17c0e7937be.htm">Create partition primary</a> command without the ID parameter to create primary partitions on GPT disks.<p>
+				</td></tr></table><p></div>
+				<p>For examples of how this command can be used, see <a href="#BKMK_examples">Examples</a>.</p>
+			<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>set id={ &lt;byte&gt; | &lt;GUID&gt; } [override] [noerr]</pre></td></tr></table></span></div>
+				</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+								<th colspan="1">
+									Parameter
+								</th>
+								<th colspan="1">
+									Description
+								</th>
+							</tr><tr>
+							<td colspan="1">
+								<p>&lt;byte&gt; </p>
+							</td>
+							<td colspan="1">
+								<p>For master boot record (MBR) disks, specifies the new value for the type field, in hexadecimal form, for the partition. Any partition type byte can be specified with this parameter except for type 0x42, which specifies an LDM partition. Note that the leading “0x” is omitted when specifying the hexadecimal partition type. </p>
+							</td>
+						</tr><tr>
+							<td>
+								<p>&lt;GUID&gt;</p>
+							</td>
+							<td>
+								<p>For GUID partition table (GPT) disks, specifies the new GUID value for the type field for the partition. Recognized GUIDs include:</p>
+								<ul><li class="unordered">
+										EFI system partition: c12a7328-f81f-11d2-ba4b-00a0c93ec93b<br><br>
+									</li><li class="unordered">
+										Basic data partition: ebd0a0a2-b9e5-4433-87c0-68b6b72699c7<br><br>
+									</li></ul>
+								<p>Any partition type GUID can be specified with this parameter except the following:</p>
+								<ul><li class="unordered">
+										Microsoft Reserved partition: e3c9e316-0b5c-4db8-817d-f92df00215ae<br><br>
+									</li><li class="unordered">
+										LDM metadata partition on a dynamic disk:5808c8aa-7e8f-42e0-85d2-e1e90434cfb3<br><br>
+									</li><li class="unordered">
+										LDM data partition on a dynamic disk: af9b60a0-1431-4f62-bc68-3311714a69ad<br><br>
+									</li><li class="unordered">
+										Cluster metadata partition: db97dba9-0840-4bae-97f0-ffb9a327c7e1<br><br>
+									</li></ul>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>override</p>
+							</td>
+							<td colspan="1">
+								<p>Forces the file system on the volume to dismount before changing the partition type. When you run the <b>Set id</b> command, DiskPart attempts to lock and dismount the file system on the volume. If <b>override</b> is not specified, and the call to lock the file system fails (for example, because there is an open handle), the operation will fail. When <b>override</b> is specified, DiskPart forces the dismount even if the call to lock the file system fails, and any open handles to the volume will become invalid.</p>
+								<p>This command is only available for Windows 7 and Windows Server 2008 R2.</p>
+</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>noerr</p>
+							</td>
+							<td colspan="1">
+								<p>Used for scripting only. When an error is encountered, DiskPart continues to process commands as if the error did not occur. Without this parameter, an error causes DiskPart to exit with an error code.</p>
+							</td>
+						</tr></table>
+				</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<ul xmlns=""><li class="unordered">
+							Other than the limitations previously mentioned, DiskPart does not check the validity of the value that you specify (except to ensure that it is a byte in hexadecimal form or a GUID).<br><br>
+						</li><li class="unordered">
+							This command does not work on dynamic disks or on Microsoft Reserved partitions.<br><br>
+						</li></ul>
+				</content></div><a name="BKMK_examples"></a><a name="5793d7ad-827e-4285-b2c6-ae60eeb0e886#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">To set the type field to 0x07 and force the file system to dismount, type:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>set id=0x07 override</pre></td></tr></table></span></div>
+					<p xmlns="">To set the type field to be a basic data partition, type:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>set id=ebd0a0a2-b9e5-4433-87c0-68b6b72699c7</pre></td></tr></table></span></div>
+				</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+						</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<p xmlns="">
+										<a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a>
+									</p>
+									<p xmlns="">
+										<a href="26a4a166-95fa-4faf-95bc-2d5345f4a57a.htm">DiskPart</a>
+									</p>
+								</content></div>
+						</sections></div>
+				</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

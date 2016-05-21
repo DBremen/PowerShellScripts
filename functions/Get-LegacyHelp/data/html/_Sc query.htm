@@ -1,0 +1,216 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Sc query</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Sc query</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2003 R2,Windows 7,Windows Server 2003 with SP2,Windows Vista,Windows Server 2003,Windows Server 2003 with SP1,Windows Server 2008,Windows Server 2008 R2</p>
+<p>Obtains and displays information about the specified service, driver, type of service, or type of driver.</p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>sc [&lt;ServerName&gt;] query [&lt;ServiceName&gt;] [type= {driver | service | all}] [type= {own | share | interact | kernel | filesys | rec | adapt}] [state= {active | inactive | all}] [bufsize= &lt;BufferSize&gt;] [ri= &lt;ResumeIndex&gt;] [group= &lt;GroupName&gt;]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>&lt;ServerName&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the name of the remote server on which the service is located. The name must use the Universal Naming Convention (UNC) format (for example, \\myserver). To run SC.exe locally, omit this parameter.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;ServiceName&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the service name returned by the <b>getkeyname</b> operation. This <b>query</b> parameter is not used in conjunction with other <b>query</b> parameters (other than <i>ServerName</i>).</p>
+</td></tr><tr>
+<td colspan="1">
+<p>type= {driver | service | all} </p>
+</td>
+<td colspan="1">
+<p>Specifies what to enumerate. The default value for the first type is <b>service</b>.</p>
+
+<h3 class="subHeading"></h3><table><tr>
+<th colspan="1">
+Value
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>driver</p>
+</td>
+<td colspan="1">
+<p>Specifies that only drivers are enumerated.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>service</p>
+</td>
+<td colspan="1">
+<p>Specifies that only services are enumerated.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>all</p>
+</td>
+<td colspan="1">
+<p>Specifies that both drivers and services are enumerated.</p>
+</td></tr></table>
+</td></tr><tr>
+<td colspan="1">
+<p>type= {own | share | interact | kernel | filesys | rec | adapt} </p>
+</td>
+<td colspan="1">
+<p>Specifies the type of services or type of drivers to be enumerated. The default value for the second type is <b>own</b>.</p>
+
+<h3 class="subHeading"></h3><table><tr>
+<th colspan="1">
+Value
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>own</p>
+</td>
+<td colspan="1">
+<p>Specifies that the service runs in its own process. It does not share an executable file with other services. </p>
+</td></tr><tr>
+<td colspan="1">
+<p>share</p>
+</td>
+<td colspan="1">
+<p>Specifies that the service runs as a shared process. It shares an executable file with other services.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>interact</p>
+</td>
+<td colspan="1">
+<p>Specifies that the service can interact with the desktop, receiving input from users. Interactive services must be run under the LocalSystem account.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>kernel</p>
+</td>
+<td colspan="1">
+<p>Specifies a driver.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>filesys</p>
+</td>
+<td colspan="1">
+<p>Specifies a file system driver.</p>
+</td></tr></table>
+</td></tr><tr>
+<td colspan="1">
+<p>state= {active | inactive | all} </p>
+</td>
+<td colspan="1">
+<p>Specifies the started state of the service to be enumerated. The default state is <b>active</b>. </p>
+
+<h3 class="subHeading"></h3><table><tr>
+<th colspan="1">
+Value
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>active</p>
+</td>
+<td colspan="1">
+<p>Specifies all active services.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>inactive</p>
+</td>
+<td colspan="1">
+<p>Specifies all paused or stopped services.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>all</p>
+</td>
+<td colspan="1">
+<p>Specifies all services.</p>
+</td></tr></table>
+</td></tr><tr>
+<td colspan="1">
+<p>bufsize= &lt;BufferSize&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the size (in bytes) of the enumeration buffer. The default buffer size is 1,024 bytes. You should increase the size of the enumeration buffer when the display resulting from a query exceeds 1,024 bytes.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>ri= &lt;ResumeIndex&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the index number at which enumeration is to begin or resume. The default value is <b>0</b> (zero). Use this parameter in conjunction with the <b>bufsize=</b> parameter when more information is returned by a query than the default buffer can display.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>group= &lt;GroupName&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the service group to be enumerated. By default, all groups are enumerated (<b>group= ""</b>).</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/? </p>
+</td>
+<td colspan="1">
+<p>Displays help at the command prompt.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+Without a space between a parameter and its value (that is, <b>type= own</b>, not <b>type=own</b>), the operation will fail.<br><br>
+</li><li class="unordered">
+The <b>query</b> operation displays the following information about a service: SERVICE_NAME (service's registry subkey name), TYPE, STATE (as well as states which are not available), WIN32_EXIT_B, SERVICE_EXIT_B, CHECKPOINT, and WAIT_HINT.<br><br>
+</li><li class="unordered">
+The <b>type=</b> parameter can be used twice in some cases. The first appearance of the <b>type=</b> parameter specifies whether to query services, drivers, or both (<b>all</b>). The second appearance of the <b>type=</b> parameter specifies a type from the <b>create</b> operation to further narrow a query's scope.<br><br>
+</li><li class="unordered">
+When the display resulting from a <b>query</b> command exceeds the size of the enumeration buffer, a message similar to the following is displayed: <br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>Enum: more data, need 1822 bytes start resume at index 79</pre></td></tr></table></span></div>
+
+To display the remaining <b>query</b> information, rerun <b>query</b>, setting <b>bufsize=</b> to be the number of bytes and setting <b>ri=</b> to the specified index. For example, the remaining output would be displayed by typing the following at the command prompt:<br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>sc query bufsize= 1822 ri= 79</pre></td></tr></table></span></div>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="ac365f89-4b20-4de6-a582-b204c5e7d0eb#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">To display information for active services only, type either of the following commands:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>sc query
+sc query type= service</pre></td></tr></table></span></div>
+
+<p xmlns="">To display information for active services, and to specify a buffer size of 2,000 bytes, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>sc query type= all bufsize= 2000</pre></td></tr></table></span></div>
+
+<p xmlns="">To display information for the WUAUSERV service, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>sc query wuauserv</pre></td></tr></table></span></div>
+
+<p xmlns="">To display information for all services (active and inactive), type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>sc query state= all</pre></td></tr></table></span></div>
+
+<p xmlns="">To display information for all services (active and inactive), beginning at line 56, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>sc query state= all ri= 56</pre></td></tr></table></span></div>
+
+<p xmlns="">To display information for interactive services, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>sc query type= service type= interact</pre></td></tr></table></span></div>
+
+<p xmlns="">To display information for drivers only, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>sc query type= driver</pre></td></tr></table></span></div>
+
+<p xmlns="">To display information for drivers in the Network Driver Interface Specification (NDIS) group, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>sc query type= driver group= ndis</pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

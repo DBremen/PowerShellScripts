@@ -1,0 +1,183 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Tsecimp</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Tsecimp</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008,Windows Server 2008 R2,Windows XP,Windows Server 2003 with SP1,Windows Vista,Windows Server 2003,Windows Server 2003 with SP2,Windows Server 2003 R2,Windows 7,Windows Server 2008 R2 with SP1</p>
+				<p>Imports assignment information from an Extensible Markup Language (XML) file into the TAPI server security file (Tsec.ini). You can also use this command to display the list of TAPI providers and the lines devices associated with each of them, validate the structure of the XML file without importing the contents, and check domain membership.</p>
+			<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>tsecimp –f &lt;Filename&gt; [{-v | -u}]
+tsecimp -d</pre></td></tr></table></span></div>
+				</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<h3 class="subHeading" xmlns="">Parameters</h3><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+										<th colspan="1">
+											Parameter
+										</th>
+										<th colspan="1">
+											Description
+										</th>
+									</tr><tr>
+									<td colspan="1">
+										<p>-f &lt;Filename&gt;</p>
+									</td>
+									<td colspan="1">
+										<p>Required. Specifies the name of the XML file that contains the assignment information that you want to import.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>-v</p>
+									</td>
+									<td colspan="1">
+										<p>Validates the structure of the XML file without importing the information into the Tsec.ini file.</p>
+									</td>
+								</tr><tr>
+									<td colspan="1">
+										<p>-u</p>
+									</td>
+									<td colspan="1">
+										<p>Checks whether each user is a member of the domain specified in the XML file. The computer on which you use this parameter must be connected to the network. This parameter might significantly slow performance if you are processing a large amount of user assignment information.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>-d</p>
+									</td>
+									<td colspan="1">
+										<p>Displays a list of installed telephony providers. For each telephony provider, the associated line devices are listed, as well as the addresses and users associated with each line device.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>/?</p>
+									</td>
+									<td>
+										<p>Displays help at the command prompt.</p>
+									</td>
+								</tr></table>
+						</content></div>
+					<h3 class="subHeading" xmlns="">Remarks</h3><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<ul xmlns=""><li class="unordered">
+									The XML file from which you want to import assignment information must follow the structure described below. <br><br>
+									<ul><li class="unordered">
+											
+												<b>UserList</b> element <br><br>
+											The <b>UserList</b> is the top element of the XML file. <br><br>
+										</li><li class="unordered">
+											
+												<b>User</b> element<br><br>
+											Each <b>User</b> element contains information about a user who is a member of a domain. Each user might be assigned one or more line devices.<br><br>
+											Additionally, each <b>User</b> element might have an attribute named <b>NoMerge</b>. When this attribute is specified, all current line device assignments for the user are removed before new ones are made. You can use this attribute to easily remove unwanted user assignments. By default, this attribute is not set.<br><br>
+											The <b>User</b> element must contain a single <b>DomainUserName</b> element, which specifies the domain and user name of the user. The <b>User</b> element might also contain one <b>FriendlyName</b> element, which specifies a friendly name for the user.<br><br>
+											The <b>User</b> element might contain one <b>LineList</b> element. If a <b>LineList</b> element is not present, all line devices for this user are removed.<br><br>
+										</li><li class="unordered">
+											
+												<b>LineList</b> element<br><br>
+											The <b>LineList</b> element contains information about each line or device that  might be assigned to the user. Each <b>LineList</b> element can contain more than one <b>Line</b> element.<br><br>
+										</li><li class="unordered">
+											
+												<b>Line</b> element<br><br>
+											Each <b>Line</b> element specifies a line device. You must identify each line device by adding either an <b>Address</b> element or a <b>PermanentID</b> element under the <b>Line</b> element.<br><br>
+											For each <b>Line</b> element, you can set the <b>Remove</b> attribute. If you set this attribute, the user is no longer assigned that line device. If this attribute is not set, the user gains access to that line device. No error is given if the line device is not available to the user.<br><br>
+										</li></ul>
+								</li><li class="unordered">
+									The following sample XML code segments illustrate correct usage of the elements defined above.<br><br>
+									<ul><li class="unordered">
+											The following code removes all line devices assigned to User1. <br><br>
+											<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>
+&lt;UserList&gt;
+  &lt;User NoMerge="1"&gt;
+    &lt;DomainUser&gt;domain1\user1&lt;/DomainUser&gt;
+  &lt;/User&gt;
+&lt;/UserList&gt;</pre></td></tr></table></span></div>
+										</li><li class="unordered">
+											The following code removes all line devices assigned to User1 before assigning one line with address 99999. User1 will have no other lines devices assigned, regardless of whether any line devices were assigned previously. <br><br>
+											<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>
+&lt;UserList&gt;
+  &lt;User NoMerge="1"&gt;
+    &lt;DomainUser&gt;domain1\user1&lt;/DomainUser&gt;
+    &lt;FriendlyName&gt;User1&lt;/FriendlyName&gt;
+    &lt;LineList&gt;
+      &lt;Line&gt;
+        &lt;Address&gt;99999&lt;/Address&gt;
+      &lt;/Line&gt;
+    &lt;/LineList&gt;
+  &lt;/User&gt;
+&lt;/UserList&gt;
+</pre></td></tr></table></span></div>
+										</li><li class="unordered">
+											The following code adds one line device for User1 without deleting any previously assigned line devices.<br><br>
+											<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>
+&lt;UserList&gt;
+  &lt;User&gt;
+    &lt;DomainUser&gt;domain1\user1&lt;/DomainUser&gt;
+    &lt;FriendlyName&gt;User1&lt;/FriendlyName&gt;
+    &lt;LineList&gt;
+      &lt;Line&gt;
+        &lt;Address&gt;99999&lt;/Address&gt;
+      &lt;/Line&gt;
+    &lt;/LineList&gt;
+  &lt;/User&gt;
+&lt;/UserList&gt;
+</pre></td></tr></table></span></div>
+										</li><li class="unordered">
+											The following code adds line address 99999 and removes line address 88888 from User1's access. <br><br>
+											<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>
+&lt;UserList&gt;
+  &lt;User&gt;
+    &lt;DomainUser&gt;domain1\user1&lt;/DomainUser&gt;
+    &lt;FriendlyName&gt;User1&lt;/FriendlyName&gt;
+    &lt;LineList&gt;
+      &lt;Line&gt;
+        &lt;Address&gt;99999&lt;/Address&gt;
+      &lt;/Line&gt;
+      &lt;Line Remove="1"&gt;
+        &lt;Address&gt;88888&lt;/Address&gt;
+      &lt;/Line&gt;
+    &lt;/LineList&gt;
+  &lt;/User&gt;
+&lt;/UserList&gt;
+</pre></td></tr></table></span></div>
+										</li><li class="unordered">
+											The following code adds permanent device 1000 and removes line 88888 from User1's access. <br><br>
+											<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>
+&lt;UserList&gt;
+  &lt;User&gt;
+    &lt;DomainUser&gt;domain1\user1&lt;/DomainUser&gt;
+    &lt;FriendlyName&gt;User1&lt;/FriendlyName&gt;
+    &lt;LineList&gt;
+      &lt;Line&gt;
+        &lt;PermanentID&gt;1000&lt;/PermanentID&gt;
+      &lt;/Line&gt;
+      &lt;Line Remove="1"&gt;
+        &lt;Address&gt;88888&lt;/Address&gt;
+      &lt;/Line&gt;
+    &lt;/LineList&gt;
+  &lt;/User&gt;
+&lt;/UserList&gt;
+
+</pre></td></tr></table></span></div>
+										</li></ul>
+								</li><li class="unordered">
+									The following sample output appears after the <b>-d</b> command-line option is specified to display the current TAPI configuration. For each telephony provider, the associated line devices are listed, as well as the addresses and users associated with each line device. <br><br>
+									<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>
+NDIS Proxy TAPI Service Provider
+        Line: "WAN Miniport (L2TP)"
+                Permanent ID: 12345678910
+
+NDIS Proxy TAPI Service Provider
+        Line: "LPT1DOMAIN1\User1"
+                Permanent ID: 12345678910
+
+Microsoft H.323 Telephony Service Provider
+        Line: "H323 Line"
+                Permanent ID: 123456
+                Addresses:
+                        BLDG1-TAPI32
+</pre></td></tr></table></span></div>
+								</li></ul>
+						</content></div>
+					<h3 class="subHeading" xmlns="">Additional references</h3><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<p xmlns="">
+								<a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a>
+							</p>
+							<p xmlns="">
+								<b>Command shell overview</b>
+							</p>
+						</content></div>
+				</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

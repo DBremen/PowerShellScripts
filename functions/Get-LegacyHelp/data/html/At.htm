@@ -1,0 +1,147 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>At</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">At</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008</p>
+<p>Schedules commands and programs to run on a computer at a specified time and date. You can use <b>at</b> only when the Schedule service is running. Used without parameters, <b>at</b> lists scheduled commands.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><b>at</b> [<b>\\</b><i>ComputerName</i>] [{[<i>ID</i>] [<b>/delete</b>] | <b>/delete</b> [<b>/yes</b>]}]</p>
+
+<p xmlns="">         <b>at</b> [[<b>\\</b><i>ComputerName</i>] <i>Hours</i><b>:</b><i>Minutes</i> [/<b>interactive</b>] [{<b>/every:</b><i>Date</i>[<b>,</b>...] | <b>/next:</b><i>Date</i>[<b>,</b>...]}] <i>Command</i>]</p>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<dl xmlns=""><dt> <b>\\</b><i>ComputerName</i> </dt><br><dd>
+Specifies a remote computer. If you omit this parameter, <b>at</b> schedules the commands and programs on the local computer.<p>
+</dd></dl><dl xmlns=""><dt> <i>ID</i> </dt><br><dd>
+Specifies the identification number assigned to a scheduled command.<p>
+</dd></dl><dl xmlns=""><dt> <b>/delete</b> </dt><br><dd>
+Cancels a scheduled command. If you omit <i>ID</i>, all of the scheduled commands on the computer are canceled.<p>
+</dd></dl><dl xmlns=""><dt> <b>/yes</b> </dt><br><dd>
+Answers yes to all queries from the system when you delete scheduled events.<p>
+</dd></dl><dl xmlns=""><dt> <i>Hours</i><b>:</b><i>Minutes</i> </dt><br><dd>
+Specifies the time when you want to run the command. Time is expressed as <i>Hours</i><b>:</b><i>Minutes</i> in 24-hour notation (that is, 00:00 [midnight] through 23:59).<p>
+</dd></dl><dl xmlns=""><dt> <b>/interactive</b> </dt><br><dd>
+Allows <i>Command</i> to interact with the desktop of the user who is logged on at the time <i>Command</i> runs.<p>
+</dd></dl><dl xmlns=""><dt> <b>/every:</b> </dt><br><dd>
+Runs <i>Command</i> on every specified day or days of the week or month (for example, every Thursday, or the third day of every month).<p>
+</dd></dl><dl xmlns=""><dt> <i>Date</i> </dt><br><dd>
+Specifies the date when you want to run the command. You can specify one or more days of the week (that is, type <b>M</b>,<b>T</b>,<b>W</b>,<b>Th</b>,<b>F</b>,<b>S</b>,<b>Su</b>) or one or more days of the month (that is, type 1 through 31). Separate multiple date entries with commas. If you omit <i>Date</i>, <b>at</b> uses the current day of the month.<p>
+</dd></dl><dl xmlns=""><dt> <b>/next:</b> </dt><br><dd>
+Runs <i>Command</i> on the next occurrence of the day (for example, next Thursday).<p>
+</dd></dl><dl xmlns=""><dt> <i>Command</i> </dt><br><dd>
+Specifies the Windows command, program (that is, .exe or .com file), or batch program (that is, .bat or .cmd file) that you want to run. When the command requires a path as an argument, use the absolute path (that is, the entire path beginning with the drive letter). If the command is on a remote computer, specify Universal Naming Convention (UNC) notation for the server and share name, rather than a remote drive letter.<p>
+</dd></dl><dl xmlns=""><dt> <b>/?</b> </dt><br><dd>
+Displays help at the command prompt.<p>
+</dd></dl>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+<b>Schtasks</b> is another command-line scheduling tool that you can use to create and manage scheduled tasks. For more information about <b>schtasks</b>, see Related Topics.<br><br>
+</li><li class="unordered">
+Using <b>at</b><br><br>
+
+To use <b>at</b>, you must be a member of the local Administrators group.<br><br>
+</li><li class="unordered">
+Loading Cmd.exe<br><br>
+
+<b>At</b> does not automatically load Cmd.exe, the command interpreter, before running commands. If you are not running an executable (.exe) file, you must explicitly load Cmd.exe at the beginning of the command as follows:<br><br>
+
+<b>cmd /c dir &gt; c:\test.out</b><br><br>
+</li><li class="unordered">
+Viewing scheduled commands<br><br>
+
+When you use <b>at</b> without command-line options, scheduled tasks appear in a table formatted similar to the following:<br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>Status  ID   Day        Time        Command Line
+OK      1    Each F     4:30 PM     net send group leads status due
+OK      2    Each M     12:00 AM    chkstor &gt; check.file
+OK      3    Each F     11:59 PM    backup2.bat
+</pre></td></tr></table></span></div>
+</li><li class="unordered">
+Including identification number (<i>ID</i>)<br><br>
+
+When you include identification number (<i>ID</i>) with <b>at</b> at a command prompt, information for a single entry appears in a format similar to the following:<br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>Task ID:      1
+
+Status:       OK
+
+Schedule:     Each  F
+
+Time of Day:  4:30 PM
+
+Command:      net send group leads status due</pre></td></tr></table></span></div>
+
+After you schedule a command with <b>at</b>, especially a command that has command-line options, check that the command syntax is correct by typing <b>at</b> without command-line options. If the information in the Command Line column is incorrect, delete the command and retype it. If it is still incorrect, retype the command with fewer command-line options.<br><br>
+</li><li class="unordered">
+Viewing results<br><br>
+
+Commands scheduled with <b>at</b> run as background processes. Output is not displayed on the computer screen. To redirect output to a file, use the redirection symbol (&gt;). If you redirect output to a file, you need to use the escape symbol (^) before the redirection symbol, whether you are using <b>at</b> at the command line or in a batch file. For example, to redirect output to Output.text, type:<br><br>
+
+<b>at 14:45 c:\test.bat ^&gt;c:\output.txt</b><br><br>
+
+The current directory for the executing command is the systemroot folder.<br><br>
+</li><li class="unordered">
+Changing system time<br><br>
+
+If you change the system time at a computer after you schedule a command to run with <b>at</b>, synchronize the <b>at</b> scheduler with the revised system time by typing <b>at</b> without command-line options.<br><br>
+</li><li class="unordered">
+Storing commands<br><br>
+
+Scheduled commands are stored in the registry. As a result, you do not lose scheduled tasks if you restart the Schedule service.<br><br>
+</li><li class="unordered">
+Connecting to network drives<br><br>
+
+Do not use a redirected drive for scheduled jobs that access the network. The Schedule service might not be able to access the redirected drive, or the redirected drive might not be present if a different user is logged on at the time the scheduled task runs. Instead, use UNC paths for scheduled jobs. For example:<br><br>
+
+<b>at 1:00pm my_backup \\server\share</b><br><br>
+
+Do not use the following syntax, where <b>x:</b> is a connection made by the user:<br><br>
+
+<b>at 1:00pm my_backup x:</b><br><br>
+
+If you schedule an <b>at</b> command that uses a drive letter to connect to a shared directory, include an <b>at</b> command to disconnect the drive when you are finished using the drive. If the drive is not disconnected, the assigned drive letter is not available at the command prompt.<br><br>
+</li><li class="unordered">
+Tasks stopping after 72 hours<br><br>
+
+By default, tasks scheduled using the <b>at</b> command stop after 72 hours. You can modify the registry to change this default value.<br><br>
+
+<ol class="ordered"><li>
+Start Registry Editor (regedit.exe).<br><br>
+</li><li>
+Locate and click the following key in the registry: <b>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Schedule</b><br><br>
+</li><li>
+On the Edit menu, click Add Value, and then add the following registry value: Value Name: AtTaskMaxHours Data type: REG_DWORD Radix: Decimal Value Data: 0. A value of 0 in the value data field indicates no limit, does not stop. Values from 1 through 99 indicates the number of hours.<br><br>
+</li></ol>
+</li></ul>
+
+<p xmlns=""><b>Caution</b></p>
+
+<ul xmlns=""><li class="unordered">
+Incorrectly editing the registry may severely damage your system. Before making changes to the registry, you should back up any valued data on the computer.<br><br>
+</li><li class="unordered">
+Task Scheduler and the <b>at</b> command<br><br>
+
+You can use the Scheduled Tasks folder to view or modify the settings of a task that was created by using the <b>at</b> command. When you schedule a task using the <b>at</b> command, the task is listed in the Scheduled Tasks folder, with a name such as the following:<b>At3478</b>. However, if you modify an at task through the Scheduled Tasks folder, it is upgraded to a normal scheduled task. The task is no longer visible to the <b>at</b> command, and the at account setting no longer applies to it. You must explicitly enter a user account and password for the task.<br><br>
+</li></ul>
+</content></div><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">To display a list of commands scheduled on the Marketing server, type:</p>
+
+<p xmlns=""><b>at \\marketing</b></p>
+
+<p xmlns="">To learn more about a command with the identification number 3 on the Corp server, type:</p>
+
+<p xmlns=""><b>at \\corp 3</b></p>
+
+<p xmlns="">To schedule a net share command to run on the Corp server at 8:00 A.M. and redirect the listing to the Maintenance server, in the Reports shared directory, and the Corp.txt file, type:</p>
+
+<p xmlns=""><b>at \\corp 08:00 cmd /c "net share reports=d:\marketing\reports &gt;&gt; \\maintenance\reports\corp.txt"</b></p>
+
+<p xmlns="">To back up the hard drive of the Marketing server to a tape drive at midnight every five days, create a batch program called Archive.cmd, which contains the backup commands, and then schedule the batch program to run, type:</p>
+
+<p xmlns=""><b>at \\marketing 00:00 /every:5,10,15,20,25,30 archive</b></p>
+
+<p xmlns="">To cancel all commands scheduled on the current server, clear the <b>at</b> schedule information as follows:</p>
+
+<p xmlns=""><b>at /delete</b></p>
+
+<p xmlns="">To run a command that is not an executable (that is, .exe) file, precede the command with <b>cmd /c</b> to load Cmd.exe as follows:</p>
+
+<p xmlns=""><b>cmd /c dir &gt; c:\test.out</b></p>
+</content></div><div id="sectionSection4" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

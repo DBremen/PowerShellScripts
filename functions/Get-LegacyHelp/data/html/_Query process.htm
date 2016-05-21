@@ -1,0 +1,111 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Query process</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Query process</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Vista,Windows Server 2008</p>
+<p>Displays information about processes that are running on a terminal server. </p>
+
+<p>You can use this command to find out which programs a specific user is running, and also which users are running a specific program.</p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>query process [* | &lt;ProcessID&gt; | &lt;UserName&gt; | &lt;SessionName&gt; | /id:&lt;nn&gt; | &lt;ProgramName&gt;] [/server:&lt;ServerName&gt;]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>*</p>
+</td>
+<td colspan="1">
+<p>Lists the processes for all sessions.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;ProcessID&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the numeric ID identifying the process that you want to query.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;UserName&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the name of the user whose processes you want to list.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;SessionName&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the name of the session whose processes you want to list.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/id:&lt;nn&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the ID of the session whose processes you want to list.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;ProgramName&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the name of the program whose processes you want to query. The .exe extension is required.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/server:&lt;ServerName&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the terminal server whose processes you want to list. If unspecified, the server where you are currently logged on is used.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/?</p>
+</td>
+<td colspan="1">
+<p>Displays help at the command prompt.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+Administrators have full access to all <b>query process</b> functions.<br><br>
+</li><li class="unordered">
+If you do not specify the &lt;<i>UserName</i>&gt;, &lt;<i>SessionName</i>&gt;, <b>/id:</b>&lt;<i>nn</i>&gt;, &lt;<i>ProgramName</i>&gt;, or <b>*</b> parameters, <b>query process</b> displays only the processes that belong to the current user.<br><br>
+</li><li class="unordered">
+If a session is specified, it must identify an active session.<br><br>
+</li><li class="unordered">
+<b>Query process</b> returns the following information:<br><br>
+
+<ul><li class="unordered">
+The user who owns the process<br><br>
+</li><li class="unordered">
+The session that owns the process<br><br>
+</li><li class="unordered">
+The ID of the session<br><br>
+</li><li class="unordered">
+The name of the process<br><br>
+</li><li class="unordered">
+The ID of the process<br><br>
+</li></ul>
+</li><li class="unordered">
+When <b>query process</b> returns information, a greater than (&gt;) symbol is displayed before each process that belongs to the current session.<br><br>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="36ce3ffc-0092-4eb1-a374-28e6616ca946#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+To display information about the processes being used by all sessions, type:<br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>query process *</pre></td></tr></table></span></div>
+</li><li class="unordered">
+To display information about the processes being used by session ID 2, type:<br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>query process /ID:2</pre></td></tr></table></span></div>
+</li></ul>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+
+<p xmlns=""><a href="675c5128-f3cf-4e8f-8a3f-b29ab2a8b6de.htm">Query</a></p>
+
+<p xmlns=""><a href="2f371848-5c48-470c-908c-afbc95d3a805.htm">Terminal Services Command Reference</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

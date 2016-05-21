@@ -1,0 +1,137 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Reg add</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Reg add</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows XP,Windows Server 2008 R2,Windows Server 2008,Windows 7,Windows Server 2003 R2,Windows Server 2003,Windows Vista,Windows Server 2000</p>
+<p>Adds a new subkey or entry to the registry.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>reg add &lt;KeyName&gt; [{/v ValueName | /ve}] [/t DataType] [/s Separator] [/d Data] [/f]</pre></td></tr></table></span></div>
+
+<p xmlns="">For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>&lt;KeyName<i>&gt;</i></p>
+</td>
+<td colspan="1">
+<p>Specifies the full path of the subkey or entry to be added. To specify a remote computer, include the computer name (in the format \\&lt;ComputerName&gt;\) as part of the <i>KeyName</i>. Omitting \\ComputerName\ causes the operation to default to the local computer. The <i>KeyName</i> must include a valid root key. Valid root keys for the local computer are: HKLM, HKCU, HKCR, HKU, and HKCC. If a remote computer is specified, valid root keys are: HKLM and HKU.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/v &lt;ValueName&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the name of the registry entry to be added under the specified subkey.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/ve</p>
+</td>
+<td colspan="1">
+<p>Specifies that the registry entry that is added to the registry has a null value.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/t &lt;Type&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the type for the registry entry. <i>Type</i> must be one of the following:</p>
+
+<p>REG_SZ</p>
+
+<p>REG_MULTI_SZ</p>
+
+<p>REG_DWORD_BIG_ENDIAN</p>
+
+<p>REG_DWORD</p>
+
+<p>REG_BINARY</p>
+
+<p>REG_DWORD_LITTLE_ENDIAN</p>
+
+<p>REG_LINK</p>
+
+<p>REG_FULL_RESOURCE_DESCRIPTOR</p>
+
+<p>REG_EXPAND_SZ</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/s &lt;Separator&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the character to be used to separate multiple instances of data when the REG_MULTI_SZ data type is specified and more than one entry needs to be listed. If not specified, the default separator is <b>\0</b>.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/d &lt;Data&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the data for the new registry entry.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/f</p>
+</td>
+<td colspan="1">
+<p>Adds the registry entry without prompting for confirmation.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/?</p>
+</td>
+<td colspan="1">
+<p>Displays help for <b>reg add</b> at the command prompt.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+Subtrees cannot be added with this operation. This version of <b>reg</b> does not ask for confirmation when adding a subkey.<br><br>
+</li><li class="unordered">
+The following table lists the return values for the <b>reg add</b> operation.<br><br>
+</li></ul>
+
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Value
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>0</p>
+</td>
+<td colspan="1">
+<p>Success</p>
+</td></tr><tr>
+<td colspan="1">
+<p>1</p>
+</td>
+<td colspan="1">
+<p>Failure</p>
+</td></tr></table>
+
+<ul xmlns=""><li class="unordered">
+For the REG_EXPAND_SZ key type, use the caret symbol ( <b>^</b> ) with <b>%</b>" inside the /d parameter<br><br>
+</li><li class="unordered">
+<br><br>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="d9ad143e-dc10-4e2e-a229-408393c40079#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">To add the key HKLM\Software\MyCo on remote computer ABC, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>REG ADD \\ABC\HKLM\Software\MyCo</pre></td></tr></table></span></div>
+
+<p xmlns="">To add a registry entry to HKLM\Software\MyCo with a value named <b>Data</b> of type REG_BINARY and data of <b>fe340ead</b>, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>REG ADD HKLM\Software\MyCo /v Data /t REG_BINARY /d fe340ead</pre></td></tr></table></span></div>
+
+<p xmlns="">To add a multivalued registry entry to  HKLM\Software\MyCo with a value name of <b>MRU</b> of type REG_MULTI_SZ and data of <b>fax\0mail\0\0</b>, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>REG ADD HKLM\Software\MyCo /v MRU /t REG_MULTI_SZ /d fax\0mail\0\0</pre></td></tr></table></span></div>
+
+<p xmlns="">To add an expanded registry entry to HKLM\Software\MyCo with a value name of <b>Path</b> of type REG_EXPAND_SZ and data of <b>%systemroot%</b>, type: </p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>REG ADD HKLM\Software\MyCo /v Path /t REG_EXPAND_SZ /d ^%systemroot^%</pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

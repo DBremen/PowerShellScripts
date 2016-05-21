@@ -1,0 +1,163 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Nlb</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Nlb</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008,Windows Server 2008 R2</p>
+<p>After you have installed and configured Network Load Balancing (NLB), you can control its operations and modify parameter settings using the NLB control program, nlb.exe. To simplify and centralize system administration, you can run nlb.exe either on the cluster hosts or on any remote computer running Windows Server® 2008 that can access the cluster over a local or wide area network. However, certain actions, such as modifying parameters, can be performed only on the cluster hosts.</p>
+
+<p>In order to run nlb.exe from a remote computer, remote control must be enabled. The NLB remote control option presents many security risks, including the possibility of data tampering, denial of service and information disclosure. You should only use remote control on a secure computer within your firewall. Because of the many security risks remote control presents, it is strongly recommended that you do not enable the remote control feature and instead use other remote management tools such as NLB Manager or Windows Management Instrumentation (WMI).</p>
+
+<p>If you choose to enable remote control it is vital that you restrict access by specifying a strong remote control password. It is recommended that you use a firewall to protect the NLB UDP control ports (the ports receiving remote control commands) in order to shield them from outside intrusion. By default, these are ports 1717 and 2504 at the cluster IP address.</p>
+
+<p>Because it is a shell-based program, nlb.exe program can be incorporated into administrative scripts.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>nlb Command [Remote Options][/h]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><b>Command.</b> Specifies the Network Load Balancing action to perform. The following table lists the possible values.</p>
+
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>help</p>
+</td>
+<td colspan="1">
+<p>Displays the online Help.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>suspend [{Cluster[:Host] | all {local | global}}]</p>
+</td>
+<td colspan="1">
+<p>Suspends all cluster operations until the resume command is issued. Suspend temporarily stops cluster operations if they were previously started. The purpose of this command is to override any remote control commands that might be issued. All subsequent cluster-control commands except resume and query are ignored. The optional parameters allow the command to address a specific cluster, a specific cluster on a specific host, all clusters on the local computer, or all global computers that are part of the cluster.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>resume [{Cluster[:Host] | all {local | global}}]</p>
+</td>
+<td colspan="1">
+<p>Resumes cluster operations after a previous suspend command. This does not restart cluster operations, but enables use of cluster-control commands, including remote control commands. The optional parameters allow the command to address a specific cluster, a specific cluster on a specific host, all clusters on the local computer, or all global computers that are part of the cluster.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>start [{Cluster[:Host] | all {local | global}}]</p>
+</td>
+<td colspan="1">
+<p>Starts cluster operations on the specified hosts. This enables all ports that might have been previously disabled. The optional parameters allow the command to address a specific cluster, a specific cluster on a specific host, all clusters on the local computer, or all global computers that are part of the cluster.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>stop [{Cluster[:Host] | all {local | global}}]</p>
+</td>
+<td colspan="1">
+<p>Stops cluster operations on the specified hosts. The optional parameters allow the command to address a specific cluster, a specific cluster on a specific host, all clusters on the local computer, or all global computers that are part of the cluster.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>drainstop [{Cluster[:Host] | all {local | global}}]</p>
+</td>
+<td colspan="1">
+<p>Disables all new traffic handling on the specified hosts. While draining, hosts continue to service opened connections and stop their cluster operations when there are no more active connections. Draining mode can be terminated by explicitly stopping cluster mode with the stop command or by restarting new traffic handling with the start command. The optional parameters allow the command to address a specific cluster, a specific cluster on a specific host, all clusters on the local computer, or all global computers that are part of the cluster.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>enable {vip[{:Port | :all}] | all[{:Port | :all}]} {Cluster[:{Host]| all {local | global}}}</p>
+</td>
+<td colspan="1">
+<p>Enables traffic handling for the rule whose port range contains the specified port. The first set of optional parameters allow the command to address every virtual IP address (vip), or specific vips on a specific port rule or on all ports. The second set of optional parameters allow the command to address a specific cluster, a specific cluster on a specific host, all clusters on the local computer, or all global computers that are part of the cluster. All ports specified by the port rule are affected. If all is specified for the port, this command is applied to the ports covered by all port rules. This command has no effect if the specified hosts have not started cluster operations.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>disable {vip[{:Port | :all}] | all[{:Port | :all}]} {Cluster[:{Host]| all {local | global}}}</p>
+</td>
+<td colspan="1">
+<p>Disables and immediately blocks all traffic handling for the rule whose port range contains the specified port. The first set of optional parameters allow the command to address every virtual IP address (vip), or specific vips on a specific port rule or on all ports. The second set of optional parameters allow the command to address a specific cluster, a specific cluster on a specific host, all clusters on the local computer, or all global computers that are part of the cluster. All ports specified by the port rule are affected. If all is specified for the port, this command is applied to the ports covered by all port rules. All active connections on the specified hosts are blocked. To maintain active connections, use the drain function instead. This has no effect if the specified hosts have not started cluster operations.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>drain {vip[{:Port | :all}] | all[{:Port | :all}]} {Cluster[:{Host]| all {local | global}}}</p>
+</td>
+<td colspan="1">
+<p>Disables new traffic handling for the rule whose port range contains the specified port. The first set of optional parameters allow the command to address every virtual IP address (vip), or specific vips on a specific port rule or on all ports. The second set of optional parameters allow the command to address a specific cluster, a specific cluster on a specific host, all clusters on the local computer, or all global computers that are part of the cluster. All ports specified by the port rule are affected. If all is specified for the port, this command is applied to the ports covered by all port rules. New connections to the specified hosts are not allowed, but all active connections are maintained. To disable active connections, use the disable command instead. This command has no effect if the specified hosts have not started cluster operations.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>query [{Cluster[:Host]| all {local | global}}]</p>
+</td>
+<td colspan="1">
+<p>Displays the current cluster state and the list of host priorities for the current members of the cluster. The possible states are: Unknown. The responding host has not started cluster operations and cannot determine the cluster's state. Converging. The cluster is currently attempting to converge to a consistent state. Prolonged convergence usually indicates a problem with cluster parameters. If this occurs, check the event logs on the cluster hosts for Network Load Balancing messages warning you about the source of the problem. Draining. The cluster has converged, and the responding host is draining active connections in response to a drainstop command. Converged as default. The cluster has converged, and the responding host is the current default (the highest priority host without a drainstop command in progress). The default host handles network traffic for all of the TCP/UDP ports not covered by the port rules. Converged. The cluster has converged, and the responding host is not the default host. </p>
+
+<p>The optional parameters allow the command to address a specific cluster, a specific cluster on a specific host, all clusters on the local computer, or all global computers that are part of the cluster.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>queryport [{vip:]Port [Cluster[:Host] | all [{local | global}]}]</p>
+</td>
+<td colspan="1">
+<p>Displays information about a given port rule. The first parameter specifies which port rule to query. Specify the port rule by using a port number that is within the range of the port rule that you want to query. If necessary, you can also specify a virtual IP address (VIP). The default is all VIPs. However, if a particular port rule is assigned to only a specific VIP (as opposed to all VIPs) you must specify the appropriate VIP in order for the port rule to be found by this command. </p>
+
+<p>The second set of optional parameters allow the command to address a specific cluster, a specific cluster on a specific host, all clusters on the local computer, or all global computers that are part of the cluster.</p>
+
+<p>The information returned includes information regarding if the port rule was found or an indication that the port rule was not found, the state of the port rule (Enabled, Disabled or Draining), and a count of packets accepted and dropped on that port rule..</p>
+</td></tr><tr>
+<td colspan="1">
+<p>reload [{Cluster | all}] (local only)</p>
+</td>
+<td colspan="1">
+<p>Reloads the NLB driver's current parameters from the registry. Cluster operations on the local host are automatically stopped and restarted if necessary. If an error exists in the parameters, the host will not join the cluster, and a warning is displayed. If this should occur, open the NLB Properties dialog box to fix the problem.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>display [{Cluster | all}] (local only)</p>
+</td>
+<td colspan="1">
+<p>Displays extensive information about your current NLB parameters, cluster state, and past cluster activity. The last several event log records produced by NLB are shown, including the binary data attached to those records. This command is designed to assist in technical support and debugging. </p>
+
+<p>The registry information retrieved by the display command shows what the next state of NLB would be if a reload or some other operation that causes the driver to read the registry were to be performed. The registry information might or might not be the current state of NLB.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>params [{Cluster | all}] (local only)</p>
+</td>
+<td colspan="1">
+<p>Displays information about your current NLB configuration. This command is similar to the display command, however, instead of retrieving the information from the registry, the params command queries directly from the kernel-mode driver. The information displayed is therefore the current state of NLB. (The registry information retrieved by the display command shows what the next state of NLB would be if a reload or some other operation that causes the driver to read the registry were to be performed. The registry information might or might not be the current state of NLB.) In addition to the configuration information, nlb params displays state variables from the kernel, including the current number of connections being maintained by NLB and the number of dynamic allocations that have been necessary for connection tracking.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>ip2mac Cluster</p>
+</td>
+<td colspan="1">
+<p>Displays the media access control address corresponding to the specified cluster name or IP address. If multicast support is enabled, the multicast media access control address is used by NLB for cluster operations. Otherwise, the unicast media access control address is used. This command is useful for creating a static ARP entry in the router if necessary.</p>
+</td></tr></table>
+
+<p xmlns=""><b>[remote options]</b> Specifies the remote options when using remote control operations. The following table describes the possible options.</p>
+
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>/PASSW Password</p>
+</td>
+<td colspan="1">
+<p>Specifies the remote control password.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/PORT Port</p>
+</td>
+<td colspan="1">
+<p>Specifies the cluster's remote control UDP port.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/local</p>
+</td>
+<td colspan="1">
+<p>Perform the operations only on the local computer.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+The cluster parameter can be either the cluster's full Internet name or the cluster's primary IP address. You can omit the cluster option when running nlb.exe directly on a cluster host. In this instance, the command applies only to the local cluster host. To address the cluster as a whole or a different host within the cluster, you must also specify the target cluster, or target cluster and specific host together.<br><br>
+</li><li class="unordered">
+The host parameter specifies which host within the cluster to which the command should be applied. If the host parameter is omitted, the command applies to all hosts within the cluster. You can specify host name using the internet host name, the IP address, or the unique host priorities assigned in the Network Load Balancing Properties dialog box. You can use the special host priority value 0 (zero) to refer to the default host within a cluster. You can omit the host option when running nlb.exe directly on a cluster host. In this instance, the command applies only to the local cluster host. To address the cluster as a whole or a different host within the cluster, you must also specify the target cluster, or target cluster and specific host together.<br><br>
+</li><li class="unordered">
+Some commands can be invoked only on the cluster hosts (designated above as local only). <br><br>
+</li><li class="unordered">
+NLB hosts can be configured to join the cluster automatically upon startup or to wait for the nlb start command by enabling the initial host state option in the Network Load Balancing Properties dialog box. You can use this command with the nlb stop command to change cluster parameters for the local host without taking the entire cluster offline.<br><br>
+</li><li class="unordered">
+You can modify the parameters (for example, to add a  port rule) without disrupting the cluster's service to the clients. To do this, take a host out of the cluster, update its parameters, and then return it to the cluster. During this process, other cluster hosts will detect inconsistencies in the rules, and they will handle these inconsistencies in a manner that minimizes disruption of service to the clients.<br><br>
+</li><li class="unordered">
+You can use the nlb disable and nlb enable commands to customize your cluster responses to various failures. For example, if your SNMP monitoring program indicates that a Web server program on one of the hosts has failed, you can issue the command nlb disable 80 to prevent that host from accepting any further client requests to the specified Web server port, causing other cluster hosts to handle its load. After the Web server has been restarted, the nlb enable 80 command can be issued to allow the host to resume handling a portion of the cluster's network load for this port. <br><br>
+</li></ul>
+</content></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

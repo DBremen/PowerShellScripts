@@ -1,0 +1,244 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Tapicfg</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Tapicfg</span></td></tr><tr id="headerTableRow3"><td><a href="#seeAlsoNoToggle" onclick="OpenSection(seeAlsoNoToggle)">See Also</a></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008 R2,Windows Server 2008</p>
+				<p> </p>
+			<h2 class="heading">Tapicfg</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">Creates, removes, or displays a TAPI application directory partition, or sets a default TAPI application directory partition. TAPI 3.1 clients can use the information in this application directory partition with the directory service locator service to find and communicate with TAPI directories.</p>
+					<p xmlns="">You can also use <b>Tapicfg</b> to create or remove service connection points, which enable TAPI clients to efficiently locate TAPI application directory partitions in a domain. For more information, see Remarks. </p>
+					<p xmlns="">To view the command syntax, click a command.</p>
+					<ul xmlns=""><li class="unordered">
+							
+								<a href="#BKMK_install">tapicfg install</a>
+							<br><br>
+						</li><li class="unordered">
+							
+								<a href="#BKMK_remove">tapicfg remove</a>
+							<br><br>
+						</li><li class="unordered">
+							
+								<a href="#BKMK_publishscp">tapicfg publishscp</a>
+							<br><br>
+						</li><li class="unordered">
+							
+								<a href="#BKMK_removescp">tapicfg removescp</a>
+							<br><br>
+						</li><li class="unordered">
+							
+								<a href="#BKMK_show">tapicfg show</a>
+							<br><br>
+						</li><li class="unordered">
+							
+								<a href="#BKMK_makedefault">tapicfg makedefault</a>
+							<br><br>
+						</li></ul>
+				</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+						</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<a name="BKMK_install" xmlns=""></a><a name="c0e642ce-5d98-4edb-9a65-1dff09aef4e1#BKMK_install" xmlns=""></a><h4 class="subHeading" xmlns="">tapicfg install</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<p xmlns="">Creates a TAPI application directory partition. </p>
+								</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<h5 class="subHeading" xmlns="">Syntax</h5><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+											<p xmlns="">
+												<b>tapicfg install /directory:</b>
+												<i>PartitionName</i>
+												<b> </b>[<b>/server:</b><i>DCName</i>] [<b>/forcedefault</b>]</p>
+										</content></div>
+									<h5 class="subHeading" xmlns="">Parameters</h5><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+											<dl xmlns=""><dt>
+													<b>install /directory:</b>
+													<i>PartitionName</i>
+												</dt><br><dd>
+													Required. Specifies the DNS name of the TAPI application directory partition to be created. This name must be a fully qualified domain name.<p>
+												</dd></dl><dl xmlns=""><dt>
+													<b>/server:</b>
+													<i>DCName</i>
+												</dt><br><dd>
+													Specifies the DNS name of the domain controller on which the TAPI application directory partition is created. If the domain controller name is not specified, the name of the local computer is used.<p>
+												</dd></dl><dl xmlns=""><dt>
+													<b>/forcedefault</b>
+												</dt><br><dd>
+													Specifies that this directory is the default TAPI application directory partition for the domain. There can be multiple TAPI application directory partitions in a domain. <p>
+													If this directory is the first TAPI application directory partition created on the domain, it is automatically set as the default, regardless of whether you use the <b>/forcedefault</b> option.<p>
+												</dd></dl>
+										</content></div>
+								</sections></div>
+							<a name="BKMK_remove" xmlns=""></a><a name="c0e642ce-5d98-4edb-9a65-1dff09aef4e1#BKMK_remove" xmlns=""></a><h4 class="subHeading" xmlns="">tapicfg remove</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<p xmlns="">Removes a TAPI application directory partition.</p>
+								</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<h5 class="subHeading" xmlns="">Syntax</h5><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+											<p xmlns="">
+												<b>tapicfg remove /directory:</b>
+												<i>PartitionName</i>
+												<b> </b>
+											</p>
+										</content></div>
+									<h5 class="subHeading" xmlns="">Parameters</h5><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+											<dl xmlns=""><dt>
+													<b>remove /directory:</b>
+													<i>PartitionName</i>
+												</dt><br><dd>
+													Required. Specifies the DNS name of the TAPI application directory partition to be removed. Note that this name must be a fully qualified domain name.<p>
+												</dd></dl>
+										</content></div>
+								</sections></div>
+							<a name="BKMK_publishscp" xmlns=""></a><a name="c0e642ce-5d98-4edb-9a65-1dff09aef4e1#BKMK_publishscp" xmlns=""></a><h4 class="subHeading" xmlns="">tapicfg publishscp</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<p xmlns="">Creates a service connection point to publish a TAPI application directory partition.</p>
+								</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<h5 class="subHeading" xmlns="">Syntax</h5><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+											<p xmlns="">
+												<b>tapicfg publishscp /directory:</b>
+												<i>PartitionName</i>
+												<b> </b>[<b>/domain:</b><i>DomainName</i>] [<b>/forcedefault</b>]</p>
+										</content></div>
+									<h5 class="subHeading" xmlns="">Parameters</h5><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+											<dl xmlns=""><dt>
+													<b>publishscp /directory:</b>
+													<i>PartitionName</i>
+												</dt><br><dd>
+													Required. Specifies the DNS name of the TAPI application directory partition that the service connection point will publish.<p>
+												</dd></dl><dl xmlns=""><dt>
+													<b>/domain:</b>
+													<i>DomainName</i>
+												</dt><br><dd>
+													Specifies the DNS name of the domain in which the service connection point is created. If the domain name is not specified, the name of the local domain is used.<p>
+												</dd></dl><dl xmlns=""><dt>
+													<b>/forcedefault</b>
+												</dt><br><dd>
+													Specifies that this directory is the default TAPI application directory partition for the domain. There can be multiple TAPI application directory partitions in a domain.<p>
+												</dd></dl>
+										</content></div>
+								</sections></div>
+							<a name="BKMK_removescp" xmlns=""></a><a name="c0e642ce-5d98-4edb-9a65-1dff09aef4e1#BKMK_removescp" xmlns=""></a><h4 class="subHeading" xmlns="">tapicfg removescp</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<p xmlns="">Removes a service connection point for a TAPI application directory partition.</p>
+								</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<h5 class="subHeading" xmlns="">Syntax</h5><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+											<p xmlns="">
+												<b>tapicfg removescp /directory:</b>
+												<i>PartitionName</i>
+												<b> </b>[<b>/domain:</b><i>DomainName</i>]</p>
+										</content></div>
+									<h5 class="subHeading" xmlns="">Parameters</h5><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+											<dl xmlns=""><dt>
+													<b>removescp /directory:</b>
+													<i>PartitionName</i>
+												</dt><br><dd>
+													Required. Specifies the DNS name of the TAPI application directory partition for which a service connection point is removed.<p>
+												</dd></dl><dl xmlns=""><dt>
+													<b>/domain:</b>
+													<i>DomainName</i>
+												</dt><br><dd>
+													Specifies the DNS name of the domain from which the service connection point is removed. If the domain name is not specified, the name of the local domain is used.<p>
+												</dd></dl>
+										</content></div>
+								</sections></div>
+							<a name="BKMK_show" xmlns=""></a><a name="c0e642ce-5d98-4edb-9a65-1dff09aef4e1#BKMK_show" xmlns=""></a><h4 class="subHeading" xmlns="">tapicfg show</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<p xmlns="">Displays the names and locations of the TAPI application directory partitions in the domain.</p>
+								</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<h5 class="subHeading" xmlns="">Syntax</h5><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+											<p xmlns="">
+												<b>tapicfg show </b>[<b>/defaultonly</b>][<b>/domain:</b><i>DomainName</i>]</p>
+										</content></div>
+									<h5 class="subHeading" xmlns="">Parameters</h5><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+											<dl xmlns=""><dt>
+													<b>/defaultonly</b>
+												</dt><br><dd>
+													Displays the names and locations of only the default TAPI application directory partition in the domain.<p>
+												</dd></dl><dl xmlns=""><dt>
+													<b>/domain:</b>
+													<i>DomainName</i>
+												</dt><br><dd>
+													Specifies the DNS name of the domain for which the TAPI application directory partitions are displayed. If the domain name is not specified, the name of the local domain is used.<p>
+												</dd></dl>
+										</content></div>
+								</sections></div>
+							<a name="BKMK_makedefault" xmlns=""></a><a name="c0e642ce-5d98-4edb-9a65-1dff09aef4e1#BKMK_makedefault" xmlns=""></a><h4 class="subHeading" xmlns="">tapicfg makedefault</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<p xmlns="">Sets the default TAPI application directory partition for the domain.</p>
+								</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<h5 class="subHeading" xmlns="">Syntax</h5><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+											<p xmlns="">
+												<b>tapicfg makedefault /directory:</b>
+												<i>PartitionName</i>[<b>/domain:</b><i>DomainName</i>]<b> </b></p>
+										</content></div>
+									<h5 class="subHeading" xmlns="">Parameters</h5><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+											<dl xmlns=""><dt>
+													<b>makedefault /directory:</b>
+													<i>PartitionName</i>
+												</dt><br><dd>
+													Required. Specifies the DNS name of the TAPI application directory partition set as the default partition for the domain. Note that this name must be a fully qualified domain name. <p>
+													Specifies the DNS name of the domain for which the TAPI application directory partition is set as the default. If the domain name is not specified, the name of the local domain is used.<p>
+												</dd></dl><dl xmlns=""><dt>
+													<b>tapicfg /?</b>
+												</dt><br><dd>
+													Displays Help at the command prompt.<p>
+												</dd></dl>
+										</content></div>
+									<h5 class="subHeading" xmlns="">Remarks</h5><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+											<p xmlns="">You must be a member of the Enterprise Admins group in Active Directory to run either <b>tapicfg install</b> (to create a TAPI application directory partition) or <b>tapicfg remove</b> (to remove a TAPI application directory partition). </p>
+											<p xmlns="">This command-line tool can be run on any computer that is a member of the domain. </p>
+											<p xmlns="">User-supplied text (such as the names of TAPI application directory partitions, servers, and domains) with International or Unicode characters are only displayed correctly if appropriate fonts and language support are installed. </p>
+											<p xmlns="">You can still use Internet Locator Service (ILS) servers in your organization, if ILS is needed to support certain applications, because TAPI clients running Windows XP or a Windows Server 2003 operating system can query either ILS servers or TAPI application directory partitions. </p>
+											<p xmlns="">You can use <b>Tapicfg</b> to create or remove service connection points. If the TAPI application directory partition is renamed for any reason (for example, if you rename the domain in which it resides), you must remove the existing service connection point and create a new one that contains the new DNS name of the TAPI application directory partition to be published. Otherwise, TAPI clients are unable to locate and access the TAPI application directory partition. You can also remove a service connection point for maintenance or security purposes (for example, if you do not want to expose TAPI data on a specific TAPI application directory partition). </p>
+										</content></div>
+									<h5 class="subHeading" xmlns="">Examples</h5><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+											<p xmlns="">To create a TAPI application directory partition named tapifiction.testdom.microsoft.com on a server named testdc.testdom.microsoft.com and then set it as the default TAPI application directory partition for the new domain, type: </p>
+											<p xmlns="">
+												<b>tapicfg install /directory:tapifiction.testdom.microsoft.com /server:testdc.testdom.microsoft.com /forcedefault</b>
+											</p>
+											<p xmlns="">To display the name of the default TAPI application directory partition for the new domain, type:</p>
+											<p xmlns="">
+												<b>tapicfg show /defaultonly</b>
+											</p>
+											<h3 class="subHeading" xmlns="">Formatting legend</h3><table xmlns=""><tr>
+														<th colspan="1">
+															Format
+														</th>
+														<th colspan="1">
+															Meaning
+														</th>
+													</tr><tr>
+													<td colspan="1">
+														<p>Italic</p>
+													</td>
+													<td colspan="1">
+														<p>Information that the user must supply</p>
+													</td>
+												</tr><tr>
+													<td colspan="1">
+														<p>Bold</p>
+													</td>
+													<td colspan="1">
+														<p>Elements that the user must type exactly as shown</p>
+													</td>
+												</tr><tr>
+													<td colspan="1">
+														<p>Ellipsis (...)</p>
+													</td>
+													<td colspan="1">
+														<p>Parameter that can be repeated several times in a command line</p>
+													</td>
+												</tr><tr>
+													<td colspan="1">
+														<p>Between brackets ([])</p>
+													</td>
+													<td colspan="1">
+														<p>Optional items</p>
+													</td>
+												</tr><tr>
+													<td colspan="1">
+														<p>Between braces ({}); choices separated by pipe (|). Example: {even|odd}</p>
+													</td>
+													<td colspan="1">
+														<p>Set of choices from which the user must choose only one</p>
+													</td>
+												</tr><tr>
+													<td colspan="1">
+														<p>Courier font</p>
+													</td>
+													<td colspan="1">
+														<p>Code or program output</p>
+													</td>
+												</tr></table>
+										</content></div>
+								</sections></div>
+						</sections></div>
+				</sections></div><h2 class="heading"><span id="seeAlsoNoToggle">See Also</span></h2><div id="seeAlsoSection" class="section"><b>Command shell overview</b><b>Command-line reference A-Z</b><b>Create a TAPI application directory partition</b><b>Remove a TAPI application directory partition</b><br></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

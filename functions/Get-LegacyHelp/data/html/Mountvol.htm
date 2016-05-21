@@ -1,0 +1,105 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Mountvol</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Mountvol</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Vista,Windows Server 2008</p>
+<p>Creates, deletes, or lists a volume mount point. </p>
+
+<p>For examples of how to use this command see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>mountvol [&lt;Drive&gt;:]&lt;Path VolumeName&gt;
+mountvol [&lt;Drive&gt;:]&lt;Path&gt; /d
+mountvol [&lt;Drive&gt;:]&lt;Path&gt; /l
+mountvol [&lt;Drive&gt;:]&lt;Path&gt; /p
+mountvol /r
+mountvol [/n | /e]
+mountvol &lt;Drive&gt;: /s</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>[&lt;Drive&gt;:]&lt;Path&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the existing NTFS directory where the mount point will reside.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> &lt;VolumeName&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the volume name that is the target of the mount point. The volume name uses the following syntax, where <i>GUID</i> is a globally unique identifier:</p>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>\\?\Volume\{GUID}\</pre></td></tr></table></span></div>
+
+<p>The brackets { } are required.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /d </p>
+</td>
+<td colspan="1">
+<p>Removes the volume mount point from the specified folder.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /l </p>
+</td>
+<td colspan="1">
+<p>Lists the mounted volume name for the specified folder.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /p </p>
+</td>
+<td colspan="1">
+<p>Removes the volume mount point from the specified directory, dismounts the basic volume, and takes the basic volume offline, making it unmountable. If other processes are using the volume, <b>mountvol</b> closes any open handles before dismounting the volume. </p>
+</td></tr><tr>
+<td colspan="1">
+<p> /r </p>
+</td>
+<td colspan="1">
+<p>Removes volume mount point directories and registry settings for volumes that are no longer in the system, preventing them from being automatically mounted and given their former volume mount point(s) when added back to the system.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /n </p>
+</td>
+<td colspan="1">
+<p>Disables automatic mounting of new basic volumes. New volumes are not mounted automatically when added to the system.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /e </p>
+</td>
+<td colspan="1">
+<p>Re-enables automatic mounting of new basic volumes.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /s </p>
+</td>
+<td colspan="1">
+<p>Mounts the EFI system partition on the specified drive. Available on Itanium-based computers only. </p>
+</td></tr><tr>
+<td colspan="1">
+<p> /? </p>
+</td>
+<td colspan="1">
+<p>Displays help at the command prompt.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+<b>Mountvol</b> allows you to link volumes without requiring a drive letter.<br><br>
+</li><li class="unordered">
+Volumes that are dismounted by using <b>/p</b> are listed in the volumes list as "NOT MOUNTED UNTIL A VOLUME MOUNT POINT IS CREATED." If the volume has more than one mount point, use <b>/d</b> to remove the additional mount points before using <b>/p</b>. You can make the basic volume mountable again by assigning a volume mount point.<br><br>
+</li><li class="unordered">
+If you need to expand your volume space without reformatting or replacing a hard drive, you can add a mount path to another volume. The benefit of using one volume with several mount paths is that you can access all local volumes by using a single drive letter (such as <code>C:</code>). You do not need to remember which volume corresponds to which drive letter—although you can still mount local volumes and assign them drive letters.<br><br>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="fea8ad4d-f04a-4aaa-a3e5-75931e867b39#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">To create a mount point, type: </p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>mountvol \sysmount \\?\Volume\{2eca078d-5cbc-43d3-aff8-7e8511f60d0e}\</pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

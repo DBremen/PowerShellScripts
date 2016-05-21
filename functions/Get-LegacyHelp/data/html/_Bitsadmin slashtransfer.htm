@@ -1,0 +1,83 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Bitsadmin /transfer</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Bitsadmin /transfer</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008 R2,Windows Server 2008,Windows Vista</p>
+<p>Transfers one or more files.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>bitsadmin /Transfer Name [Type] [/Priority Job_Priority] [/ACLFlags Flags] &lt;RemoteFileName&gt; &lt;LocalFileName&gt;</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>Name</p>
+</td>
+<td colspan="1">
+<p>The name of the job.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>Type</p>
+</td>
+<td colspan="1">
+<p>Optional—specify the type of job. Use <b>/Download</b> for a download job or <b>/Upload</b> for an upload job.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>Priority</p>
+</td>
+<td colspan="1">
+<p>Optional— set the job_priority to one of the following values:</p>
+
+<ul><li class="unordered">
+FOREGROUND<br><br>
+</li><li class="unordered">
+HIGH<br><br>
+</li><li class="unordered">
+NORMAL<br><br>
+</li><li class="unordered">
+LOW<br><br>
+</li></ul>
+</td></tr><tr>
+<td colspan="1">
+<p>ACLFlags</p>
+</td>
+<td colspan="1">
+<p>Specify one or more of the following flags:</p>
+
+<ul><li class="unordered">
+O: Copy owner information with file. <br><br>
+</li><li class="unordered">
+G: Copy group information with file. <br><br>
+</li><li class="unordered">
+D: Copy DACL information with file. <br><br>
+</li><li class="unordered">
+S: Copy SACL information with file. <br><br>
+</li></ul>
+</td></tr><tr>
+<td colspan="1">
+<p>RemoteFileName</p>
+</td>
+<td colspan="1">
+<p>The name of the file when transferred to the server</p>
+</td></tr><tr>
+<td colspan="1">
+<p>LocalFileName</p>
+</td>
+<td colspan="1">
+<p>The name of the file that resides locally.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">By default, the BITSAdmin service creates a download job that runs at <b>NORMAL</b> priority and updates the command window with progress information until the transfer is complete or until a critical error occurs. The service completes the job if it successfully transfers all the files and cancels the job if a critical error occurs. The service does not create the job if it is unable to add files to the job or if you specify an invalid value for <i>Type</i> or <i>Job_Priority</i>. To transfer more than one file, specify multiple <i>RemoteFileName</i>-<i>LocalFileName</i> pairs. The pairs are space-delimited.</p>
+
+<div class="alert" xmlns=""><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>
+The BITSAdmin command continues to run if a transient error occurs. To end the command, press CTRL+C.<p>
+</td></tr></table><p></div>
+</content></div><a name="BKMK_examples"></a><a name="fe302141-b33a-4a05-835e-dc4fc4db7d5a#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">The following example starts a transfer job with named <i>myDownloadJob</i>.</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>C:\&gt;bitsadmin /Transfer myDownloadJob http://prodserver/audio.wma c:\downloads\audio.wma</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Additional references</h2><div id="sectionSection4" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+</content></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

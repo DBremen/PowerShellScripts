@@ -1,0 +1,124 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>/add-Image</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">/add-Image</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008,Windows Server 2008 R2</p>
+<p>Adds images to a Windows Deployment Services server. For examples of how you can use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+
+
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">For boot images, use the following syntax:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>WDSUTIL /Add-Image /ImageFile:&lt;wim file path&gt; [/Server:&lt;Server name&gt;] /ImageType:Boot [/SkipVerify] [/Name:&lt;Image name&gt;] [/Description:&lt;Image description&gt;] 
+[/Filename:&lt;New wim file name&gt;]</pre></td></tr></table></span></div>
+
+<p xmlns="">For install images, use the following syntax:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>WDSUTIL /Add-Image /ImageFile:&lt;wim file path&gt;
+     [/Server:&lt;Server name&gt;]
+     /ImageType:Install
+     [/SkipVerify]
+     [/ImageGroup:&lt;Image group name&gt;]
+     [/SingleImage:&lt;Single image name&gt;]
+         [/Name:&lt;Name&gt;]
+         [/Description:&lt;Description&gt;]
+     [/Filename:&lt;File name&gt;]
+     [/UnattendFile:&lt;Unattend file path&gt;]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>/ImageFile:&lt;.wim file path&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the full path and file name of the Windows Image (.wim) file that contains the images to be added.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>[/Server:&lt;Server name&gt;]</p>
+</td>
+<td colspan="1">
+<p>Specifies the name of the server. This can be either the NetBIOS name or the fully qualified domain name (FQDN). If a server name is not specified, the local server will be used.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/ImageType:{Boot|Install}</p>
+</td>
+<td colspan="1">
+<p>Specifies the type of images to be added.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>[/SkipVerify]</p>
+</td>
+<td colspan="1">
+<p>Specifies that integrity verification will not be performed on the source image file before the image is added.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>[/Name:&lt;Name&gt;]</p>
+</td>
+<td colspan="1">
+<p>Sets the display name of the image.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>[/Description:&lt;Description&gt;]</p>
+</td>
+<td colspan="1">
+<p>Sets the description of the image.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>[/Filename:&lt;Filename&gt;]</p>
+</td>
+<td colspan="1">
+<p>Specifies the new file name for the .wim file. This enables you to change the file name of the .wim file when adding the image. If no file name is specified, the source image file name will be used. In all cases, Windows Deployment Services checks to determine whether the file name is unique in the boot image store of the destination computer.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>[/ImageGroup:&lt;Image group name&gt;]</p>
+</td>
+<td colspan="1">
+<p>Specifies the name of the image group in which the images are to be added. If more than one image group exists on the server, the image group must be specified. If this is not specified and an image group does not already exist, a new image group will be created. Otherwise, the existing image group will be used. </p>
+</td></tr><tr>
+<td colspan="1">
+<p>[/SingleImage:&lt;Single image name&gt;] [/Name:&lt;Name&gt;] [/Description:&lt;Description&gt;] </p>
+</td>
+<td colspan="1">
+<p>Copies the specified single image out of a .wim file, and sets the image's display name and description. </p>
+</td></tr><tr>
+<td colspan="1">
+<p>[/UnattendFile:&lt;Unattend file path&gt;]</p>
+</td>
+<td colspan="1">
+<p>Specifies the full path to the unattended installation file to be associated with the images that are being added. If <b>/SingleImage</b> is not specified, the same unattend file will be associated with all of the images in the .wim file.</p>
+</td></tr></table>
+</content></div><a name="BKMK_examples"></a><a name="d5b6f4da-90ba-4b0e-9423-66c8ef5172e2#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">To add a boot image, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>WDSUTIL /Add-Image /ImageFile:"C:\MyFolder\Boot.wim" /ImageType:Boot
+WDSUTIL /Verbose /Progress /Add-Image /ImageFile:\\MyServer\Share\Boot.wim /Server:MyWDSServer /ImageType:Boot /Name:"My WinPE Image" 
+/Description:"WinPE Image containing the WDS Client" /Filename:WDSBoot.wim</pre></td></tr></table></span></div>
+
+<p xmlns="">To add an install image, type one of the following: </p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>WDSUTIL /Add-Image /ImageFile:"C:\MyFolder\Install.wim" /ImageType:Install
+WDSUTIL /Verbose /Progress /Add-Image /ImageFile:\\MyServer\Share \Install.wim /Server:MyWDSServer /ImageType:Install /ImageGroup:ImageGroup1 
+/SingleImage:"Windows Professional" /Name:"My WDS Image"
+/Description:"Windows Professional image with MSOffice" /Filename:"Win Pro.wim" /UnattendFile:"\\server\share\unattend.xml"</pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+
+<p xmlns=""><a href="bea41cf4-36e6-4181-afa5-00170ebd4fdc.htm">/copy-Image</a></p>
+
+<p xmlns=""><a href="a9b8b467-0f2d-4754-8998-55503a262778.htm">/export-Image</a></p>
+
+<p xmlns=""><a href="0ecaa999-72ad-4191-adb5-a418de42a001.htm">/get-Image</a></p>
+
+<p xmlns=""><a href="ce5e2384-2264-4b22-92af-74eec8c10ae0.htm">/remove-Image</a></p>
+
+<p xmlns=""><a href="68ded3df-e309-420f-9f5d-caeb609385a5.htm">/replace-Image</a></p>
+
+<p xmlns=""><a href="2ae03c86-7a13-4e38-9182-32e55fffd504.htm">/set-Image</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

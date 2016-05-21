@@ -1,0 +1,117 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Find</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Find</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Vista,Windows Server 2008</p>
+<p>Searches for a string of text in a file or files, and displays lines of text that contain the specified string.</p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>find [/v] [/c] [/n] [/i] [/off[line]] "&lt;String&gt;" [[&lt;Drive&gt;:][&lt;Path&gt;]&lt;FileName&gt;[...]]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p> /v  </p>
+</td>
+<td colspan="1">
+<p>Displays all lines that do not contain the specified &lt;String&gt;.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /c  </p>
+</td>
+<td colspan="1">
+<p>Counts the lines that contain the specified &lt;String&gt;and displays the total.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /n  </p>
+</td>
+<td colspan="1">
+<p>Precedes each line with the file's line number.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /i  </p>
+</td>
+<td colspan="1">
+<p>Specifies that the search is not case-sensitive.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>[/off[line]]</p>
+</td>
+<td colspan="1">
+<p>Does not skip files that have the offline attribute set.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> "&lt;String&gt;" </p>
+</td>
+<td colspan="1">
+<p>Required. Specifies the group of characters (enclosed in quotation marks) that you want to search for. </p>
+</td></tr><tr>
+<td colspan="1">
+<p>[&lt;Drive&gt;:][&lt;Path&gt;]&lt;FileName&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the location and name of the file in which to search for the specified string.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /? </p>
+</td>
+<td colspan="1">
+<p>Displays help at the command prompt.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+Specifying a string <br><br>
+
+If you do not use <b>/i</b>, <b>find</b> searches for exactly what you specify for <i>String</i>. For example, the <b>find</b> command treats the characters "a" and "A" differently. If you use <b>/i</b>, however, <b>find</b> is not case sensitive, and it treats "a" and "A" as the same character. <br><br>
+
+If the string you want to search for contains quotation marks, you must use double quotation marks for each quotation mark contained within the string (for example, "This ""string"" contains quotation marks"). <br><br>
+</li><li class="unordered">
+Using <b>find</b> as a filter <br><br>
+
+If you omit a file name, <b>find</b> acts as a filter, taking input from the standard input source (usually the keyboard, a pipe (|), or a redirected file) and then displaying any lines that contain <i>String</i>. <br><br>
+</li><li class="unordered">
+Ordering command syntax <br><br>
+
+You can type parameters and command-line options for the <b>find</b> command in any order.<br><br>
+</li><li class="unordered">
+Using wildcards <br><br>
+
+You cannot use wildcards (<b>*</b> and <b>?</b>) in file names or extensions that you specify with the <b>find</b> command. To search for a string in a set of files that you specify with wildcards, you can use the <b>find</b> command within a <b>for</b> command. <br><br>
+</li><li class="unordered">
+Using <b>/v</b> or <b>/n</b> with <b>/c</b><br><br>
+
+If you use <b>/c</b> and <b>/v</b><b> </b>in the same command line, <b>find</b> displays a count of the lines that do not contain the specified string. If you specify <b>/c</b> and <b>/n</b> in the same command line, <b>find</b> ignores <b>/n</b>. <br><br>
+</li><li class="unordered">
+Using <b>find</b> with carriage returns <br><br>
+
+The <b>find</b> command does not recognize carriage returns. When you use <b>find</b> to search for text in a file that includes carriage returns, you must limit the search string to text that can be found between carriage returns (that is, a string that is not likely to be interrupted by a carriage return). For example, <b>find</b> does not report a match for the string "tax file" if a carriage return occurs between the words "tax" and "file." <br><br>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="2ca66b22-3b7c-4166-8503-eb75fc53ab46#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">To display all lines from Pencil.ad that contain the string "Pencil Sharpener", type: </p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>find "Pencil Sharpener" pencil.ad</pre></td></tr></table></span></div>
+
+<p xmlns="">To find a string that contains text within quotation marks, you must enclose the entire string in quotation marks. Then you must use two quotation marks for each quotation mark contained within the string. To find "The scientists labeled their paper "for discussion only." It is not a final report." in Report.doc, type: </p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>find "The scientists labeled their paper ""for discussion only."" It is not a final report." report.doc</pre></td></tr></table></span></div>
+
+<p xmlns="">If you want to search for a set of files, you can use the <b>find</b> command within the <b>for</b> command. To search the current directory for files that have the extension .bat and that contain the string "PROMPT", type: </p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>for %f in (*.bat) do find "PROMPT" %f </pre></td></tr></table></span></div>
+
+<p xmlns="">To search your hard disk to find and display the file names on drive C that contain the string "CPU", use the pipe (|) to direct the output of the <b>dir</b> command to the <b>find</b> command as follows: </p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>dir c:\ /s /b | find "CPU" </pre></td></tr></table></span></div>
+
+<p xmlns="">Because <b>find</b> searches are case-sensitive and <b>dir</b> produces uppercase output, you must either type the string "CPU" in uppercase letters or use the <b>/i</b> command-line option with <b>find</b>.</p>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

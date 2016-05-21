@@ -1,0 +1,89 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Convert</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Convert</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008,Windows Vista</p>
+				<p>Converts file allocation table (FAT) and FAT32 volumes to the NTFS file system, leaving existing files and directories intact. Volumes converted to the NTFS file system cannot be converted back to FAT or FAT32.</p>
+				<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+			<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>convert [&lt;Volume&gt;] /fs:ntfs [/v] [/cvtarea:&lt;FileName&gt;] [/nosecurity] [/x]</pre></td></tr></table></span></div>
+				</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+								<th colspan="1">
+									Parameter
+								</th>
+								<th colspan="1">
+									Description
+								</th>
+							</tr><tr>
+							<td colspan="1">
+								<p>&lt;Volume&gt; </p>
+							</td>
+							<td colspan="1">
+								<p>Specifies the drive letter (followed by a colon), mount point, or volume name to convert to NTFS.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/fs:ntfs </p>
+							</td>
+							<td colspan="1">
+								<p>Required. Converts the volume to NTFS.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/v </p>
+							</td>
+							<td colspan="1">
+								<p>Runs <b>convert</b> in verbose mode, which displays all messages during the conversion process.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/cvtarea:&lt;FileName&gt;</p>
+							</td>
+							<td colspan="1">
+								<p>Specifies that the Master File Table (MFT) and other NTFS metadata files are written to an existing, contiguous placeholder file. This file must be in the root directory of the file system to be converted. Use of the <b>/cvtarea</b> parameter can result in a less fragmented file system after conversion. For best results, the size of this file should be 1 KB multiplied by the number of files and directories in the file system, although the <b>convert</b> utility accepts files of any size. </p>
+								<div class="alert"><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/Important.gif">Important </th></tr><tr><td>
+									You must create the placeholder file by using the <b>fsutil file createnew</b> command prior to running <b>convert</b>. <b>Convert</b> does not create this file for you. <b>Convert</b> overwrites this file with NTFS metadata. After conversion, any unused space in this file is freed. <p>
+								</td></tr></table><p></div>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/nosecurity </p>
+							</td>
+							<td colspan="1">
+								<p>Specifies that the security settings on the converted files and directories allow access by all users.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/x </p>
+							</td>
+							<td colspan="1">
+								<p>Dismounts the volume, if necessary, before it is converted. Any open handles to the volume will no longer be valid.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/?</p>
+							</td>
+							<td colspan="1">
+								<p>Displays help at the command prompt.</p>
+							</td>
+						</tr></table>
+				</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<ul xmlns=""><li class="unordered">
+							If <b>convert</b> cannot lock the drive (for example, the drive is the system volume or the current drive), you are given the option to convert the drive the next time you restart the computer. If you cannot restart the computer immediately to complete the conversion, plan a time to restart the computer and allow extra time for the conversion process to complete.<br><br>
+						</li><li class="unordered">
+							For volumes converted from FAT or FAT32 to NTFS: <br><br>
+							Due to existing disk usage, the MFT is created in a different location than on a volume originally formatted with NTFS, so volume performance might not be as good as on volumes originally formatted with NTFS. For optimal performance, consider recreating these volumes and formatting them with the NTFS file system.<br><br>
+							Volume conversion from FAT or FAT32 to NTFS leaves the files intact, but the volume might lack some performance benefits compared to volumes initially formatted with NTFS. For example, the MFT might become fragmented on converted volumes. In addition, on converted boot volumes, <b>convert</b> applies the same default security that is applied during Windows Setup. <br><br>
+						</li></ul>
+				</content></div><a name="BKMK_examples"></a><a name="96e437c0-1aa3-46ab-9078-a7b8cdaf3792#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">To convert the volume on drive E to NTFS and display all messages during the conversion process, type:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>convert e: /fs:ntfs /v</pre></td></tr></table></span></div>
+				</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+						</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<p xmlns="">
+										<a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a>
+									</p>
+								</content></div>
+						</sections></div>
+				</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

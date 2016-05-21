@@ -1,0 +1,119 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Start</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Start</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2003 R2,Windows Vista,Windows Server 2003,Windows Server 2003 with SP2,Windows Server 2000,Windows Server 2003 with SP1,Windows Server 2008,Windows Server 2008 R2</p>
+<p>Starts a separate Command Prompt window to run a specified program or command.  </p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>start ["&lt;Title&gt;"] [/d &lt;Path&gt;] [/i] [{/min | /max}] [{/separate | /shared}] [{/low | /normal | /high | /realtime | /abovenormal | belownormal}] [/affinity &lt;HexAffinity&gt;] [/wait] [/b {&lt;Command&gt; | &lt;Program&gt;} [&lt;Parameters&gt;]]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p> "&lt;Title&gt;" </p>
+</td>
+<td colspan="1">
+<p>Specifies the title to display in the Command Prompt window title bar.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /d &lt;Path&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the startup directory.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /i </p>
+</td>
+<td colspan="1">
+<p>Passes the Cmd.exe startup environment to the new Command Prompt window. If <b>/i</b> is not specified, the current environment is used.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> {/min | /max}</p>
+</td>
+<td colspan="1">
+<p>Specifies to minimize (<b>/min</b>) or maximize (<b>/max</b>) the new Command Prompt window.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> {/separate | /shared}</p>
+</td>
+<td colspan="1">
+<p>Starts 16-bit programs in a separate memory space (<b>/separate</b>) or shared memory space (<b>/shared</b>). These options are not supported on 64-bit platforms.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> {/low | /normal | /high | /realtime | /abovenormal | /belownormal}</p>
+</td>
+<td colspan="1">
+<p>Starts an application in the specified priority class. Valid priority class values are <b>/low</b>, <b>/normal</b>, <b>/high</b>, <b>/realtime</b>, <b>/abovenormal</b>, and <b>/belownormal</b>.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /affinity &lt;HexAffinity&gt;</p>
+</td>
+<td colspan="1">
+<p>Applies the specified processor affinity mask (expressed as a hexadecimal number) to the new application.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /wait </p>
+</td>
+<td colspan="1">
+<p>Starts an application and waits for it to end.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /b </p>
+</td>
+<td colspan="1">
+<p>Starts an application without opening a new Command Prompt window. CTRL+C handling is ignored unless the application enables CTRL+C processing. Use CTRL+BREAK to interrupt the application.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /b {&lt;Command&gt; | &lt;Program&gt;} </p>
+</td>
+<td colspan="1">
+<p>Specifies the command or program to start.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> &lt;Parameters&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies parameters to pass to the command or program.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /?</p>
+</td>
+<td colspan="1">
+<p>Displays help at the command prompt.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+You can run nonexecutable files through their file association by typing the name of the file as a command.    <br><br>
+</li><li class="unordered">
+When you run a command that contains the string "CMD" as the first token without an extension or path qualifier, "CMD" is replaced with the value of the COMSPEC variable. This prevents users from picking up <b>cmd</b> from the current directory. <br><br>
+</li><li class="unordered">
+When you run a 32-bit graphical user interface (GUI) application, <b>cmd</b> does not wait for the application to quit before returning to the command prompt. This behavior does not occur if you run the application from a command script. <br><br>
+</li><li class="unordered">
+When you run a command that uses a first token that does not contain an extension, Cmd.exe uses the value of the PATHEXT environment variable to determine which extensions to look for and in what order. The default value for the PATHEXT variable is:  <br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>.COM;.EXE;.BAT;.CMD </pre></td></tr></table></span></div>
+
+Note that the syntax is the same as the PATH variable, with semicolons separating each extension.<br><br>
+</li><li class="unordered">
+When it searches for an executable file, if there is no match on any extension, <b>start</b> checks to see if the name matches a directory name. If it does, <b>start</b> opens Explorer.exe on that path. <br><br>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="0173f9b3-5cd7-4edb-b01e-d02193b4fadc#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">To start the Myapp program at the command prompt and retain use of the current Command Prompt window, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>start myapp </pre></td></tr></table></span></div>
+
+<p xmlns="">To view the <b>start</b> command-line help topic in a separate maximized Command Prompt window, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>start /max start /?</pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

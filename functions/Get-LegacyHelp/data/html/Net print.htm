@@ -1,0 +1,107 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Net print</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Net print</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008,Windows Vista</p>
+				<p>Displays information about a specified printer queue or a specified print job, or controls a specified print job. </p>
+				<p>For examples of how to use this command, see the <a href="#BKMK_examples">Examples</a> section of this document.</p>
+				<div class="alert"><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>
+					This command has been deprecated in Windows 7 and Windows Server 2008 R2. However, you can perform many of the same tasks using Prnjobs.vbs, Windows Management Instrumentation (WMI), or Windows PowerShell cmdlets. For more information, see <a href="5ad34199-7a5a-40c1-8053-bccd5929df43.htm">Prnjobs.vbs</a>, <a href="http://go.microsoft.com/fwlink/?LinkID=29991" alt="" target="_blank"><linktext xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">Windows Management Instrumentation</linktext></a> (http://go.microsoft.com/fwlink/?LinkID=29991), <a href="http://go.microsoft.com/fwlink/?LinkID=128426" alt="" target="_blank"><linktext xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">Windows PowerShell</linktext></a> (http://go.microsoft.com/fwlink/?LinkID=128426), and the <a href="http://go.microsoft.com/fwlink/?LinkId=164635" alt="" target="_blank"><linktext xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">TechNet Script Center Gallery</linktext></a> (http://go.microsoft.com/fwlink/?LinkId=164635).<p>
+				</td></tr></table><p></div>
+			<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>Net print {\\&lt;ComputerName&gt;\&lt;ShareName&gt; | <br>\\&lt;ComputerName&gt; &lt;JobNumber&gt; [/hold | /release | /delete]} [help]</pre></td></tr></table></span></div>
+				</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+								<th colspan="1">
+									Parameters
+								</th>
+								<th colspan="1">
+									Description
+								</th>
+							</tr><tr>
+							<td colspan="1">
+								<p>\\&lt;ComputerName&gt;\&lt;ShareName&gt;</p>
+							</td>
+							<td colspan="1">
+								<p>Specifies (by name) the computer and print queue about which you want to display information.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>\\&lt;ComputerName&gt;</p>
+							</td>
+							<td colspan="1">
+								<p>Specifies (by name) the computer that hosts the print job you want to control. If you do not specify a computer, the local computer is assumed. Requires the &lt;JobNumber&gt; parameter.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>&lt;JobNumber&gt;</p>
+							</td>
+							<td colspan="1">
+								<p>Specifies the number of the print job you want to control. This number is assigned by the computer that hosts the print queue where the print job is sent. After a computer assigns a number to a print job, that number is not assigned to any other print jobs in any queue hosted by that computer. Required when using the \\&lt;ComputerName&gt; parameter.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[/hold | /release | /delete]</p>
+							</td>
+							<td colspan="1">
+								<p>Specifies the action to take with the print job. </p>
+								<ul><li class="unordered">
+										The <b>/hold</b> parameter delays the job, allowing other print jobs to bypass it until it is released. <br><br>
+									</li><li class="unordered">
+										The <b>/release</b> parameter releases a print job that has been delayed. <br><br>
+									</li><li class="unordered">
+										The <b>/delete</b> parameter removes a print job from a print queue. <br><br>
+									</li></ul>
+								<p>If you specify a job number, but do not specify any action, information about the print job is displayed.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>help</p>
+							</td>
+							<td colspan="1">
+								<p>Displays help for the <b>Net print</b> command.</p>
+							</td>
+						</tr></table>
+				</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<ul xmlns=""><li class="unordered">
+							
+								<b>Net print</b> \\&lt;ComputerName&gt; displays information about print jobs in a shared printer queue. The following is an example of a report for all print jobs in a queue for a shared printer named LASER:<br><br>
+							<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>Printers at \\PRODUCTION
+Name              Job #      Size      Status
+---------------------------------------------------------
+LASER Queue       3 jobs               *Printer Active*
+   USER1          84        93844      Printing
+   USER2          85        12555      Waiting
+   USER3          86        10222      Waiting</pre></td></tr></table></span></div>
+						</li><li class="unordered">
+							The following is an example of a report for a print job: <br><br>
+							<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>Job #            35
+Status           Waiting
+Size             3096
+Remark
+Submitting user  USER2
+Notify           USER2
+Job data type
+Job parameters
+Additional info</pre></td></tr></table></span></div>
+						</li></ul>
+				</content></div><a name="BKMK_examples"></a><a name="f59b2015-4698-415d-9a74-09566c466f40#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">This example shows how to list the contents of the Dotmatrix print queue on the \\Production computer: </p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>Net print \\Production\Dotmatrix </pre></td></tr></table></span></div>
+					<p xmlns="">This example shows how to display information about job number 35 on the \\Production computer: </p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>Net print \\Production 35 </pre></td></tr></table></span></div>
+					<p xmlns="">This example shows how to delay job number 263 on the \\Production computer: </p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>Net print \\Production 263 /hold </pre></td></tr></table></span></div>
+					<p xmlns="">This example shows how to release job number 263 on the \\Production computer: </p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>Net print \\Production 263 /release </pre></td></tr></table></span></div>
+				</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+						</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<p xmlns="">
+										<a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a>
+									</p>
+									<p xmlns="">
+										<a href="88d8fa87-6fa8-4774-9294-080b0157ea8d.htm">Print Command Reference</a>
+									</p>
+								</content></div>
+						</sections></div>
+				</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

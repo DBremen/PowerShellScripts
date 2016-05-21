@@ -1,0 +1,140 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Dsamain</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Dsamain</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008</p>
+				<p>Exposes Active Directory data that is stored in a snapshot or backup as a Lightweight Directory Access Protocol (LDAP) server. </p>
+				<p>Dsamain.exe is a command-line tool that is built into Windows Server 2008. It is available if you have the Active Directory Domain Services (AD DS) or Active Directory Lightweight Directory Services (AD LDS) server role installed. It is also available if you install the Active Directory Domain Services Tools that are part of the Remote Server Administration Tools (RSAT). For more information, see <a href="http://go.microsoft.com/fwlink/?LinkID=177813" alt="" target="_blank"><linktext xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">How to Administer Microsoft Windows Client and Server Computers Locally and Remotely</linktext></a> (http://go.microsoft.com/fwlink/?LinkID=177813). </p>
+				<p>To use Dsamain, you must run the <b>dsamain</b> command from an elevated command prompt. To open an elevated command prompt, click <b>Start</b>, right-click <b>Command Prompt</b>, and then click <b>Run as administrator</b>.</p>
+				<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+			<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>dsamain /dbpath &lt;filepath&gt; [/logpath &lt;path&gt;] [/adlds] /ldapPort &lt;number&gt; [/sslPort &lt;number&gt;] [/gcport &lt;number&gt;] [/gcSslport &lt;number&gt;] [/allowUpgrade] [/allowNonAdminAccess]</pre></td></tr></table></span></div>
+				</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+								<th colspan="2">
+									Parameter
+								</th>
+								<th colspan="2">
+									Description
+								</th>
+							</tr><tr>
+							<td colspan="2">
+								<p>/dbpath &lt;filepath&gt;</p>
+							</td>
+							<td colspan="2">
+								<p>Specifies the file path to the database file. &lt;filepath&gt; must point to the database file, which might be on read-only media, such as a mounted snapshot; in a backup; or on another server, such as a domain controller or an AD LDS server. The database must be in a consistent state; that is, the Extensible Storage Engine (ESE) logs must be replayed. If you run the <b>Ntdsutil snapshot</b> subcommand or if you run Windows Server Backup on a server running Windows Server 2008, the resulting snapshot or backup will be in a consistent state.</p>
+								<div class="alert"><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>
+									A snapshot is a shadow copy of the volumes that contain the Active Directory database and log files. A snapshot is created by the Volume Shadow Copy Service (VSS).<p>
+								</td></tr></table><p></div>
+							</td>
+						</tr><tr>
+							<td colspan="2">
+								<p>/logpath &lt;path&gt;</p>
+							</td>
+							<td colspan="2">
+								<p>Specifies the path to a writable folder where the log files are created. If the path is not specified, the TEMP folder is used. </p>
+							</td>
+						</tr><tr>
+							<td colspan="2">
+								<p>/adlds</p>
+							</td>
+							<td colspan="2">
+								<p>Opens an AD LDS database. You must specify this parameter if you are exposing an AD LDS database. You must not specify this parameter if you are exposing an AD DS database or if Dsamain fails.</p>
+							</td>
+						</tr><tr>
+							<td colspan="2">
+								<p>/ldapPort &lt;number&gt;</p>
+							</td>
+							<td colspan="2">
+								<p>Specifies the LDAP port value. Use this same port value when you use a tool such as Ldp.exe to view that data. </p>
+								<div class="alert"><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>
+									LDP is a graphical user interface (GUI)-based utility that you can use for displaying the results of the LDAP operations.<p>
+								</td></tr></table><p></div>
+							</td>
+						</tr><tr>
+							<td colspan="2">
+								<p>/sslPort &lt;number&gt;</p>
+							</td>
+							<td colspan="2">
+								<p>Specifies the Secure Sockets Layer (SSL) port value.</p>
+							</td>
+						</tr><tr>
+							<td colspan="2">
+								<p>/gcport &lt;number&gt;</p>
+							</td>
+							<td colspan="2">
+								<p>Specifies the global catalog port number. This parameter applies only to an AD DS database.</p>
+							</td>
+						</tr><tr>
+							<td colspan="2">
+								<p>/gcsslport:&lt;number&gt;</p>
+							</td>
+							<td colspan="2">
+								<p>Specifies the global catalog SSL port number. This parameter applies only to an AD DS database.</p>
+							</td>
+						</tr><tr>
+							<td colspan="2">
+								<p>/allowupgrade</p>
+							</td>
+							<td colspan="2">
+								<p>Allows an upgrade to the database file. This is useful for opening earlier versions of databases or snapshots. The file must be on writable media. </p>
+							</td>
+						</tr><tr>
+							<td colspan="2">
+								<p>/allowNonAdminAccess</p>
+							</td>
+							<td colspan="2">
+								<p>Allows nonadministrators to access data in the directory. If this option is not specified, only Domain Admins and Enterprise Admins from the target domain can access the data. Use this parameter to expose data from a domain that no longer exists.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>quit</p>
+							</td>
+							<td colspan="1">
+								<p>Returns to the prior menu.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>Help</p>
+							</td>
+							<td colspan="1">
+								<p>Displays Help for this command.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>?</p>
+							</td>
+							<td colspan="1">
+								<p>Displays Help for this command.</p>
+							</td>
+						</tr></table>
+				</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<ul xmlns=""><li class="unordered">
+							For the <b>dbpath</b> parameter, you must specify a mounted snapshot or a backup that you want to view along with the complete path to the Ntds.dit file, for example:<br><br>
+							<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>/dbpath E:\$SNAP_200704181137_VOLUMED$\WINDOWS\NTDS\ntds.dit</pre></td></tr></table></span></div>
+						</li><li class="unordered">
+							Only the LDAP port is required. If you do not specify the other ports, they use LDAP+1, LDAP+2, and LDAP+3, respectively. For example, if you specify LDAP port 41389 without specifying other port values, the LDAP-SSL port uses port 41390 by default, and so on.<br><br>
+						</li><li class="unordered">
+							You cannot specify ports that are currently in use. If you run the command on a domain controller, specify different ports than those that are used by the local domain controller, for example::<br><br>
+							<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>dsamain /dbpath &lt;filepath&gt; /ldapport 51389 /sslport 51636 /gcport 53268 /gcsslport 53269</pre></td></tr></table></span></div>
+						</li><li class="unordered">
+							Include a space between the name of the parameter and the value that you specify.<br><br>
+						</li><li class="unordered">
+							All permissions that apply to the data in the snapshot or backup are enforced when you view the data. <br><br>
+						</li><li class="unordered">
+							By default, Dsamain allows only members of the Domain Admins and Enterprise Admins groups to view the sensitive data that can be contained in snapshots and backups. <br><br>
+						</li></ul>
+				</content></div><a name="BKMK_examples"></a><a name="e95b5148-aa86-44ea-87e9-43c8ce6cfdbe#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">The following example exposes the data in a snapshot $SNAP_200704181137 as an LDAP server, using LDAP port 51389:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>E:\$SNAP_200704181137_VOLUMED$\WINDOWS\NTDS\ntds.dit /ldapport 51389</pre></td></tr></table></span></div>
+				</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+						</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<p xmlns="">
+										<a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a>
+									</p>
+									<p xmlns="">
+										<a href="a4b0e355-cbd0-4f48-9484-877fad1789ec.htm">snapshot</a>
+									</p>
+								</content></div>
+						</sections></div>
+				</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

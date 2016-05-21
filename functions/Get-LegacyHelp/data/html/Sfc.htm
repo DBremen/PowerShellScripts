@@ -1,0 +1,88 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Sfc</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Sfc</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Vista,Windows Server 2008 R2 with SP1,Windows Server 2008 R2,Windows Server 2008</p>
+				<p>Scans and verifies the integrity of all protected system files and replaces incorrect versions with correct versions.</p>
+				<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+			<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>Sfc [/SCANNOW] [/VERIFYONLY] [/SCANFILE=&lt;file&gt;] [/VERIFYFILE=&lt;file&gt;] [/OFFWINDIR=&lt;offline windows directory&gt; /OFFBOOTDIR=&lt;offline boot directory&gt;]</pre></td></tr></table></span></div>
+				</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<h3 class="subHeading" xmlns="">Parameters</h3><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+										<th>
+											Parameter
+										</th>
+										<th>
+											Description
+										</th>
+									</tr><tr>
+									<td>
+										<p>/SCANNOW</p>
+									</td>
+									<td>
+										<p>Scans the integrity of all protected system files and repairs files with problems when possible.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>/VERIFYONLY</p>
+									</td>
+									<td>
+										<p>Scans integrity of all protected system files. No repair operation is performed.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>/SCANFILE</p>
+									</td>
+									<td>
+										<p>Scans integrity of the specified file and repairs the file if problems are detected, when possible.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>&lt;file&gt;</p>
+									</td>
+									<td>
+										<p>Specified full path and filename </p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>/VERIFYFILE</p>
+									</td>
+									<td>
+										<p>Verifies the integrity of the specified file. No repair operation is performed.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>/OFFWINDIR</p>
+									</td>
+									<td>
+										<p>Specifies the location of the offline windows directory, for offline repair.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>/OFFBOOTDIR</p>
+									</td>
+									<td>
+										<p>Specifies the location of the offline boot directory for offline </p>
+									</td>
+								</tr></table>
+						</content></div>
+				</sections></div><h2 class="heading">Remarks</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<ul xmlns=""><li class="unordered">
+							You must be logged on as a member of the Administrators group to run <b>sfc.exe</b>.<br><br>
+						</li><li class="unordered">
+							If <b>sfc</b> discovers that a protected file has been overwritten, it retrieves the correct version of the file from the <b>systemroot\system32\dllcache</b> folder, and then replaces the incorrect file.<br><br>
+						</li><li class="unordered">
+							There are functional differences between sfc on Windows Server® 2003, Windows Server® 2008, and Windows Server® 2008 R2:<br><br>
+							<ul><li>
+									For more information about <b>sfc</b> on Windows Server 2003, see <b>System File Checker (sfc)</b>.<br><br>
+								</li></ul>
+						</li></ul>
+				</content></div><a name="BKMK_examples"></a><a name="c58c25da-e028-42a6-9e10-973484a4b953#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">To verify the kernel32.dll file, type:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>sfc /VERIFYFILE=c:\windows\system32\kernel32.dll</pre></td></tr></table></span></div>
+					<p xmlns="">To setup offline repair of the <b>kernel32.dll</b> file with an offline boot directory set to <b>d:</b> and offline windows directory set to <b>d:\windows</b>, type:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>sfc /SCANFILE=d:\windows\system32\kernel32.dll /OFFBOOTDIR=d:\ /OFFWINDI R=d:\windows</pre></td></tr></table></span></div>
+				</content></div><h2 class="heading">Additional references</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">
+						<a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a>
+					</p>
+				</content></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

@@ -1,0 +1,131 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>winsat media</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">winsat media</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows 7,Windows Vista,Windows Server 2008,Windows Server 2008 R2</p>
+<p>Analyzes performance during video playback and encoding using DirectShow media handling components.</p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>winsat media &lt;-input &lt;file name&gt;&gt; &lt;parameters&gt;</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameters
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>-input &lt;file name&gt;</p>
+</td>
+<td colspan="1">
+<p>Required: Specify the file containing the video clip to be played or encoded. The file can be in any format that can be rendered by DirectShow.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-dumpgraph</p>
+</td>
+<td colspan="1">
+<p>Specify that the filter graph should be saved to a GraphEdit-compatible file before the assessment starts.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-ns</p>
+</td>
+<td colspan="1">
+<p>Specify that the filter graph should run at the normal playback speed of the input file. By default, the filter graph runs as fast as possible, ignoring presentation times.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-show</p>
+</td>
+<td colspan="1">
+<p>Run the assessment in decode mode and show the contents of the file specified in <b>-input</b> in a window. By default, the assessment does not display any visible windows.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-play</p>
+</td>
+<td colspan="1">
+<p>Run the assessment in decode mode and play any supplied audio content in the file specified in <b>-input</b> using the default DirectSound device. By default, audio playback is disabled.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-encode &lt;PRX profile file name&gt;</p>
+</td>
+<td colspan="1">
+<p>Re-encode the decoded content from the file specified in <b>-input</b> using the Windows Media codec. <i>PRX profile file name</i> is the name of a file containing the PRX profile that configures the encoder. This profile is created using the Windows Media Profile Editor application in the Windows Media Encoder tool set.</p>
+
+<div class="alert"><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>
+The assessment will return an error if <b>-show</b> or <b>-play</b> is present in the same command as <b>-encode</b>.<p>
+</td></tr></table><p></div>
+</td></tr><tr>
+<td colspan="1">
+<p>-saveas &lt;output file name&gt;</p>
+</td>
+<td colspan="1">
+<p>Save the results of the <b>-encode </b>operation to the specified <i>output file name</i>.</p>
+
+<div class="alert"><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>
+The assessment will return an error if <b>-saveas</b> is present but <b>-encode</b> is not.<p>
+</td></tr></table><p></div>
+</td></tr><tr>
+<td colspan="1">
+<p>-v</p>
+</td>
+<td colspan="1">
+<p>Send verbose output to STDOUT, including status and progress information. Any errors will also be written to the command window.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-xml &lt;file name&gt;</p>
+</td>
+<td colspan="1">
+<p>Save the output of the assessment as the specified XML file. If the specified file exists, it will be overwritten.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-idiskinfo</p>
+</td>
+<td colspan="1">
+<p>Save information about physical volumes and logical disks as part of the <b>&lt;SystemConfig&gt;</b> section in the XML output.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-iguid</p>
+</td>
+<td colspan="1">
+<p>Create a globally unique identifier (GUID) in the XML output file.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-note "note text"</p>
+</td>
+<td colspan="1">
+<p>Add the note text to the <b>&lt;note&gt;</b> section in the XML output file.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-icn</p>
+</td>
+<td colspan="1">
+<p>Include the local computer name in the XML output file.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-eef</p>
+</td>
+<td colspan="1">
+<p>Enumerate extra system information in the XML output file.</p>
+</td></tr></table>
+</content></div><a name="BKMK_examples"></a><a name="e1be78cd-7208-41dc-84cf-86ff4c3679e4#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+The following example assesses performance when decoding the sample video file included with WinSAT and saves the results in XML format in the file <b>media.xml</b>:<br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>winsat media -input c:\windows\performance\winsat\winsat.wmv -xml media.xml</pre></td></tr></table></span></div>
+</li><li class="unordered">
+The following example assesses performance when decoding the sample video file included with WinSAT and re-encoding the video stream using the sample profile included with WinSAT:<br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>winsat media -input c:\windows\performance\winsat\winsat.wmv -encode c:\windows\performance\winsat\winsat.prx</pre></td></tr></table></span></div>
+</li></ul>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+Membership in the local Administrators group, or equivalent, is the minimum required to use <b>winsat</b>. The command must be executed from an elevated command prompt window.<br><br>
+</li><li class="unordered">
+To open an elevated command prompt window, click <b>Start</b>, click <b>Accessories</b>, right-click <b>Command Prompt</b>, and click <b>Run as administrator</b>.<br><br>
+</li></ul>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="11b0e51f-fe58-4553-9e7c-a562e5385fbb.htm">Winsat</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

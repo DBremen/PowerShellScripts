@@ -1,0 +1,103 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Nfsshare</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Nfsshare</span></td></tr><tr id="headerTableRow3"><td><a href="#seeAlsoNoToggle" onclick="OpenSection(seeAlsoNoToggle)">See Also</a></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Vista,Windows Server 2008</p>
+<p>You can use <b>nfsshare</b> to control Network File System (NFS) shares.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">nfsshare &lt;ShareName&gt;=&lt;Drive:Path&gt; [-o &lt;Option=value&gt;...] </p>
+
+<p xmlns="">nfsshare {&lt;ShareName&gt; | &lt;Drive&gt;:&lt;Path&gt; | * } /delete</p>
+</content></div><h2 class="heading">Description</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">Without arguments, the <b>nfsshare</b> command-line utility lists all Network File System (NFS) shares exported by Server for NFS. With <i>ShareName</i> as the only argument, <b>nfsshare</b> lists the properties of the NFS share identified by <i>ShareName</i>. When <i>ShareName</i> and <i>Drive</i><b>:</b><i>Path</i> are provided, <b>nfsshare</b> exports the folder identified by <i>Drive</i><b>:</b><i>Path</i> as <i>ShareName</i>. When the <b>/delete</b> option is used, the specified folder is no longer made available to NFS clients.</p>
+</content></div><h2 class="heading">Options</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">The <b>nfsshare</b> command accepts the following options and arguments:</p>
+
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Term
+</th>
+<th colspan="1">
+Definition
+</th></tr><tr>
+<td colspan="1">
+<p>-o anon={yes | no}</p>
+</td>
+<td colspan="1">
+<p>Specifies whether anonymous (unmapped) users can access the shared directory. The default is <b>no</b>.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-o rw[=&lt;Host&gt;[:&lt;Host&gt;]...]</p>
+</td>
+<td colspan="1">
+<p>Provides read-write access to the shared directory by the hosts or client groups specified by <i>Host</i>. Separate host and group names with a colon (<b>:</b>). If <i>Host</i> is not specified, all hosts and client groups (except those specified with the <b>ro</b> option) have read-write access. If neither the <b>ro</b> nor the <b>rw</b> option is set, all clients have read-write access to the shared directory.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-o ro[=&lt;Host&gt;[:&lt;Host&gt;]...]</p>
+</td>
+<td colspan="1">
+<p>Provides read-only access to the shared directory by the hosts or client groups specified by <i>Host</i>. Separate host and group names with a colon (<b>:</b>). If <i>Host</i> is not specified, all clients (except those specified with the <b>rw</b> option) have read-only access. If the <b>ro</b> option is set for one or more clients, but the <b>rw</b> option is not set, only the clients specified with the <b>ro</b> option have access to the shared directory.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-o encoding={big5|euc-jp|euc-kr|euc-tw|gb2312-80|ksc5601|shift-jis}</p>
+</td>
+<td colspan="1">
+<p>Specifies the default encoding used for file and directory names and, if used, must be set to one of the following:</p>
+
+<ul><li class="unordered">
+<b>big5</b> (Chinese)<br><br>
+</li><li class="unordered">
+<b>euc-jp</b> (Japanese)<br><br>
+</li><li class="unordered">
+<b>euc-kr</b> (Korean)<br><br>
+</li><li class="unordered">
+<b>euc-tw</b> (Chinese)<br><br>
+</li><li class="unordered">
+<b>gb2312-80</b> (Simplified Chinese)<br><br>
+</li><li class="unordered">
+<b>ksc5601</b> (Korean)<br><br>
+</li><li class="unordered">
+<b>shift-jis</b> (Japanese)<br><br>
+</li></ul>
+
+<p>If this is option is not set, the default encoding scheme is ANSI or, on systems configured for non-English locales, the default encoding scheme for the locale. The following are the default encoding schemes for the indicated locales:</p>
+
+<ul><li class="unordered">
+Japanese: SHIFT-JIS<br><br>
+</li><li class="unordered">
+Korean: KS_C_5601-1987<br><br>
+</li><li class="unordered">
+Simplified Chinese: GB2312-80<br><br>
+</li></ul>
+
+<p>Traditional Chinese: BIG5</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-o anongid=&lt;gid&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies that anonymous (unmapped) users will access the share directory using <i>gid</i> as their group identifier (GID). The default is -2. The anonymous GID will be used when reporting the owner of a file owned by an unmapped user, even if anonymous access is disabled.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-o  anonuid=&lt;uid&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies that anonymous (unmapped) users will access the share directory using <i>uid</i> as their user identifier (UID). The default is -2. The anonymous UID will be used when reporting the owner of a file owned by an unmapped user, even if anonymous access is disabled.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-o root[=&lt;Host&gt;[:&lt;Host&gt;]...]</p>
+</td>
+<td colspan="1">
+<p>Provides root access to the shared directory by the hosts or client groups specified by <i>Host</i>. Separate host and group names with a colon (<b>:</b>). If <i>Host</i> is not specified, all clients have root access. If the <b>root</b> option is not set, no clients have root access to the shared directory.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/delete</p>
+</td>
+<td colspan="1">
+<p>If <i>ShareName</i> or <i>Drive</i><b>:</b><i>Path</i> is specified, deletes the specified share. If * is specified, deletes all NFS shares.</p>
+</td></tr></table>
+
+<div class="alert" xmlns=""><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>
+To view the complete syntax for this command, at a command prompt, type:<p>
+
+<b>nfsshare /?</b><p>
+</td></tr></table><p></div>
+</content></div><h2 class="heading"><span id="seeAlsoNoToggle">See Also</span></h2><div id="seeAlsoSection" class="section"><h4 class="subHeading">Concepts</h4><a href="06c81f88-a672-4405-9b73-085f8933114c.htm">Services for Network File System Command Reference</a><br><br></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

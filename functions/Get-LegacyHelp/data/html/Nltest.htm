@@ -1,0 +1,490 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Nltest</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Nltest</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008 R2,Windows Server 2008,Windows Server 2003 with SP1,Windows Server 2003,Windows Server 2003 R2</p>
+				<p>Performs network administrative tasks.</p>
+				<p>
+					<b>Nltest</b> is a command-line tool that is built into Windows Server 2008 and Windows Server 2008 R2. It is available if you have the AD DS or the AD LDS server role installed. It is also available if you install the Active Directory Domain Services Tools that are part of the Remote Server Administration Tools (RSAT). For more information, see <a href="http://go.microsoft.com/fwlink/?LinkID=177813" alt="" target="_blank"><linktext xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">How to Administer Microsoft Windows Client and Server Computers Locally and Remotely</linktext></a> (http://go.microsoft.com/fwlink/?LinkID=177813). To use <b>nltest</b>, you must run the <b>nltest</b> command from an elevated command prompt. To open an elevated command prompt, click <b>Start</b>, right-click <b>Command Prompt</b>, and then click <b>Run as administrator</b>.</p>
+				<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+			<h2 class="heading">Nltest.exe</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">You can use <b>nltest</b> to:</p>
+					<ul xmlns=""><li class="unordered">
+							Get a list of domain controllers<br><br>
+						</li><li class="unordered">
+							Force a remote shutdown<br><br>
+						</li><li class="unordered">
+							Query the status of trust<br><br>
+						</li><li class="unordered">
+							Test trust relationships and the state of domain controller replication in a Windows domain<br><br>
+						</li><li class="unordered">
+							Force a user-account database to synchronize on Windows NT version 4.0 or earlier domain controllers<br><br>
+						</li></ul>
+					<p xmlns="">
+						<b>Nltest</b> can test and reset the secure channel that the NetLogon service establishes between clients and the domain controller that logs them on. Clients using Kerberos authentication cannot use this secure channel.</p>
+					<div class="alert" xmlns=""><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>
+						You must run <b>nltest</b> from the command prompt.<p>
+					</td></tr></table><p></div>
+				</content></div><h2 class="heading">Concepts</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">A discrete communication channel, known as the secure channel, exists between trusted domains in a Windows NT 4.0 environment and parent domains and their immediate children in an Active Directory environment. In a Windows NT 4.0 environment, <b>nltest</b> uses these channels to authenticate user accounts when a remote user connects to a network resource and the user account exists in a trusted domain. This is called pass-through authentication. </p>
+					<p xmlns="">
+						<b>Nltest</b> provides diagnostic features that you can use for troubleshooting Windows Server 2008 operating system configurations. However, because <b>nltest</b> is designed primarily for system administrators and support personnel, its output may be difficult to analyze. In this case, you can review the appropriate troubleshooting sections in the Windows Deployment and Resource Kits. Search for any of the keywords from the bulleted list in the <b>nltest</b> description above.</p>
+				</content></div><h2 class="heading">Syntax</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>nltest [/server:&lt;servername&gt;] [&lt;operation&gt;[&lt;parameter&gt;]</pre></td></tr></table></span></div>
+					<dl xmlns=""><dt>/server: &lt;ServerName&gt; </dt><br><dd>
+							Runs <b>nltest</b> at a remote domain controller that you specify. If you do not specify this parameter, <b>nltest</b> runs on the local computer, which is the domain controller.<p>
+						</dd></dl>
+				</content></div><h2 class="heading">Parameters</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+								<th colspan="1">
+									Parameter
+								</th>
+								<th colspan="1">
+									Description
+								</th>
+							</tr><tr>
+							<td colspan="1">
+								<p>/query </p>
+							</td>
+							<td colspan="1">
+								<p>Reports on the state of the secure channel the last time you used it. (The secure channel is the one that the NetLogon service established.)</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/repl </p>
+							</td>
+							<td colspan="1">
+								<p>Forces synchronization with the primary domain controller (PDC). <b>Nltest</b> synchronizes only changes that are not yet replicated to the backup domain controller (BDC). You can use this parameter for Windows NT 4.0 BDCs only, not for Active Directory replication. You must have administrative credentials to use this parameter.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/sync </p>
+							</td>
+							<td colspan="1">
+								<p>Forces an immediate synchronization with the PDC of the entire Security Accounts Manager (SAM) database. You can use this parameter for Windows NT 4.0 BDCs only, not for Active Directory replication. You must have administrative credentials to use this parameter.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/pdc_repl </p>
+							</td>
+							<td colspan="1">
+								<p>Forces the PDC to send a synchronization notification to all BDCs. You can use this parameter for Windows NT 4.0 PDCs only, not for Active Directory replication. You must have administrative credentials to use this parameter.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/sc_query: &lt;DomainName&gt; </p>
+							</td>
+							<td colspan="1">
+								<p>Reports on the state of the secure channel the last time that you used it. (The secure channel is the one that the NetLogon service established.) This parameter lists the name of the domain controller that you queried on the secure channel, also.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/sc_reset:[ &lt;DomainName&gt;] </p>
+							</td>
+							<td colspan="1">
+								<p>Removes, and then rebuilds, the secure channel that the NetLogon service established. You must have administrative credentials to use this parameter.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/sc_verify:[ &lt;DomainName&gt;] </p>
+							</td>
+							<td colspan="1">
+								<p>Checks the status of the secure channel that the NetLogon service established. If the secure channel does not work, this parameter removes the existing channel, and then builds a new one. You must have administrative credentials to use this parameter. This parameter is only valid on domain controllers that run Windows 2000 with Service Pack 2 and later.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/sc_change_pwd:[ &lt;DomainName&gt;] </p>
+							</td>
+							<td colspan="1">
+								<p>Changes the password for the trust account of a domain that you specify. If you run <b>nltest</b> on a domain controller, and an explicit trust relationship exists, then <b>nltest </b>resets the password for the interdomain trust account. Otherwise, <b>nltest </b>changes the computer account password for the domain that you specify. You can use this parameter only for computers that are running Windows 2000 and later.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/dclist:[ &lt;DomainName&gt;] </p>
+							</td>
+							<td colspan="1">
+								<p>Lists all domain controllers in the domain. In a Windows NT 4.0 domain environment, this parameter uses the Browser service to retrieve the list of domains. In an Active Directory environment, this command first queries Active Directory for a list of domain controllers. If this query is unsuccessful, <b>nltest</b> then uses the Browser service.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/dcname:[ &lt;DomainName&gt;] </p>
+							</td>
+							<td colspan="1">
+								<p>Lists the primary domain controller or the PDC emulator for <i>DomainName</i>.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/dsgetdc:[ &lt;DomainName&gt;] </p>
+							</td>
+							<td colspan="1">
+								<p>Queries the Domain Name System (DNS) server for a list of domain controllers and their corresponding IP addresses. This parameter also contacts each domain controller to check for connectivity.</p>
+								<p>The following list shows the values that you can use to filter the list of domain controllers or specify alternate names types in the syntax.</p>
+								<ul><li class="unordered">
+										
+											<b>/PDC</b>: Returns only the PDC (Windows NT 4.0) or domain controller that you designate as the PDC emulator (Windows 2000 and later).<br><br>
+									</li><li class="unordered">
+										
+											<b>/DS</b>: Returns only those domain controllers that are Windows 2000 and later.<br><br>
+									</li><li class="unordered">
+										
+											<b>/DSP</b>: Returns only Windows 2000 and later domain controllers. If the query finds no such server, then this value returns Windows NT 4.0 domain controllers.<br><br>
+									</li><li class="unordered">
+										
+											<b>/GC</b>: Returns only those domain controllers that you designate as global catalog servers.<br><br>
+									</li><li class="unordered">
+										
+											<b>/KDC</b>: Returns only those domain controllers that you designate as Kerberos key distribution centers.<br><br>
+									</li><li class="unordered">
+										
+											<b>/TIMESERV</b>: Returns only those domain controllers that you designate as time servers.<br><br>
+									</li><li class="unordered">
+										
+											<b>/GTTIMESERV</b>: Returns only those domain controllers that you designate as master time servers.<br><br>
+									</li><li class="unordered">
+										
+											<b>/NetBIOS</b>: Specifies computer names in the syntax as NetBIOS names. If you do not specify a return format, the domain controller can return either NetBIOS or DNS format. <br><br>
+									</li><li class="unordered">
+										
+											<b>/DNS</b>: Specifies computer names in the syntax as fully qualified domain names (FQDNs). If you do not specify a return format, the domain controller can return either NetBIOS or DNS format.<br><br>
+									</li><li class="unordered">
+										
+											<b>/IP</b>: Returns only domain controllers that have IP addresses. This value returns only domain controllers that use TCP/IP as their protocol stacks.<br><br>
+									</li><li class="unordered">
+										
+											<b>/FORCE</b>: Forces the computer to run the command against the DNS server instead of looking in the cache for the information.<br><br>
+									</li></ul>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/dnsgetdc: &lt;DomainName&gt; </p>
+							</td>
+							<td colspan="1">
+								<p>Queries the DNS server for a list of domain controllers and their corresponding IP addresses.</p>
+								<p>The following list shows the values that you can use to filter the list of domain controllers.</p>
+								<ul><li class="unordered">
+										
+											<b>/PDC</b>: Returns only those domain controllers that are PDCs (Windows NT 4.0) or designated as PDC emulators. <br><br>
+									</li><li class="unordered">
+										
+											<b>/GC</b>: Returns only those domain controllers that you designate as global catalogs.<br><br>
+									</li><li class="unordered">
+										
+											<b>/KDC</b>: Returns only those domain controllers that you designate as Kerberos key distribution centers.<br><br>
+									</li><li class="unordered">
+										
+											<b>/WRITABLE</b>: Returns only those domain controllers that can accept changes to the directory database. This value returns all Active Directory domain controllers, but not Windows NT 4.0 BDCs.<br><br>
+									</li><li class="unordered">
+										
+											<b>/LDAPONLY</b>: Returns servers that are running a Lightweight Directory Access Protocol (LDAP) application. The servers can include LDAP servers that are not domain controllers.<br><br>
+									</li><li class="unordered">
+										
+											<b>/FORCE</b>: Forces the computer to run the command against the DNS server instead of looking in cache for the information.<br><br>
+									</li><li class="unordered">
+										
+											<b>/SITE</b> <i>Sitename</i>: Sorts the returned records to list first the records that pertain to the site that you specify.<br><br>
+									</li><li class="unordered">
+										
+											<b>/SITESPEC</b>: Filters the returned records to display only those records that pertain to the site that you specify. This operation can only be used with the <b>/SITE</b> parameter.<br><br>
+									</li></ul>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/dsgetfti: &lt;DomainName&gt;[ /UpdateTDO] </p>
+							</td>
+							<td colspan="1">
+								<p>Returns information about interforest trusts. You use this parameter only for a Windows Server 2008 domain controller that is in the root of the forest. If no interforest trusts exist, this parameter returns an error.</p>
+								<p>The <b>/UpdateTDO</b> value updates the locally stored information on the interforest trust.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/dsgetsite </p>
+							</td>
+							<td colspan="1">
+								<p>Returns the name of the site in which the domain controller resides.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/dsgetsitecov </p>
+							</td>
+							<td colspan="1">
+								<p>Returns the name of the site that the domain controller covers. A domain controller can cover a site that has no local domain controller of its own.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/parentdomain </p>
+							</td>
+							<td colspan="1">
+								<p>Returns the name of the parent domain of the server.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/dsregdns </p>
+							</td>
+							<td colspan="1">
+								<p>Refreshes the registration of all DNS records that are specific to a domain controller that you specify.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/dsderegdns: &lt;DnsHostName&gt; </p>
+							</td>
+							<td colspan="1">
+								<p>Deregisters DNS host records for the host that you specify in the <i>DnsHostName</i> parameter.</p>
+								<p>The following list shows the values that you can use to specify which records <b>nltest</b> deregisters.</p>
+								<ul><li class="unordered">
+										
+											<b>/DOM</b>: Specifies a DNS domain name for the host to use when you search for records on the DNS server. If you do not specify this value, <b>nltest</b> uses the DNS domain name as the suffix of the <i>DnsHostName</i> parameter.<br><br>
+									</li><li class="unordered">
+										
+											<b>/DSAGUID</b>: Deletes Directory System Agent (DSA) records that are based on a GUID.<br><br>
+									</li><li class="unordered">
+										
+											<b>DOMGUID</b>: Deletes DNS records that are based on a globally unique identifier (GUID).<br><br>
+									</li></ul>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/whowill: &lt;Domain&gt;/ &lt;User&gt;</p>
+							</td>
+							<td colspan="1">
+								<p>Finds the domain controller that has the user account that you specify. You can use this parameter to determine whether <b>nltest</b> has replicated the account information to other domain controllers.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/finduser: &lt;User&gt; </p>
+							</td>
+							<td colspan="1">
+								<p>Finds the directly-trusted domain that the user account that you specify belongs to. You can use this parameter to troubleshoot logon issues of older client operating systems.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/transport_notify </p>
+							</td>
+							<td colspan="1">
+								<p>Flushes the negative cache to force the discovery of a domain controller. You can use this parameter for Windows NT 4.0 domain controllers only. This operation is done automatically when clients log on to Windows 2000 and Windows Server 2003 domain controllers. </p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/dbflag: &lt;HexadecimalFlags&gt; </p>
+							</td>
+							<td colspan="1">
+								<p>Sets a new debug flag. For most purposes, use 0x2000FFFF as the value for <i>HexadecimalFlags</i>. The entry in the Windows Server 2003 registry for debug flags is <b>HKLM\System\CurrentControlSet\Services\Netlogon\Parameters\DBFlag</b>.  </p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/user: &lt;UserName&gt; </p>
+							</td>
+							<td colspan="1">
+								<p>Displays many of the attributes that you maintain in the SAM account database for the user that you specify. You cannot use this parameter for user accounts that are stored in an Active Directory database.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/time: &lt;HexadecimalLSL&gt; &lt;HexadecimalMSL&gt; </p>
+							</td>
+							<td colspan="1">
+								<p>Converts Windows NT Greenwich Mean Time (GMT) time to ASCII. <i>HexadecimalLSL</i> is a hexadecimal value for least significant longword. <i>HexadecimalMSL</i> is a hexadecimal value for most significant longword.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/logon_query </p>
+							</td>
+							<td colspan="1">
+								<p>Queries the cumulative number of NTLM logon attempts at a console or over a network.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/domain_trusts </p>
+							</td>
+							<td colspan="1">
+								<p>Returns a list of trusted domains. /Primary /Forest /Direct_Out /Direct_In /All_Trusts /v.</p>
+								<p>The following list shows the values that you can use to filter the list of domains.</p>
+								<ul><li class="unordered">
+										
+											<b>/Primary</b>: Returns only the domain to which the computer account belongs.<br><br>
+									</li><li class="unordered">
+										
+											<b>/Forest</b>: Returns only those domains that are in the same forest as the primary domain.<br><br>
+									</li><li class="unordered">
+										
+											<b>/Direct_Out</b>: Returns only the domains that are explicitly trusted with the primary domain.<br><br>
+									</li><li class="unordered">
+										
+											<b>/Direct_In</b>: Returns only the domains that explicitly trust the primary domain.<br><br>
+									</li><li class="unordered">
+										
+											<b>/All_Trusts</b>: Returns all trusted domains.<br><br>
+									</li><li class="unordered">
+										
+											<b>/v</b>: Displays verbose output, including any domain SIDs and GUIDs that are available.<br><br>
+									</li></ul>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/dsquerydns </p>
+							</td>
+							<td colspan="1">
+								<p>Queries for the status of the last update for all DNS records that are specific to a domain controller that you specify.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/bdc_query: &lt;DomainName&gt; </p>
+							</td>
+							<td colspan="1">
+								<p>Queries for a list of BDCs in <i>DomainName</i>, and then displays their state of synchronization and replication status. You can use this parameter only for Windows NT 4.0 domain controllers.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/sim_sync: &lt;DomainName&gt; &lt;ServerName&gt; </p>
+							</td>
+							<td colspan="1">
+								<p>Simulates full synchronization replication. This is a useful parameter for test environments.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/list_deltas: &lt;FileName&gt; </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the contents of the <i>FileName</i> change log file, which lists changes to the user account database. Netlogon.chg is the default name for this log file, which resides only on Windows NT 4.0 BDCs.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/cdigest: &lt;Message&gt; /domain: &lt;DomainName&gt; </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the current digest that the client uses for the secure channel. (The digest is the calculation that <b>nltest</b> derives from the password.) This parameter displays the digest that is based on the previous password, also. <b>Nltest</b> uses the secure channel  for logons between client computers and a domain controller, or for directory service replication between domain controllers. You can use this parameter in conjunction with the <b>/sdigest</b> parameter to check the synchronization of trust account passwords.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/sdigest: &lt;Message&gt; /rid: &lt;RID_In_Hexadecimal&gt; </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the current digest that the server uses for the secure channel. (The digest is the calculation that <b>nltest</b> derives from the password.) This parameter displays the digest for the previous password, also. If the digest from the server matches the digest from the client, then <b>nltest</b> synchronizes the passwords that it uses for the secure channel. If the digests do not match, then <b>nltest</b> might not have replicated the password change yet.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/shutdown: &lt;Reason&gt;[ &lt;Seconds&gt;] </p>
+							</td>
+							<td colspan="1">
+								<p>Remotely shuts down the server that you specify in <i>ServerName</i>. You use a string to specify the reason for the shutdown in the <i>Reason</i> value., and you use an integer to specify the amount of time before the shutdown occurs in the <i>Seconds</i> value. For a complete description, see the Platform SDK documentation for <b>InitiateSystemShutdown</b>.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/shutdown_abort </p>
+							</td>
+							<td colspan="1">
+								<p>Terminates a system shutdown.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>{/help | /?}</p>
+							</td>
+							<td colspan="1">
+								<p>Displays help at the command prompt.</p>
+							</td>
+						</tr></table>
+				</content></div><a name="BKMK_examples"></a><a name="aff1e7ff-5d77-4891-94a2-92cb0e5aee53#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection4" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">
+						<b>Example 1: Verify domain controllers in a domain</b>
+					</p>
+					<p xmlns="">The following example uses the <b>/dclist</b> parameter to create a list of domain controllers of the domain fourthcoffee.com</p>
+					<p xmlns="">
+						<code>nltest /dclist:fourthcoffee</code>
+					</p>
+					<p xmlns="">This command displays output similar to the following:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>
+Get list of DCs in domain 'ntdev' from '\\fourthcoffee-dc-01'.
+    fourthcoffee-dc-01.forthcoffee.com       [DS] Site: Rome
+    fourthcoffee-dc-03.forthcoffee.com       [DS] Site: LasVegas
+    fourthcoffee-dc-04.forthcoffee.com       [DS] Site: LA
+    fourthcoffee-dc-09.forthcoffee.com       [DS] Site: NYC
+    fourthcoffee-dc-12.forthcoffee.com       [DS] Site: Paris
+    fourthcoffee-dc-24.forthcoffee.com       [DS] Site: Chattaroy
+    fourthcoffee-dc-32.forthcoffee.com       [DS] Site: Haifa
+    fourthcoffee-dc-99.forthcoffee.com       [DS] Site: Redmond
+    fourthcoffee-dc-63.forthcoffee.com [PDC] [DS] Site: London
+The command completed successfully
+</pre></td></tr></table></span></div>
+					<p xmlns="">
+						<b>Example 2: Advanced information about users</b>
+					</p>
+					<p xmlns="">The following example shows detailed information about a specific user.</p>
+					<p xmlns="">
+						<code>nltest /user:"TestAdmin"</code>
+					</p>
+					<p xmlns="">This command displays output similar to the following:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>
+User: User1
+Rid: 0x3eb
+Version: 0x10002
+LastLogon: 2ee61c9a 01c0e947 = 5/30/2001 13:29:10
+PasswordLastSet: 9dad5428 01c0e577 = 5/25/2001 17:05:47
+AccountExpires: ffffffff 7fffffff = 9/13/30828 19:48:05
+PrimaryGroupId: 0x201
+UserAccountControl: 0x210
+CountryCode: 0x0
+CodePage: 0x0
+BadPasswordCount: 0x0
+LogonCount: 0x33
+AdminCount: 0x1
+SecurityDescriptor: 80140001 0000009c 000000ac 00000014 00000044 00300002 000000
+02 0014c002 01050045 00000101 01000000 00000000 0014c002 000f07ff 00000101 05000
+000 00000007 00580012 00000003 00240000 00020044 00000501 05000000 00000015 22cd
+b7b4 7112b3f1 2b3be507 000003eb 00180000 000f07ff 00000201 05000000 00000020 000
+00220 00140000 0002035b 00000101 01000000 00000000 00000201 05000000 00000020 00
+000220 00000201 05000000 00000020 00000220
+AccountName: User1
+Groups: 00000201 00000007
+LmOwfPassword: fb890c9c 5c7e7e09 ee58593b d959c681
+NtOwfPassword: d82759cc 81a342ac df600c37 4e58a478
+NtPasswordHistory: 00011001
+LmPasswordHistory: 00010011
+The command completed successfully
+</pre></td></tr></table></span></div>
+					<p xmlns="">
+						<b>Example 3: Verify trust relationship with a specific server</b>
+					</p>
+					<p xmlns="">The following example verifies that the a-dc1 server has a valid trust relationship with the domain.</p>
+					<p xmlns="">
+						<code>nltest.exe /server:fourthcoffee-dc-01 /sc_query:fourthcoffee</code>
+					</p>
+					<p xmlns="">This command displays output similar to the following:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>
+Flags: 30 HAS_IP  HAS_TIMESERV
+Trusted DC Name \\fourthcoffee-dc-01.forthcoffee.com
+Trusted DC Connection Status Status = 0 0x0 NERR_Success
+The command completed successfully
+</pre></td></tr></table></span></div>
+					<div class="alert" xmlns=""><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>
+						The DNS_DC and DNS_DOMAIN flags indicate the format of the information returned in the request (as opposed to a flag like GC or TIMESERV, which tell you something about the domain controller returning the information). Specifically, the presence of them indicates the returned domain controller name and domain name, respectively, were in DNS format. The absence of them indicates the returned domain controller name and domain name were in NetBIOS format.<p>
+					</td></tr></table><p></div>
+					<p xmlns="">
+						<b>Example 4: Determine the PDC emulator for a domain</b>
+					</p>
+					<p xmlns="">The following example identifies the domain controller that Windows NT 4.0–based computers see as the PDC emulator for a domain.</p>
+					<p xmlns="">
+						<code>nltest /dcname:fourthcoffee</code>
+					</p>
+					<p xmlns="">This command displays output similar to the following:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>
+PDC for Domain fourthcoffee is \\fourthcoffee-dc-01
+The command completed successfully</pre></td></tr></table></span></div>
+					<p xmlns="">You can see that a-dcp is the PDC emulator for your domain.</p>
+					<p xmlns="">
+						<b>Example 5: Show trust relationships for a domain</b>
+					</p>
+					<p xmlns="">The following example lists the established trust relationships for your domain.</p>
+					<p xmlns="">
+						<code>nltest /domain_trusts</code> </p>
+					<p xmlns="">This command displays output similar to the following:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>
+List of domain trusts:
+    0: forthcoffee forthcoffee.com (NT 5) (Forest Tree Root) (Primary Domain)
+The command completed successfully</pre></td></tr></table></span></div>
+					<p xmlns="">This example shows that one domain trusts itself but not other domains.</p>
+				</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+						</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<p xmlns="">
+										<a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a>
+									</p>
+								</content></div>
+						</sections></div>
+				</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

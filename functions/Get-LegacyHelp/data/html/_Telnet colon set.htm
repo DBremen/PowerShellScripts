@@ -1,0 +1,110 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Telnet: set</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Telnet: set</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008,Windows Server 2008 R2,Windows XP,Windows Server 2000,Windows Vista,Windows Server 2003,Windows Server 2003 R2,Windows 7</p>
+				<p>Sets options. For examples of how this command can be used, see <b>Examples</b>.</p>
+			<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>set [bsasdel] [crlf] [delasbs] [escape &lt;Char&gt;] [localecho] [logfile &lt;FileName&gt;] [logging] [mode {console | stream}] [ntlm] [term {ansi | vt100 | vt52 | vtnt}] [?]</pre></td></tr></table></span></div>
+				</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<h3 class="subHeading" xmlns="">Parameters</h3><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+										<th>
+											Parameter
+										</th>
+										<th>
+											Description
+										</th>
+									</tr><tr>
+									<td>
+										<p>bsasdel</p>
+									</td>
+									<td>
+										<p>Sends <b>Backspace</b> as a <b>Delete</b>.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>crlf</p>
+									</td>
+									<td>
+										<p>Sends CR &amp; LF (0x0D, 0x 0A) when the <b>Enter</b> key is pressed. Known as “New line mode”.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>delasbs</p>
+									</td>
+									<td>
+										<p>Sends <b>Delete</b> as a <b>Backspace</b>.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>escape &lt;Character&gt;</p>
+									</td>
+									<td>
+										<p>Sets the escape character used to enter the Telnet client prompt. The escape character can be a single character, or it can be a combination of the <b>CTRL</b> key plus a character. To set a control-key combination, hold down the <b>CTRL</b> key while you type the character that you want to assign.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>localecho</p>
+									</td>
+									<td>
+										<p>Turns on local echo.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>logfile &lt;FileName&gt;</p>
+									</td>
+									<td>
+										<p>Logs the current Telnet session to the local file. Logging begins automatically when you set this option.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>logging</p>
+									</td>
+									<td>
+										<p>Turns on logging. If no log file is set, an error message appears.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>mode {console | screen}</p>
+									</td>
+									<td>
+										<p>Sets the operation mode.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>ntlm</p>
+									</td>
+									<td>
+										<p>Turns on NTLM authentication.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>term {ansi | vt100 | vt52 | vtnt}</p>
+									</td>
+									<td>
+										<p>Sets the terminal type.</p>
+									</td>
+								</tr><tr>
+									<td>
+										<p>?</p>
+									</td>
+									<td>
+										<p>Displays Help for this command.</p>
+									</td>
+								</tr></table>
+						</content></div>
+				</sections></div><h2 class="heading">Remarks</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<ol class="ordered" xmlns=""><li>
+							You can use the <b>unset</b> command to turn off an option that was previously set.<br><br>
+						</li><li>
+							On non-English versions of Telnet, the <b>codeset</b> &lt;option&gt; is available. <b>Codeset</b> &lt;option&gt; sets the current code set to an option, which can be any one of the following: <b>Shift JIS</b>, <b>Japanese EUC</b>, <b>JIS Kanji</b>, <b>JIS Kanji (78)</b>, <b>DEC Kanji</b>, <b>NEC Kanji</b>. You should set the same code set on the remote computer.<br><br>
+						</li></ol>
+				</content></div><a name="BKMK_Examples"></a><a name="67316b5f-9c6f-43e3-86d5-dcff9ae2ac3e#BKMK_Examples"></a><h2 class="heading">Examples</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">Set the log file and begin logging to the local file tnlog.txt</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>set logfile tnlog.txt</pre></td></tr></table></span></div>
+				</content></div><h2 class="heading">Additional references</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<ul xmlns=""><li>
+							
+								<a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a>
+							<br><br>
+						</li></ul>
+				</content></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

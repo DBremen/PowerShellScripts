@@ -1,0 +1,150 @@
+<html DIR="LTR" xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=Windows-1252"></META><META NAME="save" CONTENT="history"></META><title>Evntcmd</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"></link><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"></input><input type="hidden" id="hiddenScrollOffset"></input></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"></img><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"></img><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"></img><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"></img><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"></img><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"></img><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Evntcmd</span></td></tr><tr id="headerTableRow3"><td><a href="#seeAlsoNoToggle" onclick="OpenSection(seeAlsoNoToggle)">See Also</a></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div>
+				<p>
+				</p>
+			<h2 class="heading">Evntcmd</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">Configures the translation of events to traps, trap destinations, or both based on information in a configuration file.</p>
+				</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+						</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+								</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<h5 class="subHeading" xmlns="">Syntax</h5><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+											<p xmlns="">         <b>evntcmd</b> [<b>/s </b><i>ComputerName</i>] [<b>/v </b><i>VerbosityLevel</i>] [<b>/n</b>] <i>FileName</i></p>
+										</content></div>
+									<h5 class="subHeading" xmlns="">Parameters</h5><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+											<dl xmlns=""><dt> <b>/s </b><i>ComputerName </i></dt><br /><dd>
+													Specifies, by name, the computer on which you want to configure the translation of events to traps, trap destinations, or both. If you do not specify a computer, the configuration occurs on the local computer.<p></p>
+												</dd></dl><dl xmlns=""><dt> <b>/v </b><i>VerbosityLevel </i></dt><br /><dd>
+													Specifies which types of status messages appear as traps and trap destinations are configured. This parameter must be an integer between 0 and 10. If you specify <b>10</b>, all types of messages appear, including tracing messages and warnings about whether trap configuration was successful. If you specify <b>0</b>, no messages appear.<p></p>
+												</dd></dl><dl xmlns=""><dt> <b>/n </b></dt><br /><dd>
+													Specifies that the SNMP service should not be restarted if this computer receives trap configuration changes.<p></p>
+												</dd></dl><dl xmlns=""><dt> <i>FileName </i></dt><br /><dd>
+													Specifies, by name, the configuration file that contains information about the translation of events to traps and trap destinations you want to configure.<p></p>
+												</dd></dl><dl xmlns=""><dt> <b>/? </b></dt><br /><dd>
+													Displays help at the command prompt.<p></p>
+												</dd></dl>
+										</content></div>
+									<h5 class="subHeading" xmlns="">Remarks</h5><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+											<ul xmlns=""><li class="unordered">
+													If you want to configure traps but not trap destinations, you can create a valid configuration file by using Event to Trap Translator, which is a graphical utility. If you have the SNMP service installed, you can start Event to Trap Translator by typing <b>evntwin</b> at a command prompt. After you have defined the traps you want, click <b>Export</b> to create a file suitable for use with <b>evntcmd</b>. You can use Event to Trap Translator to easily create a configuration file and then use the configuration file with <b>evntcmd</b> at the command prompt to quickly configure traps on multiple computers.<br /><br />
+												</li><li class="unordered">
+													The syntax for configuring a trap is as follows: <br /><br />
+													             <b>#pragma ADD</b>             <i>EventLogFile EventSource EventID</i> [<i>Count</i> [<i>Period</i>]]<br /><br />
+													<ul><li class="unordered">
+															The text <b>#pragma</b> must appear at the beginning of every entry in the file.<br /><br />
+														</li><li class="unordered">
+															The parameter <b>ADD</b> specifies that you want to add an event to trap configuration.<br /><br />
+														</li><li class="unordered">
+															The parameters <i>EventLogFile</i>, <i>EventSource</i>, and <i>EventID</i> are required. The parameter <i>EventLogFile</i> specifies the file in which the event is recorded. The parameter <i>EventSource</i> specifies the application that generates the event. The <i>EventID</i> parameter specifies the unique number that identifies each event. To find out what values correspond to particular events, start Event to Trap Translator by typing <b>evntwin</b> at a command prompt. Click <b>Custom</b>, and then click <b>Edit</b>. Under <b>Event Sources</b>, browse the folders until you locate the event you want to configure, click it, and then click <b>Add</b>. Information about the event source, the event log file, and the event ID appear under <b>Source</b>, <b>Log</b>, and <b>Trap specific ID</b>, respectively. <br /><br />
+														</li><li class="unordered">
+															The <i>Count</i> parameter is optional, and it specifies how many times the event must occur before a trap message is sent. If you do not use the <i>Count</i> parameter, the trap message is sent after the event occurs once.<br /><br />
+														</li><li class="unordered">
+															The <i>Period</i> parameter is optional, but it requires you to use the <i>Count</i> parameter. The <i>Period</i> parameter specifies a length of time (in seconds) during which the event must occur the number of times specified with the <i>Count</i> parameter before a trap message is sent. If you do not use the <i>Period</i> parameter, a trap message is sent after the event occurs the number of times specified with the <i>Count</i> parameter, no matter how much time elapses between occurrences.<br /><br />
+														</li></ul>
+												</li><li class="unordered">
+													The syntax for removing a trap is as follows: <br /><br />
+													             <b>#pragma DELETE</b>             <i>EventLogFile EventSource EventID</i>           <br /><br />
+													<ul><li class="unordered">
+															The text <b>#pragma</b> must appear at the beginning of every entry in the file.<br /><br />
+														</li><li class="unordered">
+															The parameter <b>DELETE</b> specifies that you want to remove an event to trap configuration.<br /><br />
+														</li><li class="unordered">
+															The parameters <i>EventLogFile</i>, <i>EventSource</i>, and <i>EventID</i> are required. The parameter <i>EventLogFile</i> specifies the log in which the event is recorded. The parameter <i>EventSource</i> specifies the application that generates the event. The <i>EventID</i> parameter specifies the unique number that identifies each event.<br /><br />
+														</li></ul>
+												</li><li class="unordered">
+													The syntax for configuring a trap destination is as follows: <br /><br />
+													             <b>#pragma ADD_TRAP_DEST</b>             <i>CommunityName</i>             <i>HostID</i>           <br /><br />
+													<ul><li class="unordered">
+															The text <b>#pragma</b> must appear at the beginning of every entry in the file.<br /><br />
+														</li><li class="unordered">
+															The parameter <b>ADD_TRAP_DEST</b> specifies that you want trap messages to be sent to a specified host within a community.<br /><br />
+														</li><li class="unordered">
+															The parameter <b>CommunityName</b> specifies, by name, the community in which trap messages are sent.<br /><br />
+														</li><li class="unordered">
+															The parameter <i>HostID</i> specifies, by name or IP address, the host to which you want trap messages to be sent.<br /><br />
+														</li></ul>
+												</li><li class="unordered">
+													The syntax for removing a trap destination is as follows: <br /><br />
+													             <b>#pragma DELETE_TRAP_DEST</b>             <i>CommunityName HostID</i>           <br /><br />
+													<ul><li class="unordered">
+															The text <b>#pragma</b> must appear at the beginning of every entry in the file.<br /><br />
+														</li><li class="unordered">
+															The parameter <b>DELETE_TRAP_DEST</b> specifies that you do not want trap messages to be sent to a specified host within a community.<br /><br />
+														</li><li class="unordered">
+															The parameter <i>CommunityName</i> specifies, by name, the community in which trap messages are sent.<br /><br />
+														</li><li class="unordered">
+															The parameter <i>HostID</i> specifies, by name or IP address, the host to which you do not want trap messages to be sent.<br /><br />
+														</li></ul>
+												</li></ul>
+										</content></div>
+									<h5 class="subHeading" xmlns="">Examples</h5><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+											<p xmlns="">The following examples illustrate entries in the configuration file for the <b>evntcmd</b> command. They are not designed to be typed at a command prompt.</p>
+											<p xmlns="">To send a trap message if the Event Log service is restarted, type:</p>
+											<p xmlns="">         <b>#pragma ADD System "Eventlog" 2147489653</b>       </p>
+											<p xmlns="">To send a trap message if the Event Log service is restarted twice in three minutes, type:</p>
+											<p xmlns="">         <b>#pragma ADD System "Eventlog" 2147489653 2 180</b>       </p>
+											<p xmlns="">To stop sending a trap message whenever the Event Log service is restarted, type:</p>
+											<p xmlns="">         <b>#pragma DELETE System "Eventlog" 2147489653</b>       </p>
+											<p xmlns="">To send trap messages within the community named Public to the host with the IP address 192.168.100.100, type:</p>
+											<p xmlns="">         <b>#pragma ADD_TRAP_DEST public 192.168.100.100</b>       </p>
+											<p xmlns="">To send trap messages within the community named Private to the host named Host1, type:</p>
+											<p xmlns="">         <b>#pragma ADD_TRAP_DEST private Host1</b>       </p>
+											<p xmlns="">To stop sending trap messages within the community named Private to the same computer on which you are configuring trap destinations, type:</p>
+											<p xmlns="">         <b>#pragma DELETE_TRAP_DEST private localhost</b>       </p>
+										</content></div>
+								</sections></div>
+						</sections></div>
+				</sections></div><h2 class="heading">Formatting legend</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+								<th colspan="1">
+									Format
+								</th>
+								<th colspan="1">
+									Meaning
+								</th>
+							</tr><tr>
+							<td colspan="1">
+								<p>               <i>Italic</i>             </p>
+							</td>
+							<td colspan="1">
+								<p>Information that the user must supply</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>               <b>Bold</b>             </p>
+							</td>
+							<td colspan="1">
+								<p>Elements that the user must type exactly as shown</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>Ellipsis (...)</p>
+							</td>
+							<td colspan="1">
+								<p>Parameter that can be repeated several times in a command line</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>Between brackets ([])</p>
+							</td>
+							<td colspan="1">
+								<p>Optional items</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>Between braces ({}); choices separated by pipe (|). Example: {even|odd}</p>
+							</td>
+							<td colspan="1">
+								<p>Set of choices from which the user must choose only one</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>               <code>Courier font</code>             </p>
+							</td>
+							<td colspan="1">
+								<p>Code or program output</p>
+							</td>
+						</tr></table>
+				</content></div><h2 class="heading"><span id="seeAlsoNoToggle">See Also</span></h2><div id="seeAlsoSection" class="section"><b>Command-line reference A-Z</b><b>Command shell overview</b><br /></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr /><p /></div></div></body></html>

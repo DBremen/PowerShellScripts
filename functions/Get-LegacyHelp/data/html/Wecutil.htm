@@ -1,0 +1,360 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Wecutil</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Wecutil</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008</p>
+<p>Enables you to create and manage subscriptions to events that are forwarded from remote computers, which support WS-Management protocol. For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>wecutil  [{es | enum-subscription}] 
+[{gs | get-subscription} &lt;Subid&gt; [/f:&lt;Format&gt;] [/uni:&lt;Unicode&gt;]] 
+[{gr | get-subscriptionruntimestatus} &lt;Subid&gt; [&lt;Eventsource&gt; …]] 
+[{ss | set-subscription} [&lt;Subid&gt; [/e:[&lt;Subenabled&gt;]] [/esa:&lt;Address&gt;] [/ese:[&lt;Srcenabled&gt;]] [/aes] [/res] [/un:&lt;Username&gt;] [/up:&lt;Password&gt;] [/d:&lt;Desc&gt;] [/uri:&lt;Uri&gt;] [/cm:&lt;Configmode&gt;] [/ex:&lt;Expires&gt;] [/q:&lt;Query&gt;] [/dia:&lt;Dialect&gt;] [/tn:&lt;Transportname&gt;] [/tp:&lt;Transportport&gt;] [/dm:&lt;Deliverymode&gt;] [/dmi:&lt;Deliverymax&gt;] [/dmlt:&lt;Deliverytime&gt;] [/hi:&lt;Heartbeat&gt;] [/cf:&lt;Content&gt;] [/l:&lt;Locale&gt;] [/ree:[&lt;Readexist&gt;]] [/lf:&lt;Logfile&gt;] [/pn:&lt;Publishername&gt;] [/essp:&lt;Enableport&gt;] [/hn:&lt;Hostname&gt;] [/ct:&lt;Type&gt;]] [/c:&lt;Configfile&gt; [/cun:&lt;Username&gt; /cup:&lt;Password&gt;]]] 
+[{cs | create-subscription} &lt;Configfile&gt; [/cun:&lt;Username&gt; /cup:&lt;Password&gt;]] 
+[{ds | delete-subscription} &lt;Subid&gt;] 
+[{rs | retry-subscription} &lt;Subid&gt; [&lt;Eventsource&gt;…]] 
+[{qc | quick-config} [/q:[&lt;Quiet&gt;]]].</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>{es | enum-subscription}</p>
+</td>
+<td colspan="1">
+<p>Displays the names of all remote event subscriptions that exist.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>{gs | get-subscription} &lt;Subid&gt; [/f:&lt;Format&gt;] [/uni:&lt;Unicode&gt;]</p>
+</td>
+<td colspan="1">
+<p>Displays remote subscription configuration information. &lt;Subid&gt; is a string that uniquely identifies a subscription. &lt;Subid&gt; is the same as the string that was specified in the &lt;SubscriptionId&gt; tag of the XML configuration file, which was used to create the subscription.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>{gr | get-subscriptionruntimestatus} &lt;Subid&gt; [&lt;Eventsource&gt; …]</p>
+</td>
+<td colspan="1">
+<p>Displays the runtime status of a subscription. &lt;Subid&gt; is a string that uniquely identifies a subscription. &lt;Subid&gt; is the same as the string that was specified in the &lt;SubscriptionId&gt; tag of the XML configuration file, which was used to create the subscription. &lt;Eventsource&gt; is a string that identifies a computer that serves as a source of events. &lt;Eventsource&gt; should be a fully-qualified domain name, a NetBIOS name, or an IP address.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>{ss | set-subscription} &lt;Subid&gt; [/e:[&lt;Subenabled&gt;]] [/esa:&lt;Address&gt;] [/ese:[&lt;Srcenabled&gt;]] [/aes] [/res] [/un:&lt;Username&gt;] [/up:&lt;Password&gt;] [/d:&lt;Desc&gt;] [/uri:&lt;Uri&gt;] [/cm:&lt;Configmode&gt;] [/ex:&lt;Expires&gt;] [/q:&lt;Query&gt;] [/dia:&lt;Dialect&gt;] [/tn:&lt;Transportname&gt;] [/tp:&lt;Transportport&gt;]  [/dm:&lt;Deliverymode&gt;] [/dmi:&lt;Deliverymax&gt;] [/dmlt:&lt;Deliverytime&gt;] [/hi:&lt;Heartbeat&gt;] [/cf:&lt;Content&gt;] [/l:&lt;Locale&gt;] [/ree:[&lt;Readexist&gt;]] [/lf:&lt;Logfile&gt;] [/pn:&lt;Publishername&gt;] [/essp:&lt;Enableport&gt;] [/hn:&lt;Hostname&gt;] [/ct:&lt;Type&gt;] </p>
+
+<p>or</p>
+
+<p>{ss | set-subscription /c:&lt;Configfile&gt; [/cun:&lt;Comusername&gt; /cup:&lt;Compassword&gt;]</p>
+</td>
+<td colspan="1">
+<p>Changes the subscription configuration. You can specify the subscription ID and the appropriate options to change subscription parameters, or you can specify an XML configuration file to change subscription parameters.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>{cs | create-subscription} &lt;Configfile&gt; [/cun:&lt;Username&gt; /cup:&lt;Password&gt;]</p>
+</td>
+<td colspan="1">
+<p>Creates a remote subscription. &lt;Configfile&gt; specifies the path to the XML file that contains the subscription configuration. The path can be absolute or relative to the current directory.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>{ds | delete-subscription} &lt;Subid&gt;</p>
+</td>
+<td colspan="1">
+<p>Deletes a subscription and unsubscribes from all event sources that deliver events into the event log for the subscription. Any events already received and logged are not deleted. &lt;Subid&gt; is a string that uniquely identifies a subscription. &lt;Subid&gt; is the same as the string that was specified in the &lt;SubscriptionId&gt; tag of the XML configuration file, which was used to create the subscription.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>{rs | retry-subscription} &lt;Subid&gt; [&lt;Eventsource&gt;…]</p>
+</td>
+<td colspan="1">
+<p>Retries to establish a connection and send a remote subscription request to an inactive subscription. Attempts to reactivate all event sources or specified event sources. Disabled sources are not retried. &lt;Subid&gt; is a string that uniquely identifies a subscription. &lt;Subid&gt; is the same as the string that was specified in the &lt;SubscriptionId&gt; tag of the XML configuration file, which was used to create the subscription. &lt;Eventsource&gt; is a string that identifies a computer that serves as a source of events. &lt;Eventsource&gt; should be a fully-qualified domain name, a NetBIOS name, or an IP address.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>{qc | quick-config} [/q:[&lt;Quiet&gt;]]</p>
+</td>
+<td colspan="1">
+<p>Configures the Windows Event Collector service to ensure a subscription can be created and sustained through reboots. This includes the following steps:</p>
+
+<ol class="ordered"><li>
+Enable the ForwardedEvents channel if it is disabled.<br><br>
+</li><li>
+Set the Windows Event Collector service to delay start.<br><br>
+</li><li>
+Start the Windows Event Collector service if it is not running.<br><br>
+</li></ol>
+</td></tr></table>
+</content></div><h2 class="heading">Options</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Option
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>/f:&lt;Format&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the format of the information that is displayed. &lt;Format&gt; can be XML or Terse. If &lt;Format&gt; is XML, the output is displayed in XML format. If &lt;Format&gt; is Terse, the output is displayed in name-value pairs. The default is Terse.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/c:&lt;Configfile&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the path to the XML file that contains a subscription configuration. The path can be absolute or relative to the current directory. This option can only be used with the <b>/cun</b> and <b>/cup</b> options and is mutually exclusive with all other options.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/e:[&lt;Subenabled&gt;]</p>
+</td>
+<td colspan="1">
+<p>Enables or disables a subscription. &lt;Subenabled&gt; can be true or false. The default value of this option is true.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/esa:&lt;Address&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the address of an event source. &lt;Address&gt; is a string that contains a fully-qualified domain name, a NetBIOS name, or an IP address, which identifies a computer that serves as a source of events. This option should be used with the <b>/ese</b>, <b>/aes</b>, <b>/res</b>, or <b>/un</b> and <b>/up</b> options.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/ese:[&lt;Srcenabled&gt;]</p>
+</td>
+<td colspan="1">
+<p>Enables or disables an event source. &lt;Srcenabled&gt; can be true or false. This option is allowed only if the <b>/esa</b> option is specified. The default value of this option is true.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/aes</p>
+</td>
+<td colspan="1">
+<p>Adds the event source that is specified by the <b>/esa</b> option if it is not already a part of the subscription. If the address specified by the <b>/esa</b> option is already a part of the subscription, an error is reported. This option is only allowed if the <b>/esa</b> option is specified.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/res</p>
+</td>
+<td colspan="1">
+<p>Removes the event source that is specified by the <b>/esa</b> option if it is already a part of the subscription. If the address specified by the <b>/esa</b> option is not a part of the subscription, an error is reported. This option is only allowed if <b>/esa</b> option is specified.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/un:&lt;Username&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the user credential to use with the event source specified by the <b>/esa</b> option. This option is only allowed if the <b>/esa</b> option is specified.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/up:&lt;Password&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the password that corresponds to the user credential. This option is only allowed if the <b>/un</b> option is specified.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/d:&lt;Desc&gt;</p>
+</td>
+<td colspan="1">
+<p>Provides a description for the subscription.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/uri:&lt;Uri&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the type of the events that are consumed by the subscription. &lt;Uri&gt; contains a URI string that is combined with the address of the event source computer to uniquely identify the source of the events. The URI string is used for all event source addresses in the subscription.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/cm:&lt;Configmode&gt;</p>
+</td>
+<td colspan="1">
+<p>Sets the configuration mode. &lt;Configmode&gt; can be one of the following strings: Normal, Custom, MinLatency or MinBandwidth. The Normal, MinLatency, and MinBandwidth modes set delivery mode, delivery max items, heartbeat interval, and delivery max latency time. The <b>/dm</b>, <b>/dmi</b>, <b>/hi</b> or <b>/dmlt</b> options may only be specified if the configuration mode is set to Custom.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/ex:&lt;Expires&gt;</p>
+</td>
+<td colspan="1">
+<p>Sets the time when the subscription expires. &lt;Expires&gt; should be defined in standard XML or ISO8601 date-time format: yyyy-MM-ddThh:mm:ss[.sss][Z], where T is the time separator and Z indicates UTC time.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/q:&lt;Query&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the query string for the subscription. The format of &lt;Query&gt; may be different for different URI values and applies to all sources in the subscription.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/dia:&lt;Dialect&gt;</p>
+</td>
+<td colspan="1">
+<p>Defines the dialect that the query string will use.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/tn:&lt;Transportname&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the name of the transport that is used to connect to a remote event source.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/tp:&lt;Transportport&gt;</p>
+</td>
+<td colspan="1">
+<p>Sets the port number that is used by the transport when connecting to a remote event source.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/dm:&lt;Deliverymode&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the delivery mode. &lt;Deliverymode&gt; can be either pull or push. This option is only valid if the <b>/cm</b> option is set to Custom.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/dmi:&lt;Deliverymax&gt;</p>
+</td>
+<td colspan="1">
+<p>Sets the maximum number of items for batched delivery. This option is only valid if <b>/cm</b> is set to Custom.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/dmlt:&lt;Deliverytime&gt;</p>
+</td>
+<td colspan="1">
+<p>Sets the maximum latency in delivering a batch of events. &lt;Deliverytime&gt; is the number of milliseconds. This option is only valid if <b>/cm</b> is set to Custom.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/hi:&lt;Heartbeat&gt;</p>
+</td>
+<td colspan="1">
+<p>Defines the heartbeat interval. &lt;Heartbeat&gt; is the number of milliseconds. This option is only valid if <b>/cm</b> is set to Custom.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/cf:&lt;Content&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the format of the events that are returned. &lt;Content&gt; can be Events or RenderedText. When the value is RenderedText, the events are returned with the localized strings (such as event description) attached to the event. The default value is RenderedText.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/l:&lt;Locale&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the locale for delivery of the localized strings in RenderedText format. &lt;Locale&gt; is a language and country/region identifier, for example, "EN-us". This option is only valid if the <b>/cf</b> option is set to RenderedText.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/ree:[&lt;Readexist&gt;]</p>
+</td>
+<td colspan="1">
+<p>Identifies the events that will be delivered for the subscription. &lt;Readexist&gt; can true or false. When the &lt;Readexist&gt; is true, all existing events are read from the subscription event sources. When the &lt;Readexist&gt; is false, only future (arriving) events are delivered. The default value is true for a <b>/ree</b> option without a value. If no <b>/ree</b> option is specified, the default value is false.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/lf:&lt;Logfile&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the local event log that is used to store events received from the event sources.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/pn:&lt;Publishername&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the publisher name. It must be a publisher that owns or imports the log specified by the <b>/lf</b> option.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/essp:&lt;Enableport&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies that the port number must be appended to the service principal name of the remote service. &lt;Enableport&gt; can be true or false. The port number is appended when &lt;Enableport&gt; is true. When the port number is appended, some configuration may be required to prevent the access to event sources from being denied.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/hn:&lt;Hostname&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the DNS name of the local computer. This name is used by remote event source to push back events and must be used only for a push subscription.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/ct:&lt;Type&gt;</p>
+</td>
+<td colspan="1">
+<p>Sets the credential type for the remote source access. &lt;Type&gt; should be one of the following values: default, negotiate, digest, basic or localmachine. The default value is default.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/cun:&lt;Comusername&gt;</p>
+</td>
+<td colspan="1">
+<p>Sets the shared user credential to be used for event sources that do not have their own user credentials. If this option is specified with the <b>/c</b> option, UserName and UserPassword settings for individual event sources from the configuration file are ignored. If you want to use a different credential for a specific event source, you should override this value by specifying the <b>/un</b> and <b>/up</b> options for a specific event source on the command line of another <b>ss</b> command.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/cup:&lt;Compassword&gt;</p>
+</td>
+<td colspan="1">
+<p>Sets the user password for the shared user credential. When &lt;Compassword&gt; is set to * (asterisk), the password is read from the console. This option is only valid when the <b>/cun</b> option is specified.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/q:[&lt;Quiet&gt;]</p>
+</td>
+<td colspan="1">
+<p>Specifies whether the configuration procedure will prompt for confirmation. &lt;Quiet&gt; can be true or false. If &lt;Quiet&gt; is true, the configuration procedure will not prompt for confirmation. The default value of this option is false.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="alert" xmlns=""><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/Important.gif">Important </th></tr><tr><td>
+If you receive the message, “The RPC server is unavailable” when you try to run wecutil, you need to start the Windows Event Collector service (wecsvc). To start wecsvc, at an elevated command prompt type net start wecsvc.<p>
+</td></tr></table><p></div>
+
+<ul xmlns=""><li class="unordered">
+The following example shows the contents of a configuration file:<br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>&lt;Subscription xmlns="http://schemas.microsoft.com/2006/03/windows/events/subscription"&gt;
+&lt;Uri&gt;http://schemas.microsoft.com/wbem/wsman/1/windows/EventLog&lt;/Uri&gt;
+&lt;!-- Use Normal (default), Custom, MinLatency, MinBandwidth --&gt;
+&lt;ConfigurationMode&gt;Normal&lt;/ConfigurationMode&gt;
+&lt;Description&gt;Forward Sample Subscription&lt;/Description&gt;
+&lt;SubscriptionId&gt;SampleSubscription&lt;/SubscriptionId&gt;
+&lt;Query&gt;&lt;![CDATA[
+&lt;QueryList&gt;
+&lt;Query Path="Application"&gt;
+&lt;Select&gt;*&lt;/Select&gt;
+&lt;/Query&gt;
+&lt;/QueryList&gt;
+]]&gt;&lt;/Query&gt;
+&lt;EventSources&gt;
+&lt;EventSource Enabled="true"&gt;
+&lt;Address&gt;mySource.myDomain.com&lt;/Address&gt;
+&lt;UserName&gt;myUserName&lt;/UserName&gt;
+&lt;Password&gt;*&lt;/Password&gt;
+&lt;/EventSource&gt;
+&lt;/EventSources&gt;
+&lt;CredentialsType&gt;Default&lt;/CredentialsType&gt;
+&lt;Locale Language="EN-US"&gt;&lt;/Locale&gt;
+&lt;/Subscription&gt;</pre></td></tr></table></span></div>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="0c82a6cb-d652-429c-9c3d-0f568c78d54b#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection4" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">Output configuration information for a subscription named sub1:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>wecutil gs sub1</pre></td></tr></table></span></div>
+
+<p xmlns="">Example output:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>EventSource[0]:
+Address: localhost
+Enabled: true
+Description: Subscription 1
+Uri: wsman:microsoft/logrecord/sel
+DeliveryMode: pull
+DeliveryMaxSize: 16000
+DeliveryMaxItems: 15
+DeliveryMaxLatencyTime: 1000
+HeartbeatInterval: 10000
+Locale:
+ContentFormat: renderedtext
+LogFile: HardwareEvents</pre></td></tr></table></span></div>
+
+<p xmlns="">Display the runtime status of a subscription named sub1:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>wecutil gr sub1</pre></td></tr></table></span></div>
+
+<p xmlns="">Update the subscription configuration named sub1 from a new XML file called WsSelRg2.xml:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>wecutil ss sub1 /c:%Windir%\system32\WsSelRg2.xml</pre></td></tr></table></span></div>
+
+<p xmlns="">Update the subscription configuration named sub2 with multiple parameters:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>wecutil ss sub2 /esa:myComputer /ese /un:uname /up:* /cm:Normal</pre></td></tr></table></span></div>
+
+<p xmlns="">Create a subscription to forward events from a Windows Vista Application event log of a remote computer at mySource.myDomain.com to the ForwardedEvents log (see Remarks for an example of a configuration file):</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>wecutil cs subscription.xml</pre></td></tr></table></span></div>
+
+<p xmlns="">Delete a subscription named sub1:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>wecutil ds sub1</pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

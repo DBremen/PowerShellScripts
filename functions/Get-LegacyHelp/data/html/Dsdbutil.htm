@@ -1,0 +1,126 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Dsdbutil</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Dsdbutil</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008,Windows Server 2003 with SP1,Windows Server 2003 R2,Windows Server 2003</p>
+<p>Performs database maintenance of the Active Directory Domain Services (AD DS) store, facilitates configuration of Active Directory Lightweight Directory Services (AD LDS) communication ports, and views AD LDS instances that are installed on a computer.</p>
+
+<p><b>Dsdbutil</b> is a command-line tool that is built into Windows Server 2008. It is available if you have the AD LDS server role installed. To use <b>dsdbutil</b>, you must run the <b>dsdbutil</b> command from an elevated command prompt. To open an elevated command prompt, click <b>Start</b>, right-click <b>Command Prompt</b>, and then click <b>Run as administrator</b>.</p>
+
+<p>For most of the Dsdbutil commands, you only need to type the first few characters of the command name instead than the entire command. For example, you can type either of the following commands to activate an AD LDS instance named instance1:</p>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>activate instance instance1
+ac i instance1</pre></td></tr></table></span></div>
+
+<p>The short form for each command is listed in the following table. </p>
+<h2 class="heading">Commands</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Command
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>Activate Instance %s</p>
+
+<p>short form: ac i %s</p>
+</td>
+<td colspan="1">
+<p>Sets <b>NTDS</b> or a specific AD LDS instance as the active instance.</p>
+</td></tr><tr>
+<td colspan="1">
+<p><a href="b5416510-9aa5-44e4-8b4b-279dee264183.htm">authoritative restore</a></p>
+
+<p>Short form: au r</p>
+</td>
+<td colspan="1">
+<p>Authoritatively restores the Active Directory database or AD LDS instance.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>Change Service Account %s1 %s2</p>
+</td>
+<td colspan="1">
+<p>Changes an AD DS and AD LDS service account to user name %s1 and password %s2. </p>
+
+<p>Use NULL for a blank password and an asterisk (*) to enter a password from the console.</p>
+</td></tr><tr>
+<td colspan="1">
+<p><a href="594c47bc-095d-465e-b7cb-3f0234350460.htm">files</a></p>
+
+<p>Short form: f</p>
+</td>
+<td colspan="1">
+<p>Manages AD DS and AD LDS database files.</p>
+</td></tr><tr>
+<td colspan="1">
+<p><a href="c705e804-97d5-4a15-8d60-1ba09e5544e6.htm">ifm</a></p>
+
+<p>Short form: i</p>
+</td>
+<td colspan="1">
+<p>Creates installation media for writable (full) and read-only domain controllers (RODCs) and instances of AD LDS.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>LDAP port %d </p>
+</td>
+<td colspan="1">
+<p>Configures a Lightweight Directory Access Protocol (LDAP) port for an AD LDS instance.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>List instances</p>
+
+<p>Short form: li i</p>
+</td>
+<td colspan="1">
+<p>Lists all AD LDS instances that are installed on this computer.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>Popups off</p>
+
+<p>Short form: po off</p>
+</td>
+<td colspan="1">
+<p>Disables popups.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>Popups on</p>
+
+<p>Short form: po on</p>
+</td>
+<td colspan="1">
+<p>Enables popups.</p>
+</td></tr><tr>
+<td colspan="1">
+<p><a href="16b6f806-20b9-47bd-92c5-5cd96645c3bf.htm">semantic database analysis</a></p>
+
+<p>Short form: sem d a</p>
+</td>
+<td colspan="1">
+<p>Checks semantics.</p>
+</td></tr><tr>
+<td colspan="1">
+<p><a href="a4b0e355-cbd0-4f48-9484-877fad1789ec.htm">snapshot</a></p>
+
+<p>Short form: sn</p>
+</td>
+<td colspan="1">
+<p>Manages snapshots.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>?</p>
+</td>
+<td colspan="1">
+<p>Shows help at the command prompt.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>Help</p>
+</td>
+<td colspan="1">
+<p>Shows help at the command prompt.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>Quit</p>
+</td>
+<td colspan="1">
+<p>Quits this command.</p>
+</td></tr></table>
+</content></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

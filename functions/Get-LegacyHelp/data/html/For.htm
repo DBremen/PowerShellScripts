@@ -1,0 +1,330 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>For</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">For</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008 R2,Windows Server 2008,Windows XP,Windows Vista,Windows Server 2003,Windows Server 2003 R2,Windows 7</p>
+<p>Runs a specified command for each file in a set of files.</p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>for {%%|%}&lt;Variable&gt; in (&lt;Set&gt;) do &lt;Command&gt; [&lt;CommandLineOptions&gt;]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>{%%|%}&lt;Variable&gt; </p>
+</td>
+<td colspan="1">
+<p>Required. Represents a replaceable parameter. Use a single percent sign (<b>%</b>)<i> </i>to carry out the <b>for</b> command at the command prompt. Use double percent signs (<b>%%</b>) to carry out the <b>for</b> command within a batch file. Variables are case sensitive, and they must be represented with an alphabetical value such as <b>%A</b>, <b>%B</b>, or <b>%C</b>.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> (&lt;Set&gt;)</p>
+</td>
+<td colspan="1">
+<p>Required. Specifies one or more files, directories, or text strings, or a range of values on which to run the command. The parentheses are required.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> &lt;Command&gt; </p>
+</td>
+<td colspan="1">
+<p>Required. Specifies the command that you want to carry out on each file, directory, or text string, or on the range of values included in <i>Set</i>.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> &lt;CommandLineOptions&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies any command-line options that you want to use with the specified command.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /? </p>
+</td>
+<td colspan="1">
+<p>Displays help at the command prompt.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+Using <b>for</b><br><br>
+
+You can use the <b>for</b> command within a batch file or directly from the command prompt.<br><br>
+</li><li class="unordered">
+Using batch parameters <br><br>
+
+The following attributes apply to the <b>for</b> command:<br><br>
+
+<ul><li class="unordered">
+The <b>for</b> command replaces <b>%</b><i>Variable</i> or <b>%%</b><i>Variable</i> with each text string in the specified set until the specified command processes all of the files. <br><br>
+</li><li class="unordered">
+Variable names are case sensitive, global, and no more than 52 can be active at a time. <br><br>
+</li><li class="unordered">
+To avoid confusion with the batch parameters <b>%0</b> through <b>%9</b>, you can use any character for <i>Variable</i> except the numerals 0 through 9. For simple batch files, a single character such as <b>%%f</b> will work. <br><br>
+</li><li class="unordered">
+You can use multiple values for <i>Variable</i> in complex batch files to distinguish different replaceable variables. <br><br>
+</li></ul>
+</li><li class="unordered">
+Specifying a group of files <br><br>
+
+The <i>Set</i> parameter can represent a single group of files or several groups of files. You can use wildcard characters (<b>*</b> and <b>?</b>) to specify a file set. The following are valid file sets: <br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>(*.doc) 
+(*.doc *.txt *.me)
+(jan*.doc jan*.rpt feb*.doc feb*.rpt)
+(ar??1991.* ap??1991.*)</pre></td></tr></table></span></div>
+
+When you use the <b>for</b> command, the first value in <i>Set</i> replaces <b>%</b><i>Variable</i> or <b>%%</b><i>Variable</i>, and then the specified command processes this value. This continues until all of the files (or groups of files) that correspond to the <i>Set</i> value are processed.<br><br>
+</li><li class="unordered">
+Using the <b>in</b> and <b>do</b> keywords <br><br>
+
+<b>In</b> and <b>do</b> are not parameters, but you must use them with <b>for</b>. If you omit either of these keywords, an error message appears.<br><br>
+</li><li class="unordered">
+Using additional forms of <b>for</b><br><br>
+
+If command extensions are enabled (that is the default), the following additional forms of <b>for</b> are supported:<br><br>
+
+<ul><li class="unordered">
+Directories only <br><br>
+
+If <i>Set</i> contains wildcard characters (<b>*</b> or <b>?</b>), the specified <i>Command</i> executes for each directory (instead of a set of files in a specified directory) that matches <i>Set</i>. <br><br>
+
+The syntax is: <br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>for /d {%%|%}&lt;Variable&gt; in (&lt;Set&gt;) do &lt;Command&gt; [&lt;CommandLineOptions&gt;] </pre></td></tr></table></span></div>
+</li><li class="unordered">
+Recursive <br><br>
+
+Walks the directory tree that is rooted at <i>Drive</i>:<i>Path</i> and executes the <b>for</b> statement in each directory of the tree. If no directory is specified after <b>/r</b>, the current directory is used as the root directory. If <i>Set</i> is just a single period (.), it only enumerates the directory tree. <br><br>
+
+The syntax is: <br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>for /r [[&lt;Drive&gt;:]&lt;Path&gt;] {%%|%}&lt;Variable&gt; in (&lt;Set&gt;) do &lt;Command&gt; [&lt;CommandLineOptions&gt;]</pre></td></tr></table></span></div>
+</li><li class="unordered">
+Iterating a range of values <br><br>
+
+Use an iterative variable to set the starting value (<i>Start</i>#) and then step through a set range of values until the value exceeds the set ending value (<i>End</i>#). <b>/l</b> will execute the iterative by comparing <i>Start</i># with <i>End</i>#. If <i>Start</i># is less than <i>End</i># the command will execute. When the iterative variable exceeds <i>End</i>#, the command shell exits the loop. You can also use a negative <i>Step</i># to step through a range in decreasing values. For example, (1,1,5) generates the sequence 1 2 3 4 5 and (5,-1,1) generates the sequence 5 4 3 2 1. <br><br>
+
+The syntax is: <br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>for /l {%%|%}&lt;Variable&gt; in (&lt;Start#&gt;,&lt;Step#&gt;,&lt;End#&gt;) do &lt;Command&gt; [&lt;CommandLineOptions&gt;]</pre></td></tr></table></span></div>
+</li><li class="unordered">
+Iterating and file parsing <br><br>
+
+Use file parsing to process command output, strings, and file content.  Use iterative variables to define the content or strings that you want to examine, and use the various <i>ParsingKeywords</i> options to further modify the parsing.  Use the <i>ParsingKeywords</i> token option to specify which tokens should be passed as iterative variables. Note that when used without the token option, <b>/f</b> will only examine the first token.<br><br>
+
+File parsing consists of reading the output, string, or file content, and then breaking it into individual lines of text and parsing each line into zero or more tokens. The <b>for</b> loop is then called with the iterative variable value set to the token. By default, <b>/f</b> passes the first blank separated token from each line of each file. Blank lines are skipped. <br><br>
+
+The syntaxes are:<br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>for /f ["&lt;ParsingKeywords&gt;"] {%%|%}&lt;Variable&gt; in (&lt;Set&gt;) do &lt;Command&gt; [&lt;CommandLineOptions&gt;]
+for /f ["ParsingKeywords"] {%%|%}&lt;Variable&gt; in ("&lt;LiteralString&gt;") do &lt;Command&gt; [&lt;CommandLineOptions&gt;]
+for /f ["&lt;ParsingKeywords&gt;"] {%%|%}&lt;Variable&gt; in ('&lt;Command&gt;') do &lt;Command&gt; [&lt;CommandLineOptions&gt;]</pre></td></tr></table></span></div>
+
+The <i>Set</i> argument specifies one or more file names. Each file is opened, read, and processed before moving to the next file in <i>Set</i>. To override the default parsing behavior, specify <i>ParsingKeywords</i>. This is a quoted string that contains one or more keywords to specify different parsing options. <br><br>
+
+If you use the <b>usebackq</b> option, use one of the following syntaxes:<br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>for /f ["usebackq &lt;ParsingKeywords&gt;"] {%%|%}&lt;Variable&gt; in (&lt;Set&gt;) do &lt;Command&gt; [&lt;CommandLineOptions&gt;]
+for /f ["usebackq &lt;ParsingKeywords&gt;"] {%%|%}&lt;Variable&gt; in ("&lt;LiteralString&gt;") do &lt;Command&gt; [&lt;CommandLineOptions&gt;]
+for /f ["usebackq &lt;ParsingKeywords&gt;"] {%%|%}&lt;Variable&gt; in ('&lt;Command&gt;') do &lt;Command&gt; [&lt;CommandLineOptions&gt;]</pre></td></tr></table></span></div>
+
+The following table lists the parsing keywords that you can use for <i>ParsingKeywords</i>.<br><br>
+
+<h3 class="subHeading"></h3><table><tr>
+<th colspan="1">
+Keyword
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>eol=&lt;c&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies an end of line character (just one character).</p>
+</td></tr><tr>
+<td colspan="1">
+<p>skip=&lt;N&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the number of lines to skip at the beginning of the file.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>delims=&lt;xxx&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies a delimiter set. This replaces the default delimiter set of space and tab.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>tokens=&lt;X,Y,M–N&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies which tokens from each line are to be passed to the <b>for</b> loop for each iteration. As a result, additional variable names are allocated. <i>M</i>–<i>N</i> specifies a range, from the <i>M</i>th through the <i>N</i>th tokens. If the last character in the <b>tokens=</b> string is an asterisk (<b>*</b>), an additional variable is allocated, and it receives the remaining text on the line after the last token that is parsed.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>usebackq</p>
+</td>
+<td colspan="1">
+<p>Specifies to execute a back-quoted string as a command, and a single-quoted string as a literal string command. Also, allows file names in <i>Set</i> to be enclosed in quotation marks.</p>
+</td></tr></table>
+</li><li class="unordered">
+Variable substitution <br><br>
+
+The following table lists optional syntax (for any variable <b>I</b>).<br><br>
+
+<h3 class="subHeading"></h3><table><tr>
+<th colspan="1">
+Variable with modifier
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>%~I</p>
+</td>
+<td colspan="1">
+<p>Expands <b>%I</b> which removes any surrounding quotation marks (" ").</p>
+</td></tr><tr>
+<td colspan="1">
+<p>%~fI</p>
+</td>
+<td colspan="1">
+<p>Expands <b>%I</b> to a fully-qualified path name.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>%~dI</p>
+</td>
+<td colspan="1">
+<p>Expands <b>%I</b> to a drive letter only.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>%~pI</p>
+</td>
+<td colspan="1">
+<p>Expands <b>%I</b> to a path only.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>%~nI</p>
+</td>
+<td colspan="1">
+<p>Expands <b>%I</b> to a file name only.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>%~xI</p>
+</td>
+<td colspan="1">
+<p>Expands <b>%I</b> to a file name extension only.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>%~sI</p>
+</td>
+<td colspan="1">
+<p>Expands path to contain short names only.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>%~aI</p>
+</td>
+<td colspan="1">
+<p>Expands <b>%I</b> to the file attributes of file.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>%~tI</p>
+</td>
+<td colspan="1">
+<p>Expands <b>%I</b> to the date and time of file.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>%~zI</p>
+</td>
+<td colspan="1">
+<p>Expands <b>%I</b> to the size of the file.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>%~$PATH:I</p>
+</td>
+<td colspan="1">
+<p>Searches the directories listed in the PATH environment variable and expands <b>%I</b> to the fully qualified name of the first directory found. If the environment variable name is not defined or the file is not found by the search, this modifier expands to the empty string.</p>
+</td></tr></table>
+
+The following table lists modifier combinations that you can use to get compound results.<br><br>
+
+<h3 class="subHeading"></h3><table><tr>
+<th colspan="1">
+Variable with combined modifiers
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>%~dpI</p>
+</td>
+<td colspan="1">
+<p>Expands <b>%I</b> to a drive letter and path only.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>%~nxI</p>
+</td>
+<td colspan="1">
+<p>Expands <b>%I</b> to a file name and extension only.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>%~fsI</p>
+</td>
+<td colspan="1">
+<p>Expands <b>%I</b> to a full path name with short names only.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>%~dp$PATH:I</p>
+</td>
+<td colspan="1">
+<p>Searches the directories that are listed in the PATH environment variable for <b>%I</b> and expands to the drive letter and path of the first one found.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>%~ftzaI</p>
+</td>
+<td colspan="1">
+<p>Expands <b>%I</b> to an output line that is like <b>dir</b>.</p>
+</td></tr></table>
+
+In the above examples, you can replace <b>%I</b> and PATH with other valid values. A valid <b>for</b> variable name terminates the <b>%~</b> syntax.<br><br>
+
+By using uppercase variable names such as <b>%I</b>, you can make your code more readable and avoid confusion with the modifiers, which are not case sensitive.<br><br>
+</li></ul>
+</li><li class="unordered">
+Parsing a string <br><br>
+
+You can use the <b>for /f</b> parsing logic on an immediate string by wrapping <i>Set</i> in single quotes--for example, ('<i>Set</i>'). <i>Set</i> is treated as a single line of input from a file, and then it is parsed.<br><br>
+</li><li class="unordered">
+Parsing output <br><br>
+
+You can use the <b>for /f</b> command to parse the output of a command by making a back-quoted string from the <i>Set</i> between the parentheses. It is treated as a command line, which is passed to a child Cmd.exe. The output is captured into memory and parsed as if it is a file. <br><br>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="e275726c-035f-4a74-8062-013c37f5ded1#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">To use <b>for</b> in a batch file, use the following syntax: </p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>for {%%|%}&lt;Variable&gt; in (&lt;Set&gt;) do &lt;Command&gt; [&lt;CommandLineOptions&gt;]</pre></td></tr></table></span></div>
+
+<p xmlns="">To display the contents of all the files in the current directory that have the extension .doc or .txt by using the replaceable variable <b>%f</b>, type: </p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>for %f in (*.doc *.txt) do type %f </pre></td></tr></table></span></div>
+
+<p xmlns="">In the preceding example, each file that has the .doc or .txt extension in the current directory is substituted for the <b>%f</b> variable until the contents of every file are displayed. To use this command in a batch file, replace every occurrence of <b>%f</b> with <b>%%f</b>. Otherwise, the variable is ignored and an error message is displayed. </p>
+
+<p xmlns="">To parse a file, ignoring commented lines, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>for /f "eol=; tokens=2,3* delims=," %i in (myfile.txt) do @echo %i %j %k</pre></td></tr></table></span></div>
+
+<p xmlns="">This command parses each line in Myfile.txt. It ignores lines that begin with a semicolon and passes the second and third token from each line to the <b>for</b> body (tokens are delimited by commas or spaces). The body of the <b>for</b> statement references <b>%i</b> to get the second token, <b>%j</b> to get the third token, and <b>%k</b> to get all of the remaining tokens. If the file names that you supply contain spaces, use quotation marks around the text (for example, "File Name"). To use quotation marks, you must use <b>usebackq</b>. Otherwise, the quotation marks are interpreted as defining a literal string to parse.</p>
+
+<p xmlns=""><b>%i</b> is explicitly declared in the <b>for</b> statement. <b>%j</b> and <b>%k</b> are implicitly declared by using <b>tokens=</b>. You can use <b>tokens=</b> to specify up to 26 tokens, provided that it does not cause an attempt to declare a variable higher than the letter "z" or "Z."</p>
+
+<p xmlns="">The following example enumerates the environment variable names in the current environment. To parse the output of a command by placing <i>Set</i> between the parentheses, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>for /f "usebackq delims==" %i in ('set') do @echo %i </pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

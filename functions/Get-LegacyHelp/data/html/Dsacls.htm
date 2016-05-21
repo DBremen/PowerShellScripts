@@ -1,0 +1,203 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Dsacls</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Dsacls</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2003 with SP1,Windows Server 2008,Windows Server 2003 R2,Windows Server 2003</p>
+<p>Displays and changes permissions (access control entries) in the access control list (ACL) of objects in Active Directory Domain Services (AD DS).</p>
+
+<p><b>Dsacls</b> is a command-line tool that is built into Windows Server 2008. It is available if you have the AD DS server role installed. To use <b>dsacls</b>, you must run the <b>dsacls</b> command from an elevated command prompt. To open an elevated command prompt, click <b>Start</b>, right-click <b>Command Prompt</b>, and then click <b>Run as administrator</b>.</p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+
+<p><b>Dsacls</b> is the command-line equivalent of the <b>Security</b> tab in the p<b>roperties</b> dialog box for an Active Directory object in tools such as Active Directory Users and Computers. You can use either tool to view and change permissions to an Active Directory object.</p>
+
+<div class="alert"><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>
+The access control entries (ACEs) that you add by using <b>dsacls</b> must be object-specific permissions that override the default permissions that are defined in the Active Directory schema for that object type. Do not add ACEs unless you are well-informed about security for Active Directory objects.<p>
+</td></tr></table><p></div>
+
+<p>To view an ACL, the user must have Read permissions on Active Directory objects. To change an ACL, the user must have Write permissions on the Active Directory object.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>dsacls "[\\&lt;Computer&gt;\]&lt;ObjectDN&gt;" [/A] [/D &lt;PermissionStatement&gt; [&lt;PermissionStatement&gt;]...] [/G &lt;PermissionStatement&gt; [&lt;PermissionStatement&gt;]...] [/I:{T | S | P}] [/N] [/P:{Y | N}] [/R {&lt;User&gt; | &lt;Group&gt;} [{&lt;User&gt; | &lt;Group&gt;}]...] [/S [/T]] [/?]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">If you specify an object without additional parameters, <b>Dsacls</b> displays the ACEs in the ACL.</p>
+
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>"[\\&lt;Computer&gt;\]&lt;ObjectDN&gt;"</p>
+</td>
+<td colspan="1">
+<p>Identifies the Active Directory object to investigate. Type the distinguished name of the object. To specify an object on a remote computer, type that computer name followed by the distinguished name. This parameter must be enclosed in quotation marks. For example: </p>
+
+<p><code>"CN=Jeff Akers,CN=Users,DC=domain,DC=test,DC=contoso,DC=com" </code></p>
+
+<p>or </p>
+
+<p><code>"\\Server01\CN=Jeff Akers,CN=Users,DC=domain,DC=test,DC=contoso,DC=com"</code></p>
+</td></tr><tr>
+<td colspan="1">
+<p>/A </p>
+</td>
+<td colspan="1">
+<p>Adds ownership and auditing information to the results.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/D </p>
+</td>
+<td colspan="1">
+<p>Denies the permissions that you specify to the user or group.</p>
+
+<p>You can deny permissions to multiple users in each <b>/D</b> command, for example: </p>
+
+<p><code>/D Domain1\User1:CCDC Domain1\User2:DC;computer</code> </p>
+
+<p>For more information, see <a href="#permstat">PermissionStatement</a>[<i>PermissionStatement</i>]</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/G </p>
+</td>
+<td colspan="1">
+<p>Grants the permissions that you specify to the user or group.</p>
+
+<p>You can grant permissions to multiple users in each <b>/G</b> command, for example:</p>
+
+<p><code>/G Domain1\User1:CCDC Domain1\User2:DC;computer</code></p>
+
+<p>For more information, see <a href="#permstat">PermissionStatement</a>[<i>PermissionStatement</i>]</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/I:{T | S | P} </p>
+</td>
+<td colspan="1">
+<p>Specifies the objects to which you are applying the permissions. This parameter determines whether the permissions are inheritable. <b>T</b> is the default.</p>
+<ul><li class="unordered"><b>T</b>: The object and its child objects<br><br></li><li class="unordered"><b>S</b>: The child objects only<br><br></li><li class="unordered"><b>P</b>: The object and child objects down to one level only (propagate inheritable permissions to one level only)<br><br></li></ul>
+
+</td></tr><tr>
+<td colspan="1">
+<p>/N </p>
+</td>
+<td colspan="1">
+<p>Provides that the specified ACE replaces the current ACEs in the ACL. By default, dsacls adds the ACE to the ACL.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/P:{Y | N} </p>
+</td>
+<td colspan="1">
+<p>Determines whether the object can inherit permissions from its parent objects. If you omit this parameter, the inheritance properties of the object do not change. </p>
+<ul><li class="unordered"><b>Y</b>: The object is protected and cannot inherit permissions.<br><br></li><li class="unordered"><b>N</b>: The object is not protected and can inherit permissions.<br><br></li></ul>
+
+
+<div class="alert"><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>
+This parameter changes a property of the object, not of an ACE. To specify whether an ACE is inheritable, use the <b>/I</b> parameter.<p>
+</td></tr></table><p></div>
+</td></tr><tr>
+<td colspan="1">
+<p>/R {&lt;User&gt; | &lt;Group&gt;} [{&lt;User&gt; | &lt;Group&gt;}].</p>
+</td>
+<td colspan="1">
+<p>Deletes all ACEs for the users or groups that you specify. You can specify <i>User</i> as <i>User@Domain</i> or as <i>Domain\User</i>. You can specify <i>Group</i> as <i>Group@Domain</i> or as <i>Domain\Group</i>. </p>
+
+<p>You can delete ACEs for multiple users and groups in a single <b>/R</b> parameter, for example:</p>
+
+<p><code>/R Domain1\User1 Domain1\User2</code></p>
+</td></tr><tr>
+<td colspan="1">
+<p>/S </p>
+</td>
+<td colspan="1">
+<p>Restores the security on the object to the default for that object class as defined in the Active Directory schema.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/T </p>
+</td>
+<td colspan="1">
+<p>Restores the security on the tree of objects to the default for each object class. This parameter is valid only with the <b>/S</b> parameter.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/? </p>
+</td>
+<td colspan="1">
+<p>Displays help at the command prompt.</p>
+</td></tr></table>
+</content></div><a name="permstat"></a><a name="35307959-7018-46a4-944a-08cec765c88d#permstat"></a><h2 class="heading">Syntax for PermissionStatement</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>{&lt;User&gt; | &lt;Group&gt;}:&lt;Permissions&gt;[;{&lt;ObjectType&gt; | &lt;Property&gt;}][;&lt;InheritedObjectType&gt;]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>{&lt;User&gt; | &lt;Group&gt;} </p>
+</td>
+<td colspan="1">
+<p>Specifies the user or group to whom the rights apply. You can specify <i>User</i> as <i>User@Domain</i> or <i>Domain\User</i>. You can specify <i>Group</i> as <i>Group@Domain</i> or <i>Domain\Group</i>.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;Permissions&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the type of permissions that you are applying. You can specify one or more of the following values (without spaces).</p>
+
+<p><b>Generic permissions</b></p>
+<ul><li class="unordered"><b>GR</b>: Generic Read<br><br></li><li class="unordered"><b>GE</b>: Generic Execute<br><br></li><li class="unordered"><b>GW</b>: Generic Write<br><br></li><li class="unordered"><b>GA</b>: Generic All<br><br></li></ul>
+
+
+<p><b>Specific permissions</b></p>
+<ul><li class="unordered"><b>SD</b>: Delete an object.<br><br></li><li class="unordered"><b>DT</b>: Delete an object and all of its child objects.<br><br></li><li class="unordered"><b>RC</b>: Read security information.<br><br></li><li class="unordered"><b>WD</b>: Change security information.<br><br></li><li class="unordered"><b>WO</b>: Change owner information.<br><br></li><li class="unordered"><b>LC</b>: List the child objects of the object.<br><br></li><li class="unordered"><b>CC</b>: Create a child object.<br><br>If you do not specify {<i>ObjectType</i> | <i>Property</i>} to define a specific child object type, this permission applies to all types of child objects; otherwise, it applies only to the child object type that you specify.<br><br></li><li class="unordered"><b>DC</b>: Delete a child object.<br><br>If you do not specify {<i>ObjectType</i> | <i>Property</i>} to define a specific child object type, this permission applies to all types of child objects; otherwise, it applies only to the child object type that you specify.<br><br></li><li class="unordered"><b>WS</b>: Write to a self object. <br><br>This is meaningful only on group objects and when {<i>ObjectType</i> | <i>Property</i>} is a "member."<br><br></li><li class="unordered"><b>RP</b>: Read a property. <br><br>If you do not specify {<i>ObjectType</i> | <i>Property</i>} to define a specific property, this permission applies to all properties of the object; otherwise, it applies only to the property of the object that you specify.<br><br></li><li class="unordered"><b>WP</b>: Write to a property. <br><br>If you do not specify {<i>ObjectType</i> | <i>Property</i>} to define a specific property, this permission applies to all properties of the object; otherwise, it applies only to the property of the object that you specify.<br><br></li><li class="unordered"><b>CA</b>: Control access.<br><br>If you do not specify {<i>ObjectType</i> | <i>Property</i>} to define the specific extended right for control access, this permission applies to all meaningful control accesses on the object; otherwise, it applies only to the specific extended right for that object.<br><br></li><li class="unordered"><b>LO</b>: List the object access.<br><br>You can use this permission to grant list access to a specific object if List Children (<b>LC</b>) is not also granted to the parent object. You can also use this permission to deny access to list an object to hide an object if the user or group has <b>LC</b> permission on the parent object.<br><br><div class="alert"><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>
+AD DS does not enforce this permission by default. You must configure AD DS to check for this permission.<p>
+</td></tr></table><p></div></li></ul>
+
+</td></tr><tr>
+<td colspan="1">
+<p>{&lt;ObjectType&gt; | &lt;Property&gt;} </p>
+</td>
+<td colspan="1">
+<p>Limits the permission to the specified object type or property. Enter the display name of the object type or the property. If you do not specify an object type or property, the permission applies to all object types and properties.</p>
+
+<p>For example, the following command permits the user to create all types of child objects: </p>
+
+<p><code>/G Domain\User:CC</code></p>
+
+<p>In contrast, the following command permits the user to create only child computer objects: </p>
+
+<p><code>/G Domain\User:CC;computer</code></p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;InheritedObjectType&gt; </p>
+</td>
+<td colspan="1">
+<p>Limits inheritance of the permission to the specified object type. Enter the display name of the object type. If you do not specify an object type, all object types can inherit the permission. You can use this parameter only when permissions are inheritable.</p>
+
+<p>For example, the following command permits all objects types to inherit the permission:</p>
+
+<p><code>/G Domain\User:CC</code></p>
+
+<p>In contrast, the following command permits only User objects to inherit the permission:</p>
+
+<p><code>/G Domain\User:CC;;user</code></p>
+</td></tr></table>
+</content></div><a name="BKMK_examples"></a><a name="35307959-7018-46a4-944a-08cec765c88d#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection4" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">To grant the permission to delete, read security information, change security information, and change ownership permissions on a User object, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>SDRCWDWO;;user</pre></td></tr></table></span></div>
+
+<p xmlns="">To grant permission to create child objects and delete child objects of a Group object, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>CCDC;group;</pre></td></tr></table></span></div>
+
+<p xmlns="">To grant permissions to read property and write property values on a Telephonenumber property, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>RPWP;telephonenumber;</pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

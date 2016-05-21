@@ -1,0 +1,66 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Path</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Path</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008,Windows Vista</p>
+<p>Sets the command path in the PATH environment variable (the set of directories used to search for executable files). If used without parameters, <b>path</b> displays the current command path.</p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>path [[&lt;Drive&gt;:]&lt;Path&gt;[;...][;%PATH%]]
+path ;</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>[&lt;Drive&gt;:]&lt;Path&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the drive and directory to set in the command path. </p>
+</td></tr><tr>
+<td colspan="1">
+<p> ; </p>
+</td>
+<td colspan="1">
+<p>Separates directories in the command path. If used without other parameters, <b>;</b> clears the existing command paths from the PATH environment variable and directs Cmd.exe to search only in the current directory. </p>
+</td></tr><tr>
+<td colspan="1">
+<p> %PATH% </p>
+</td>
+<td colspan="1">
+<p>Appends the command path to the existing set of directories listed in the PATH environment variable.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /? </p>
+</td>
+<td colspan="1">
+<p>Displays help at the command prompt.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+When you include <b>%PATH%</b> in the syntax, Cmd.exe replaces it with the command path values found in the PATH environment variable, eliminating the need to manually enter these values at the command prompt. <br><br>
+</li><li class="unordered">
+The current directory is always searched before the directories specified in the command path.<br><br>
+</li><li class="unordered">
+You might have files in a directory that share the same file name but have different extensions. For example, you might have a file named Accnt.com that starts an accounting program and another file named Accnt.bat that connects your server to the accounting system network. <br><br>
+
+The Windows operating system searches for a file by using default file name extensions in the following order of precedence: .exe, .com, .bat, and .cmd. To run Accnt.bat when Accnt.com exists in the same directory, you must include the .bat extension at the command prompt. <br><br>
+</li><li class="unordered">
+If two or more files in the command path have the same file name and extension, <b>path</b> first searches for the specified file name in the current directory. Then it searches the directories in the command path in the order that they are listed in the PATH environment variable.<br><br>
+</li><li class="unordered">
+If you place the <b>path</b> command in your Autoexec.nt file, the Windows operating system automatically appends the specified MS-DOS subsystem search path every time you log on to your computer. Cmd.exe does not use the Autoexec.nt file. When started from a shortcut, Cmd.exe inherits the environment variables set in My Computer/Properties/Advanced/Environment.<br><br>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="1bfa1349-e79a-472b-a9e6-d7a91149ae8f#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">To search the paths C:\User\Taxes, B:\User\Invest, and B:\Bin for external commands, type:</p>
+
+<p xmlns=""><code>path c:\user\taxes;b:\user\invest;b:\bin </code></p>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

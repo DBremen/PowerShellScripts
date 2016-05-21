@@ -1,0 +1,185 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Net user</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Net user</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Vista,Windows Server 2003,Windows Server 2000,Windows Server 2003 R2,Windows Server 2008,Windows Server 2003 with SP1</p>
+<p>Adds or modifies user accounts, or displays user account information.</p>
+
+<p><b>Net user</b> is a command-line tool that is built into Windows Vista. To run <b>net user</b>, open a command prompt, type <b>net user</b> with the appropriate parameters, and then press ENTER. </p>
+
+<p>For examples of how this command can be used, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>net user [&lt;UserName&gt; {&lt;Password&gt; | *} [&lt;Options&gt;]] [/domain]
+net user [&lt;UserName&gt; {&lt;Password&gt; | *} /add [&lt;Options&gt;] [/domain]]
+net user [&lt;UserName&gt; [/delete] [/domain]]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>&lt;UserName&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the name of the user account to add, delete, modify, or view. The name of the user account can have as many as 20 characters.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;Password&gt;</p>
+</td>
+<td colspan="1">
+<p>Assigns or changes a password for the user's account. Type an asterisk (*) to produce a prompt for the password. The password is not displayed when the user types it at the password prompt.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/domain</p>
+</td>
+<td colspan="1">
+<p>Performs the operation on the domain controller in the computer's primary domain.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;Options&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies a command-line option. Refer to the next table for descriptions of the command-line option syntax. </p>
+
+
+</td></tr><tr>
+<td colspan="1">
+<p>net help &lt;Command&gt;</p>
+</td>
+<td colspan="1">
+<p>Displays help for the specified <b>net</b> command. </p>
+</td></tr></table>
+
+
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Command-line option syntax
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>/active:{no | yes}</p>
+</td>
+<td colspan="1">
+<p>Enables or disables the user account. If the user account is not active, the user cannot access resources on the computer. The default is <b>yes</b> (that is, active).</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/comment:"&lt;Text&gt;"</p>
+</td>
+<td colspan="1">
+<p>Provides a descriptive comment about the user's account. This comment can have as many as 48 characters. Enclose the text in quotation marks.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/countrycode:&lt;NNN&gt;</p>
+</td>
+<td colspan="1">
+<p>Uses the operating system Country/Region codes to implement the specified language files for a user's Help and error messages. A value of 0 signifies the default Country/Region code.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/expires:{{&lt;MM/DD/YYYY&gt; | &lt;DD/MM/YYYY&gt; | &lt;mmm,dd,YYYY&gt;} | never}</p>
+</td>
+<td colspan="1">
+<p>Causes the user account to expire if you specify the date. Expiration dates can be in [MM/DD/YYYY], [DD/MM/YYYY], or [mmm,dd,YYYY] formats, depending on the Country/Region code. Note that the account expires at the beginning of the specified date. For the month value, you can use numbers, spell it out, or use a three-letter abbreviation (that is, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec). You can use two or four numbers for the year value. Use commas or slashes to separate parts of the date. Do not use spaces. If you omit &lt;YYYY&gt;, the next occurrence of the date (that is, according to your computer's date and time) is assumed. For example, the following entries are equivalent if entered between Jan. 10, 1994, and Jan. 8, 1995:</p>
+
+<p><b>jan,9</b></p>
+
+<p><b>1/9/95</b></p>
+
+<p><b>january,9,1995</b></p>
+
+<p><b>1/9</b></p>
+</td></tr><tr>
+<td colspan="1">
+<p>/fullname:"&lt;Name&gt;"</p>
+</td>
+<td colspan="1">
+<p>Specifies a user's full name rather than a user name. Enclose the name in quotation marks.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/homedir:&lt;Path&gt;</p>
+</td>
+<td colspan="1">
+<p>Sets the path for the user's home directory. The path must exist.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/passwordchg:{yes | no}</p>
+</td>
+<td colspan="1">
+<p>Specifies whether users can change their own password. The default is <b>yes</b>.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/passwordreq:{yes | no}</p>
+</td>
+<td colspan="1">
+<p>Specifies whether a user account must have a password. The default is <b>yes</b>.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/profilepath:[&lt;Path&gt;]</p>
+</td>
+<td colspan="1">
+<p>Sets a path for the user's logon profile. This path points to a registry profile.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/scriptpath:&lt;Path&gt;</p>
+</td>
+<td colspan="1">
+<p>Sets a path for the user's logon script. &lt;Path&gt; cannot be an absolute path. &lt;Path&gt; is relative to %systemroot%\System32\Repl\Import\Scripts.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/times:{&lt;Day&gt;[&lt;-Day&gt;][,&lt;Day&gt;[-&lt;Day&gt;]],&lt;Time&gt;[-&lt;Time&gt;][,&lt;Time&gt;[-&lt;Time&gt;]][;] | all}</p>
+</td>
+<td colspan="1">
+<p>Specifies the times that users are allowed to use the computer. &lt;Time&gt; is limited to one-hour increments. For the &lt;Day&gt; values, you can spell out the names of the days or use abbreviations (that is, M,T,W,Th,F,Sa,Su). You can use 12-hour or 24-hour notation for hours. If you use 12-hour notation, use AM and PM, or A.M. and P.M. The value <b>all</b> means a user can always log on. A null value (blank) means a user can never log on. Separate day and time with commas, and separate units of day and time with semicolons (for example, <b>M,4AM-5PM;T,1PM-3PM</b>). Do not use spaces when you designate times.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/usercomment:"&lt;Text&gt;"</p>
+</td>
+<td colspan="1">
+<p>Specifies that an administrator can add or change the "User comment" for the account. Enclose the text in quotation marks.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/workstations:{&lt;ComputerName&gt;[,...] | *}</p>
+</td>
+<td colspan="1">
+<p>Lists as many as eight workstations from which a user can log on to the network. Separate multiple entries in the list with commas. If <b>/workstations</b> has no list or if the list is an asterisk (*), users can log on from any computer.</p>
+</td></tr></table>
+
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+When you use <b>net user</b> without parameters, it displays a list of the user accounts on the computer. You can also type <b>net users</b>.<br><br>
+</li><li class="unordered">
+A password must satisfy the minimum password length value that is set with the <b>net accounts /minpwlen</b> command. A password can have as many as 127 characters. <br><br>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="8935e4a8-3624-46a1-b47a-c7735802b456#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">The following example displays a list of all user accounts for the local computer:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>net user</pre></td></tr></table></span></div>
+
+<p xmlns="">The following example displays information about the user account tommyh:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>net user tommyh</pre></td></tr></table></span></div>
+
+<p xmlns="">The following example adds a user account for a user whose full name is Jay Jamison and whose user account name is jayj, with logon rights from 8 A.M. to 5 P.M., Monday through Friday (no spaces in time designations), a mandatory password (Cyk4^g3B), and the user's full name: </p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>net user jayj Cyk4^g3B /add /passwordreq:yes /times:monday-friday,8am-5pm /fullname:"Jay Jamison"</pre></td></tr></table></span></div>
+
+<p xmlns="">The following example sets the logon time (8 A.M. to 5 P.M.) for miked by using 24-hour notation:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>net user miked /time:M-F,08:00-17:00</pre></td></tr></table></span></div>
+
+<p xmlns="">The following example sets the logon time (8 A.M. to 5 P.M.) for miked by using 12-hour notation:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>net user miked /time:M-F,8AM-5PM</pre></td></tr></table></span></div>
+
+<p xmlns="">The following example specifies logon hours of 4 A.M. until 5 P.M. on Monday, 1 P.M. until 3 P.M. on Tuesday, and 8 A.M. until 5 P.M. Wednesday through Friday for anibals:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>net user anibals /time:M,4AM-5PM;T,1PM-3PM;W-F,8:00-17:00</pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

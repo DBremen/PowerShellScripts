@@ -1,0 +1,76 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>/new-CaptureImage</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">/new-CaptureImage</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008,Windows Server 2008 R2</p>
+<p>Creates a new capture image from an existing boot image. Capture images are boot images that start the Windows Deployment Services capture utility instead of starting Setup. When you boot a reference computer (that has been prepared with Sysprep) into a capture image, a wizard creates an install image of the reference computer and saves it as a Windows Image (.wim) file. You can also add the image to media (such as a CD, DVD, or USB drive), and then boot a computer from that media. After you create the install image, you can add the image to the server for PXE boot deployment. For more information, see Creating Images (<a href="http://go.microsoft.com/fwlink/?LinkId=115311" alt="" target="_blank"><linktext xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">http://go.microsoft.com/fwlink/?LinkId=115311</linktext></a>).</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>WDSUTIL [Options] /New-CaptureImage [/Server:&lt;Server name&gt;]
+     /Image:&lt;Image name&gt;
+     /Architecture:{x86 | ia64 | x64}
+     [/Filename:&lt;File name&gt;]
+     /DestinationImage
+        /FilePath:&lt;File path and name&gt;
+        [/Name:&lt;Name&gt;]
+        [/Description:&lt;Description&gt;]
+        [/Overwrite:{Yes | No | Append}]
+        [/UnattendFilePath:&lt;File path&gt;]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>[/Server:&lt;Server name&gt;] </p>
+</td>
+<td colspan="1">
+<p>Specifies the name of the server. This can be either the NetBIOS name or the fully qualified domain name (FQDN). If no server name is specified, the local server will be used.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/Image:&lt;Image name&gt; </p>
+</td>
+<td colspan="1">
+<p>Specifies the name of the source boot image.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/Architecture: {x86 | ia64 | x64} </p>
+</td>
+<td colspan="1">
+<p>Specifies the architecture of the image to use. Because you can have the same image name for different boot images in different architectures, specifying this ensures the correct image is used.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>[/Filename: &lt;Filename&gt;]</p>
+</td>
+<td colspan="1">
+<p>If the image cannot be uniquely identified by name, you must use this option to specify the file name.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/DestinationImage</p>
+</td>
+<td colspan="1">
+<p>Specifies the settings for the destination image. You specify the settings using the following options:</p>
+
+<ul><li class="unordered">/FilePath: &lt;File path and name&gt; Sets the full file path for the new capture image.<br><br>
+</li><li class="unordered">[/Name: &lt;Name&gt;] - Sets the display name of the image. If no display name is specified, the display name of the source image will be used.<br><br>
+</li><li class="unordered">[/Description: &lt;Description&gt;] - Sets the description of the image.<br><br>
+</li><li class="unordered">[/Overwrite: {Yes | No | Append}] - Determines whether the file specified in <b>/DestinationImage</b> should be overwritten if another file with that name already exists at the /FilePath. <b>Yes</b> overwrites the existing file. <b>No</b> (default) causes an error to occur if another file with the same name already exists. <b>Append</b> attaches the generated image as a new image within the existing .wim file.<br><br>
+</li><li class="unordered">[/UnattendFilePath: &lt;File path&gt;] - Sets the full path and name for the unattended image capture file.<br><br>
+</li></ul>
+</td></tr></table></content></div><a name="BKMK_examples"></a><a name="2dfd08f0-be59-4715-96e6-c498305873f4#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">To create a capture image and name it WinPECapture.wim, type: </p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>WDSUTIL /New-CaptureImage /Image:"WinPE boot image" /Architecture:x86 /DestinationImage /FilePath:"C:\Temp\WinPECapture.wim"
+</pre></td></tr></table></span></div>
+
+<p xmlns="">To create a capture image and apply the specified settings, type: </p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>WDSUTIL /Verbose /Progress /New-CaptureImage /Server:MyWDSServer /Image:"WinPE boot image" /Architecture:x64 /Filename:boot.wim 
+/DestinationImage /FilePath:"\\Server\Share\WinPECapture.wim" /Name:"New WinPE image" /Description:"WinPE image with capture utility" /Overwrite:No /UnattendFilePath:"\\Server\Share\WDSCapture.inf"</pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

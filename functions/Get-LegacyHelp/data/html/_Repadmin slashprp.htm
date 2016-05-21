@@ -1,0 +1,226 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Repadmin /prp</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Repadmin /prp</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2003 with SP1,Windows Server 2008 R2,Windows Server 2008,Windows Server 2003 R2,Windows Server 2003 with SP2,Windows Server 2003</p>
+<p>Lists and modifies the Password Replication Policy (PRP) for read-only domain controllers (RODCs).</p>
+
+<p>You run the <b>repadmin /prp</b> command against a writable domain controller that runs Windows Server 2008 rather than an RODC.</p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>. </p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>repadmin /prp &lt;OPERATION&gt; &lt;RODC&gt; [ADDITIONAL_ARGS]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Operations</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">The <b>repadmin /prp</b> command can perform the following operations:</p>
+
+<ul xmlns=""><li class="unordered">
+<a href="#BKMK_Add">Add</a><br><br>
+</li><li class="unordered">
+<a href="#BKMK_Del">Delete</a><br><br>
+</li><li class="unordered">
+<a href="#BKMK_Move">Move</a><br><br>
+</li><li class="unordered">
+<a href="#BKMK_View">View</a><br><br>
+</li></ul>
+
+<p xmlns="">Additional arguments are available for each operation. </p>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<a name="BKMK_Add" xmlns=""></a><a name="cb82e949-9039-4763-9d29-fdc6ce42770a#BKMK_Add" xmlns=""></a><h3 class="subHeading" xmlns="">Add</h3><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">Adds the specified security principal to the <b>msDS-RevealOnDemandGroup</b> attribute that is associated with the RODC. (This attribute is also known as the Allowed List.)</p>
+<div class="alert" xmlns=""><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>You cannot use <b>repadmin /prp</b> commands to add an account to the Deny List or remove an account from the Deny List. To configure the Deny List, you can use the Active Directory Users and Computers snap-in or you can create a script. For example, if you want to deny members of the group RODC2Admins from caching passwords on RODC2, which is located in the Branch2 organizational unit (OU) of hq.cpandl.com, you can use the following script:<p></td></tr></table><p></div>
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>'The following items specify to Clear, Update, Append, or Delete a property of an Active Directory object
+Const ADS_PROPERTY_CLEAR = 1
+Const ADS_PROPERTY_UPDATE = 2
+Const ADS_PROPERTY_APPEND = 3
+Const ADS_PROPERTY_DELETE = 4
+
+Const ATT = "msDS-NeverRevealGroup"
+'The setting for ATT determines which list will be modified
+'msDS-AuthenticatedToAccountlist is for the authenticated to or Auth2 list
+'msDS-RevealedList is for the password revealed or cached list
+'msDS-RevealOnDemandGroup is for the allowed to authenticate list
+'msDS-NeverRevealGroup is for the denied from authenticating list
+
+'PRPObj defines the object that needs to be modified in the PRP list
+PRPObj = "CN=RODC2Admins,OU=Branch2,DC=hq,DC=cpandl,DC=com"
+
+'RODCObj defines the RODC for which the PRP should be modified
+RODCObj = "LDAP://CN=RODC2,OU=Domain Controllers,DC=hq,DC=cpandl,DC=com"
+
+'Sets the object to modify based on the LDAP path set in RODCObj
+Set objComputer = GetObject(RODCObj)
+
+'Implements the change, which depending on the word after ADS_PROPERTY_ is a CLEAR, UPDATE, APPEND, or DELETE operation
+objComputer.PutEx ADS_PROPERTY_APPEND, ATT, Array(PRPObj)
+objComputer.SetInfo
+
+'Confirms that the modification has taken place (this is optional)
+wscript.echo "Modified list attributes for object " &amp; PRPObj 
+
+'Closes the script
+wscript.quit(0)</pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Syntax</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>repadmin /prp add &lt;RODC&gt; allow &lt;PRINCIPAL&gt;</pre></td></tr></table></span></div>
+</content></div>
+
+<h4 class="subHeading" xmlns="">Additional parameters</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>&lt;RODC&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the host name of the RODC. You can specify the single-label host name or the fully qualified domain name (FQDN). In addition, you can use an asterisk (*) as a wildcard character to specify multiple RODCs in one domain. </p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;PRINCIPAL&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the name of the security principal that you want to add to the Allowed List.</p>
+</td></tr></table>
+</content></div>
+</sections></div>
+
+<a name="BKMK_Del" xmlns=""></a><a name="cb82e949-9039-4763-9d29-fdc6ce42770a#BKMK_Del" xmlns=""></a><h3 class="subHeading" xmlns="">Delete</h3><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">Deletes one or more specified security principals from the <b>msDS-AuthenticatedToAccountList</b> attribute or from the <b>msDS-RevealOnDemandGroup</b> attribute that is associated with the RODC. (The <b>AuthenticatedToAccountList</b> attribute is also known as the Authenticated to List, and the <b>msDS-RevealOnDemandGroup</b> attribute is also known as the Allowed List.)</p>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Syntax</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>repadmin /prp delete &lt;RODC&gt; allow {&lt;PRINCIPAL&gt;|/all}
+repadmin /prp delete &lt;RODC&gt; auth2 /all</pre></td></tr></table></span></div>
+</content></div>
+
+<h4 class="subHeading" xmlns="">Additional parameters</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>&lt;RODC&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the host name of the RODC. You can specify the single-label host name or the FQDN. In addition, you can use an asterisk (*) as a wildcard character to specify multiple RODCs in one domain.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;PRINCIPAL&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the name of the security principal that you want to delete from the Allowed List. Specify <b>/all</b> to have the operation delete all security principals.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/all</p>
+</td>
+<td colspan="1">
+<p>Specifies all security principals. You cannot delete only one security principal from the <b>msDS-AuthenticatedToAccountList</b> attribute. </p>
+</td></tr></table>
+</content></div>
+</sections></div>
+
+<a name="BKMK_Move" xmlns=""></a><a name="cb82e949-9039-4763-9d29-fdc6ce42770a#BKMK_Move" xmlns=""></a><h3 class="subHeading" xmlns="">Move</h3><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">Moves all the security principals from the <b>msDS-AuthenticatedToAccountList</b> attribute to the specified group. If the group does not exist, this command creates the group. If necessary, this command also adds the group to the <b>msDS-RevealOnDemandGroup</b> attribute of the RODC. (The <b>msDS-AuthenticatedToAccountList</b> attribute is also known as the Authenticated To List, and the <b>msDS-RevealOnDemandGroup</b> attribute is also known as the Allowed List.)</p>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Syntax</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>repadmin /prp move &lt;RODC&gt; &lt;Group&gt; [/noauth2cleanup] [/users_only | /comps_only]</pre></td></tr></table></span></div>
+</content></div>
+
+<h4 class="subHeading" xmlns="">Additional parameters</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>&lt;RODC&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the host name of the RODC. For this operation, you can specify the single-label host name or the FQDN. </p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;Group&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the name of the security group to which you want to move the security principals. If the security group does not exist, this command creates the security group in the built-in <b>Users</b> container. You can specify the name of the security group but not the distinguished name.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/noauth2cleanup</p>
+</td>
+<td colspan="1">
+<p>Retains the list of security principals in the <b>msDS-AuthenticatedToAccountList</b> attribute after the Move operation is complete. By default, the <b>msDS-AuthenticatedToAccountList</b> attribute is cleared.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/users_only</p>
+</td>
+<td colspan="1">
+<p>Moves only user accounts from the <b>msDS-AuthenticatedToAccountList</b> attribute to the specified group. The group is then added to the <b>msDS-RevealOnDemandGroup</b> attribute.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/comps_only</p>
+</td>
+<td colspan="1">
+<p>Moves only computer accounts from the <b>msDS-AuthenticatedToAccountList</b> attribute to the specified group. The group is then added to the <b>msDS-RevealOnDemandGroup</b> attribute.</p>
+</td></tr></table>
+</content></div>
+</sections></div>
+
+<a name="BKMK_View" xmlns=""></a><a name="cb82e949-9039-4763-9d29-fdc6ce42770a#BKMK_View" xmlns=""></a><h3 class="subHeading" xmlns="">View</h3><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">Displays the security principals in the specified list or displays the current PRP setting (allowed or denied) for a specified user.</p>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Syntax</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>repadmin /prp view &lt;RODC&gt; {&lt;List_Name&gt;|&lt;User&gt;}</pre></td></tr></table></span></div>
+</content></div>
+
+<h4 class="subHeading" xmlns="">Additional parameters</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>&lt;RODC&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the host name of the RODC. You can specify the single-label host name or the fully qualified domain name. In addition, you can use an asterisk (*) as a wildcard character to specify multiple RODCs in one domain.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;List_Name&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies all the security principals that are in the list that you want to view. The valid list names are as follows:</p>
+<ul><li class="unordered">auth2: The list of security principals that the RODC has authenticated.<br><br></li><li class="unordered">reveal: The list of security principals for which the RODC has cached passwords.<br><br></li><li class="unordered">allow: The list of security principals in the <b>msDS-RevealOnDemandGroup</b> attribute. The RODC can cache passwords for this list of security principals only.<br><br></li><li class="unordered">deny: The list of security principals in the <b>msDS-NeverRevealGroup</b> attribute. The RODC cannot cache passwords for any security principals in this list.<br><br></li></ul>
+
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;User&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the effective PRP setting (allowed or denied) for the specified user. You can specify the user name only or the distinguished name.</p>
+</td></tr></table>
+</content></div>
+</sections></div>
+</sections></div><a name="BKMK_examples"></a><a name="cb82e949-9039-4763-9d29-fdc6ce42770a#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">The following example lists the users whose passwords are currently cached on the domain controller named br1-rodc01:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>repadmin /prp view br1-rodc01 reveal</pre></td></tr></table></span></div>
+
+<p xmlns="">The following command caches the password for the user account named MikeDan on the domain controller named br1-rodc1:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>repadmin /prp add br1-rodc1 allow cn=MikeDan,ou=user-groups,dc=contoso,dc=com</pre></td></tr></table></span></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+
+<p xmlns=""><a href="24cf60ff-6fae-428e-967a-5c24f5f80d31.htm">Repadmin</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

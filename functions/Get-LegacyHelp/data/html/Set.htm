@@ -1,0 +1,233 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Set</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Set</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008,Windows Server 2008 R2,Windows XP,Windows Server 2003,Windows Vista,Windows Server 2000,Windows Server 2003 R2,Windows 7</p>
+<p>Displays, sets, or removes CMD.EXE environment variables. If used without parameters, <b>set</b> displays the current environment variable settings.</p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>set [&lt;Variable&gt;=[&lt;String&gt;]]
+set [/p] &lt;Variable&gt;=[&lt;PromptString&gt;]
+set /a &lt;Variable&gt;=&lt;Expression&gt;</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>&lt;Variable&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the environment variable to set or modify.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;String&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the string to associate with the specified environment variable.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/p </p>
+</td>
+<td colspan="1">
+<p>Sets the value of <i>Variable</i> to a line of input entered by the user. </p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;PromptString&gt;</p>
+</td>
+<td colspan="1">
+<p>Optional. Specifies a message to prompt the user for input. This parameter is used with the <b>/p</b> command-line option.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/a </p>
+</td>
+<td colspan="1">
+<p>Sets <i>String</i> to a numerical expression that is evaluated.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;Expression&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies a numerical expression. See Remarks for valid operators that can be used in <i>Expression</i>.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>/? </p>
+</td>
+<td colspan="1">
+<p>Displays help at the command prompt.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+Using <b>set</b> with command extensions enabled<br><br>
+
+When command extensions are enabled (the default) and you run <b>set</b> with a value, it displays all of the variables that begin with that value.<br><br>
+</li><li class="unordered">
+Using special characters <br><br>
+
+The characters <b>&lt;</b>, <b>&gt;</b>, <b>|</b>, <b>&amp;</b>, <b>^</b> are special command shell characters, and they must be preceded by the escape character (<b>^</b>) or enclosed in quotation marks when used in <i>String</i> (for example, <b>"StringContaining&amp;Symbol"</b>). If you use quotation marks to enclose a string that contains one of the special characters, the quotation marks are set as part of the environment variable value.<br><br>
+</li><li class="unordered">
+Using environment variables <br><br>
+
+Use environment variables to control the behavior of some batch files and programs and to control the way Windows and the MS-DOS subsystem appears and works. The <b>set</b> command is often used in the Autoexec.nt file to set environment variables.<br><br>
+</li><li class="unordered">
+Displaying the current environment settings <br><br>
+
+When you type the <b>set</b> command alone, the current environment settings are displayed. These settings usually include the COMSPEC and PATH environment variables, which are used to help find programs on disk. Two other environment variables used by Windows are PROMPT and DIRCMD.<br><br>
+</li><li class="unordered">
+Using parameters <br><br>
+
+When you specify values for <i>Variable</i> and <i>String</i>, the specified <i>variable</i> value is added to the environment and <i>String</i> is associated with that variable. If the variable already exists in the environment, the new string value replaces the old string value. <br><br>
+
+If you specify only a variable and an equal sign (without <i>String</i>) for the <b>set</b> command, the <i>String</i> value associated with the variable is cleared (as if the variable is not there). <br><br>
+</li><li class="unordered">
+Using <b>/a</b><br><br>
+
+The following table lists the operators supported for <b>/a</b> in descending order of precedence.<br><br>
+
+<h3 class="subHeading"></h3><table><tr>
+<th colspan="1">
+Operator
+</th>
+<th colspan="1">
+Operation performed
+</th></tr><tr>
+<td colspan="1">
+<p>( )</p>
+</td>
+<td colspan="1">
+<p>Grouping</p>
+</td></tr><tr>
+<td colspan="1">
+<p>! ~ -</p>
+</td>
+<td colspan="1">
+<p>Unary</p>
+</td></tr><tr>
+<td colspan="1">
+<p>* / %</p>
+</td>
+<td colspan="1">
+<p>Arithmetic</p>
+</td></tr><tr>
+<td colspan="1">
+<p>+ -</p>
+</td>
+<td colspan="1">
+<p>Arithmetic</p>
+</td></tr><tr>
+<td colspan="1">
+<p>&lt;&lt; &gt;&gt;</p>
+</td>
+<td colspan="1">
+<p>Logical shift</p>
+</td></tr><tr>
+<td colspan="1">
+<p>&amp;</p>
+</td>
+<td colspan="1">
+<p>Bitwise AND</p>
+</td></tr><tr>
+<td colspan="1">
+<p>^</p>
+</td>
+<td colspan="1">
+<p>Bitwise exclusive OR</p>
+</td></tr><tr>
+<td colspan="1">
+<p>|</p>
+</td>
+<td colspan="1">
+<p>Bitwise OR</p>
+</td></tr><tr>
+<td colspan="1">
+<p>= *= /= %= += -= &amp;= ^= |= &lt;&lt;= &gt;&gt;=</p>
+</td>
+<td colspan="1">
+<p>Assignment</p>
+</td></tr><tr>
+<td colspan="1">
+<p>,</p>
+</td>
+<td colspan="1">
+<p>Expression separator</p>
+</td></tr></table>
+
+If you use logical (<b>&amp;&amp;</b> or <b>||</b>) or modulus (<b>%</b>) operators, enclose the expression string in quotation marks. Any non-numeric strings in the expression are considered environment variable names, and their values are converted to numbers before they are processed. If you specify an environment variable name that is not defined in the current environment, a value of zero is allotted, which allows you to perform arithmetic with environment variable values without using the % to retrieve a value.<br><br>
+
+If you run <b>set /a</b> from the command line outside of a command script, it displays the final value of the expression.<br><br>
+
+Numeric values are decimal numbers unless prefixed by 0× for hexadecimal numbers or 0 for octal numbers. Therefore, 0×12 is the same as 18, which is the same as 022. <br><br>
+</li><li class="unordered">
+Supporting delayed environment variable expansion <br><br>
+
+Delayed environment variable expansion support is disabled by default, but you can enable or disable it by using <b>cmd /v</b>. <br><br>
+</li><li class="unordered">
+Working with command extensions <br><br>
+
+When command extensions are enabled (the default) and you run <b>set</b> alone, it displays all current environment variables. If you run <b>set</b> with a value, it displays the variables that match that value.<br><br>
+</li><li class="unordered">
+Using <b>set</b> in batch files <br><br>
+
+When creating batch files, you can use <b>set</b> to create variables, and then use them in the same way that you would use the numbered variables <b>%0</b> through <b>%9</b>. You can also use the variables <b>%0</b> through <b>%9</b> as input for <b>set</b>. <br><br>
+</li><li class="unordered">
+Calling a <b>set</b> variable from a batch file <br><br>
+
+When you call a variable value from a batch file, enclose the value with percent signs (<b>%</b>). For example, if your batch program creates an environment variable named BAUD, you can use the string associated with BAUD as a replaceable parameter by typing <b>%baud%</b> at the command prompt. <br><br>
+</li><li class="unordered">
+Using <b>set</b> at the Recovery Console <br><br>
+
+The <b>set</b> command, with different parameters, is available from the Recovery Console.<br><br>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="5fdd60d6-addf-4574-8c92-8aa53fa73d76#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">To set an environment variable named TEST^1, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>set testVar=test^^1</pre></td></tr></table></span></div>
+
+<div class="alert" xmlns=""><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>
+The <b>set</b> command assigns everything that follows the equal sign (=) to the value of the variable. If you type:<p>
+</td></tr></table><p></div>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>set testVar="test^1"</pre></td></tr></table></span></div>
+
+<p xmlns="">You get the following result: </p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>testVar="test^1"</pre></td></tr></table></span></div>
+
+<p xmlns="">To set an environment variable named TEST&amp;1, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>set testVar=test^&amp;1</pre></td></tr></table></span></div>
+
+<p xmlns="">To set an environment variable named INCLUDE so that the string C:\Inc (the \Inc directory on drive C) is associated with it, type: </p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>set include=c:\inc</pre></td></tr></table></span></div>
+
+<p xmlns="">You can then use the string C:\Inc in batch files by enclosing the name INCLUDE with percent signs (<b>%</b>). For example, you might include the following command in a batch file so that you can display the contents of the directory that is associated with the INCLUDE environment variable: </p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>dir %include%</pre></td></tr></table></span></div>
+
+<p xmlns="">When this command is processed, the string C:\Inc replaces <b>%include%</b>. </p>
+
+<p xmlns="">You can also use <b>set</b> in a batch program that adds a new directory to the PATH environment variable. For example:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>@echo off
+rem ADDPATH.BAT adds a new directory
+rem to the path environment variable.
+set path=%1;%path%
+set</pre></td></tr></table></span></div>
+
+<p xmlns="">To display a list of all of the environment variables that begin with the letter P, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>set p </pre></td></tr></table></span></div>
+
+<div class="alert" xmlns=""><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>
+This command requires command extensions, which are enabled by default.<p>
+</td></tr></table><p></div>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

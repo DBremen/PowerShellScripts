@@ -1,0 +1,245 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Ldifde</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Ldifde</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2003 with SP1,Windows Server 2008 R2,Windows Server 2008,Windows Server 2003</p>
+				<p>Creates, modifies, and deletes directory objects. You can also use <b>ldifde</b> to extend the schema, export Active Directory user and group information to other applications or services, and populate Active Directory Domain Services (AD DS) with data from other directory services.</p>
+				<p>
+					<b>Ldifde</b> is a command-line tool that is built into Windows Server 2008. It is available if you have the AD DS or Active Directory Lightweight Directory Services (AD LDS) server role installed. To use <b>ldifde</b>, you must run the <b>ldifde</b> command from an elevated command prompt. To open an elevated command prompt, click <b>Start</b>, right-click <b>Command Prompt</b>, and then click <b>Run as administrator</b>. </p>
+				<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+			<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>Ldifde [-i] [-f &lt;FileName&gt;] [-s &lt;ServerName&gt;] [-c &lt;String1&gt; &lt;String2&gt;] [-v] [-j &lt;Path&gt;] [-t &lt;PortNumber&gt;] [-d &lt;BaseDN&gt;] [-r &lt;LDAPFilter&gt;] [-p &lt;Scope&gt;] [-l &lt;LDAPAttributeList&gt;] [-o &lt;LDAPAttributeList&gt;] [-g] [-m] [-n] [-k] [-a &lt;UserDistinguishedName&gt; &lt;Password&gt;] [-b &lt;UserName&gt; &lt;Domain&gt; &lt;Password&gt;] [-?]</pre></td></tr></table></span></div>
+				</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+								<th colspan="1">
+									Parameter
+								</th>
+								<th colspan="1">
+									Description
+								</th>
+							</tr><tr>
+							<td colspan="1">
+								<p>-i </p>
+							</td>
+							<td colspan="1">
+								<p>Specifies to use the import mode. The default mode is export.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-f &lt;FileName&gt; </p>
+							</td>
+							<td colspan="1">
+								<p>Identifies the import or export file name.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-s &lt;ServerName&gt; </p>
+							</td>
+							<td colspan="1">
+								<p>Specifies the domain controller to perform the import or export operation. By default, <b>ldifde</b> runs on the domain controller on which <b>ldifde</b> is installed.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-c &lt;String1&gt; &lt;String2&gt; </p>
+							</td>
+							<td colspan="1">
+								<p>Replaces all occurrences of &lt;String1&gt; with &lt;String2&gt;. Generally, you use this parameter when you import data from one domain to another and you must replace the distinguished name of the export domain (&lt;String1&gt;) with the distinguished name of the import domain (&lt;String2&gt;).</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-v </p>
+							</td>
+							<td colspan="1">
+								<p>Sets verbose mode.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-j &lt;Path&gt; </p>
+							</td>
+							<td colspan="1">
+								<p>Sets the log file location. The default location is the current path.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-t &lt;PortNumber&gt; </p>
+							</td>
+							<td colspan="1">
+								<p>Specifies a Lightweight Directory Access Protocol (LDAP) port number. The default LDAP port number is 389. The global catalog port number is 3268.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-d &lt;BaseDN&gt; </p>
+							</td>
+							<td colspan="1">
+								<p>Sets the distinguished name of the search base for data export.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-r &lt;LDAPFilter&gt; </p>
+							</td>
+							<td colspan="1">
+								<p>Creates an LDAP search filter for data export. For example, to export all users with a surname that you specify, you can use the following filter: </p>
+								<p>
+									<code>-r (and(objectClass=User)(sn=Surname))</code>
+								</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-p &lt;Scope&gt; </p>
+							</td>
+							<td colspan="1">
+								<p>Sets the search scope. The search scope options are <b>Base</b>, <b>OneLevel</b>, or <b>SubTree</b>.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-l &lt;LDAPAttributeList&gt; </p>
+							</td>
+							<td colspan="1">
+								<p>Sets the list of attributes to return in the results of an export query. If you do not specify this parameter, the search returns all attributes.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-o &lt;LDAPAttributeList&gt; </p>
+							</td>
+							<td colspan="1">
+								<p>Sets the list of attributes to omit from the results of an export query. This is typically used when exporting objects from AD DS and then importing them into another LDAP-compliant directory. If attributes are not supported by another directory, you can omit the attributes from the result set using this option.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-g </p>
+							</td>
+							<td colspan="1">
+								<p>Omits paged searches.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-m </p>
+							</td>
+							<td colspan="1">
+								<p>Omits attributes that apply only to Active Directory objects, such as the <b>ObjectGUID</b>, <b>objectSID</b>, <b>pwdLastSet</b> and <b>samAccountType</b> attributes.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-n </p>
+							</td>
+							<td colspan="1">
+								<p>Omits the export of binary values.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-k </p>
+							</td>
+							<td colspan="1">
+								<p>Ignores errors during an import operation and continues processing. This parameter ignores all of the following errors:</p>
+								<ul><li class="unordered">
+										The object is already a member of the group<br><br>
+									</li><li class="unordered">
+										The operation has an object class violation <br><br>
+										This violation means that the specified object class does not exist, if the object being imported has no other attributes.<br><br>
+									</li><li class="unordered">
+										The object already exists<br><br>
+									</li><li class="unordered">
+										The operation has a constraint violation<br><br>
+									</li><li class="unordered">
+										The attribute or value already exists<br><br>
+									</li><li class="unordered">
+										The operation found no such object<br><br>
+									</li></ul>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-a &lt;UserDistinguishedName&gt; &lt;Password&gt; </p>
+							</td>
+							<td colspan="1">
+								<p>Sets the command to run using the distinguished name (&lt;UserDistinguishedName&gt;) and password (&lt;Password&gt;) that you supply. By default, the command uses the credentials of the user who is currently logged on to the network.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-b &lt;UserName&gt; &lt;Domain&gt; &lt;Password&gt; </p>
+							</td>
+							<td colspan="1">
+								<p>Sets the command to run using the supplied &lt;UserName&gt; &lt;Domain&gt; &lt;Password&gt;. By default, the command will run using the credentials of the user currently logged on to the network.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/? </p>
+							</td>
+							<td colspan="1">
+								<p>Displays help at the command menu.</p>
+							</td>
+						</tr></table>
+				</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<ul xmlns=""><li class="unordered">
+							When you create the import file to use with the <b>ldifde</b> command, use a <b>changeType</b> value to define the type of changes that the import file will contain. The following table shows the <b>changeType</b> values that you can use. <br><br>
+							<h3 class="subHeading"></h3><table><tr>
+										<th colspan="1">
+											Value
+										</th>
+										<th colspan="1">
+											Description
+										</th>
+									</tr><tr>
+									<td colspan="1">
+										<p>
+											<b>add</b>
+										</p>
+									</td>
+									<td colspan="1">
+										<p>Specifies that new content is contained in the import file.</p>
+									</td>
+								</tr><tr>
+									<td colspan="1">
+										<p>
+											<b>modify</b>
+										</p>
+									</td>
+									<td colspan="1">
+										<p>Specifies that existing content has been modified in the import file.</p>
+									</td>
+								</tr><tr>
+									<td colspan="1">
+										<p>
+											<b>delete</b>
+										</p>
+									</td>
+									<td colspan="1">
+										<p>Specifies that content has been deleted in the import file.</p>
+									</td>
+								</tr></table>
+							The following example shows an LDAP Data Interchange Format (LDIF) import file format that uses the <b>add</b> value.<br><br>
+							<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>DN: CN=SampleUser,DC=DomainName
+changetype: add
+CN: SampleUser
+description: DescriptionOfFile
+objectClass: User
+sAMAccountName: SampleUser</pre></td></tr></table></span></div>
+						</li></ul>
+				</content></div><a name="BKMK_examples"></a><a name="8fe5b815-f89d-48c0-8b2c-a9cd1d698652#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">To retrieve only the distinguished name, common name, first name, surname, and telephone number for user objects in the fabrikam.com domain to a file named ldifde.txt in the c:\ldifde folder, run the following command:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>Ldifde -d dc=fabrikam,dc=com -r (objectClass=User) -l distinguishedname,cn,givenname,sn,telephone –f ldifde.txt</pre></td></tr></table></span></div>
+					<p xmlns="">To selectively omit the object creation date and time and the object globally unique identifier (GUID), run the following command:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>Ldifde -d dc=fabrikam,dc=com -r (objectClass=User) -o whenCreated,objectGUID –f ldifde.txt</pre></td></tr></table></span></div>
+					<div class="alert" xmlns=""><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/Tip.gif">Tip </th></tr><tr><td>
+						For more examples, see the following resources:<p>
+						<ul><li class="unordered">
+								
+									<a href="http://go.microsoft.com/fwlink/?LinkID=87487" alt="" target="_blank"><linktext xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">Article 237677</linktext></a> (http://go.microsoft.com/fwlink/?LinkID=87487) in the Microsoft Knowledge Base<br><br>
+							</li><li class="unordered">
+								
+									<a href="http://go.microsoft.com/fwlink/?LinkId=187670" alt="" target="_blank"><linktext xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">Article 555636</linktext></a> (http://go.microsoft.com/fwlink/?LinkId=187670) in Microsoft Knowledge Base<br><br>
+							</li></ul>
+					</td></tr></table><p></div>
+				</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+						</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<p xmlns="">
+										<a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a>
+									</p>
+									<p xmlns="">
+										<b>LDIFDE</b>
+									</p>
+									<p xmlns="">
+										<b>Import or export directory objects using ldifde</b>
+									</p>
+								</content></div>
+						</sections></div>
+				</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

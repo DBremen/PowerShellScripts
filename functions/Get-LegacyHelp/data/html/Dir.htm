@@ -1,0 +1,244 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Dir</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Dir</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008,Windows Vista</p>
+<p>Displays a list of a directory's files and subdirectories. If used without parameters, <b>dir</b> displays the disk's volume label and serial number, followed by a list of directories and files on the disk (including their names and the date and time each was last modified). For files, <b>dir</b> displays the name extension and the size in bytes. <b>Dir</b> also displays the total number of files and directories listed, their cumulative size, and the free space (in bytes) remaining on the disk.</p>
+
+<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>dir [&lt;Drive&gt;:][&lt;Path&gt;][&lt;FileName&gt;] [...] [/p] [/q] [/w] [/d] [/a[[:]&lt;Attributes&gt;]][/o[[:]&lt;SortOrder&gt;]] [/t[[:]&lt;TimeField&gt;]] [/s] [/b] [/l] [/n] [/x] [/c] [/4]</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Parameter
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p>[&lt;Drive&gt;:][&lt;Path&gt;] </p>
+</td>
+<td colspan="1">
+<p>Specifies the drive and directory for which you want to see a listing.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>[&lt;FileName&gt;] </p>
+</td>
+<td colspan="1">
+<p>Specifies a particular file or group of files for which you want to see a listing.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /p </p>
+</td>
+<td colspan="1">
+<p>Displays one screen of the listing at a time. To see the next screen, press any key on the keyboard.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /q </p>
+</td>
+<td colspan="1">
+<p>Displays file ownership information.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /w </p>
+</td>
+<td colspan="1">
+<p>Displays the listing in wide format, with as many as five file names or directory names on each line.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /d </p>
+</td>
+<td colspan="1">
+<p>Displays the listing in the same format as <b>/w</b>, but the files are sorted by column.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /a[[:]&lt;Attributes&gt;] </p>
+</td>
+<td colspan="1">
+<p>Displays only the names of those directories and files with the attributes that you specify. If you omit <b>/a</b>, <b>dir</b> displays the names of all files except hidden and system files. If you use <b>/a</b> without specifying <i>Attributes</i>, <b>dir</b> displays the names of all files, including hidden and system files. </p>
+
+<p>The following list describes each of the values that you can use for <i>Attributes</i>. Using a colon (:) is optional. Use any combination of these values, and do not separate the values with spaces.</p>
+
+<p>   <b>d</b>  Directories</p>
+
+<p>   <b>h</b>  Hidden files</p>
+
+<p>   <b>s</b>  System files</p>
+
+<p>   <b>l</b>  Reparse points             </p>
+
+<p>   <b>r</b>  Read-only files</p>
+
+<p>   <b>a</b>  Files ready for archiving</p>
+
+<p>   <b>i</b>   Not content indexed files</p>
+
+<p>   <b>-</b>  Prefix meaning "not"</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /o[[:]&lt;SortOrder&gt;] </p>
+</td>
+<td colspan="1">
+<p>Sorts the output according to <i>SortOrder</i>, which can be any combination of the following values:</p>
+
+<p>   <b>n</b>  By name (alphabetical)</p>
+
+<p>   <b>e</b>  By extension (alphabetical)</p>
+
+<p>   <b>g</b>  Group directories first</p>
+
+<p>   <b>s</b>  By size (smallest first)</p>
+
+<p>   <b>d</b>  By date/time (oldest first)</p>
+
+<p>   <b>-</b>  Prefix to reverse order</p>
+
+<div class="alert"><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>
+Using a colon is optional. Multiple values are processed in the order in which you list them. Do not separate multiple values with spaces.  <p>
+</td></tr></table><p></div>
+
+<p>If <i>SortOrder</i> is not specified, <b>dir /o</b> lists the directories in alphabetic order, followed by the files, which are also sorted in alphabetic order. </p>
+</td></tr><tr>
+<td colspan="1">
+<p> /t[[:]&lt;TimeField&gt;] </p>
+</td>
+<td colspan="1">
+<p>Specifies which time field to display or use for sorting. The following list describes each of the values you can use for <i>TimeField</i>:</p>
+
+<p><b>   c  </b>Creation</p>
+
+<p><b>   a  </b>Last access</p>
+
+<p><b>   w  </b>Last written</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /s </p>
+</td>
+<td colspan="1">
+<p>Lists every occurrence of the specified file name within the specified directory and all subdirectories.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /b </p>
+</td>
+<td colspan="1">
+<p>Displays a bare list of directories and files, with no additional information. <b>/b</b> overrides <b>/w</b>.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /l </p>
+</td>
+<td colspan="1">
+<p>Displays unsorted directory names and file names in lowercase. </p>
+</td></tr><tr>
+<td colspan="1">
+<p> /n </p>
+</td>
+<td colspan="1">
+<p>Displays a long list format with file names on the far right of the screen.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /x </p>
+</td>
+<td colspan="1">
+<p>Displays the short names generated for non-8dot3 file names. The display is the same as the display for <b>/n</b>, but the short name is inserted before the long name.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /c </p>
+</td>
+<td colspan="1">
+<p>Displays the thousand separator in file sizes. This is the default behavior. Use <b>/-c</b> to hide separators.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /4 </p>
+</td>
+<td colspan="1">
+<p>Displays years in four-digit format.</p>
+</td></tr><tr>
+<td colspan="1">
+<p> /? </p>
+</td>
+<td colspan="1">
+<p>Displays help at the command prompt.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+To use multiple <i>FileName</i> parameters, separate each file name with a space, comma, or semicolon. <br><br>
+</li><li class="unordered">
+You can use wildcard characters (<b>*</b> or<b>?</b>), to represent one or more characters of a file name and to display a subset of files or subdirectories.<br><br>
+
+<b>Asterisk (*): </b>Use the asterisk as a substitute for any string of characters, for example:<br><br>
+
+<ul><li class="unordered">
+<b>dir *.txt</b> lists all files in the current directory with extensions that begin with .txt, such as .txt, .txt1, .txt_old.<br><br>
+</li><li class="unordered">
+<b>dir read*.txt</b> lists all files in the current directory that begin with "read" and with extensions that begin with .txt, such as .txt, .txt1, or .txt_old.<br><br>
+</li><li class="unordered">
+<b>dir read*.*</b> lists all files in the current directory that begin with "read" with any extension.<br><br>
+</li></ul>
+
+The asterisk wildcard always uses short file name mapping, so you might get unexpected results. For example, the following directory contains two files (t.txt2 and t97.txt):<br><br>
+
+<div class="code"><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>C:\test&gt;dir /x
+Volume in drive C has no label.
+Volume Serial Number is B86A-EF32
+
+Directory of C:\test
+
+11/30/2004  01:40 PM &lt;DIR&gt;  .
+11/30/2004  01:40 PM &lt;DIR&gt; ..
+11/30/2004  11:05 AM 0 T97B4~1.TXT t.txt2
+11/30/2004  01:16 PM 0 t97.txt</pre></td></tr></table></span></div>
+
+You might expect that typing <b>dir t97*</b> would return the file t97.txt. However, typing <b>dir t97*</b> returns both files, because the asterisk wildcard matches the file t.txt2 to t97.txt by using its short name map T97B4~1.TXT. Similarly, typing <b>del t97*</b> would delete both files.<br><br>
+
+<b>Question mark (?):</b> Use the question mark as a substitute for a single character in a name. For example, typing <b>dir read???.txt</b> lists any files in the current directory with the .txt extension that begin with "read" and are followed by up to three characters. This includes Read.txt, Read1.txt, Read12.txt, Read123.txt, and Readme1.txt, but not Readme12.txt.<br><br>
+</li><li class="unordered">
+Specifying file display attributes<br><br>
+
+If you use <b>/a</b> with more than one value in <i>Attributes</i>, <b>dir</b> displays the names of only those files with all the specified attributes. For example, if you use <b>/a</b> with <b>r</b> and <b>-h</b> as attributes (by using either <b>/a:r-h</b> or <b>/ar-h</b>), <b>dir</b> will only display the names of the read-only files that are not hidden.<br><br>
+</li><li class="unordered">
+Specifying file name sorting<br><br>
+
+If you specify more than one <i>SortOrder</i> value, <b>dir</b> sorts the file names by the first criterion, then by the second criterion, and so on. For example, if you use <b>/o</b> with the <b>e</b> and <b>-s</b> values for <i>SortOrder</i> (by using either <b>/o:e-s</b> or <b>/oe-s</b>), <b>dir</b> sorts the names of directories and files by extension, with the largest first, and then displays the final result. The alphabetic sorting by extension causes file names with no extensions to appear first, then directory names, and then file names with extensions.<br><br>
+</li><li class="unordered">
+Using redirection symbols and pipes<br><br>
+
+When you use the redirection symbol (<b>&gt;</b>) to send <b>dir</b> output to a file or a pipe (<b>|</b>) to send <b>dir</b> output to another command, use <b>/a:-d</b> and <b>/b</b> to list the file names only. You can use <i>FileName</i> with <b>/b</b> and <b>/s</b> to specify that <b>dir</b> is to search the current directory and its subdirectories for all file names that match <i>FileName</i>. <b>Dir</b> lists only the drive letter, directory name, file name, and file name extension (one path per line), for each file name it finds. Before you use a pipe to send <b>dir</b> output to another command, you should set the TEMP environment variable in your Autoexec.nt file.<br><br>
+</li><li class="unordered">
+The <b>dir</b> command, with different parameters, is available from the Recovery Console.<br><br>
+</li></ul>
+</content></div><a name="BKMK_examples"></a><a name="edcbf69b-eaa4-466e-b210-3dd8892f4d93#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">To display all directories one after the other, in alphabetical order, in wide format, and pausing after each screen, make sure that the root directory is the current directory, and then type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>dir /s/w/o/p</pre></td></tr></table></span></div>
+
+<p xmlns=""><b>Dir</b> lists the root directory, the subdirectories, and the files in the root directory, including extensions. Then, <b>dir</b> lists the subdirectory names and file names in each subdirectory in the tree.</p>
+
+<p xmlns="">To alter the preceding example so that <b>dir</b> displays the file names and extensions, but omits the directory names, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>dir /s/w/o/p/a:-d</pre></td></tr></table></span></div>
+
+<p xmlns="">To print a directory listing, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>dir &gt; prn</pre></td></tr></table></span></div>
+
+<p xmlns="">When you specify <b>prn</b>, the directory list is sent to the printer that is attached to the LPT1 port. If your printer is attached to a different port, you must replace <b>prn</b> with the name of the correct port.</p>
+
+<p xmlns="">You can also redirect output of the <b>dir</b> command to a file by replacing <b>prn</b> with a file name. You can also type a path. For example, to direct <b>dir</b> output to the file dir.doc in the Records directory, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>dir &gt; \records\dir.doc</pre></td></tr></table></span></div>
+
+<p xmlns="">If dir.doc does not exist, <b>dir</b> creates it, unless the Records directory does not exist. In that case, the following message appears:</p>
+
+<p xmlns=""><code>File creation error</code></p>
+
+<p xmlns="">To display a list of all the file names with the .txt extension in all directories on drive C, type:</p>
+
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>dir c:\*.txt /w/o/s/p</pre></td></tr></table></span></div>
+
+<p xmlns=""><b>Dir</b> displays, in wide format, an alphabetized list of the matching file names in each directory, and it pauses each time the screen fills until you press any key to continue.</p>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

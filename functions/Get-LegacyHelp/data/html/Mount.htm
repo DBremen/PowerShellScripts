@@ -1,0 +1,145 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Mount</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Mount</span></td></tr><tr id="headerTableRow3"><td><a href="#seeAlsoNoToggle" onclick="OpenSection(seeAlsoNoToggle)">See Also</a></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008,Windows Vista</p>
+<p>You can use <b>mount</b> to mount Network File System (NFS) network shares.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">mount [-o &lt;Option&gt;[...]] [-u:&lt;UserName&gt;] [-p:{&lt;Password&gt; | *}] {\\&lt;ComputerName&gt;\&lt;ShareName&gt; | &lt;ComputerName&gt;:/&lt;ShareName&gt;} {&lt;DeviceName&gt; | *}</p>
+</content></div><h2 class="heading">Description</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns="">The <b>mount</b> command-line utility mounts the file system identified by <i>ShareName</i> exported by the NFS server identified by <i>ComputerName</i> and associates it with the drive letter specified by <i>DeviceName</i> or, if an asterisk (<b>*</b>) is used, by the first available driver letter. Users can then access the exported file system as though it were a drive on the local computer. When used without options or arguments, <b>mount</b> displays information about all mounted NFS file systems.</p>
+
+<p xmlns="">The <b>mount </b>utility is available only if Client for NFS is installed.</p>
+
+<p xmlns="">The following options and arguments can be used with the <b>mount</b> utility.</p>
+
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Term
+</th>
+<th colspan="1">
+Definition
+</th></tr><tr>
+<td colspan="1">
+<p>-o rsize=&lt;buffersize&gt;</p>
+</td>
+<td colspan="1">
+<p>Sets the size in kilobytes of the read buffer. Acceptable values are 1, 2, 4, 8, 16, and 32; the default is 32 KB.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-o wsize=&lt;buffersize&gt;</p>
+</td>
+<td colspan="1">
+<p>Sets the size in kilobytes of the write buffer. Acceptable values are 1, 2, 4, 8, 16, and 32; the default is 32 KB.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-o timeout=&lt;seconds&gt;</p>
+</td>
+<td colspan="1">
+<p>Sets the time-out value in seconds for a remote procedure call (RPC). Acceptable values are 0.8, 0.9, and any integer in the range 1-60; the default is 0.8.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-o retry=&lt;number&gt;</p>
+</td>
+<td colspan="1">
+<p>Sets the number of retries for a soft mount. Acceptable values are integers in the range 1-10; the default is 1.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-o mtype={soft | hard}</p>
+</td>
+<td colspan="1">
+<p>Sets the mount type (default is <b>soft</b>). Regardless of the mount type, <b>mount</b> will return if it cannot immediately mount the share. Once the share has been successfully mounted, however, if the mount type is <b>hard</b>, Client for NFS will continue to try to access the share until it is successful. As a result, if the NFS server is unavailable, any Windows program trying to access the share will appear to stop responding, or "hang," if the mount type is <b>hard</b>.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-o anon</p>
+</td>
+<td colspan="1">
+<p>Mounts as an anonymous user.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-o nolock</p>
+</td>
+<td colspan="1">
+<p>Disables locking (default is <b>enabled</b>).</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-o casesensitive</p>
+</td>
+<td colspan="1">
+<p>Forces file lookups on the server to be case sensitive.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-o fileaccess=&lt;mode&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the default permission mode of new files created on the NFS share. Specify <i>mode</i> as a three-digit number in the form <i>ogw</i>, where <i>o</i>, <i>g</i>, and <i>w</i> are each a digit representing the access granted the file's owner, group, and the world, respectively. The digits must be in the range 0-7 with the following meaning:</p>
+
+<ul><li class="unordered">
+0: No access<br><br>
+</li><li class="unordered">
+1: x (execute access)<br><br>
+</li><li class="unordered">
+2: w (write access)<br><br>
+</li><li class="unordered">
+3: wx<br><br>
+</li><li class="unordered">
+4: r (read access)<br><br>
+</li><li class="unordered">
+5: rx<br><br>
+</li><li class="unordered">
+6: rw<br><br>
+</li><li class="unordered">
+7: rwx<br><br>
+</li></ul>
+</td></tr><tr>
+<td colspan="1">
+<p>-o lang={euc-jp|euc-tw|euc-kr|shift-jis|big5|ksc5601|gb2312-80|ansi}</p>
+</td>
+<td colspan="1">
+<p>Specifies the default encoding used for file and directory names and, if used, must be set to one of the following:</p>
+
+<ul><li class="unordered">
+<b>ansi</b><br><br>
+</li><li class="unordered">
+<b>big5</b> (Chinese)<br><br>
+</li><li class="unordered">
+<b>euc-jp</b> (Japanese)<br><br>
+</li><li class="unordered">
+<b>euc-kr</b> (Korean)<br><br>
+</li><li class="unordered">
+<b>euc-tw</b> (Chinese)<br><br>
+</li><li class="unordered">
+<b>gb2312-80</b> (Simplified Chinese)<br><br>
+</li><li class="unordered">
+<b>ksc5601</b> (Korean)<br><br>
+</li><li class="unordered">
+<b>shift-jis</b> (Japanese)<br><br>
+</li></ul>
+
+<p>If this option is set to <b>ansi</b> on systems configured for non-English locales, the encoding scheme is set to the default encoding scheme for the locale. The following are the default encoding schemes for the indicated locales:</p>
+
+<ul><li class="unordered">
+Japanese: SHIFT-JIS<br><br>
+</li><li class="unordered">
+Korean: KS_C_5601-1987<br><br>
+</li><li class="unordered">
+Simplified Chinese: GB2312-80<br><br>
+</li><li class="unordered">
+Traditional Chinese: BIG5<br><br>
+</li></ul>
+</td></tr><tr>
+<td colspan="1">
+<p>-u:&lt;UserName&gt;</p>
+</td>
+<td colspan="1">
+<p>Specifies the user name to use for mounting the share. If <i>username</i> is not preceded by a backslash (<b>\</b>), it is treated as a UNIX user name.</p>
+</td></tr><tr>
+<td colspan="1">
+<p>-p:&lt;Password&gt;</p>
+</td>
+<td colspan="1">
+<p>The password to use for mounting the share. If you use an asterisk (<b>*</b>), you will be prompted for the password.</p>
+</td></tr></table>
+
+<div class="alert" xmlns=""><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/note.gif">Note </th></tr><tr><td>
+If you make a persistent connection with <b>mount</b>, you must use <a href="0726324c-c45a-444d-a753-99daf5e1c83a.htm">Umount</a> to delete the connection. Neither the <b>net use</b> command nor Microsoft Windows Explorer will delete these connections.<p>
+</td></tr></table><p></div>
+</content></div><h2 class="heading"><span id="seeAlsoNoToggle">See Also</span></h2><div id="seeAlsoSection" class="section"><h4 class="subHeading">Concepts</h4><a href="0726324c-c45a-444d-a753-99daf5e1c83a.htm">Umount</a><br><br></div><!--[if gte IE 5]>
+			<tool:tip element="seeAlsoToolTip" avoidmouse="false"/><tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

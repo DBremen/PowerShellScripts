@@ -1,0 +1,132 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>snapshot</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">snapshot</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008,Windows Server 2008</p>
+				<p>Manages snapshots of the volumes that contain the Active Directory database and log files, which you can view on a domain controller without starting in Directory Services Restore Mode (DSRM). You can also run the <code>snapshot</code> subcommand on an Active Directory Lightweight Directory Services (AD LDS) server. </p>
+				<p>In the command-line tool Ntdsutil.exe, you can use the <code>snapshot</code> subcommand to manage the snapshots, but you must use Dsamain.exe to expose the snapshot as a Lightweight Directory Access Protocol (LDAP) server. For more information about using Dsamain, see <a href="e95b5148-aa86-44ea-87e9-43c8ce6cfdbe.htm">Dsamain</a>.</p>
+				<p>This is a subcommand of Ntdsutil and Dsdbutil. Ntdsutil and Dsdbutil are command-line tools that are built into Windows Server 2008 and Windows Server 2008 R2. Ntdsutil is available if you have the Active Directory Domain Services (AD DS) or AD LDS server role installed. Dsdbutil is available if you have the AD LDS server role installed. These tools are also available if you install the Active Directory Domain Services Tools that are part of the Remote Server Administration Tools (RSAT). For more information, see <a href="http://go.microsoft.com/fwlink/?LinkID=177813" alt="" target="_blank"><linktext xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">How to Administer Microsoft Windows Client and Server Computers Locally and Remotely</linktext></a> (http://go.microsoft.com/fwlink/?LinkID=177813).</p>
+				<p>To use either of these tools, you must run them from an elevated command prompt. To open an elevated command prompt, click <b>Start</b>, right-click <b>Command Prompt</b>, and then click <b>Run as administrator</b>.</p>
+				<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+			<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>activate instance %s [create] [delete %s] [unmount %s] [list all] [list mounted ] [mount %s] [quit] </pre></td></tr></table></span></div>
+				</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+								<th colspan="1">
+									Parameter
+								</th>
+								<th colspan="1">
+									Description
+								</th>
+							</tr><tr>
+							<td colspan="1">
+								<p>activate instance %s</p>
+							</td>
+							<td colspan="1">
+								<p>Sets an active instance for the command. You can either specify "ntds" to set AD DS as the active instance or you can specify the name of an AD LDS instance.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>create</p>
+							</td>
+							<td colspan="1">
+								<p>Creates a snapshot. </p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>delete %s</p>
+							</td>
+							<td colspan="1">
+								<p>Deletes a snapshot with globally unique identifier (GUID) %s. Use <b>*</b> to delete all snapshots. </p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>list all</p>
+							</td>
+							<td colspan="1">
+								<p>Lists all mounted snapshots. You can run this command to obtain an index number for a mounted snapshot. You can then use the index number, instead of a GUID, to mount or unmount a snapshot.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>list mounted</p>
+							</td>
+							<td colspan="1">
+								<p>Lists mounted snapshots. You can run this command to obtain an index number for a mounted snapshot. You can then use the index number instead of a GUID to mount or unmount a snapshot. </p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>mount %s</p>
+							</td>
+							<td colspan="1">
+								<p>Mounts a snapshot with GUID %s. You can refer to an index number of any mounted snapshot instead of its GUID. </p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>unmount %s</p>
+							</td>
+							<td colspan="1">
+								<p>Unmounts a snapshot with GUID %s. Use <b>*</b> to unmount all mounted snapshots. </p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>quit</p>
+							</td>
+							<td colspan="1">
+								<p>Returns to the prior menu.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>Help</p>
+							</td>
+							<td colspan="1">
+								<p>Displays Help for this command.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>? </p>
+							</td>
+							<td colspan="1">
+								<p>Displays Help for this command. </p>
+							</td>
+						</tr></table>
+				</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<ul xmlns=""><li class="unordered">
+							Before you can run the <b>snapshot</b> subcommand, you must run the <b>activate instance</b> subcommand in Ntdsutil to set an active instance. For examples of how to set an active instance, see <a href="#BKMK_examples">Examples</a>. <br><br>
+						</li><li class="unordered">
+							You are not required to run the <b>snapshot</b> subcommand to use Dsamain.exe. Instead, you can use a backup of the AD DS or AD LDS database or another domain controller or AD LDS server. Running the <b>snapshot</b> subcommand simply provides convenient data input for Dsamain.exe.<br><br>
+						</li><li class="unordered">
+							You should protect snapshots in a manner that is similar to how you protect domain controller backups. For example, use encryption or other data security precautions with AD DS snapshots to help mitigate the chance of unauthorized access to them.<br><br>
+						</li><li class="unordered">
+							When you use Dsamain.exe to expose the data that is contained in a snapshot:<br><br>
+							<ul><li class="unordered">
+									All permissions that apply to the data in the snapshot are enforced. <br><br>
+								</li><li class="unordered">
+									By default, only members of the Domain Admins group and the Enterprise Admins group are allowed to view a snapshot because it can contain sensitive AD DS data. <br><br>
+								</li></ul>
+</li><li class="unordered">
+							
+								Ntdsutil does not correctly handle special characters, such as the apostrophe character ('), that you can enter at the <b>ntdsutil:</b> prompt at the command line. In some situations, there may be an alternative workaround. For more information, see <a href="http://go.microsoft.com/fwlink/?LinkId=157320" alt="" target="_blank"><maml:linktext xmlns:maml="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">local roles</maml:linktext></a> (http://go.microsoft.com/fwlink/?LinkId=157320).
+							<br><br>
+						</li></ul>
+				</content></div><a name="BKMK_examples"></a><a name="a4b0e355-cbd0-4f48-9484-877fad1789ec#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">The following example sets NTDS as the active instance:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>ntdsutil: activate instance ntds</pre></td></tr></table></span></div>
+					<p xmlns="">The following example is another way to set NTDS as the active instance:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>ntdsutil: ac in ntds</pre></td></tr></table></span></div>
+					<p xmlns="">The following example mounts a snapshot that has the GUID 8ec8ff74-c0d7-435a-b6b1-54ef185926be:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>snapshot: mount {8ec8ff74-c0d7-435a-b6b1-54ef185926be}</pre></td></tr></table></span></div>
+					<p xmlns="">The following example unmounts the same snapshot:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>snapshot: unmount {8ec8ff74-c0d7-435a-b6b1-54ef185926be}</pre></td></tr></table></span></div>
+					<p xmlns="">The following example lists the mounted snapshots:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>snapshot: list mounted</pre></td></tr></table></span></div>
+				</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+						</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<p xmlns="">
+										<a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a>
+									</p>
+									<p xmlns="">
+										<a href="e95b5148-aa86-44ea-87e9-43c8ce6cfdbe.htm">Dsamain</a>
+									</p>
+<p xmlns=""><a href="0c7f4cee-53cb-443c-b194-524c9360deac.htm">Dsdbutil</a></p><p xmlns=""><a href="199cebb9-967c-4307-a9d7-1c0bb50dc75b.htm">Ntdsutil</a></p><p xmlns=""><a href="b5416510-9aa5-44e4-8b4b-279dee264183.htm">authoritative restore</a></p><p xmlns=""><a href="f27dc4c0-0623-401b-b411-48acf995f595.htm">configurable settings</a></p><p xmlns=""><a href="baa9c5e1-0c26-4d57-8ca9-ff5b15c33d29.htm">DS behavior</a></p><p xmlns=""><a href="594c47bc-095d-465e-b7cb-3f0234350460.htm">files</a></p><p xmlns=""><a href="dc3722d8-b6de-4863-b456-1b17139caa42.htm">group membership evaluation</a></p><p xmlns=""><a href="c705e804-97d5-4a15-8d60-1ba09e5544e6.htm">ifm</a></p><p xmlns=""><a href="309950c8-5bfa-4b9e-b4a2-706ac63948ec.htm">LDAP policies</a></p><p xmlns=""><a href="aee69f2f-49bf-49cb-ac0b-eccc26423b1f.htm">local roles</a></p><p xmlns=""><a href="8ff66708-2ad0-4f52-982d-376a50a0e2dd.htm">metadata cleanup</a></p><p xmlns=""><a href="8ee336a2-b784-4743-8500-8d224a372110.htm">partition management</a></p><p xmlns=""><a href="f74c0470-3b2d-422c-bbbc-385cf39ec175.htm">roles</a></p><p xmlns=""><a href="1a4153d9-eb6e-4c50-8063-eb4ce961c32c.htm">security account management</a></p><p xmlns=""><a href="16b6f806-20b9-47bd-92c5-5cd96645c3bf.htm">semantic database analysis</a></p><p xmlns=""><a href="66fbd855-b3ee-434f-b890-c96858da8178.htm">set DSRM password</a></p></content></div>
+						</sections></div>
+				</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

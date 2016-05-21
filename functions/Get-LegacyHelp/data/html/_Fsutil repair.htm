@@ -1,0 +1,119 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Fsutil repair</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Fsutil repair</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008 R2,Windows Server 2008,Windows Vista,Windows 7</p>
+				<p>Administers and monitors NTFS self-healing repair operations.</p>
+				<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+			<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>fsutil repair [initiate] &lt;VolumePath&gt; &lt;FileReference&gt;
+fsutil repair [query] &lt;VolumePath&gt;
+fsutil repair [set] &lt;VolumePath&gt; &lt;Flags&gt;
+fsutil repair [wait][&lt;WaitType&gt;] &lt;VolumePath&gt;
+</pre></td></tr></table></span></div>
+				</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+								<th colspan="1">
+									Parameter
+								</th>
+								<th colspan="1">
+									Description
+								</th>
+							</tr><tr>
+							<td colspan="1">
+								<p> initiate </p>
+							</td>
+							<td colspan="1">
+								<p>Initiates NTFS self-healing. </p>
+							</td>
+						</tr><tr>
+							<td>
+								<p>&lt;VolumePath&gt;</p>
+							</td>
+							<td>
+								<p>Specifies the volume as the drive name followed by a colon.</p>
+							</td>
+						</tr><tr>
+							<td>
+								<p>&lt;FileReference&gt;</p>
+							</td>
+							<td>
+								<p>Specifies the NTFS volume-specific file ID (file reference number). The file reference includes the segment number of the file.</p>
+							</td>
+						</tr><tr>
+							<td>
+								<p>query</p>
+							</td>
+							<td>
+								<p>Queries the self-healing state of the NTFS volume.</p>
+							</td>
+						</tr><tr>
+							<td>
+								<p>set</p>
+							</td>
+							<td>
+								<p>Sets the self-healing state of the volume.</p>
+							</td>
+						</tr><tr>
+							<td>
+								<p>&lt;Flags&gt;</p>
+							</td>
+							<td>
+								<p>Specifies the repair method to be used when setting the self-healing state of the volume.</p>
+								<p>The <b>Flags</b> parameter can be set to three values:</p>
+								<ul><li>
+										
+											<b>0x01</b>: Enables general repair.<br><br>
+									</li><li>
+										
+											<b>0x09</b>: Warns about potential data loss without repair.<br><br>
+									</li><li>
+										
+											<b>0x00</b>: Disables NTFS self-healing repair operations.<br><br>
+									</li></ul>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>wait</p>
+							</td>
+							<td colspan="1">
+								<p>Waits for repair(s) to complete. If NTFS has detected a problem on a volume on which it is performing repairs, this option allows the system to wait until the repair is complete before it runs any pending scripts.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>[WaitType {0|1}]</p>
+							</td>
+							<td colspan="1">
+								<p>Indicates whether to wait for the current repair to complete or to wait for all repairs to complete. <i>WaitType</i> can be set to the following values:</p>
+								<ul><li>
+										
+											<b>0</b>: Waits for all repairs to complete. (default value)<br><br>
+									</li><li>
+										
+											<b>1</b>: Waits for the current repair to complete.<br><br>
+									</li></ul>
+							</td>
+						</tr></table>
+				</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<ul xmlns=""><li class="unordered">
+							Self-healing NTFS attempts to correct corruptions of the NTFS file system online, without requiring <b>Chkdsk.exe</b> to be run. This feature was introduced in Windows Server 2008. For more information, see <a href="http://go.microsoft.com/fwlink/?LinkID=165401" alt="" target="_blank"><linktext xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">Self Healing NTFS</linktext></a>.<br><br>
+						</li></ul>
+				</content></div><a name="BKMK_examples"></a><a name="b5990ea6-b578-4459-ae7f-ca441c213e5f#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">To enable self-healing repair on drive C, type:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>fsutil repair set c: 1</pre></td></tr></table></span></div>
+					<p xmlns="">To disable self-healing repair on drive C, type:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>fsutil repair set c: 0</pre></td></tr></table></span></div>
+				</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+						</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<p xmlns="">
+										<a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a>
+									</p>
+									<p xmlns="">
+										<a href="097de37c-812c-47b0-872b-4b55ea32b27f.htm">Fsutil</a>
+									</p>
+									<p xmlns="">
+										<a href="http://go.microsoft.com/fwlink/?LinkID=165401" alt="" target="_blank"><linktext xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">Self Healing NTFS</linktext></a>
+									</p>
+								</content></div>
+						</sections></div>
+				</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

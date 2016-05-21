@@ -1,0 +1,409 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Dsget user</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Dsget user</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008</p>
+				<p>Displays the properties of a user in the directory. There are two variations of this command. The first variation displays the properties of multiple users. The second variation displays the group membership information of a single user.</p>
+				<p>
+					<b>Dsget</b> is a command-line tool that is built into Windows Server 2008. It is available if you have the AD DS server role installed. To use <b>dsget</b>, you must run the <b>dsget</b> command from an elevated command prompt. To open an elevated command prompt, click <b>Start</b>, right-click <b>Command Prompt</b>, and then click <b>Run as administrator</b>.</p>
+				<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+			<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>dsget user &lt;UserDN&gt; [-dn] [-samid] [-sid] [-upn] [-fn] [-mi] [-ln] [-display] [-empid] [-desc] [-office] [-tel] [-email] [-hometel] [-pager] [-mobile] [-fax] [-iptel] [-webpg] [-title] [-dept] [-company] [-mgr] [-hmdir] [-hmdrv] [-profile] [-loscr] [-mustchpwd] [-canchpwd] [-pwdneverexpires] [-disabled] [-acctexpires] [-reversiblepwd] [{-uc | -uco | -uci}] [-part &lt;PartitionDN&gt; [-qlimit] [-qused]]
+dsget user &lt;UserDN&gt; [-memberof] [-expand][{-uc | -uco | -uci}]</pre></td></tr></table></span></div>
+				</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+								<th colspan="1">
+									Parameter
+								</th>
+								<th colspan="1">
+									Description
+								</th>
+							</tr><tr>
+							<td colspan="1">
+								<p>&lt;UserDN&gt; (first variation)</p>
+							</td>
+							<td colspan="1">
+								<p>Required. Displays the distinguished names of the user objects that you want to view. If values are omitted, they are obtained through standard input (stdin) to support piping of output from another command to input of this command. Compare this parameter with <i>UserDN</i> in the second variation.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-dn </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the distinguished names of the users.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-samid </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the Security Account Manager (SAM) account names of the users.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-sid </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the user security identifiers (SIDs).</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-upn </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the user principal names (UPNs) of the users.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-fn </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the first names of the users.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-mi </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the middle initials of the users.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-ln </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the last names of the users.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-display </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the display names of the users.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-empid </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the employee IDs of the users.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-desc </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the descriptions of the users.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-full </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the full names of the users.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-office </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the office locations of the users.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-tel </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the telephone numbers of the users.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-email </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the e-mail addresses of the users.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-hometel </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the home telephone numbers of the users.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-pager </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the pager numbers of the users.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-mobile </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the mobile phone numbers of the users.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-fax </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the fax numbers of the users.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-iptel </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the user IP phone numbers.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-webpg </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the user Web page URLs.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-title </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the titles of the users.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-dept </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the departments of the users.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-company </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the company information of the users.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-mgr </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the managers of the users.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-hmdir </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the drive letter to which the home directory of the user is mapped to if the home directory path is a UNC path. </p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-hmdrv </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the user's home drive letter if home directory is a UNC path.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-profile </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the user profile paths.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-loscr </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the user logon script paths.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-mustchpwd </p>
+							</td>
+							<td colspan="1">
+								<p>Displays whether users must change their passwords at the time of next logon (<b>yes</b>) or not (<b>no</b>).</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-canchpwd </p>
+							</td>
+							<td colspan="1">
+								<p>Displays whether users can change their password (<b>yes</b>) or not (<b>no</b>).</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-pwdneverexpires </p>
+							</td>
+							<td colspan="1">
+								<p>Displays whether the user passwords never expires (<b>yes</b>) or not (<b>no</b>).</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-disabled </p>
+							</td>
+							<td colspan="1">
+								<p>Displays whether user accounts are disabled for logon (<b>yes</b>) or not (<b>no</b>).</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-acctexpires </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the dates when user accounts expire. If the accounts never expire, this command returns <b>never</b>.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-reversiblepwd </p>
+							</td>
+							<td colspan="1">
+								<p>Displays whether the user passwords are allowed to be stored using reversible encryption (<b>yes</b>) or not (<b>no</b>).</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>&lt;UserDN&gt; (second variation)</p>
+							</td>
+							<td colspan="1">
+								<p>Required. Displays the distinguished name of the user whose group membership you want to view.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-memberof </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the immediate list of groups of which the user is a member.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-expand </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the recursively expanded list of groups of which the user is a member. This option takes the immediate group membership list of the user, and then recursively expands each group in this list to determine its group memberships as well to arrive at a complete closure set of the groups.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>{-uc| -uco| -uci} </p>
+							</td>
+							<td colspan="1">
+								<p>Specifies that <b>dsget</b> formats output or input data in Unicode. The following list explains each format.</p>
+								<ul><li class="unordered">
+										
+											<b>-uc</b>: Specifies a Unicode format for input from or output to a pipe (|).<br><br>
+									</li><li class="unordered">
+										
+											<b>-uco </b>: Specifies a Unicode format for output to a pipe (|) or a file.<br><br>
+									</li><li class="unordered">
+										
+											<b>-uci</b>: Specifies a Unicode format for input from a pipe (|) or a file.<br><br>
+									</li></ul>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-part &lt;PartitionDN&gt; </p>
+							</td>
+							<td colspan="1">
+								<p>Connects a computer to the directory partition with the distinguished name of <i>PartitionDN</i>.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-qlimit </p>
+							</td>
+							<td colspan="1">
+								<p>Displays the effective quota of the user within the directory partition that you specify with the -part parameter.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>-qused </p>
+							</td>
+							<td colspan="1">
+								<p>Displays how much of the quota the user has used within the specified directory partition that you specify with the -part parameter.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/? </p>
+							</td>
+							<td colspan="1">
+								<p>Displays help at the command prompt.</p>
+							</td>
+						</tr></table>
+				</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<ul xmlns=""><li class="unordered">
+							If you do not supply a target object at the command prompt, <b>dsget</b> obtains the target object from standard input (stdin). <b>Dsget</b> can accept stdin from the keyboard, from a redirected file, or as piped output from another command. To mark the end of stdin data from the keyboard or in a redirected file, use the end-of-file character (CTRL+Z).<br><br>
+						</li><li class="unordered">
+							Use <b>dsget</b> to view the properties of a specific object in the directory. <br><br>
+						</li><li class="unordered">
+							As a result of <b>dsquery</b> searches, you can pipe returned objects to <b>dsget</b> and obtain object properties.<br><br>
+						</li><li class="unordered">
+							The <b>-canchpwd</b> parameter estimates whether a user can change his password based on the way that it interprets the access control lists (ACLs) on the user object. To know for certain whether a user can change a password, that user must try to change it. This non-authoritative answer is not specific to <b>dsget user</b>. It is also inherent in the <b>User Properties</b> dialog box in Active Directory Users and Computers in Microsoft Management Console (MMC).<br><br>
+						</li><li class="unordered">
+							If you do not specify property parameters for <b>dsget user</b>, the default user properties that appear are distinguished name, SAM account name, and description.<br><br>
+						</li><li class="unordered">
+							If you specify the <b>-memberof</b> parameter, it overrides all other parameters and only the membership list for the user appears.<br><br>
+						</li><li class="unordered">
+							To find users whose passwords are set to never expire, you can use Windows PowerShell. For more information, see <a href="http://go.microsoft.com/fwlink/?LinkID=200044" alt="" target="_blank"><linktext xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">Finding Users Whose Passwords Never Expire</linktext></a> (http://go.microsoft.com/fwlink/?LinkID=200044).<br><br>
+						</li></ul>
+				</content></div><a name="BKMK_examples"></a><a name="c728d2d9-872d-492d-9419-76163110cfe9#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">To find all users in an organizational unit (OU) named Test whose name starts with "jon" and to show their descriptions, type:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>dsquery user OU=Test,dc=ms,dc=tld -name jon* | dsget user -desc</pre></td></tr></table></span></div>
+					<p xmlns="">To show the list of groups, recursively expanded, to which the user Mike Danseglio belongs, type:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>dsget user "CN=Mike Danseglio,CN=users,dc=ms,dc=tld" -memberof -expand</pre></td></tr></table></span></div>
+				</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+						</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<p xmlns="">
+										<a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a>
+									</p>
+									<p xmlns="">
+										<a href="ef0beb94-3e59-47e7-8193-d4c5c9dcf099.htm">Dsget</a>
+									</p>
+									<p xmlns="">
+										<a href="b97121f8-ac12-4a4b-9f98-6e5b167ddb2c.htm">Dsget computer</a>
+									</p>
+									<p xmlns="">
+										<a href="1e0c1d0e-ce9d-4750-b496-654353a2eb13.htm">Dsget contact</a>
+									</p>
+									<p xmlns="">
+										<a href="92cc6c3f-008a-457b-8cf3-bf81cc1c077e.htm">Dsget group</a>
+									</p>
+									<p xmlns="">
+										<a href="60cdf79c-95fe-471f-ae9d-aac4fcc65afe.htm">Dsget ou</a>
+									</p>
+									<p xmlns="">
+										<a href="dc12834d-9adc-4d37-940f-d42d7c61d71e.htm">Dsget server</a>
+									</p>
+									<p xmlns="">
+										<a href="b53588e9-d6f9-4e2c-a62c-490e92e8f2ea.htm">Dsget subnet</a>
+									</p>
+									<p xmlns="">
+										<a href="e886a18d-594f-4a3a-8d6c-d0f7a27623fc.htm">Dsget site</a>
+									</p>
+									<p xmlns="">
+										<a href="c8a620e7-53ea-406e-9d3d-4e2f906c3548.htm">Dsget quota</a>
+									</p>
+									<p xmlns="">
+										<a href="2a804018-a25f-422e-9374-03c48bb8141d.htm">Dsget partition</a>
+									</p>
+								</content></div>
+						</sections></div>
+				</sections></div><h2 class="heading"><span id="changeHistoryNoToggle">Change History</span></h2><div id="changeHistorySectionSection" class="section">
+				<content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+								<th>
+									Date
+								</th>
+								<th>
+									Revision
+								</th>
+							</tr><tr>
+							<td>
+								<p>August 19, 2010</p>
+							</td>
+							<td>
+								<p>Added a link to more information about how to use Windows PowerShell to find users who have passwords set to never expire. </p>
+							</td>
+						</tr></table>
+				</content>
+			</div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

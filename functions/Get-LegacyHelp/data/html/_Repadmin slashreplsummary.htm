@@ -1,0 +1,75 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Repadmin /replsummary</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Repadmin /replsummary</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2003 with SP1,Windows Server 2008 R2,Windows Server 2008,Windows Server 2003 R2,Windows Server 2003 with SP2,Windows Server 2003</p>
+				<p>Identifies domain controllers that are failing inbound replication or outbound replication, and summarizes the results in a report.</p>
+				<p>When it begins to collect data for the replication summary, this command displays a series of dots. Each dot represents a domain controller that is specified in the DSA_LIST parameter (plus some extra dots for preprocessing). Fifty dots are displayed on each line of the output. For example, four lines of dots represent about 200 domain controllers that are specified by the DSA_LIST parameter. The dots help you gauge throughput and completion time in large environments.</p>
+				<p>For examples of how to use this command, see <a href="#BKMK_examples">Examples</a>.</p>
+			<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>repadmin /replsummary [DSA_LIST] [/bysrc] [/bydest] [/errorsonly] [/sort:{delta | partners | failures | error | percent | unresponsive}]</pre></td></tr></table></span></div>
+				</content></div><h2 class="heading">Parameters</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+								<th colspan="1">
+									Parameter
+								</th>
+								<th colspan="1">
+									Description
+								</th>
+							</tr><tr>
+							<td colspan="1">
+								<p>DSA_LIST</p>
+							</td>
+							<td colspan="1">
+								<p>Specifies the host name of a domain controller or a list of domain controllers. For detailed syntax, see <a href="24cf60ff-6fae-428e-967a-5c24f5f80d31.htm">Repadmin</a>.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/bysrc</p>
+							</td>
+							<td colspan="1">
+								<p>Summarizes the replication status for all domain controllers that a given source domain controller replicates to. This parameter does not display the destination domain controller.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/bydest</p>
+							</td>
+							<td colspan="1">
+								<p>Summarizes the replication status for all domain controllers that a given destination domain controller replicates from. This parameter does not display the source domain controller.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/errorsonly</p>
+							</td>
+							<td colspan="1">
+								<p>Shows only the domain controllers where the partner error is non-zero.</p>
+							</td>
+						</tr><tr>
+							<td colspan="1">
+								<p>/sort</p>
+							</td>
+							<td colspan="1">
+								<p>Sorts the output by columns that are in the following list:</p>
+								<ul><li class="unordered">delta: Sorts the results according to the least current naming context for each source or destination domain controller.<br><br></li><li class="unordered">partners: Sorts the results list by the number of replication partners for each domain controller.<br><br></li><li class="unordered">failures: Sorts the results list by the number of partner replication failures for each domain controller.<br><br></li><li class="unordered">error: Sorts the results list by the last replication result (the error code) that is blocking replication for each domain controller. This helps you troubleshoot the root cause of failure for domain controllers that fail with common errors.<br><br></li><li class="unordered">percent: Sorts the results list by the partner replication failure percentage for each domain controller. (This is calculated by dividing the number of failures by the total number of attempts, and then multiplying by 100; that is, failures/total attempts * 100.) This helps you prioritize your troubleshooting efforts by identifying the domain controllers that are experiencing the highest frequency of replication errors.<br><br></li><li class="unordered">unresponsive: Sorts the results list by the names of partners that do not respond to replication requests for each domain controller.<br><br></li></ul>
+							</td>
+						</tr></table>
+				</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<ul xmlns=""><li class="unordered">
+							You can specify the /bysrc and /bydest parameters at the same time. If you do so, then Repadmin displays the /bysrc parameter table first and the /bydest parameter table next.<br><br>
+						</li><li class="unordered">
+							If the parameters /bysrc and /bydest are both absent, Repadmin displays the one with the least number of partner errors.<br><br>
+						</li></ul>
+				</content></div><a name="BKMK_examples"></a><a name="f39524ca-3728-4300-a710-ff7016053896#BKMK_examples"></a><h2 class="heading">Examples</h2><div id="sectionSection3" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<p xmlns="">The following example targets all domain controllers in the forest to retrieve summary replication status from each. The example lists the output in a table that has columns for source and destination, and sorts the results based on the longest time since the last successful replication:</p>
+					<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>repadmin /replsum * /bysrc /bydest /sort:delta</pre></td></tr></table></span></div>
+				</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+					<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+						</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+							<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+									<p xmlns="">
+										<a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a>
+									</p>
+									<p xmlns="">
+										<a href="24cf60ff-6fae-428e-967a-5c24f5f80d31.htm">Repadmin</a>
+									</p>
+								</content></div>
+						</sections></div>
+				</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>

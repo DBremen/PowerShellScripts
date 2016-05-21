@@ -1,0 +1,87 @@
+<html dir="LTR" xmlns:mshelp="http://msdn.microsoft.com/mshelp" xmlns:ddue="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:tool="http://www.microsoft.com/tooltip"><head><meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252"><meta name="save" content="history"><title>Winsat</title><link rel="stylesheet" type="text/css" href="../local/Classic.css"><script src="../local/script.js"></script></head><body><div><input type="hidden" id="userDataCache" class="userDataStyle"><input type="hidden" id="hiddenScrollOffset"></div><img id="dropDownImage" style="display:none; height:0; width:0;" src="../local/drpdown.gif"><img id="dropDownHoverImage" style="display:none; height:0; width:0;" src="../local/drpdown_orange.gif"><img id="collapseImage" style="display:none; height:0; width:0;" src="../local/collapse.gif"><img id="expandImage" style="display:none; height:0; width:0;" src="../local/exp.gif"><img id="copyImage" style="display:none; height:0; width:0;" src="../local/copycode.gif"><img id="copyHoverImage" style="display:none; height:0; width:0;" src="../local/copycodeHighlight.gif"><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow1"><td align="left"><span id="runningHeaderText"></span></td></tr><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Winsat</span></td></tr><tr id="headerTableRow3"><td></td></tr></table></div><div id="mainSection"><div id="mainBody"><div id="allHistory" class="saveHistory" onsave="saveAll()" onload="loadAll()"></div><p>Applies To: Windows Server 2008 R2,Windows Server 2008,Windows Vista,Windows 7</p>
+<p><b>winsat</b> assesses various features, capabilities, and attributes of a computer running Windows Vista®.</p>
+<h2 class="heading">Syntax</h2><div id="sectionSection0" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="code" xmlns=""><span codelanguage="other"><table width="100%" cellspacing="0" cellpadding="0"><tr><th> </th><th><span class="copyCode" onclick="CopyCode(this)" onkeypress="CopyCode_CheckKey(this)" onmouseover="ChangeCopyCodeIcon(this)" onfocusin="ChangeCopyCodeIcon(this)" onmouseout="ChangeCopyCodeIcon(this)" onfocusout="ChangeCopyCodeIcon(this)" tabindex="0"><img class="copyCodeImage" name="ccImage" align="absmiddle" src="../local/copycode.gif">Copy Code</span></th></tr><tr><td colspan="2"><pre>winsat &lt;assessment name&gt; &lt;assessment parameters&gt;</pre></td></tr></table></span></div>
+</content></div><h2 class="heading">Assessments</h2><div id="sectionSection1" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h3 class="subHeading" xmlns=""></h3><table xmlns=""><tr>
+<th colspan="1">
+Assessment
+</th>
+<th colspan="1">
+Description
+</th></tr><tr>
+<td colspan="1">
+<p><a href="ccbd500e-ba96-4f0e-8814-a5e0dce650e6.htm">winsat dwm</a></p>
+</td>
+<td colspan="1">
+<p>Assesses the ability of a system to display the Aero desktop effects.</p>
+</td></tr><tr>
+<td colspan="1">
+<p><a href="c01b5724-5947-462e-a0d4-04c4ab37fdce.htm">winsat d3d</a></p>
+</td>
+<td colspan="1">
+<p>Assesses the ability of a system to run Direct 3D applications, such as games.</p>
+</td></tr><tr>
+<td colspan="1">
+<p><a href="cda017bf-6193-43c1-b71f-e379c23e1152.htm">winsat mem</a></p>
+</td>
+<td colspan="1">
+<p>Assesses system memory bandwidth by simulating large memory to memory buffer copies.</p>
+</td></tr><tr>
+<td colspan="1">
+<p><a href="d51ea641-c258-4f6c-aba1-7031cce09e57.htm">winsat disk</a></p>
+</td>
+<td colspan="1">
+<p>Assesses the performance of disk drives.</p>
+</td></tr><tr>
+<td colspan="1">
+<p><a href="e86ca96f-a674-4320-9c63-13962b5af8f9.htm">winsat cpu</a></p>
+</td>
+<td colspan="1">
+<p>Assesses the performance of the CPU(s).</p>
+</td></tr><tr>
+<td colspan="1">
+<p><a href="e1be78cd-7208-41dc-84cf-86ff4c3679e4.htm">winsat media</a></p>
+</td>
+<td colspan="1">
+<p>Assesses the performance of video encoding and decoding (playback) using the Direct Show framework.</p>
+</td></tr><tr>
+<td colspan="1">
+<p><a href="09a3b3dd-f746-4e6e-b684-76a9bde0c78d.htm">winsat mfmedia</a></p>
+</td>
+<td colspan="1">
+<p>Assesses the performance of video decoding (playback) using the Media Foundation framework.</p>
+</td></tr><tr>
+<td colspan="1">
+<p><a href="6789dca9-dfb4-4e96-ae7c-e1399e52f11d.htm">winsat features</a></p>
+</td>
+<td colspan="1">
+<p>Enumerates relevant system information.</p>
+</td></tr><tr>
+<td colspan="1">
+<p><a href="a098662a-85d6-41c8-ae61-7624d01d0521.htm">winsat formal</a></p>
+</td>
+<td colspan="1">
+<p>Runs a set of pre-defined assessments and saves the data in an XML file in <b>%systemroot%\performance\winsat\datastore</b>.</p>
+</td></tr></table>
+</content></div><h2 class="heading">Remarks</h2><div id="sectionSection2" class="section"><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<ul xmlns=""><li class="unordered">
+Please review the parameters for an assessment before running it. Assessment parameters are required for accurate testing.<br><br>
+
+<div class="alert"><table width="100%" cellspacing="0" cellpadding="0"><tr><th align="left"><img class="note" src="../local/Caution.gif">Caution </th></tr><tr><td>
+Running an assessment without parameters may result in system performance problems or system instability.<p>
+</td></tr></table><p></div>
+</li><li class="unordered">
+Membership in the local Administrators group, or equivalent, is the minimum required to use <b>winsat</b>. The command must be executed from an elevated command prompt window.<br><br>
+</li><li class="unordered">
+To open an elevated command prompt window, click <b>Start</b>, click <b>All Programs, </b>click <b>Accessories</b>, right-click <b>Command Prompt</b>, and click <b>Run as administrator</b>.<br><br>
+</li></ul>
+</content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"></content><sections xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<h4 class="subHeading" xmlns="">Additional references</h4><div class="subSection" xmlns=""><content xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">
+<p xmlns=""><a href="338c0381-ad63-4a4c-bd2c-42c7a93821fe.htm">Command-Line Syntax Key</a></p>
+</content></div>
+</sections></div>
+</sections></div><!--[if gte IE 5]>
+			<tool:tip element="languageFilterToolTip" avoidmouse="false"/>
+		<![endif]--></div><div id="footer"><hr><p></div></div></body></html>
