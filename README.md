@@ -1,18 +1,43 @@
 # PowerShellScripts
-Some PowerShell scipts I wrote that can be hopefully also useful to others
-I've documented some of them on my blog:
-* Get-ESSearchResults https://powershellone.wordpress.com/2015/02/28/using-everything-search-command-line-es-exe-via-powershell/
-* Add-PropertySet https://powershellone.wordpress.com/2015/03/06/powershell-propertysets-and-format-views/
-* Get-FormatView and Add-FormatTableView  https://powershellone.wordpress.com/2015/03/09/powershell-format-table-views/
-* Get-Range https://powershellone.wordpress.com/2015/03/15/extending-the-powershell-range-operator/
-* Get-ChangeLog https://powershellone.wordpress.com/2015/06/30/comparing-two-objects-or-csv-files-column-by-column/
-* Sort-CustomList https://powershellone.wordpress.com/2015/07/30/sort-data-using-a-custom-list-in-powershell/
-* FileSearcher module https://powershellone.wordpress.com/2015/08/11/search-file-content-by-keyword-using-everything-powershell-gui/
-* Open-Registry https://powershellone.wordpress.com/2015/09/02/use-powershell-to-open-regedit-at-a-specific-or-regjump-for-powershell/
-* Get-Choice https://powershellone.wordpress.com/2015/09/10/a-nicer-promptforchoice-for-the-powershell-console-host/
-* Add-PowerShellContextMenu https://powershellone.wordpress.com/2015/09/16/adding-edit-with-powershell-ise-and-open-powershell-here-as-admin-to-the-context-menu/
-* Get-FileMethods https://powershellone.wordpress.com/2015/10/27/review-of-methods-to-download-files-using-powershell/
-* Set-OOTO https://powershellone.wordpress.com/2016/02/11/use-powershell-to-set-exchange-out-of-office-status-from-any-pc/
-* Get-Uninstaller https://powershellone.wordpress.com/2016/02/13/retrieve-uninstallstrings-to-fix-installer-issues/
-* Clear-Clipboard https://powershellone.wordpress.com/2016/02/25/fix-clipboard-is-not-working-restart-process-with-powershell/
-* ConvertFrom-ExcelClipboard https://powershellone.wordpress.com/2016/06/02/powershell-tricks-convert-copied-range-from-excel-to-an-array-of-psobjects/
+Some PowerShell scipts I wrote, that could turn out being useful to others, too.
+
+| Function | Synopsis | Related Blog Post | Full Documentation |
+| --- | --- | --- | --- |
+| 8Queens | PowerShell solution for a classical programming exercise. |  | [Link](https://github.com/DBremen/PowerShellScripts/docs/8Queens.md) |
+| Add-FormatTableView | Function to add a Format Table View for a type |  | [Link](https://github.com/DBremen/PowerShellScripts/docs/Add-FormatTableView.md) |
+| Add-PowerShellContextMenu | Function to create context menu entries in order to invoke PowerShell | [Link](@{navigationLink=@{uri=https://powershellone.wordpress.com/2015/09/16/adding-edit-with-powershell-ise-and-open-powershell-here-as-admin-to-the-context-menu/}}) | [Link](https://github.com/DBremen/PowerShellScripts/docs/Add-PowerShellContextMenu.md) |
+| Add-PropertySet | Function to create property sets | [Link](@{navigationLink=@{uri=https://powershellone.wordpress.com/2015/03/06/powershell-propertysets-and-format-views/}}) | [Link](https://github.com/DBremen/PowerShellScripts/docs/Add-PropertySet.md) |
+| Add-ScriptHelpISEAddOn | Function to create an ISE Add-On that will generate comment based help for functions. The functions requires the Show-UI module. | [Link](@{navigationLink=@{uri=https://powershellone.wordpress.com/2015/09/28/create-an-integrated-wpf-based-ise-add-on-with-powershell/}}) | [Link](https://github.com/DBremen/PowerShellScripts/docs/Add-ScriptHelpISEAddOn.md) |
+| Compare-File | A wrapper and extension for the built-in Compare-Object cmdlet to compare two txt based files and receive a side-by-side comparison (including Line numbes). |  | [Link](https://github.com/DBremen/PowerShellScripts/docs/Compare-File.md) |
+| ConvertFrom-ExcelClipboard | Convert copied range from excel to an array of PSObjects | [Link](@{navigationLink=@{uri=https://powershellone.wordpress.com/2016/06/02/powershell-tricks-convert-copied-range-from-excel-to-an-array-of-psobjects/}}) | [Link](https://github.com/DBremen/PowerShellScripts/docs/ConvertFrom-ExcelClipboard.md) |
+| ConvertFrom-HtmlToText | Extract the text out of a HTML string |  | [Link](https://github.com/DBremen/PowerShellScripts/docs/ConvertFrom-HtmlToText.md) |
+| ConvertTo-HtmlConditionalFormat | Function to convert PowerShell objects into an HTML table with the option to format individual table cells based on property values using CSS selectors. |  | [Link](https://github.com/DBremen/PowerShellScripts/docs/ConvertTo-HtmlConditionalFormat.md) |
+| ConvertTo-PSFunction | Function to "convert" legacy command line commands to PowerShell functions |  | [Link](https://github.com/DBremen/PowerShellScripts/docs/ConvertTo-PSFunction.md) |
+| Delete-ComputerRestorePoint | Function to Delete Windows System Restore points |  | [Link](https://github.com/DBremen/PowerShellScripts/docs/Delete-ComputerRestorePoint.md) |
+| ForeachFor2 | Function to step through two series of values in two collections and run commands against them. |  | [Link](https://github.com/DBremen/PowerShellScripts/docs/ForeachFor2.md) |
+| Get-FunctionFromScript | Gets the functions declared within a script block or a file |  | [Link](https://github.com/DBremen/PowerShellScripts/docs/Get-FunctionFromScript.md) |
+| Generate-ScriptMarkdownHelp | The function that generated the Markdown help in this repository. (see Example for usage).  Generates markdown help for Github for each function containing comment based help (Description not empty) within a folder recursively and a summary table for the main README.md |  | [Link](https://github.com/DBremen/PowerShellScripts/docs/Generate-ScriptMarkdownHelp.md) |
+| GenerateSolveMaze | Function to generate a GUI (Windows forms) to build and solve random mazes |  | [Link](https://github.com/DBremen/PowerShellScripts/docs/GenerateSolveMaze.md) |
+| Get-ChangeLog | Comparing two objects or .csv files column by column. | [Link](@{navigationLink=@{uri=https://powershellone.wordpress.com/2015/06/30/comparing-two-objects-or-csv-files-column-by-column/}}) | [Link](https://github.com/DBremen/PowerShellScripts/docs/Get-ChangeLog.md) |
+| Get-Choice | An alternative to the built-in PromptForChoice providing a consistent UI across different hosts. | [Link](@{navigationLink=@{uri=https://powershellone.wordpress.com/2015/09/10/a-nicer-promptforchoice-for-the-powershell-console-host/}}) | [Link](https://github.com/DBremen/PowerShellScripts/docs/Get-Choice.md) |
+| Get-ESSearchResult | PowerShell wrapper around Everything search command line (es.exe). | [Link](@{navigationLink=@{uri=https://powershellone.wordpress.com/2015/02/28/using-everything-search-command-line-es-exe-via-powershell/
+https://www.voidtools.com/support/everything/command_line_interface/}}) | [Link](https://github.com/DBremen/PowerShellScripts/docs/Get-ESSearchResult.md) |
+| Get-FileAndExtract | Function to download and extract files. |  | [Link](https://github.com/DBremen/PowerShellScripts/docs/Get-FileAndExtract.md) |
+| Get-FormatView | Function to get the format views for a particular type. |  | [Link](https://github.com/DBremen/PowerShellScripts/docs/Get-FormatView.md) |
+| Get-Range | Function to retrieve a continuous or stepwise Range of integers,decimals,dates,month names, day names or chars. Simulating Haskell`s Range operator | [Link](@{navigationLink=@{uri=https://powershellone.wordpress.com/2015/03/15/extending-the-powershell-Range-operator/}}) | [Link](https://github.com/DBremen/PowerShellScripts/docs/Get-Range.md) |
+| Get-Uninstaller | Function to get the uninstaller for installed software via registry (PowerShell v4 and <) or Get-Package) | [Link](@{navigationLink=@{uri=https://powershellone.wordpress.com/2016/02/13/retrieve-uninstallstrings-to-fix-installer-issues/}}) | [Link](https://github.com/DBremen/PowerShellScripts/docs/Get-Uninstaller.md) |
+| Get-WIFIPassword | Get the Wifi password of stored networks using netsh. |  | [Link](https://github.com/DBremen/PowerShellScripts/docs/Get-WIFIPassword.md) |
+| Invoke-HTMLPesterReport | Generate HTML report for Pester test results using ReportUnit.exe |  | [Link](https://github.com/DBremen/PowerShellScripts/docs/Invoke-HTMLPesterReport.md) |
+| Join-Tables | Function to join tables based on one or more common columns with an option to summarize (aggregate) joined columns. |  | [Link](https://github.com/DBremen/PowerShellScripts/docs/Join-Tables.md) |
+| Migrate-ScheduledTask | Script to migrate scheduled tasks from Windows XP/Server 2003 to Windows 7/Server 2008 task scheduler |  | [Link](https://github.com/DBremen/PowerShellScripts/docs/Migrate-ScheduledTask.md) |
+| Monitor-Folder | Monitors a folder for changes using non-persistent asynchronous events |  | [Link](https://github.com/DBremen/PowerShellScripts/docs/Monitor-Folder.md) |
+| Open-Registry | Open the regedit at the specified path similar to sysinternals regjump. |  | [Link](https://github.com/DBremen/PowerShellScripts/docs/Open-Registry.md) |
+| Out-ConditionalColor | Filter to conditionally format PowerShell output. The approach seems to have stopped working since v3 and higher. |  | [Link](https://github.com/DBremen/PowerShellScripts/docs/Out-ConditionalColor.md) |
+| Out-ConditionalColorProperties | Filter to conditionally format property values within PowerShell output on the console. |  | [Link](https://github.com/DBremen/PowerShellScripts/docs/Out-ConditionalColorProperties.md) |
+| Restart-Process | Function to restart process(es) | [Link](@{navigationLink=@{uri=https://powershellone.wordpress.com/2016/02/25/fix-clipboard-is-not-working-restart-process-with-powershell/}}) | [Link](https://github.com/DBremen/PowerShellScripts/docs/Restart-Process.md) |
+| SilverSearcher | PowerShell wrapper around silver searcher (ag.exe) Recursively search for PATTERN in PATH. Like grep or ack, but faster. |  | [Link](https://github.com/DBremen/PowerShellScripts/docs/SilverSearcher.md) |
+| Select-Object | Proxy function for Select-Object providing easier syntax for calculated properties. Selects objects or object properties. | [Link](@{navigationLink=@{uri=https://powershellone.wordpress.com/2015/11/23/simplified-syntax-for-calculated-properties-with-select-object/}}) | [Link](https://github.com/DBremen/PowerShellScripts/docs/Select-Object.md) |
+| Sort-CustomList | Sort data using a custom list in PowerShell. | [Link](@{navigationLink=@{uri=https://powershellone.wordpress.com/2015/07/30/sort-data-using-a-custom-list-in-powershell/}}) | [Link](https://github.com/DBremen/PowerShellScripts/docs/Sort-CustomList.md) |
+| TowerOfHanoi | PowerShell solution to the Tower of Hanoi problem (http://en.wikipedia.org/wiki/Tower_of_Hanoi) using recursion. |  | [Link](https://github.com/DBremen/PowerShellScripts/docs/TowerOfHanoi.md) |
+| Update-Content | Insert text on a new line after the line matching the StartPattern or replace text between start- and end Pattern within a file |  | [Link](https://github.com/DBremen/PowerShellScripts/docs/Update-Content.md) |
+| WhereEx | POC for a simplified Where-Object with multiple conditions on the same property for PowerShell. | [Link](@{navigationLink=@{uri=https://powershellone.wordpress.com/2015/11/02/simplified-where-object-for-multiple-conditions-on-the-same-property-for-powershell/}}) | [Link](https://github.com/DBremen/PowerShellScripts/docs/WhereEx.md) |
