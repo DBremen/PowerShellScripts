@@ -6,6 +6,9 @@ Generate HTML report for Pester test results using ReportUnit.exe Invoke-HTMLPes
 ## Script file
 Invoke-HTMLPesterReport.ps1
 
+## Related blog post
+https://powershellone.wordpress.com/2016/05/18/reporting-against-pester-test-results/
+
 ## SYNTAX
 
 ```

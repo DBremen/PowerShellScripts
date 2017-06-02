@@ -9,7 +9,7 @@
 	)
 }
 
-function Get-ESSearchResult {
+function Get-ESSearchResult1 {
      <#    
     .SYNOPSIS
         PowerShell wrapper around Everything search command line (es.exe).
@@ -33,6 +33,7 @@ function Get-ESSearchResult {
 		search 'mySearchTerm'
     .LINK
         https://powershellone.wordpress.com/2015/02/28/using-everything-search-command-line-es-exe-via-powershell/
+    .LINK
         https://www.voidtools.com/support/everything/command_line_interface/
     #>
     [CmdletBinding()]

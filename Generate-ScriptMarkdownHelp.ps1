@@ -162,15 +162,17 @@ Some PowerShell scipts I wrote, that could turn out being useful to others, too.
             }
             if ($help.description -ne $null){
                 $htCheck[$file.Name] += 1
-                $link = $help.relatedLinks | Where-Object {$_ -like '*powershellone*'}
+                $link = $help.relatedLinks 
+                if ($link){
+                    $link = $link.navigationLink.uri | Where-Object {$_ -like '*powershellone*'}
+                }
                 $mdFile = $function.Name + '.md'
-                $summaryTable += "`n| $($function.Name) | $($help.Synopsis.Replace("`n"," ")) | $(if($link){"[Link]($link)"}) | $("[Link](https://github.com/DBremen/PowerShellScripts/docs/$mdFile)") |"
+                $summaryTable += "`n| $($function.Name) | $($help.Synopsis.Replace("`n"," ")) | $(if($link){"[Link]($($link.navigationLink.uri))"}) | $("[Link](https://github.com/DBremen/PowerShellScripts/blob/master/docs/$mdFile)") |"
                 $documenation = New-MarkdownHelp -Command $function.Name -OutputFolder "$path\docs" -Force -Metadata $meta -OnlineVersionUrl ''
                 $text = (Get-Content -Path $documenation | Select-Object -Skip 6)
                 $index = $text.IndexOf('## SYNTAX')
                 $text[$index-1] += "`n## Script file`n$($file.Name)`n"
                 if ($link){
-                    $link = $link.navigationLink.uri
                     $index = $text.IndexOf('## SYNTAX')
                     $text[$index-1] += "`n## Related blog post`n$link`n"
                 }

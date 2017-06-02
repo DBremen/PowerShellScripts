@@ -6,6 +6,9 @@ Function to add a Format Table View for a type Add-FormatTableView.ps1
 ## Script file
 Add-FormatTableView.ps1
 
+## Related blog post
+https://powershellone.wordpress.com/2015/03/09/powershell-format-table-views/
+
 ## SYNTAX
 
 ```

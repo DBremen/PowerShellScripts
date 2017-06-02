@@ -1,16 +1,18 @@
-# Get-ESSearchResult
+# Get-ESSearchResult1
 
 ## SYNOPSIS
 PowerShell wrapper around Everything search command line (es.exe).
-Get-ESSearchResult.ps1
 
 ## Script file
 Get-ESSearchResult.ps1
 
+## Related blog post
+https://powershellone.wordpress.com/2015/02/28/using-everything-search-command-line-es-exe-via-powershell/
+
 ## SYNTAX
 
 ```
-Get-ESSearchResult [-SearchTerm] <Object> [-OpenItem] [-CopyFullPath] [-OpenFolder] [-AsObject]
+Get-ESSearchResult1 [-SearchTerm] <Object> [-OpenItem] [-CopyFullPath] [-OpenFolder] [-AsObject]
 ```
 
 ## DESCRIPTION
