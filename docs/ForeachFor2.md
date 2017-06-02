@@ -2,10 +2,9 @@
 
 ## SYNOPSIS
 Function to step through two series of values in two collections and run commands against them.
-ForeachFor2.ps1
 
 ## Script file
-ForeachFor2.ps1
+Utils\ForeachFor2.ps1
 
 ## SYNTAX
 

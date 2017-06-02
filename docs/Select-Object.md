@@ -5,7 +5,7 @@ Proxy function for Select-Object providing easier syntax for calculated properti
 Selects objects or object properties.
 
 ## Script file
-Simplified-Select.ps1
+Extend Builtin\Simplified-Select.ps1
 
 ## Related blog post
 https://powershellone.wordpress.com/2015/11/23/simplified-syntax-for-calculated-properties-with-select-object/

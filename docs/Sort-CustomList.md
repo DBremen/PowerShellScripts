@@ -2,10 +2,9 @@
 
 ## SYNOPSIS
 Sort data using a custom list in PowerShell.
-Sort-CustomList.ps1
 
 ## Script file
-Sort-CustomList.ps1
+Data Wrangling\Sort-CustomList.ps1
 
 ## Related blog post
 https://powershellone.wordpress.com/2015/07/30/sort-data-using-a-custom-list-in-powershell/

@@ -1,10 +1,10 @@
 # Delete-ComputerRestorePoint
 
 ## SYNOPSIS
-Function to Delete Windows System Restore points Delete-ComputerRestorePoint.ps1
+Function to Delete Windows System Restore points
 
 ## Script file
-Delete-ComputerRestorePoint.ps1
+Utils\Delete-ComputerRestorePoint.ps1
 
 ## SYNTAX
 

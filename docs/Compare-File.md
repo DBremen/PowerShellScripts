@@ -2,10 +2,9 @@
 
 ## SYNOPSIS
 A wrapper and extension for the built-in Compare-Object cmdlet to compare two txt based files and receive a side-by-side comparison (including Line numbes).
-Compare-File.ps1
 
 ## Script file
-Compare-File.ps1
+Extend Builtin\Compare-File.ps1
 
 ## SYNTAX
 

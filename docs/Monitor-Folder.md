@@ -1,10 +1,10 @@
 # Monitor-Folder
 
 ## SYNOPSIS
-Monitors a folder for changes using non-persistent asynchronous events Monitor-Folder.ps1
+Monitors a folder for changes using non-persistent asynchronous events
 
 ## Script file
-Monitor-Folder.ps1
+Utils\Monitor-Folder.ps1
 
 ## SYNTAX
 

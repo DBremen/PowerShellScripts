@@ -2,10 +2,9 @@
 
 ## SYNOPSIS
 POC for a simplified Where-Object with multiple conditions on the same property for PowerShell.
-WhereEx.ps1
 
 ## Script file
-WhereEx.ps1
+Extend Builtin\WhereEx.ps1
 
 ## Related blog post
 https://powershellone.wordpress.com/2015/11/02/simplified-where-object-for-multiple-conditions-on-the-same-property-for-powershell/

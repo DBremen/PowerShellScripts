@@ -2,10 +2,10 @@
 
 ## SYNOPSIS
 Function to retrieve a continuous or stepwise Range of integers,decimals,dates,month names, day names or chars.
-Simulating Haskell\`s Range operator Get-Range.ps1
+Simulating Haskell\`s Range operator
 
 ## Script file
-Get-Range.ps1
+Extend Builtin\Get-Range.ps1
 
 ## Related blog post
 https://powershellone.wordpress.com/2015/03/15/extending-the-powershell-Range-operator/

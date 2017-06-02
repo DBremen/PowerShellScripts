@@ -143,8 +143,8 @@ function Generate-ScriptMarkdownHelp{
 # PowerShellScripts
 Some PowerShell scipts I wrote, that could turn out being useful to others, too.
 
-| Function | Synopsis | Related Blog Post | Full Documentation |
-| --- | --- | --- | --- |
+| Function | Location | Synopsis | Related Blog Post | Full Documentation |
+| --- | --- | --- | --- | --- |
 '@
     Import-Module platyps
     $env:path += ";$path"
@@ -167,11 +167,12 @@ Some PowerShell scipts I wrote, that could turn out being useful to others, too.
                     $link = $link.navigationLink.uri | Where-Object {$_ -like '*powershellone*'}
                 }
                 $mdFile = $function.Name + '.md'
-                $summaryTable += "`n| $($function.Name) | $($help.Synopsis.Replace("`n"," ")) | $(if($link){"[Link]($($link.navigationLink.uri))"}) | $("[Link](https://github.com/DBremen/PowerShellScripts/blob/master/docs/$mdFile)") |"
+                $location = $("$($file.Directory.Name)\$($file.Name)")
+                $summaryTable += "`n| $($function.Name) | $location |$($help.Synopsis.Replace("`n"," ")) | $(if($link){"[Link]($($link.navigationLink.uri))"}) | $("[Link](https://github.com/DBremen/PowerShellScripts/blob/master/docs/$mdFile)") |"
                 $documenation = New-MarkdownHelp -Command $function.Name -OutputFolder "$path\docs" -Force -Metadata $meta -OnlineVersionUrl ''
                 $text = (Get-Content -Path $documenation | Select-Object -Skip 6)
                 $index = $text.IndexOf('## SYNTAX')
-                $text[$index-1] += "`n## Script file`n$($file.Name)`n"
+                $text[$index-1] += "`n## Script file`n$location`n"
                 if ($link){
                     $index = $text.IndexOf('## SYNTAX')
                     $text[$index-1] += "`n## Related blog post`n$link`n"
@@ -184,6 +185,3 @@ Some PowerShell scipts I wrote, that could turn out being useful to others, too.
     #sanity check if help file were generated for each script
     [PSCustomObject]$htCheck
 }
-
-#$path = 'C:\Scripts\ps1\PowerShellScripts'
-#. (Generate-ScriptMarkdownHelp($path))

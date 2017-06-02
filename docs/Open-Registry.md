@@ -2,10 +2,9 @@
 
 ## SYNOPSIS
 Open the regedit at the specified path similar to sysinternals regjump.
-Open-Registry.ps1
 
 ## Script file
-Open-Registry.ps1
+Utils\Open-Registry.ps1
 
 ## SYNTAX
 

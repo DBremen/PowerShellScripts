@@ -1,10 +1,10 @@
 # Add-FormatTableView
 
 ## SYNOPSIS
-Function to add a Format Table View for a type Add-FormatTableView.ps1
+Function to add a Format Table View for a type
 
 ## Script file
-Add-FormatTableView.ps1
+Format Output\Add-FormatTableView.ps1
 
 ## Related blog post
 https://powershellone.wordpress.com/2015/03/09/powershell-format-table-views/

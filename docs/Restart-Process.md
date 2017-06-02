@@ -1,10 +1,10 @@
 # Restart-Process
 
 ## SYNOPSIS
-Function to restart process(es) Restart-Process.ps1
+Function to restart process(es)
 
 ## Script file
-Restart-Process.ps1
+Utils\Restart-Process.ps1
 
 ## Related blog post
 https://powershellone.wordpress.com/2016/02/25/fix-clipboard-is-not-working-restart-process-with-powershell/

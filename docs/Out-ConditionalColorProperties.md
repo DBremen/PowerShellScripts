@@ -2,10 +2,9 @@
 
 ## SYNOPSIS
 Filter to conditionally format property values within PowerShell output on the console.
-Out-ConditionalColorProperties.ps1
 
 ## Script file
-Out-ConditionalColorProperties.ps1
+Format Output\Out-ConditionalColorProperties.ps1
 
 ## SYNTAX
 

@@ -2,10 +2,9 @@
 
 ## SYNOPSIS
 PowerShell solution to the Tower of Hanoi problem (http://en.wikipedia.org/wiki/Tower_of_Hanoi) using recursion.
-TowerOfHanoi.ps1
 
 ## Script file
-TowerOfHanoi.ps1
+Programming Exercises\TowerOfHanoi.ps1
 
 ## SYNTAX
 

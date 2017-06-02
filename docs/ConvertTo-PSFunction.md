@@ -1,10 +1,10 @@
 # ConvertTo-PSFunction
 
 ## SYNOPSIS
-Function to "convert" legacy command line commands to PowerShell functions ConvertTo-PSFunction.ps1
+Function to "convert" legacy command line commands to PowerShell functions
 
 ## Script file
-ConvertTo-PSFunction.ps1
+Utils\ConvertTo-PSFunction.ps1
 
 ## SYNTAX
 

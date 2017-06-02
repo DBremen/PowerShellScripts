@@ -4,10 +4,9 @@
 PowerShell wrapper around silver searcher (ag.exe)
 Recursively search for PATTERN in PATH.
 Like grep or ack, but faster.
-SilverSearcher.ps1
 
 ## Script file
-SilverSearcher.ps1
+Binary Wrapper\SilverSearcher.ps1
 
 ## SYNTAX
 

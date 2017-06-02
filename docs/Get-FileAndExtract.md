@@ -2,10 +2,9 @@
 
 ## SYNOPSIS
 Function to download and extract files.
-Get-FileAndExtract.ps1
 
 ## Script file
-Get-FileAndExtract.ps1
+Utils\Get-FileAndExtract.ps1
 
 ## SYNTAX
 

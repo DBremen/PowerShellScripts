@@ -3,10 +3,9 @@
 ## SYNOPSIS
 Filter to conditionally format PowerShell output.
 The approach seems to have stopped working since v3 and higher.
-Out-ConditionalColor.ps1
 
 ## Script file
-Out-ConditionalColor.ps1
+Format Output\Out-ConditionalColor.ps1
 
 ## SYNTAX
 

@@ -1,10 +1,10 @@
 # Get-Uninstaller
 
 ## SYNOPSIS
-Function to get the uninstaller for installed software via registry (PowerShell v4 and \<) or Get-Package) Get-Uninstaller.ps1
+Function to get the uninstaller for installed software via registry (PowerShell v4 and \<) or Get-Package)
 
 ## Script file
-Get-Uninstaller.ps1
+Utils\Get-Uninstaller.ps1
 
 ## Related blog post
 https://powershellone.wordpress.com/2016/02/13/retrieve-uninstallstrings-to-fix-installer-issues/

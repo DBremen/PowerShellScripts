@@ -1,10 +1,10 @@
 # Add-PowerShellContextMenu
 
 ## SYNOPSIS
-Function to create context menu entries in order to invoke PowerShell Add-PowerShellContextMenu.ps1
+Function to create context menu entries in order to invoke PowerShell
 
 ## Script file
-Add-PowerShellContextMenu.ps1
+Utils\Add-PowerShellContextMenu.ps1
 
 ## Related blog post
 https://powershellone.wordpress.com/2015/09/16/adding-edit-with-powershell-ise-and-open-powershell-here-as-admin-to-the-context-menu/

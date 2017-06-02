@@ -1,10 +1,10 @@
 # Invoke-HTMLPesterReport
 
 ## SYNOPSIS
-Generate HTML report for Pester test results using ReportUnit.exe Invoke-HTMLPesterReport.ps1
+Generate HTML report for Pester test results using ReportUnit.exe
 
 ## Script file
-Invoke-HTMLPesterReport.ps1
+Utils\Invoke-HTMLPesterReport.ps1
 
 ## Related blog post
 https://powershellone.wordpress.com/2016/05/18/reporting-against-pester-test-results/

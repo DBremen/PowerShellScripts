@@ -2,10 +2,9 @@
 
 ## SYNOPSIS
 Function to join tables based on one or more common columns with an option to summarize (aggregate) joined columns.
-Join-Tables.ps1
 
 ## Script file
-Join-Tables.ps1
+Extend Builtin\Join-Tables.ps1
 
 ## SYNTAX
 

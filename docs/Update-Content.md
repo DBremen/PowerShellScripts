@@ -1,10 +1,10 @@
 # Update-Content
 
 ## SYNOPSIS
-Insert text on a new line after the line matching the StartPattern or replace text between start- and end Pattern within a file Update-Content.ps1
+Insert text on a new line after the line matching the StartPattern or replace text between start- and end Pattern within a file
 
 ## Script file
-Update-Content.ps1
+Data Wrangling\Update-Content.ps1
 
 ## SYNTAX
 

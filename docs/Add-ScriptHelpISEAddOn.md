@@ -3,10 +3,9 @@
 ## SYNOPSIS
 Function to create an ISE Add-On that will generate comment based help for functions.
 The functions requires the Show-UI module.
-Add-ScriptHelpISEAddOn.ps1
 
 ## Script file
-Add-ScriptHelpISEAddOn.ps1
+Utils\Add-ScriptHelpISEAddOn.ps1
 
 ## Related blog post
 https://powershellone.wordpress.com/2015/09/28/create-an-integrated-wpf-based-ise-add-on-with-powershell/

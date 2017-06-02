@@ -4,7 +4,7 @@
 Gets the functions declared within a script block or a file
 
 ## Script file
-Generate-ScriptMarkdownHelp.ps1
+PowerShellScripts\Generate-ScriptMarkdownHelp.ps1
 
 ## SYNTAX
 

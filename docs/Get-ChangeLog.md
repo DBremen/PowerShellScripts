@@ -2,10 +2,9 @@
 
 ## SYNOPSIS
 Comparing two objects or .csv files column by column.
-Get-ChangeLog.ps1
 
 ## Script file
-Get-ChangeLog.ps1
+Data Wrangling\Get-ChangeLog.ps1
 
 ## Related blog post
 https://powershellone.wordpress.com/2015/06/30/comparing-two-objects-or-csv-files-column-by-column/

@@ -2,10 +2,9 @@
 
 ## SYNOPSIS
 Get the Wifi password of stored networks using netsh.
-Get-WIFIPassword.ps1
 
 ## Script file
-Get-WIFIPassword.ps1
+Utils\Get-WIFIPassword.ps1
 
 ## SYNTAX
 

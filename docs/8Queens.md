@@ -4,7 +4,7 @@
 PowerShell solution for a classical programming exercise.
 
 ## Script file
-8 Queens.ps1
+Programming Exercises\8 Queens.ps1
 
 ## SYNTAX
 

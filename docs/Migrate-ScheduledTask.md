@@ -1,10 +1,10 @@
 # Migrate-ScheduledTask
 
 ## SYNOPSIS
-Script to migrate scheduled tasks from Windows XP/Server 2003 to Windows 7/Server 2008 task scheduler Migrate-ScheduledTask.ps1
+Script to migrate scheduled tasks from Windows XP/Server 2003 to Windows 7/Server 2008 task scheduler
 
 ## Script file
-Migrate-ScheduledTask.ps1
+Utils\Migrate-ScheduledTask.ps1
 
 ## SYNTAX
 

@@ -1,10 +1,10 @@
 # ConvertFrom-ExcelClipboard
 
 ## SYNOPSIS
-Convert copied range from excel to an array of PSObjects ConvertFrom-ExcelClipboard.ps1
+Convert copied range from excel to an array of PSObjects
 
 ## Script file
-ConvertFrom-ExcelClipboard.ps1
+Utils\ConvertFrom-ExcelClipboard.ps1
 
 ## Related blog post
 https://powershellone.wordpress.com/2016/06/02/powershell-tricks-convert-copied-range-from-excel-to-an-array-of-psobjects/

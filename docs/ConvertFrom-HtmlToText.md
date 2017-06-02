@@ -1,10 +1,10 @@
 # ConvertFrom-HtmlToText
 
 ## SYNOPSIS
-Extract the text out of a HTML string ConvertFrom-HtmlToText.ps1
+Extract the text out of a HTML string
 
 ## Script file
-ConvertFrom-HtmlToText.ps1
+Utils\ConvertFrom-HtmlToText.ps1
 
 ## SYNTAX
 

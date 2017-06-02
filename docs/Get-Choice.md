@@ -2,10 +2,9 @@
 
 ## SYNOPSIS
 An alternative to the built-in PromptForChoice providing a consistent UI across different hosts.
-Get-Choice.ps1
 
 ## Script file
-Get-Choice.ps1
+Extend Builtin\Get-Choice.ps1
 
 ## Related blog post
 https://powershellone.wordpress.com/2015/09/10/a-nicer-promptforchoice-for-the-powershell-console-host/

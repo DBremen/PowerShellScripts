@@ -1,10 +1,10 @@
 # GenerateSolveMaze
 
 ## SYNOPSIS
-Function to generate a GUI (Windows forms) to build and solve random mazes GenerateSolveMaze.ps1
+Function to generate a GUI (Windows forms) to build and solve random mazes
 
 ## Script file
-GenerateSolveMaze.ps1
+Programming Exercises\GenerateSolveMaze.ps1
 
 ## SYNTAX
 
