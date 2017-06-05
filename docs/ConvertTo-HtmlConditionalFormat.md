@@ -4,7 +4,7 @@
 Function to convert PowerShell objects into an HTML table with the option to format individual table cells based on property values using CSS selectors.
 
 ## Script file
-Format Output\ConvertTo-HtmlConditionalFormat.ps1
+format output\ConvertTo-HtmlConditionalFormat.ps1
 
 ## SYNTAX
 

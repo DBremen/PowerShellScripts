@@ -4,7 +4,7 @@
 Filter to conditionally format property values within PowerShell output on the console.
 
 ## Script file
-Format Output\Out-ConditionalColorProperties.ps1
+format output\Out-ConditionalColorProperties.ps1
 
 ## SYNTAX
 

@@ -4,7 +4,7 @@
 PowerShell solution to the Tower of Hanoi problem (http://en.wikipedia.org/wiki/Tower_of_Hanoi) using recursion.
 
 ## Script file
-Programming Exercises\TowerOfHanoi.ps1
+programming exercises\TowerOfHanoi.ps1
 
 ## SYNTAX
 

@@ -4,7 +4,7 @@
 Function to add a Format Table View for a type
 
 ## Script file
-Format Output\Add-FormatTableView.ps1
+format output\Add-FormatTableView.ps1
 
 ## Related blog post
 https://powershellone.wordpress.com/2015/03/09/powershell-format-table-views/
@@ -12,8 +12,8 @@ https://powershellone.wordpress.com/2015/03/09/powershell-format-table-views/
 ## SYNTAX
 
 ```
-Add-FormatTableView -InputObject <Object> [[-Label] <Object>] [-Property] <Object> [[-Width] <Int32>]
- [[-Alignment] <Alignment>] [[-ViewName] <Object>]
+Add-FormatTableView -InputObject <Object> [[-Label] <String[]>] [-Property] <String[]> [[-Width] <Int32[]>]
+ [[-Alignment] <Alignment[]>] [[-ViewName] <Object>]
 ```
 
 ## DESCRIPTION
@@ -81,7 +81,7 @@ Optionally for every property a label can be speciffied.
 For every property that does not have a respective label the property name is used as the label for the column
 
 ```yaml
-Type: Object
+Type: String[]
 Parameter Sets: (All)
 Aliases: 
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 {{Fill Property Description}}
 
 ```yaml
-Type: Object
+Type: String[]
 Parameter Sets: (All)
 Aliases: 
 
@@ -108,10 +108,12 @@ Accept wildcard characters: False
 ```
 
 ### -Width
-{{Fill Width Description}}
+Optionally for every property the width can be speciffied.
+The default value for Width is 20.
+For every property that does not have a respective width specified, the first value is used.
 
 ```yaml
-Type: Int32
+Type: Int32[]
 Parameter Sets: (All)
 Aliases: 
 
@@ -123,10 +125,12 @@ Accept wildcard characters: False
 ```
 
 ### -Alignment
-{{Fill Alignment Description}}
+Optionally for every property the alignment can be speciffied.
+The default value for Alignment is undefined.
+For every property that does not have a respective alignment specified, the first value is used.
 
 ```yaml
-Type: Alignment
+Type: Alignment[]
 Parameter Sets: (All)
 Aliases: 
 Accepted values: Undefined, Left, Center, Right
@@ -139,7 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -ViewName
-{{Fill ViewName Description}}
+The name for the View, that is being created.
 
 ```yaml
 Type: Object
@@ -156,6 +160,8 @@ Accept wildcard characters: False
 ## INPUTS
 
 ## OUTPUTS
+
+### The function returns the path of the *format.ps1xml for the type, that the format table view is being created for.
 
 ## NOTES
 

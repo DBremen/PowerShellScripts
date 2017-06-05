@@ -8,7 +8,15 @@
 		Objects that determine the type(s) the view is added to
 	.PARAMETER Label
 		Optionally for every property a label can be speciffied. For every property that does not have a respective label the property name is used as the label for the column
-	.EXAMPLE
+    .PARAMETER Width
+        Optionally for every property the width can be speciffied. The default value for Width is 20. For every property that does not have a respective width specified, the first value is used.
+	.PARAMETER Alignment
+        Optionally for every property the alignment can be speciffied. The default value for Alignment is undefined. For every property that does not have a respective alignment specified, the first value is used.
+	.PARAMETER ViewName
+        The name for the View, that is being created.
+    .OUTPUTS
+        The function returns the path of the *format.ps1xml for the type, that the format table view is being created for.
+    .EXAMPLE
 		$fileName = Get-Process | Add-FormatTableView -Label ProcName, PagedMem, PeakWS -Property 'Name', 'PagedMemorySize', 'PeakWorkingSet' -Width 40 -Alignment Center -ViewName RAM
         Get-Process | select -First 3 | Format-Table -View RAM
         #add this to the profile to have the format view available in all sessions
@@ -45,16 +53,16 @@
         $InputObject,
 
         [Parameter(Position=0)]   
-        $Label,
+        [string[]]$Label,
 
         [Parameter(Mandatory=$true,Position=1)] 
-        $Property,
+        [string[]]$Property,
 
         [Parameter(Position=2)] 
-        [int]$Width=20,
+        [int[]]$Width=20,
 
         [Parameter(Position=3)] 
-        [Management.Automation.Alignment] $Alignment = 'Undefined',
+        [Management.Automation.Alignment[]]$Alignment = 'Undefined',
 
         [Parameter(Position=4)] 
         $ViewName = 'TableView'
@@ -95,7 +103,7 @@
         $typeDef.FormatViewDefinition.Add($view)
         [Runspace]::DefaultRunspace.InitialSessionState.Formats.Add($typeDef)
     }
-    $xmlPath = Join-Path (Split-Path $profile.CurrentUserCurrentHost)  ($ViewName + '.format.ps1xml')
+    $xmlPath = Join-Path (Split-Path $profile)  ($ViewName + '.format.ps1xml')
     Get-FormatData -TypeName $TypeNames | Export-FormatData -Path $xmlPath
     Update-FormatData -PrependPath $xmlPath
     $xmlPath

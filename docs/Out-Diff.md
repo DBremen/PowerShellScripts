@@ -4,7 +4,7 @@
 Generate html diff from git diff output using diff2html.
 
 ## Script file
-Format Output\Out-Diff.ps1
+format output\Out-Diff.ps1
 
 ## SYNTAX
 
