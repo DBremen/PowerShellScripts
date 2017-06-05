@@ -1,7 +1,5 @@
 ﻿# module https://github.com/MathieuBuisson/Powershell-Utility/tree/master/ReadmeFromHelp
 #http://jbt.github.io/markdown-editor/
-# good https://github.com/ChaseFlorell/psDoc/tree/master/src
-#https://github.com/DuFace/PoShDoc
 
 function Get-FunctionFromScript {
     <#
@@ -169,7 +167,7 @@ Some PowerShell scipts I wrote, that could turn out being useful to others, too.
                 $mdFile = $function.Name + '.md'
                 $location = $("$($file.Directory.Name)\$($file.Name)")
                 $summaryTable += "`n| $($function.Name) | $location |$($help.Synopsis.Replace("`n"," ")) | $(if($link){"[Link]($($link.navigationLink.uri))"}) | $("[Link](https://github.com/DBremen/PowerShellScripts/blob/master/docs/$mdFile)") |"
-                $documenation = New-MarkdownHelp -Command $function.Name -OutputFolder "$path\docs" -Force -Metadata $meta -OnlineVersionUrl ''
+                $documenation = New-MarkdownHelp -Command $function.Name -OutputFolder "$path\docs" -Force
                 $text = (Get-Content -Path $documenation | Select-Object -Skip 6)
                 $index = $text.IndexOf('## SYNTAX')
                 $text[$index-1] += "`n## Script file`n$location`n"
