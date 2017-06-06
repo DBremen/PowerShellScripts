@@ -1,4 +1,4 @@
-function Select-Object{
+function Select-ObjectX{
      <#    
         .SYNOPSIS
             Proxy function for Select-Object providing easier syntax for calculated properties.
@@ -75,9 +75,9 @@ function Select-Object{
         .PARAMETER OUTPUTS
             System.Management.Automation.PSObject
         .EXAMPLE
-            Get-ChildItem | Select-Object Name, CreationTime,  @{Kbytes={$_.Length / 1Kb}}
+            Get-ChildItem | Select-ObjectX Name, CreationTime,  @{Kbytes={$_.Length / 1Kb}}
         .EXAMPLE
-            Get-ChildItem | Select-Object Name, @{Age={ (((Get-Date) - $_.CreationTime).Days) }}
+            Get-ChildItem | Select-ObjectX Name, @{Age={ (((Get-Date) - $_.CreationTime).Days) }}
         .LINK
             https://powershellone.wordpress.com/2015/11/23/simplified-syntax-for-calculated-properties-with-select-object/
     #>

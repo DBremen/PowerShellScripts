@@ -4,7 +4,7 @@
 Function to get the format views for a particular type.
 
 ## Script file
-format output\Get-FormatView.ps1
+Format Output\Get-FormatView.ps1
 
 ## Related blog post
 https://powershellone.wordpress.com/2015/03/09/powershell-format-table-views/

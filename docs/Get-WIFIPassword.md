@@ -1,4 +1,4 @@
-# Get-WiFiPassword
+# Get-WIFIPassword
 
 ## SYNOPSIS
 Get the Wifi password of stored networks using netsh.
@@ -9,7 +9,7 @@ Utils\Get-WIFIPassword.ps1
 ## SYNTAX
 
 ```
-Get-WiFiPassword
+Get-WIFIPassword
 ```
 
 ## DESCRIPTION

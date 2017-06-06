@@ -4,7 +4,7 @@
 PowerShell wrapper around Everything search command line (es.exe).
 
 ## Script file
-Binary wrapper\Get-ESSearchResult.ps1
+Binary Wrapper\Get-ESSearchResult.ps1
 
 ## Related blog post
 https://powershellone.wordpress.com/2015/02/28/using-everything-search-command-line-es-exe-via-powershell/

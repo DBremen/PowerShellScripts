@@ -1,5 +1,5 @@
 #Requires -Version 3
-function Out-ConditionalColorProperties{
+filter Out-ConditionalColorProperties{
      <#    
         .SYNOPSIS
             Filter to conditionally format property values within PowerShell output on the console.

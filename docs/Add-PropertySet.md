@@ -4,7 +4,7 @@
 Function to create property sets
 
 ## Script file
-format output\Add-PropertySet.ps1
+Format Output\Add-PropertySet.ps1
 
 ## Related blog post
 https://powershellone.wordpress.com/2015/03/06/powershell-propertysets-and-format-views/

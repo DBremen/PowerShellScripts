@@ -45,7 +45,7 @@ Aliases:
 
 Required: False
 Position: 1
-Default value: None
+Default value: C:\Scripts\ps1\PowerShellScripts
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -6,7 +6,7 @@ Recursively search for PATTERN in PATH.
 Like grep or ack, but faster.
 
 ## Script file
-Binary wrapper\SilverSearcher.ps1
+Binary Wrapper\SilverSearcher.ps1
 
 ## SYNTAX
 

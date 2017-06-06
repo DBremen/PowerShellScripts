@@ -4,7 +4,7 @@
 Function to add a Format Table View for a type
 
 ## Script file
-format output\Add-FormatTableView.ps1
+Format Output\Add-FormatTableView.ps1
 
 ## Related blog post
 https://powershellone.wordpress.com/2015/03/09/powershell-format-table-views/
@@ -133,7 +133,6 @@ For every property that does not have a respective alignment specified, the firs
 Type: Alignment[]
 Parameter Sets: (All)
 Aliases: 
-Accepted values: Undefined, Left, Center, Right
 
 Required: False
 Position: 4

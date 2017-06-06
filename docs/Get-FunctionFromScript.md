@@ -1,7 +1,7 @@
 # Get-FunctionFromScript
 
 ## SYNOPSIS
-Gets the functions declared within a script block or a file
+Gets the functions and filters declared within a script block or a file
 
 ## Script file
 PowerShellScripts\Generate-ScriptMarkdownHelp.ps1

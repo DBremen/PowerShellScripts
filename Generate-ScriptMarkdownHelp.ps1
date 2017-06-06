@@ -4,7 +4,7 @@
 function Get-FunctionFromScript {
     <#
     .Synopsis 
-        Gets the functions declared within a script block or a file
+        Gets the functions and filters declared within a script block or a file
     .Description
         Gets the functions exactly as they are written within a script or file
     .Example
@@ -70,7 +70,7 @@ function Get-FunctionFromScript {
             $text = $scriptBlock.ToString()
             $tokens = [Management.Automation.PSParser]::Tokenize($scriptBlock, [ref]$null)            
             for ($i = 0; $i -lt $tokens.Count; $i++) {
-                if ($tokens[$i].Content -eq "function" -and
+                if ($tokens[$i].Content -eq "function" -or $tokens[$i].Content -eq 'filter' -and
                     $tokens[$i].Type -eq "Keyword") {
                     $groupDepth = 0
                     $functionName = $tokens[$i + 1].Content
@@ -136,7 +136,7 @@ function Generate-ScriptMarkdownHelp{
        . Generate-ScriptMarkdownHelp($path)
 #>
     [CmdletBinding()]
-    Param($Path)
+    Param($Path='C:\Scripts\ps1\PowerShellScripts')
     $summaryTable = @'
 # PowerShellScripts
 Some PowerShell scipts I wrote, that could turn out being useful to others, too.
