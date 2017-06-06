@@ -3,7 +3,7 @@ Some PowerShell scipts I wrote, that could turn out being useful to others, too.
 
 | Function | Location | Synopsis | Related Blog Post | Full Documentation |
 | --- | --- | --- | --- | --- |
-| Get-ESSearchResult1 | Binary Wrapper\Get-ESSearchResult.ps1 |PowerShell wrapper around Everything search command line (es.exe). | [Link]() | [Link](https://github.com/DBremen/PowerShellScripts/blob/master/docs/Get-ESSearchResult1.md) |
+| Get-ESSearchResult | Binary Wrapper\Get-ESSearchResult.ps1 |PowerShell wrapper around Everything search command line (es.exe). | [Link]() | [Link](https://github.com/DBremen/PowerShellScripts/blob/master/docs/Get-ESSearchResult.md) |
 | SilverSearcher | Binary Wrapper\SilverSearcher.ps1 |PowerShell wrapper around silver searcher (ag.exe) Recursively search for PATTERN in PATH. Like grep or ack, but faster. |  | [Link](https://github.com/DBremen/PowerShellScripts/blob/master/docs/SilverSearcher.md) |
 | Get-ChangeLog | Data Wrangling\Get-ChangeLog.ps1 |Comparing two objects or .csv files column by column. | [Link]() | [Link](https://github.com/DBremen/PowerShellScripts/blob/master/docs/Get-ChangeLog.md) |
 | Sort-CustomList | Data Wrangling\Sort-CustomList.ps1 |Sort data using a custom list in PowerShell. | [Link]() | [Link](https://github.com/DBremen/PowerShellScripts/blob/master/docs/Sort-CustomList.md) |

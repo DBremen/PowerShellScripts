@@ -1,8 +1,7 @@
 # Out-ConditionalColor
 
 ## SYNOPSIS
-Filter to conditionally format PowerShell output.
-The approach seems to have stopped working since v3 and higher.
+Filter to conditionally format PowerShell output within the PowerShell console.
 
 ## Script file
 Format Output\Out-ConditionalColor.ps1
@@ -30,6 +29,8 @@ $ht=@{}
       $ht.Add('$_.handles -lt 50',\[ConsoleColor\]::Green)
       $ht.Add('$_.Name -eq "svchost"',\[ConsoleColor\]::Blue)
       Get-Process | Out-ConditionalColor -conditionColor $ht
+      #proof that we are still working with objects 
+      Get-Process | Out-ConditionalColor -conditionColor $ht | where {$_.Name -eq 'svchost'}
 
 ## PARAMETERS
 

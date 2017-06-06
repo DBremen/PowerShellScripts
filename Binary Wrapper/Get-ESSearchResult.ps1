@@ -9,7 +9,7 @@
 	)
 }
 
-function Get-ESSearchResult1 {
+function Get-ESSearchResult {
      <#    
     .SYNOPSIS
         PowerShell wrapper around Everything search command line (es.exe).
