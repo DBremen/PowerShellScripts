@@ -4,7 +4,7 @@
 Function to generate a GUI (Windows forms) to build and solve random mazes
 
 ## Script file
-Programming Exercises\GenerateSolveMaze.ps1
+programming exercises\GenerateSolveMaze.ps1
 
 ## SYNTAX
 

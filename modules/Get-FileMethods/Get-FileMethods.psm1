@@ -85,7 +85,7 @@ function Get-FileBitsTransferSynchronous{
     Import-Module BitsTransfer
     $destination = Join-Path $destinationFolder ($url | Split-Path -Leaf)
     $start = Get-Date
-    Start-BitsTransfer -Source $url -Destination $target
+    Start-BitsTransfer -Source $url -Destination $destination
     $elapsed = ((Get-Date) - $start).ToString('hh\:mm\:ss')
     $totalSize = (Get-Item $destination).Length | Get-FileSize
     if ($includeStats.IsPresent){

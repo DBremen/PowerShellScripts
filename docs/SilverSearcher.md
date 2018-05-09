@@ -6,7 +6,7 @@ Recursively search for PATTERN in PATH.
 Like grep or ack, but faster.
 
 ## Script file
-Binary Wrapper\SilverSearcher.ps1
+Binary wrapper\SilverSearcher.ps1
 
 ## SYNTAX
 
@@ -22,15 +22,7 @@ Recursively search for PATTERN in PATH.
 Like grep or ack, but faster.
 This function requires ag.exe (Silver Searcher).
 Either change the path on line 82 to the location of ag.exe on your Computer
-or download ag.exe via CygWin (this is the only windows binary distribution that worked for me).
-Instructions:
-- Download https://cygwin.com/setup-x86_64.exe (or the 32bit depending on your platform)
-- Run the setup
-    - Keep default 'Download from Internet'
-    - Keep default directory 'C:\cygwin64'
-    - Pick a location for the Local Package Delivery other than the directory chosen in the previous step.
-    - Keep with defaults in next two steps (Direct connection and first mirror)
-    - Search for 'the_silver_searcher' packet under Utils and select to download it
+or install ag.exe via chocolatey "cinst ag"
 
 ## EXAMPLES
 

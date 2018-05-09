@@ -4,7 +4,7 @@
 Filter to conditionally format PowerShell output within the PowerShell console.
 
 ## Script file
-Format Output\Out-ConditionalColor.ps1
+format output\Out-ConditionalColor.ps1
 
 ## SYNTAX
 
