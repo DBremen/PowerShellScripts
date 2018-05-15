@@ -1,7 +1,7 @@
 # Diff-CSV
 
 ## SYNOPSIS
-PowerShell wrapper for diff-table.exe a tool to diff csv files Diff-CSV.ps1
+PowerShell wrapper for diff-table.exe a tool to diff csv files
 
 ## Script file
 Binary wrapper\Diff-CSV.ps1
