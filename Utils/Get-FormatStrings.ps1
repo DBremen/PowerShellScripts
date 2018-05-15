@@ -35,7 +35,7 @@
     process{
         foreach ($item in $ToBeFormatted){
             if ($item -is [datetime]){
-                $formats = 'd;D;f;F;g;G;m;r;s;t;T;u;U;y;dddd;MMMM;dd;yyyy;M/yy;dd-MM-yy' -split ';'  
+                $formats = 'd;D;f;F;g;G;m;r;s;t;T;u;U;y;dddd;MMMM;dd;yyyy;M/yy;dd-MM-yy;tt;zzz;R;Y' -split ';'  
             }
             elseif ($item -is [int]){
                  $formats = @'
