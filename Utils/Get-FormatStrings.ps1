@@ -81,7 +81,7 @@ g
 
                 $output = $formats | ForEach-Object {  
                     [PSCustomObject]@{
-                        FormatString = "{0,-13} {1}" -f "'{0:$_}'", "-f $item"
+                        FormatString = "{0,-14} {1}" -f "'{0:$_}'", "-f $item"
                         Output = "{0:$_}" -f $item
                     } 
                 } 

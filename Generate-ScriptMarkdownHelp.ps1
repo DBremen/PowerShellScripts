@@ -1,6 +1,12 @@
 ﻿# module https://github.com/MathieuBuisson/Powershell-Utility/tree/master/ReadmeFromHelp
 #http://jbt.github.io/markdown-editor/
 
+if ($global:MyInvocation -ne $script:MyInvocation)  
+{  
+    Write-Warning 'Please start the Generate-ScriptMarkdownHelp script dot-sourced'  
+    break  
+}  
+
 function Get-FunctionFromScript {
     <#
     .Synopsis 
@@ -111,11 +117,6 @@ function Get-FunctionFromScript {
     }
 }
 
-#write help for modules
-#move modules into separate repositories
-#generate overview 
-#generate tests
-#generate module help
 
 function Generate-ScriptMarkdownHelp{
     <#    
