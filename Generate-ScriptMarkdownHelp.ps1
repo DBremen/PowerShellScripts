@@ -152,7 +152,7 @@ Some PowerShell scipts I wrote, that could turn out being useful to others, too.
     foreach ($file in $files){
         $htCheck[$file.Name]=0
         . "$($file.FullName)"
-        $functions = Get-FunctionFromScript -File $file.FullName -OutputMetaData
+        $functions = Get-FunctionFromScript -File $file.FullName -OutputMetaData | sort Name -unique
         foreach ($function in $functions){
             try{
                 $help =Get-Help $function.Name | Where-Object {$_.Name -eq $function.Name} -ErrorAction Stop
@@ -167,7 +167,7 @@ Some PowerShell scipts I wrote, that could turn out being useful to others, too.
                 }
                 $mdFile = $function.Name + '.md'
                 $location = $("$($file.Directory.Name)\$($file.Name)")
-                $summaryTable += "`n| $($function.Name) | $location |$($help.Synopsis.Replace("`n"," ")) | $(if($link){"[Link]($($link.navigationLink.uri))"}) | $("[Link](https://github.com/DBremen/PowerShellScripts/blob/master/docs/$mdFile)") |"
+                $summaryTable += "`n| $($function.Name) | $location | $($help.Synopsis.Replace("`n"," ")) | $(if($link){"[Link]($link)"}) | $("[Link](https://github.com/DBremen/PowerShellScripts/blob/master/docs/$mdFile)") |"
                 $documenation = New-MarkdownHelp -Command $function.Name -OutputFolder "$path\docs" -Force
                 $text = (Get-Content -Path $documenation | Select-Object -Skip 6)
                 $index = $text.IndexOf('## SYNTAX')

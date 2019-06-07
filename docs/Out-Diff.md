@@ -26,24 +26,24 @@ Pretty HTML diff output for text and file input using git diff and diff2html.
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
 #compare two strings using default outputstyle (sideByside) and diffstyle (word)
-```
+
 
 Out-Diff 'this is a test' 'this is a new test'
-
+```
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
 #compare two text files using default outputstyle (sideByside) and diffstyle (word)
-```
+
 
 Out-Diff -ReferenceFile c:\test.txt -DiffernceFile c:\test2.text
-
+```
 ### -------------------------- EXAMPLE 3 --------------------------
 ```
 #compare two strings using LineByLine outputstlye and character diffstyle
-```
+
 
 Out-Diff 'this is a test' 'this is a new test' -OutputStyle LineByLine -DiffStyle char
-
+```
 ## PARAMETERS
 
 ### -ReferenceText
@@ -145,4 +145,13 @@ Accept wildcard characters: False
 ## RELATED LINKS
 
 [https://diff2html.xyz](https://diff2html.xyz)
+
+
+
+
+
+
+
+
+
 

@@ -23,17 +23,17 @@ A range of cells copied into the clipboard is converted into PSObject taking the
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
 #Considering a range of cells including header has been copied to the clipboard
-```
+
 
 ConvertFrom-ExcelClipboard
-
+```
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
 #Convert excel range without headers providing property names through argument to the Headers parameter
-```
+
 
 ConvertFrom-ExcelClipboard -Header test1,test2,test3
-
+```
 ## PARAMETERS
 
 ### -Header
@@ -76,4 +76,10 @@ Accept wildcard characters: False
 ## RELATED LINKS
 
 [https://powershellone.wordpress.com/2016/06/02/powershell-tricks-convert-copied-range-from-excel-to-an-array-of-psobjects/](https://powershellone.wordpress.com/2016/06/02/powershell-tricks-convert-copied-range-from-excel-to-an-array-of-psobjects/)
+
+
+
+
+
+
 

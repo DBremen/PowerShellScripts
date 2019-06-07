@@ -222,6 +222,4 @@ function Get-FileWCAsynchronous{
 #Get-FileBitsTransferAsynchronous $url -includeStats
 
 
-
-
-
+Export-ModuleMember -Function 'Get-FileWCSynchronous','Get-FileVB','Get-FileInvokeWebRequest','Get-FileBitsTransferSynchronous','Get-FileWCAsynchronous','Get-FileBitsTransferAsynchronous'

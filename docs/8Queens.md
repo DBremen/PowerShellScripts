@@ -11,7 +11,6 @@ programming exercises\8 Queens.ps1
 ```
 8Queens
 ```
-
 ## DESCRIPTION
 Place 8 queens on a standard chess board (8x8) in a way that none can threaten any other.
 Solved using recursive backtracking algorithm.
@@ -22,7 +21,6 @@ Solved using recursive backtracking algorithm.
 ```
 8Queens
 ```
-
 ## PARAMETERS
 
 ## INPUTS
@@ -32,4 +30,7 @@ Solved using recursive backtracking algorithm.
 ## NOTES
 
 ## RELATED LINKS
+
+
+
 

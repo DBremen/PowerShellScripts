@@ -26,10 +26,10 @@ Instructions:
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
 Diff-CSV test1.csv test2.csv name
-```
+
 
 #Compares both files based on the "name" column as the primary key
-
+```
 ## PARAMETERS
 
 ### -CSV1
@@ -86,4 +86,7 @@ Accept wildcard characters: False
 ## RELATED LINKS
 
 [https://github.com/chop-dbhi/diff-table](https://github.com/chop-dbhi/diff-table)
+
+
+
 

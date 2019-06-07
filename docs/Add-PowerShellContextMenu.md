@@ -25,12 +25,10 @@ In addition to that I also like to add a context menu entry to open up a PowerSh
 ```
 Add-PowerShellContextMenu -ContextType editWithPowerShellISE -Platform x86 -AsAdmin
 ```
-
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
 Add-PowerShellContextMenu -ContextType openPowerShellHere -Platform x86 -AsAdmin
 ```
-
 ## PARAMETERS
 
 ### -ContextType
@@ -104,4 +102,10 @@ Accept wildcard characters: False
 ## RELATED LINKS
 
 [https://powershellone.wordpress.com/2015/09/16/adding-edit-with-powershell-ise-and-open-powershell-here-as-admin-to-the-context-menu/](https://powershellone.wordpress.com/2015/09/16/adding-edit-with-powershell-ise-and-open-powershell-here-as-admin-to-the-context-menu/)
+
+
+
+
+
+
 

@@ -11,7 +11,6 @@ programming exercises\TowerOfHanoi.ps1
 ```
 TowerOfHanoi
 ```
-
 ## DESCRIPTION
 PowerShell solution to the Tower of Hanoi problem (http://en.wikipedia.org/wiki/Tower_of_Hanoi) using recursion.
 The objective of the puzzle is to move the entire stack to another rod, obeying the following rules:
@@ -25,7 +24,6 @@ The objective of the puzzle is to move the entire stack to another rod, obeying 
 ```
 TowerOfHanoi
 ```
-
 ## PARAMETERS
 
 ## INPUTS
@@ -35,4 +33,7 @@ TowerOfHanoi
 ## NOTES
 
 ## RELATED LINKS
+
+
+
 

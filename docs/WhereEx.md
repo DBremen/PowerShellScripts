@@ -26,12 +26,10 @@ Parentheses indicate that the preceding variable should be considered as the (le
 ```
 1..10 | WhereEx {$_ (-gt 5 -and -lt 8)}
 ```
-
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
 Get-Process | WhereEx {$_.Name (-like 'power*' -and -notlike '*ise')}
 ```
-
 ## PARAMETERS
 
 ### -InputObject
@@ -76,4 +74,10 @@ Accept wildcard characters: False
 ## RELATED LINKS
 
 [https://powershellone.wordpress.com/2015/11/02/simplified-where-object-for-multiple-conditions-on-the-same-property-for-powershell/](https://powershellone.wordpress.com/2015/11/02/simplified-where-object-for-multiple-conditions-on-the-same-property-for-powershell/)
+
+
+
+
+
+
 

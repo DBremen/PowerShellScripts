@@ -20,7 +20,7 @@ Show common format strings for a given input and the respective outputs
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
 Get-FormatStrings (Get-Date)
-```
+
 
 #Return common format strings for date objects
 
@@ -33,7 +33,7 @@ FormatString                          Output
 '{0:g}'       -f 05/15/2018 15:33:46  5/15/2018 3:33 PM               
 '{0:G}'       -f 05/15/2018 15:33:46  5/15/2018 3:33:46 PM    
 ...
-
+```
 ## PARAMETERS
 
 ### -ToBeFormatted
@@ -59,4 +59,7 @@ Accept wildcard characters: False
 ## NOTES
 
 ## RELATED LINKS
+
+
+
 

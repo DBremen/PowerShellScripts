@@ -27,10 +27,10 @@ Because of this I wrote a little Windows.Form based helper function that provide
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
 #Create a dialog with 3 Options, choosing Option2 as the default choice.
-```
+
 
 Get-Choice "Pick Something!" (echo Option&1 Option&2 Option&3) 2
-
+```
 ## PARAMETERS
 
 ### -Title
@@ -93,4 +93,7 @@ Accept wildcard characters: False
 ## RELATED LINKS
 
 [https://powershellone.wordpress.com/2015/09/10/a-nicer-promptforchoice-for-the-powershell-console-host/](https://powershellone.wordpress.com/2015/09/10/a-nicer-promptforchoice-for-the-powershell-console-host/)
+
+
+
 

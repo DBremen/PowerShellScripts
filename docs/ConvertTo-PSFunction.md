@@ -24,7 +24,7 @@ The names of the dynamically created functions consist of the prefix "PS" and th
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
 #Convert some built-in commandline tools and use them
-```
+
 
 ConverTo-PSFunction driverquery,systeminfo,getmac,whoami
 #the out-host calls are just necessary to workaround an issue where the output is not displayed when multiple "table" results are displayed
@@ -33,7 +33,7 @@ PSwhoami /groups | Out-Host
 PSsysteminfo | Out-Host
 PSdriverquery /s .
 /si | where {$_."Manufacturer" -eq "Microsoft"} | Out-Host
-
+```
 ## PARAMETERS
 
 ### -nativeCommands
@@ -58,4 +58,7 @@ Accept wildcard characters: False
 ## NOTES
 
 ## RELATED LINKS
+
+
+
 

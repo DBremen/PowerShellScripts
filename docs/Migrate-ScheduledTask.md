@@ -27,13 +27,13 @@ Run the script from the Windows 7 machine in order to copy the .job files, and r
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
 #1. Run the script from the XP machine (in order to export the .job files, the schtasks commandline and the script itself)
-```
+
 
 Migrate-ScheduledTask
 #2.
 Run the script from the Windows 7 machine in order to copy the .job files, and run the XP schtasks command in order to "register" the files on the 7 machine.
 Migrate-ScheduledTask
-
+```
 ## PARAMETERS
 
 ## INPUTS
@@ -45,4 +45,7 @@ Migrate-ScheduledTask
 ## RELATED LINKS
 
 [http://www.digitalforensics.be/blog/?p=205](http://www.digitalforensics.be/blog/?p=205)
+
+
+
 

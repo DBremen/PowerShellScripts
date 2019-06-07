@@ -21,7 +21,7 @@ Does not turn the output into string.
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
 #build the hashtable with condition/color pairs
-```
+
 
 $ht=@{}
       $upperLimit=1000
@@ -31,7 +31,7 @@ $ht=@{}
       Get-Process | Out-ConditionalColor -conditionColor $ht
       #proof that we are still working with objects 
       Get-Process | Out-ConditionalColor -conditionColor $ht | where {$_.Name -eq 'svchost'}
-
+```
 ## PARAMETERS
 
 ### -ConditionColor
@@ -60,4 +60,7 @@ Accept wildcard characters: False
 ## RELATED LINKS
 
 [Out-ConditionalColorProperties]()
+
+
+
 

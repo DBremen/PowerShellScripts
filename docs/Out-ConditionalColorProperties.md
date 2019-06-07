@@ -20,7 +20,7 @@ Filter to conditionally format property values within PowerShell output on the c
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
 #build the hashtable with condition/color/"property value to highlight" pairs
-```
+
 
 $ht=@{}
       $upperLimit=1000
@@ -28,15 +28,15 @@ $ht=@{}
       $ht.Add('$_.handles -lt 50',("green","handles"))
       $ht.Add('$_.Name -eq "svchost"',("blue","name"))
       Get-Process | Out-ConditionalColorProperties -conditionColorProp $ht
-
+```
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
 $ht=@{}
-```
+
 
 $ht.Add('$_.Name.StartsWith("A")',("red","name"))
 dir | Out-ConditionalColorProperties -conditionColorProp $ht
-
+```
 ## PARAMETERS
 
 ### -ConditionColorProp
@@ -61,4 +61,10 @@ Accept wildcard characters: False
 ## NOTES
 
 ## RELATED LINKS
+
+
+
+
+
+
 

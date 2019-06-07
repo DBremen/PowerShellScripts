@@ -20,13 +20,13 @@ Converts a string of HTML to an array of strings where each HTML elements text i
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
 #using alias
-```
+
 
 PS\> '\<li\>test1\</li\>\<li\>test2\</li\>' | html2Text
 #output: 
 test1
 test2
-
+```
 ## PARAMETERS
 
 ### -HTML
@@ -51,4 +51,7 @@ Accept wildcard characters: False
 ## NOTES
 
 ## RELATED LINKS
+
+
+
 

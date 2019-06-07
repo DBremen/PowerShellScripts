@@ -29,7 +29,6 @@ The resulting objects can be used for further processing (copying, deleting….)
 ```
 search 'mySearchTerm'
 ```
-
 ## PARAMETERS
 
 ### -SearchTerm
@@ -118,4 +117,7 @@ Accept wildcard characters: False
 [https://powershellone.wordpress.com/2015/02/28/using-everything-search-command-line-es-exe-via-powershell/](https://powershellone.wordpress.com/2015/02/28/using-everything-search-command-line-es-exe-via-powershell/)
 
 [https://www.voidtools.com/support/everything/command_line_interface/](https://www.voidtools.com/support/everything/command_line_interface/)
+
+
+
 

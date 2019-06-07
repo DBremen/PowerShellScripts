@@ -25,14 +25,14 @@ without having to use Visual Studio and writing the code in C#.
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
 #Generate the dll (needed only once)
-```
+
 
 Add-ScriptHelpISEAddOn -Dll-GenerateDll
       #optionally add the following to your profile in order to load the script automaticaly on ISE startup and add an entry in the Add-ons menu
       if ($host.Name -eq 'Windows PowerShell ISE Host'){
            Add-ScriptHelpISEAddOn -DllPath \<PATH TO GENERATED DLL\>
        }
-
+```
 ## PARAMETERS
 
 ### -DllPath
@@ -75,4 +75,7 @@ Accept wildcard characters: False
 ## RELATED LINKS
 
 [https://powershellone.wordpress.com/2015/09/28/create-an-integrated-wpf-based-ise-add-on-with-powershell/](https://powershellone.wordpress.com/2015/09/28/create-an-integrated-wpf-based-ise-add-on-with-powershell/)
+
+
+
 

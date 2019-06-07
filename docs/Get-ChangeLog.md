@@ -23,7 +23,7 @@ Compare objects showing which property has changed along with the old and new va
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
 $referenceObject=@'
-```
+
 
 ID,Name,LastName,Town
     1,Peter,Peterson,Paris
@@ -40,7 +40,7 @@ $differenceObject=@'
     4,Sandra,Mulls,London
 '@ | ConvertFrom-CSV
 Get-ChangeLog $referenceObject $differenceObject ('ID') | Format-Table -AutoSize
-
+```
 ## PARAMETERS
 
 ### -ReferenceObject
@@ -98,4 +98,7 @@ Accept wildcard characters: False
 ## RELATED LINKS
 
 [https://powershellone.wordpress.com/2015/06/30/comparing-two-objects-or-csv-files-column-by-column/](https://powershellone.wordpress.com/2015/06/30/comparing-two-objects-or-csv-files-column-by-column/)
+
+
+
 

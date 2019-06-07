@@ -23,7 +23,7 @@ The collections don't necessarily be of the same length since the loop stops whe
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
 $users=@"
-```
+
 
 Name,ID
 Jones,1
@@ -46,11 +46,11 @@ $user.Name="Burnes-Dellinger"
 $address.City="Washington"
 }
 }
-
+```
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
 $users | Out-Host
-```
+
 
 $addresses | Out-Host
 
@@ -60,7 +60,7 @@ $ages=35,44,23,41,44,56
 foreachfor2 name -In $names age -In2 $ages {
 	New-Object PSObject -Property @{Name=$name;Age=$age}
 }
-
+```
 ## PARAMETERS
 
 ### -AliasName
@@ -147,4 +147,10 @@ Accept wildcard characters: False
 ## NOTES
 
 ## RELATED LINKS
+
+
+
+
+
+
 

@@ -24,20 +24,20 @@ The function adds a new property set to a type via a types.ps1xml file.
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
 $fileName = dir | Add-PropertySet Testing ('Name', 'LastWriteTime', 'CreationTime')
-```
+
 
 dir | Get-Member -MemberType PropertySet
       dir | select Testing
       #add this to the profile to have the property set available in all sessions
       Update-TypeData -PrependPath $fileName
-
+```
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
 Get-Process | Add-PropertySet RAM ('Name', 'PagedMemorySize', 'PeakWorkingSet')
-```
+
 
 Get-Process | select RAM
-
+```
 ## PARAMETERS
 
 ### -InputObject
@@ -94,4 +94,10 @@ Accept wildcard characters: False
 ## RELATED LINKS
 
 [https://powershellone.wordpress.com/2015/03/06/powershell-propertysets-and-format-views/](https://powershellone.wordpress.com/2015/03/06/powershell-propertysets-and-format-views/)
+
+
+
+
+
+
 

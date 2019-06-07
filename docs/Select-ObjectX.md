@@ -41,12 +41,10 @@ With this proxy function one can do just that.
 ```
 Get-ChildItem | Select-ObjectX Name, CreationTime,  @{Kbytes={$_.Length / 1Kb}}
 ```
-
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
 Get-ChildItem | Select-ObjectX Name, @{Age={ (((Get-Date) - $_.CreationTime).Days) }}
 ```
-
 ## PARAMETERS
 
 ### -InputObject
@@ -252,4 +250,10 @@ Accept wildcard characters: False
 ## RELATED LINKS
 
 [https://powershellone.wordpress.com/2015/11/23/simplified-syntax-for-calculated-properties-with-select-object/](https://powershellone.wordpress.com/2015/11/23/simplified-syntax-for-calculated-properties-with-select-object/)
+
+
+
+
+
+
 

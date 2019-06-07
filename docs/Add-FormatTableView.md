@@ -24,23 +24,23 @@ Format views are living in the *format.ps1xml files those define named sets of p
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
 $fileName = Get-Process | Add-FormatTableView -Label ProcName, PagedMem, PeakWS -Property 'Name', 'PagedMemorySize', 'PeakWorkingSet' -Width 40 -Alignment Center -ViewName RAM
-```
+
 
 Get-Process | select -First 3 | Format-Table -View RAM
       #add this to the profile to have the format view available in all sessions
       #Update-FormatData -PrependPath $fileName
-
+```
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
 dir | Add-FormatTableView -Property 'Name', 'LastWriteTime', 'CreationTime' -ViewName Testing
-```
+
 
 dir | Format-Table -View Testing
-
+```
 ### -------------------------- EXAMPLE 3 --------------------------
 ```
 #using the default table view name ('TableView') to modify custom object default output
-```
+
 
 #create a custom object array
 $arr = @()
@@ -58,7 +58,7 @@ $arr | Add-FormatTableView -Label 'First Name', 'Last Name' -Property FirstName,
 $arr 
 #when using the object further down in the pipeline the property name must be used
 $arr  | where "LastName" -eq 'Doe'
-
+```
 ## PARAMETERS
 
 ### -InputObject
@@ -170,4 +170,13 @@ Accept wildcard characters: False
 [https://powershellone.wordpress.com/2015/03/09/powershell-format-table-views/](https://powershellone.wordpress.com/2015/03/09/powershell-format-table-views/)
 
 [Get-FormatView]()
+
+
+
+
+
+
+
+
+
 

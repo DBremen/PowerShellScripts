@@ -25,7 +25,6 @@ Retrieving the format views for a particular type can be accomplished by pulling
 ```
 Get-Process | Get-FormatView | Format-Table -Auto
 ```
-
 ## PARAMETERS
 
 ### -TypeName
@@ -54,4 +53,7 @@ Accept wildcard characters: False
 [https://powershellone.wordpress.com/2015/03/09/powershell-format-table-views/](https://powershellone.wordpress.com/2015/03/09/powershell-format-table-views/)
 
 [Add-FormatTableView]()
+
+
+
 

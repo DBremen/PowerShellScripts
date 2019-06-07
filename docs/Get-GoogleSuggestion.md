@@ -21,7 +21,7 @@ Similar to the experience "Did you mean?" experience using the Google search eng
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
 dym 'dnld t' #use the alias to get suggestions for a term
-```
+
 
 donald trump
 donald trump twitter
@@ -33,7 +33,7 @@ donald trump jr
 donald trump dead
 donald trump memes
 donald trump net worth
-
+```
 ## PARAMETERS
 
 ### -Query
@@ -58,4 +58,7 @@ Accept wildcard characters: False
 ## NOTES
 
 ## RELATED LINKS
+
+
+
 

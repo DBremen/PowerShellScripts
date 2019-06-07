@@ -26,7 +26,7 @@ character Ranges like in Haskell.
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
 Set-Alias gr Get-Range
-```
+
 
 #same as built-in
 gr 1..10
@@ -54,7 +54,7 @@ gr March..May
 
 #Range of day names
 gr Monday..Wednesday
-
+```
 ## PARAMETERS
 
 ### -Range
@@ -85,4 +85,7 @@ Accept wildcard characters: False
 ## RELATED LINKS
 
 [https://powershellone.wordpress.com/2015/03/15/extending-the-powershell-Range-operator/](https://powershellone.wordpress.com/2015/03/15/extending-the-powershell-Range-operator/)
+
+
+
 

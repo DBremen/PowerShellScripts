@@ -25,7 +25,7 @@ a valid path is found (warning is displayed if no part of the path is found).
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
 #the example opens multiple instances of regedit with at the specified paths via an argument to the regKey paramater
-```
+
 
 $testKeys =@'
 HKLM\Software\Microsoft\Outlook Express
@@ -33,11 +33,11 @@ HKLM\Software\Microsoft\PowerShell
 HKLM\Software\Microsoft\Windows
 '@ -split "\`r\`n"
 Open-Registry $testKeys
-
+```
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
 #the example demonstrates the use case if the keys are in the clipboard
-```
+
 
 @'
 HKLM\Software\Microsoft\Outlook Express
@@ -45,21 +45,21 @@ HKLM\Software\Microsoft\PowerShell
 HKLM\Software\Microsoft\Windows
 '@ -split "\`r\`n" | clip
 Open-Registry
-
+```
 ### -------------------------- EXAMPLE 3 --------------------------
 ```
 #the example will open regedit with the run key open as the last part of the path does not represent a key
-```
+
 
 Open-Registry HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\skype
-
+```
 ### -------------------------- EXAMPLE 4 --------------------------
 ```
 #the example provides an invalid path to the function (using the alias) resulting in a warning message and no instance of regedit opening
-```
+
 
 regJump HKLMm\xxxxx
-
+```
 ## PARAMETERS
 
 ### -regKey
@@ -85,4 +85,16 @@ Accept wildcard characters: False
 ## NOTES
 
 ## RELATED LINKS
+
+
+
+
+
+
+
+
+
+
+
+
 

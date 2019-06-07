@@ -20,20 +20,20 @@ Deletes Windows System Restore point(s) passed as an argument or via pipeline
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
 #use -WhatIf to see what would have happened
-```
+
 
 Get-ComputerRestorePoint | Delete-ComputerRestorePoints -WhatIf
-
+```
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
 #delete all System Restore Points older than 14 days
-```
+
 
 $removeDate = (Get-Date).AddDays(-14)
 Get-ComputerRestorePoint | 
  Where { $_.ConvertToDateTime($_.CreationTime) -lt  $removeDate } | 
  Delete-ComputerRestorePoints
-
+```
 ## PARAMETERS
 
 ### -RestorePoint
@@ -89,4 +89,10 @@ Accept wildcard characters: False
 ## NOTES
 
 ## RELATED LINKS
+
+
+
+
+
+
 

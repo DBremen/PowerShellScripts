@@ -23,7 +23,7 @@ an aggregate function (sum,max,min,count,average) similar to the functionality o
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
 $FirstCollection = @"
-```
+
 
 FirstName,  LastName,   MailingAddress,    EmployeeID
   John,       Doe,        123 First Ave,     J8329029
@@ -46,11 +46,11 @@ FirstName,  LastName,   MailingAddress,    EmployeeID
 "@.Split("\`n") | foreach {$_.trim()} | ConvertFrom-Csv
 #Join tables on EmployeeID column
 Join-Tables employeeid $FirstCollection $SecondCollection | ft -AutoSize
-
+```
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
 $table1=@"
-```
+
 
 firstname,lastname,city,country,sales
     john,doe,NYC,USA,11
@@ -68,7 +68,7 @@ $table2=@"
 "@ | ConvertFrom-Csv
 #Join two tables based on two lookup columns summing up the sales column
 Join-Tables ("firstname","lastname") $table1 $table2 @{sales="sum"} | ft
-
+```
 ## PARAMETERS
 
 ### -LookupColumns
@@ -141,4 +141,10 @@ Accept wildcard characters: False
 ## NOTES
 
 ## RELATED LINKS
+
+
+
+
+
+
 

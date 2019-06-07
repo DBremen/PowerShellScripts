@@ -27,31 +27,31 @@ restarts the first.
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
 #start 2 instances of notepad and restart the second
-```
+
 
 notepad
 notepad
 Get-Process notepad | Restart-Process
 #enter index 2 when prompted
-
+```
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
 #start 3 instances of notepad restart the first and stop the others
-```
+
 
 notepad
 notepad
 notepad
 Get-Process notepad | Restart-Process
 #enter index -1 when prompted
-
+```
 ### -------------------------- EXAMPLE 3 --------------------------
 ```
 #start notepad and calc and restart
-```
+
 
 Get-Process notepad,calc | Restart-Process
-
+```
 ## PARAMETERS
 
 ### -Process
@@ -78,4 +78,13 @@ Accept wildcard characters: False
 ## RELATED LINKS
 
 [https://powershellone.wordpress.com/2016/02/25/fix-clipboard-is-not-working-restart-process-with-powershell/](https://powershellone.wordpress.com/2016/02/25/fix-clipboard-is-not-working-restart-process-with-powershell/)
+
+
+
+
+
+
+
+
+
 

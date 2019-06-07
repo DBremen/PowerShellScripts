@@ -29,7 +29,7 @@ If ReportUnit is not present, the function will automatically download it.
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
 #create test functions
-```
+
 
 $tempFolder = New-Item "$env:Temp\PesterTest" -ItemType Directory -force
 foreach ($num in (1..10)){
@@ -61,7 +61,7 @@ Push-Location $tempFolder
 Invoke-Pester -OutputFile report.xml -OutputFormat NUnitXml
 #feed the xml into the function
 Invoke-GUIPesterReport $tempFolder\report.xml
-
+```
 ## PARAMETERS
 
 ## INPUTS
@@ -75,4 +75,7 @@ Invoke-GUIPesterReport $tempFolder\report.xml
 [https://powershellone.wordpress.com/2016/05/18/reporting-against-pester-test-results/](https://powershellone.wordpress.com/2016/05/18/reporting-against-pester-test-results/)
 
 [http://relevantcodes.com/Tools/ReportUnit](http://relevantcodes.com/Tools/ReportUnit)
+
+
+
 

@@ -27,24 +27,24 @@ Downloads files to the provided destination folder.
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
 #Download SubInACL.msi to Desktop and start installer
-```
+
 
 Get-FileAndExtract 'http://download.microsoft.com/download/1/7/d/17d82b72-bc6a-4dc8-bfaa-98b37b22b367/subinacl.msi' "$(\[Environment\]::GetFolderPath("Desktop"))"
-
+```
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
 #Download and extract the contents of SysinternalSuite.zip to Desktop\SysInternalSuite (folder SysInternalSuite is created)
-```
+
 
 Get-FileAndExtract 'http://download.sysinternals.com/files/SysinternalsSuite.zip' "$(\[Environment\]::GetFolderPath("Desktop"))"
-
+```
 ### -------------------------- EXAMPLE 3 --------------------------
 ```
 #Download and extract the contents of WorkSmartGuides.zip to Desktop\WorkSmartGuides (no folder is created since .zip already contains folder)
-```
+
 
 Get-FileAndExtract 'http://download.microsoft.com/download/1/C/2/1C2D966E-F713-4A4F-9D5C-F7FB6E93E4B9/WorkSmartGuides.zip' "$(\[Environment\]::GetFolderPath("Desktop"))\NewFolder"
-
+```
 ## PARAMETERS
 
 ### -Url
@@ -100,4 +100,13 @@ Accept wildcard characters: False
 ## NOTES
 
 ## RELATED LINKS
+
+
+
+
+
+
+
+
+
 

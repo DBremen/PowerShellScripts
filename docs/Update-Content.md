@@ -24,7 +24,7 @@ replacing any existing text between the lines matching the patterns.
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
 #replace text between the lines starting with "//start" and "//end"
-```
+
 
 ##text before:
 #some text
@@ -40,11 +40,11 @@ Update-Content $Path "^//start" "^//end" "this is new stuff"
 #//start
 #this is new stuff
 #//end
-
+```
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
 #append text on a new line after the line starting with "//start"
-```
+
 
 ##text before:
 #some text
@@ -60,7 +60,7 @@ Update-Content $Path "^//start" "new text"
 #new text
 #text
 #text
-
+```
 ## PARAMETERS
 
 ### -Path
@@ -130,4 +130,10 @@ Accept wildcard characters: False
 ## NOTES
 
 ## RELATED LINKS
+
+
+
+
+
+
 

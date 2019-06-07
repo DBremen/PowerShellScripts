@@ -24,10 +24,10 @@ Sort data based on a custom list similar to the functionality provided in Excel.
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
 $CustomList = 'iexplore', 'excel', 'notepad'
-```
+
 
 Get-Process | Sort-CustomList $CustomList Name
-
+```
 ## PARAMETERS
 
 ### -InputObject
@@ -99,4 +99,7 @@ Accept wildcard characters: False
 ## RELATED LINKS
 
 [https://powershellone.wordpress.com/2015/07/30/sort-data-using-a-custom-list-in-powershell/](https://powershellone.wordpress.com/2015/07/30/sort-data-using-a-custom-list-in-powershell/)
+
+
+
 

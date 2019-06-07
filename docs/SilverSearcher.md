@@ -30,12 +30,10 @@ or install ag.exe via chocolatey "cinst ag"
 ```
 
 ```
-
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
 
 ```
-
 ## PARAMETERS
 
 ### -Pattern
@@ -290,4 +288,10 @@ Accept wildcard characters: False
 ## RELATED LINKS
 
 [https://github.com/ggreer/the_silver_searcher/blob/master/doc/ag.1.md](https://github.com/ggreer/the_silver_searcher/blob/master/doc/ag.1.md)
+
+
+
+
+
+
 

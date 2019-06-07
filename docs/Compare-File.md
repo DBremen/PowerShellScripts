@@ -23,7 +23,7 @@ Lines that are present in one file but not in the other are indicated by N/A
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
 $txt1=@"
-```
+
 
 will stay
 this is some text
@@ -37,7 +37,7 @@ changed
 "@ | Set-Content txt2.txt
 
 Compare-File txt1.txt txt2.txt -IncludeEqual
-
+```
 ## PARAMETERS
 
 ### -ReferenceObject
@@ -107,4 +107,7 @@ Accept wildcard characters: False
 ## NOTES
 
 ## RELATED LINKS
+
+
+
 

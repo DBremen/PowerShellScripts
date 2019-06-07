@@ -21,7 +21,6 @@ Get the Wifi password of stored networks using netsh.
 ```
 Get-WifiPassword
 ```
-
 ## PARAMETERS
 
 ## INPUTS
@@ -31,4 +30,7 @@ Get-WifiPassword
 ## NOTES
 
 ## RELATED LINKS
+
+
+
 

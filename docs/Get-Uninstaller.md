@@ -28,13 +28,13 @@ For that purpose,
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
 #Powershell v4 and lower
-```
+
 
 #search for the chrome uinstaller only in the machine wide registry hive
 Get-Uninstaller *chrome* -Hive HKLM
 #v5 and higher
 Get-Uninstaller *chrome*
-
+```
 ## PARAMETERS
 
 ### -Name
@@ -79,4 +79,7 @@ Accept wildcard characters: False
 ## RELATED LINKS
 
 [https://powershellone.wordpress.com/2016/02/13/retrieve-uninstallstrings-to-fix-installer-issues/](https://powershellone.wordpress.com/2016/02/13/retrieve-uninstallstrings-to-fix-installer-issues/)
+
+
+
 
