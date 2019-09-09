@@ -75,6 +75,8 @@ NestedModules = @(
 '.\Data Wrangling\Update-Content.ps1',
 '.\Extend Builtin\Compare-File.ps1',
 '.\Extend Builtin\Get-Choice.ps1',
+'.\Extend Builtin\Get-HelpExamples.ps1',
+'.\Extend Builtin\Get-HelpSyntax.ps1',
 '.\Extend Builtin\Get-Range.ps1',
 '.\Extend Builtin\Join-Tables.ps1',
 '.\Extend Builtin\Simplified-Select.ps1',
@@ -166,6 +168,13 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
+
+
+
+
+
+
+
 
 
 

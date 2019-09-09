@@ -1,4 +1,4 @@
-﻿function Out-Diff{
+﻿function Out-Diff {
     <#
     .Synopsis 
         Generate html diff from git diff output using diff2html.
@@ -16,48 +16,46 @@
     .Link
         https://diff2html.xyz
     #>
-   [CmdletBinding(DefaultParameterSetName = 'Text')]
+    [CmdletBinding(DefaultParameterSetName = 'Text')]
     param(
-        [Parameter(Mandatory, Position=0, ParameterSetName = 'Text')]
+        [Parameter(Mandatory, Position = 0, ParameterSetName = 'Text')]
         $ReferenceText,
-        [Parameter(Mandatory, Position=1, ParameterSetName = 'Text')]
+        [Parameter(Mandatory, Position = 1, ParameterSetName = 'Text')]
         $DifferenceText,
         [Parameter(Mandatory, ParameterSetName = 'File')]
-        [ValidateScript({
-            if (-not (Test-Path -PathType Leaf -LiteralPath $_ )) {
-                throw "Path '$_' does not exist. Please provide the path to an existing File."
-            }
-            $true
-        })]
+        [ValidateScript( {
+                if (-not (Test-Path -PathType Leaf -LiteralPath $_ )) {
+                    throw "Path '$_' does not exist. Please provide the path to an existing File."
+                }
+                $true
+            })]
         $ReferenceFile,
         [Parameter(Mandatory, ParameterSetName = 'File')]
-        [ValidateScript({
-            if (-not (Test-Path -PathType Leaf -LiteralPath $_ )) {
-                throw "Path '$_' does not exist. Please provide the path to an existing File."
-            }
-            $true
-        })]
+        [ValidateScript( {
+                if (-not (Test-Path -PathType Leaf -LiteralPath $_ )) {
+                    throw "Path '$_' does not exist. Please provide the path to an existing File."
+                }
+                $true
+            })]
         $DifferenceFile,
-        [ValidateSet('LineByLine','SideBySide')]
-        $OutputStyle = 'SideBySide',
-        [ValidateSet('word','char')]
-        $DiffStyle = 'char'
+        [ValidateSet('LineByLine', 'SideBySide')]
+        $OutputStyle = 'SideBySide'
     )
-    try{
-        Get-Command diff2html.cmd -ErrorAction Stop
+    try {
+        $Null = Get-Command diff2html.cmd -ErrorAction Stop
     }
-    catch{
+    catch {
         Write-Warning 'diff2html is not installed. Go to https://diff2html.xyz/#cli for instructions on how to install it'
         exit
     }
-    try{
-        Get-Command git.exe -ErrorAction Stop
+    try {
+        $Null = Get-Command git.exe -ErrorAction Stop
     }
-    catch{
+    catch {
         Write-Warning 'git.exe is not installed. Please install git.exe.'
         exit
     }
-    if ($ReferenceText){
+    if ($ReferenceText) {
         $ReferenceFile = [IO.Path]::GetTempFileName()
         $ReferenceText | Set-Content $ReferenceFile
         $DifferenceFile = [IO.Path]::GetTempFileName()
@@ -66,9 +64,9 @@
     
     $style = [regex]::Match($OutputStyle, '(.*)By.*').Groups[1].Value.ToLower()
     
-    $Null = git diff "$ReferenceFile" "$DifferenceFile" | diff2html -i stdin -s $style -d $DiffStyle
+    $Null = git diff "$ReferenceFile" "$DifferenceFile" | diff2html -i stdin -s $style 
     #diff2html -s line -f html -d word -i command -o preview -- -M HEAD~1
-    if ($ReferenceText){
+    if ($ReferenceText) {
         Remove-Item $ReferenceFile
         Remove-Item $DifferenceFile
     }

@@ -10,12 +10,12 @@ format output\Out-Diff.ps1
 
 ### Text (Default)
 ```
-Out-Diff [-ReferenceText] <Object> [-DifferenceText] <Object> [-OutputStyle <Object>] [-DiffStyle <Object>]
+Out-Diff [-ReferenceText] <Object> [-DifferenceText] <Object> [-OutputStyle <Object>]
 ```
 
 ### File
 ```
-Out-Diff -ReferenceFile <Object> -DifferenceFile <Object> [-OutputStyle <Object>] [-DiffStyle <Object>]
+Out-Diff -ReferenceFile <Object> -DifferenceFile <Object> [-OutputStyle <Object>]
 ```
 
 ## DESCRIPTION
@@ -117,21 +117,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: SideBySide
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DiffStyle
-{{Fill DiffStyle Description}}
-
-```yaml
-Type: Object
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: Char
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

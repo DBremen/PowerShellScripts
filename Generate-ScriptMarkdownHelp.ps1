@@ -1,8 +1,7 @@
 ﻿# module https://github.com/MathieuBuisson/Powershell-Utility/tree/master/ReadmeFromHelp
 #http://jbt.github.io/markdown-editor/
 
-if ($global:MyInvocation -ne $script:MyInvocation)  
-{  
+if ($global:MyInvocation -ne $script:MyInvocation) {  
     Write-Warning 'Please start the Generate-ScriptMarkdownHelp script dot-sourced'  
     break  
 }  
@@ -25,28 +24,28 @@ function Get-FunctionFromScript {
     .Link
         http://powershellpipeworks.com/
     #>
-    [CmdletBinding(DefaultParameterSetName='File')]
+    [CmdletBinding(DefaultParameterSetName = 'File')]
     [OutputType([ScriptBlock], [PSObject])]
     param(
-    # The script block containing functions
-    [Parameter(Mandatory=$true,
-        Position=0,
-        ParameterSetName="ScriptBlock",
-        ValueFromPipelineByPropertyName=$true)]    
-    [ScriptBlock]
-    $ScriptBlock,
+        # The script block containing functions
+        [Parameter(Mandatory = $true,
+            Position = 0,
+            ParameterSetName = "ScriptBlock",
+            ValueFromPipelineByPropertyName = $true)]    
+        [ScriptBlock]
+        $ScriptBlock,
     
-    # A file containing functions
-    [Parameter(Mandatory=$true,
-        ParameterSetName="File",
-        ValueFromPipelineByPropertyName=$true)]           
-    [Alias('FullName')]
-    [String]
-    $File,
+        # A file containing functions
+        [Parameter(Mandatory = $true,
+            ParameterSetName = "File",
+            ValueFromPipelineByPropertyName = $true)]           
+        [Alias('FullName')]
+        [String]
+        $File,
     
-    # If set, outputs the command metadatas
-    [switch]
-    $OutputMetaData
+        # If set, outputs the command metadatas
+        [switch]
+        $OutputMetaData
     )
     
     process {
@@ -63,15 +62,15 @@ function Get-FunctionFromScript {
             $scriptBlock = [ScriptBlock]::Create($text)
             if ($scriptBlock) {
                 $functionsInScript = 
-                    Get-FunctionFromScript -ScriptBlock $scriptBlock -OutputMetaData:$OutputMetaData                    
-                if ($OutputMetaData) 
-                {
+                Get-FunctionFromScript -ScriptBlock $scriptBlock -OutputMetaData:$OutputMetaData                    
+                if ($OutputMetaData) {
                     $functionsInScript | 
                         Add-Member NoteProperty File $realFile.FullName -PassThru
                 }
             } 
             #endregion Resolve the file, create a script block, and pass the data down
-        } elseif ($psCmdlet.ParameterSetName -eq "ScriptBlock") {            
+        }
+        elseif ($psCmdlet.ParameterSetName -eq "ScriptBlock") {            
             #region Extract out core functions from a Script Block
             $text = $scriptBlock.ToString()
             $tokens = [Management.Automation.PSParser]::Tokenize($scriptBlock, [ref]$null)            
@@ -98,16 +97,18 @@ function Get-FunctionFromScript {
                     if (-not $tokens[$ii] -or 
                         ($tokens[$ii].Start + $tokens[$ii].Length) -ge $Text.Length) {
                         $chunk = $text.Substring($tokens[$i].Start)
-                    } else {
+                    }
+                    else {
                         $chunk = $text.Substring($tokens[$i].Start, 
                             $tokens[$ii].Start + $tokens[$ii].Length - $tokens[$i].Start)
                     }        
                     if ($OutputMetaData) {
                         New-Object PSObject -Property @{
-                            Name = $functionName
+                            Name       = $functionName
                             Definition = [ScriptBlock]::Create($chunk)
                         }                        
-                    } else {
+                    }
+                    else {
                         [ScriptBlock]::Create($chunk)
                     }
                 }
@@ -118,7 +119,7 @@ function Get-FunctionFromScript {
 }
 
 
-function Generate-ScriptMarkdownHelp{
+function Generate-ScriptMarkdownHelp {
     <#    
     .SYNOPSIS
         The function that generated the Markdown help in this repository. (see Example for usage). 
@@ -137,7 +138,7 @@ function Generate-ScriptMarkdownHelp{
        . Generate-ScriptMarkdownHelp($path)
 #>
     [CmdletBinding()]
-    Param($Path='C:\Scripts\ps1\PowerShellScripts')
+    Param($Path = 'C:\Scripts\ps1\PowerShellScripts')
     $summaryTable = @'
 # PowerShellScripts
 Some PowerShell scipts I wrote, that could turn out being useful to others, too.
@@ -149,20 +150,26 @@ Some PowerShell scipts I wrote, that could turn out being useful to others, too.
     $env:path += ";$path"
     $files = Get-ChildItem $path -File -Include ('*.ps1') -Recurse
     $htCheck = @{}
-    foreach ($file in $files){
-        $htCheck[$file.Name]=0
+    foreach ($file in $files) {
+        $htCheck[$file.Name] = 0
         . "$($file.FullName)"
         $functions = Get-FunctionFromScript -File $file.FullName -OutputMetaData | sort Name -unique
-        foreach ($function in $functions){
-            try{
-                $help =Get-Help $function.Name | Where-Object {$_.Name -eq $function.Name} -ErrorAction Stop
-            }catch{
+        foreach ($function in $functions) {
+            try {
+                if (Get-Help $function.Name -ErrorAction SilentlyContinue) {
+                    $help = Get-Help $function.Name | Where-Object {$_.Name -eq $function.Name} -ErrorAction Stop
+                }
+                else {
+                    continue
+                }
+            }
+            catch {
                 continue
             }
-            if ($help.description -ne $null){
+            if ($help.description -ne $null) {
                 $htCheck[$file.Name] += 1
                 $link = $help.relatedLinks 
-                if ($link){
+                if ($link) {
                     $link = $link.navigationLink.uri | Where-Object {$_ -like '*powershellone*'}
                 }
                 $mdFile = $function.Name + '.md'
@@ -171,10 +178,10 @@ Some PowerShell scipts I wrote, that could turn out being useful to others, too.
                 $documenation = New-MarkdownHelp -Command $function.Name -OutputFolder "$path\docs" -Force
                 $text = (Get-Content -Path $documenation | Select-Object -Skip 6)
                 $index = $text.IndexOf('## SYNTAX')
-                $text[$index-1] += "`n## Script file`n$location`n"
-                if ($link){
+                $text[$index - 1] += "`n## Script file`n$location`n"
+                if ($link) {
                     $index = $text.IndexOf('## SYNTAX')
-                    $text[$index-1] += "`n## Related blog post`n$link`n"
+                    $text[$index - 1] += "`n## Related blog post`n$link`n"
                 }
                 $text | Set-Content $documenation -Force
             }
