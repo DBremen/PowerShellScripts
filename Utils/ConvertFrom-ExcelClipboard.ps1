@@ -1,5 +1,5 @@
 ﻿function ConvertFrom-ExcelClipboard {
-     <#
+    <#
         .SYNOPSIS
             Convert copied range from excel to an array of PSObjects
         .DESCRIPTION
