@@ -62,5 +62,3 @@ Accept wildcard characters: False
 [Out-ConditionalColorProperties]()
 
 
-
-
