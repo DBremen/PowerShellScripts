@@ -98,6 +98,7 @@ NestedModules = @(
 '.\modules\Out-DataGridView\Out-DataGridView.psm1',
 '.\modules\Set-OOTO\Set-OOTO.psm1',
 '.\programming exercises\8 Queens.ps1',
+'.\programming exercises\Confirm-Brackets.ps1',
 '.\programming exercises\GenerateSolveMaze.ps1',
 '.\programming exercises\TowerOfHanoi.ps1',
 '.\Utils\Add-PowerShellContextMenu.ps1',
@@ -170,6 +171,8 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
+
+
 
 
 
