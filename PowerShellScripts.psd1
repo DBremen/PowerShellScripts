@@ -70,10 +70,12 @@ NestedModules = @(
 '.\Binary wrapper\Diff-CSV.ps1',
 '.\Binary wrapper\Get-ESSearchResult.ps1',
 '.\Binary wrapper\SilverSearcher.ps1',
+'.\Data Wrangling\Convert-CsvToXls.ps1',
 '.\Data Wrangling\ConvertFrom-NamedCaptureGroup.ps1',
 '.\Data Wrangling\Get-ChangeLog.ps1',
 '.\Data Wrangling\Get-TextWithin.ps1',
 '.\Data Wrangling\grep.ps1',
+'.\Data Wrangling\Import-Excel.ps1',
 '.\Data Wrangling\Sort-CustomList.ps1',
 '.\Data Wrangling\Update-Content.ps1',
 '.\Extend Builtin\Compare-File.ps1',
@@ -173,6 +175,9 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
+
+
+
 
 
 
