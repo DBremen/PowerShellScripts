@@ -73,6 +73,7 @@ NestedModules = @(
 '.\Data Wrangling\Convert-CsvToXls.ps1',
 '.\Data Wrangling\ConvertFrom-NamedCaptureGroup.ps1',
 '.\Data Wrangling\Get-ChangeLog.ps1',
+'.\Data Wrangling\Get-CSVDelimiter.ps1',
 '.\Data Wrangling\Get-TextWithin.ps1',
 '.\Data Wrangling\grep.ps1',
 '.\Data Wrangling\Import-Excel.ps1',
@@ -175,6 +176,9 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
+
+
+
 
 
 
