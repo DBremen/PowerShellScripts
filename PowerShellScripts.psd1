@@ -90,6 +90,7 @@ NestedModules = @(
 '.\format output\Add-FormatTableView.ps1',
 '.\format output\Add-PropertySet.ps1',
 '.\format output\ConvertTo-HtmlConditionalFormat.ps1',
+'.\format output\Format-Pattern.ps1',
 '.\format output\Get-FormatView.ps1',
 '.\format output\Out-ConditionalColor.ps1',
 '.\format output\Out-ConditionalColorProperties.ps1',
@@ -176,6 +177,9 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
+
+
+
 
 
 
