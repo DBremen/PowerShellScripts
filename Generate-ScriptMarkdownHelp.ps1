@@ -141,7 +141,7 @@ function Generate-ScriptMarkdownHelp {
     Param($Path = 'C:\Scripts\ps1\PowerShellScripts')
     $summaryTable = @'
 # PowerShellScripts
-Some PowerShell scipts I wrote, that could turn out being useful to others, too.
+Some PowerShell scipts that can be hopefully also useful to others. Most of them were written by me, if not I tried to reference the author and or source. Since I collected those scripts over several years, I couldn't always remember though. 
 
 | Function | Location | Synopsis | Related Blog Post | Full Documentation |
 | --- | --- | --- | --- | --- |
