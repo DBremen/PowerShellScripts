@@ -105,6 +105,7 @@ NestedModules = @(
 '.\programming exercises\8 Queens.ps1',
 '.\programming exercises\Confirm-Brackets.ps1',
 '.\programming exercises\GenerateSolveMaze.ps1',
+'.\programming exercises\Get-CartesianProduct.ps1',
 '.\programming exercises\TowerOfHanoi.ps1',
 '.\Utils\Add-PowerShellContextMenu.ps1',
 '.\Utils\ConvertFrom-ExcelClipboard.ps1',
@@ -177,6 +178,9 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
+
+
+
 
 
 
