@@ -5,7 +5,7 @@
       .DESCRIPTION
         Given an object that contains properties that contain arrays. The function will build a cartesian product returning each possible combination
         given the array entries (see Example)
-	  .PARAMETER InputObject
+      .PARAMETER InputObject
         The object(s) that is used to build the cartesian product
       .PARAMETER CurrPropIndex
         Just used internally for recursive calls of the function when iterating through the properties
@@ -22,7 +22,10 @@
         # Get the cartesian product of the order objects array, splitting each of the possible combinations from the array properties
         # into a separate object
         $orders | Get-CartesianProduct
+      .LINK
+        https://powershellone.wordpress.com/2015/08/27/using-powershell-to-clean-up-excel-data-with-multiple-entries-per-cell/
     #>
+
     [CmdletBinding()]
     param( 
         [Parameter(Mandatory, 

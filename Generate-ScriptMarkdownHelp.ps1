@@ -155,6 +155,8 @@ Some PowerShell scipts that can be hopefully also useful to others. Most of them
         . "$($file.FullName)"
         $functions = Get-FunctionFromScript -File $file.FullName -OutputMetaData | sort Name -unique
         foreach ($function in $functions) {
+            $help = $Null
+            
             try {
                 if (Get-Help $function.Name -ErrorAction SilentlyContinue) {
                     $help = Get-Help $function.Name | Where-Object {$_.Name -eq $function.Name} -ErrorAction Stop
