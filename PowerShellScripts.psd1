@@ -124,6 +124,7 @@ NestedModules = @(
 '.\Utils\Get-Uninstaller.ps1',
 '.\Utils\Get-WIFIPassword.ps1',
 '.\Utils\Invoke-HTMLPesterReport.ps1',
+'.\Utils\Invoke-LegacyCommand.ps1',
 '.\Utils\Migrate-ScheduledTask.ps1',
 '.\Utils\Monitor-Folder.ps1',
 '.\Utils\Open-Registry.ps1',
@@ -181,6 +182,9 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
+
+
+
 
 
 

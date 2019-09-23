@@ -7,9 +7,6 @@ See example.
 ## Script file
 programming exercises\Get-CartesianProduct.ps1
 
-## Related blog post
-https://powershellone.wordpress.com/2015/08/27/using-powershell-to-clean-up-excel-data-with-multiple-entries-per-cell/
-
 ## SYNTAX
 
 ```
@@ -79,8 +76,6 @@ Accept wildcard characters: False
 ## NOTES
 
 ## RELATED LINKS
-
-[https://powershellone.wordpress.com/2015/08/27/using-powershell-to-clean-up-excel-data-with-multiple-entries-per-cell/](https://powershellone.wordpress.com/2015/08/27/using-powershell-to-clean-up-excel-data-with-multiple-entries-per-cell/)
 
 
 
