@@ -47,6 +47,7 @@ Some PowerShell scipts that can be hopefully also useful to others. Most of them
 | Delete-ComputerRestorePoint | Utils\Delete-ComputerRestorePoint.ps1 | Function to Delete Windows System Restore points |  | [Link](https://github.com/DBremen/PowerShellScripts/blob/master/docs/Delete-ComputerRestorePoint.md) |
 | ForeachFor2 | Utils\ForeachFor2.ps1 | Function to step through two series of values in two collections and run commands against them. |  | [Link](https://github.com/DBremen/PowerShellScripts/blob/master/docs/ForeachFor2.md) |
 | Get-Breaktimer | Utils\Get-Breaktimer.ps1 | Function to display a break timer with a countdown based on absolute or relative times. |  | [Link](https://github.com/DBremen/PowerShellScripts/blob/master/docs/Get-Breaktimer.md) |
+| Get-Field | Utils\Get-Field.ps1 | Gets the public and private fields of objects. |  | [Link](https://github.com/DBremen/PowerShellScripts/blob/master/docs/Get-Field.md) |
 | Get-FileAndExtract | Utils\Get-FileAndExtract.ps1 | Function to download and extract files. |  | [Link](https://github.com/DBremen/PowerShellScripts/blob/master/docs/Get-FileAndExtract.md) |
 | Get-FormatStrings | Utils\Get-FormatStrings.ps1 | Show common format strings for a given input and the respective outputs |  | [Link](https://github.com/DBremen/PowerShellScripts/blob/master/docs/Get-FormatStrings.md) |
 | Get-GoogleSuggestion | Utils\Get-GoogleSuggestion.ps1 | Function to get "Did you mean?" suggestions from Google. |  | [Link](https://github.com/DBremen/PowerShellScripts/blob/master/docs/Get-GoogleSuggestion.md) |

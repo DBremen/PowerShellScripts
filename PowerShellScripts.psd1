@@ -117,6 +117,7 @@ NestedModules = @(
 '.\Utils\Delete-ComputerRestorePoint.ps1',
 '.\Utils\ForeachFor2.ps1',
 '.\Utils\Get-Breaktimer.ps1',
+'.\Utils\Get-Field.ps1',
 '.\Utils\Get-FileAndExtract.ps1',
 '.\Utils\Get-FirstPSVersion.ps1',
 '.\Utils\Get-FormatStrings.ps1',
@@ -182,6 +183,9 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
+
+
+
 
 
 
