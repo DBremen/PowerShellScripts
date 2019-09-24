@@ -79,6 +79,7 @@ NestedModules = @(
 '.\Data Wrangling\Get-LineNumber.ps1',
 '.\Data Wrangling\Get-TextWithin.ps1',
 '.\Data Wrangling\grep.ps1',
+'.\Data Wrangling\Group-ConsecutiveRanges.ps1',
 '.\Data Wrangling\Import-Excel.ps1',
 '.\Data Wrangling\Sort-CustomList.ps1',
 '.\Data Wrangling\Update-Content.ps1',
@@ -184,6 +185,9 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
+
+
+
 
 
 
