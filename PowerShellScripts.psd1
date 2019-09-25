@@ -134,6 +134,7 @@ NestedModules = @(
 '.\Utils\Invoke-Parser.ps1',
 '.\Utils\Migrate-ScheduledTask.ps1',
 '.\Utils\Monitor-Folder.ps1',
+'.\Utils\New-PSObject.ps1',
 '.\Utils\Open-Registry.ps1',
 '.\Utils\Restart-Process.ps1'
 )
@@ -189,6 +190,9 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
+
+
+
 
 
 
