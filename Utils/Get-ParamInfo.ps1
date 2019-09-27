@@ -8,13 +8,13 @@ function Get-ParamInfo {
         Format the Get-Command information in a way to show info for each parameter for each parameter set of a given cmdlet.
       .PARAMETER Command
         The name of the command to get the parameter info for.
-      .PARAMETER Verbose
+      .PARAMETER VerboseOutput
         Switch to indicate whether parameter info is also shown for commonparameters.
       .EXAMPLE
 		Get-ParamInfo Get-Command
     #>
     [CmdletBinding()]
-    param ( [string]$Command, [switch]$Verbose)
+    param ( [string]$Command, [switch]$VerboseOutputOutput)
 
     # Use the special formatting built to output the results in a palatable way
     # Formatting directives
@@ -44,12 +44,10 @@ function Get-ParamInfo {
         $pset.parameters | foreach-object { 
             # optionally toss the ubiquitous parameters
             if ( $_.Position -lt 0 ) { $p = "named" } else { $p = $_.Position } 
-            if ( !($ub -contains $_.name) -or $Verbose ) {
+            if ( !($ub -contains $_.name) -or $VerboseOutput ) {
                 $_ | Add-Member NoteProperty Positional $p -pass -Force |
                 Add-Member NoteProperty ParameterSetName $pset.name -pass  -Force
             }
         } | sort-object Positional | Format-Table "name", $type, $man, $pos, $vp, $vppn -auto
     }
 }
-
-get-paraminfo Get-Command 

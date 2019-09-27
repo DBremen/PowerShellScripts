@@ -105,6 +105,7 @@ NestedModules = @(
 '.\modules\FileSearcher\FileSearcher.psm1',
 '.\modules\Get-FileMethods\Get-FileMethods.psm1',
 '.\modules\Get-LegacyHelp\Get-LegacyHelp.psm1',
+'.\modules\Logging\Logging.psm1',
 '.\modules\Out-DataGridView\Out-DataGridView.psm1',
 '.\modules\Set-OOTO\Set-OOTO.psm1',
 '.\programming exercises\8 Queens.ps1',
@@ -190,6 +191,16 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
+
+
+
+
+
+
+
+
+
+
 
 
 

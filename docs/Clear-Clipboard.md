@@ -5,7 +5,7 @@ Identify the process that currently blocks the clipboard (Using GetOpenClipboard
 Opens a small GUI offering options to either stop or restart the process
 
 ## Script file
-docs\Clear-Clipboard.md
+Clear-Clipboard\Clear-Clipboard.psm1
 
 ## Related blog post
 https://powershellone.wordpress.com/2016/02/25/fix-clipboard-is-not-working-restart-process-with-powershell/
@@ -39,66 +39,6 @@ Clear-Clipboard
 ## RELATED LINKS
 
 [https://powershellone.wordpress.com/2016/02/25/fix-clipboard-is-not-working-restart-process-with-powershell/](https://powershellone.wordpress.com/2016/02/25/fix-clipboard-is-not-working-restart-process-with-powershell/)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

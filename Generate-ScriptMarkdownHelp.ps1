@@ -148,12 +148,18 @@ Some PowerShell scipts that can be hopefully also useful to others. Most of them
 '@
     Import-Module platyps
     $env:path += ";$path"
-    $files = Get-ChildItem $path -File -Include ('*.ps1') -Recurse
+    $files = Get-ChildItem $path -File -Include ('*.ps1','*.psm1') -Recurse
     $htCheck = @{}
     foreach ($file in $files) {
-        $htCheck[$file.Name] = 0
-        . "$($file.FullName)"
-        $functions = Get-FunctionFromScript -File $file.FullName -OutputMetaData | sort Name -unique
+        if ($file.Extension -eq '.psm1'){
+            Import-Module $file.Fullname
+            $functions = Get-Command -Module $file.BaseName
+        }
+        else{
+            $htCheck[$file.Name] = 0
+            . "$($file.FullName)"
+            $functions = Get-FunctionFromScript -File $file.FullName -OutputMetaData | sort Name -unique
+        }
         foreach ($function in $functions) {
             $help = $Null
             
