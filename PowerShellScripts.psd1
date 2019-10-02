@@ -129,6 +129,7 @@ NestedModules = @(
 '.\Utils\Get-ParamInfo.ps1',
 '.\Utils\Get-Uninstaller.ps1',
 '.\Utils\Get-WIFIPassword.ps1',
+'.\Utils\Invoke-ContextMenuAction.ps1',
 '.\Utils\Invoke-HTMLPesterReport.ps1',
 '.\Utils\Invoke-LegacyCommand.ps1',
 '.\Utils\Invoke-Parallel.ps1',
@@ -191,6 +192,9 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
+
+
+
 
 
 
