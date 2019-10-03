@@ -9,7 +9,7 @@ Utils\Invoke-ContextMenuAction.ps1
 ## SYNTAX
 
 ```
-Invoke-ContextMenuAction [[-Path] <String>] [[-Verb] <String>] [-List]
+Invoke-ContextMenuAction [[-Path] <Object>] [[-Verb] <String>] [-List]
 ```
 
 ## DESCRIPTION
@@ -48,14 +48,14 @@ The copy, cut, and paste actions allow you to move items as you would using keys
 Path to invoke the context menu action for.
 
 ```yaml
-Type: String
+Type: Object
 Parameter Sets: (All)
-Aliases: 
+Aliases: FullName
 
 Required: False
 Position: 1
 Default value: .
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 

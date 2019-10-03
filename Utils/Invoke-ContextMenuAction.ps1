@@ -38,25 +38,30 @@
         The copy, cut, and paste actions allow you to move items as you would using keystrokes or the mouse.
     #>
     [CmdletBinding()]
-    Param([Parameter(Position = 0)] [string]$Path = ".",
+    Param(
+        [Parameter(ValueFromPipeline,ValueFromPipelineByPropertyName,
+        Position = 0)] 
+        [Alias("FullName")]
+        $Path= ".",
         [Parameter(Position = 1)] [string]$Verb,
         [switch]$List
     )
-    
-    $Item = Get-Item $Path
-    $shell = new-object -ComObject Shell.Application
-    $NS = $shell.NameSpace($Item.FullName)
-    $FSObject = $NS.Self
-    $Verbs = $FSObject.Verbs()
-    if ($List -OR $Verb -eq "") {
-        if ($Verbs.Count -gt 0) {
-            Write-Output "Verb List for $($Item.FullName)"
-            foreach ($Action in $Verbs) { if ($Action.Name -ne "") { ($Action.Name).Replace("&", "") } }
-        } #end if $Verbs
-    } #end if List
-    else {
-        foreach ($Action in $Verbs) {
-            if ((($Action.Name).Replace("&", "")) -match $Verb) { $Action.Doit() }
-        } #end foreach
-    } #end else List
+    PROCESS{
+        $Item = Get-Item $Path
+        $shell = new-object -ComObject Shell.Application
+        $NS = $shell.NameSpace($Item.FullName)
+        $FSObject = $NS.Self
+        $Verbs = $FSObject.Verbs()
+        if ($List -OR $Verb -eq "") {
+            if ($Verbs.Count -gt 0) {
+                Write-Output "Verb List for $($Item.FullName)"
+                foreach ($Action in $Verbs) { if ($Action.Name -ne "") { ($Action.Name).Replace("&", "") } }
+            } #end if $Verbs
+        } #end if List
+        else {
+            foreach ($Action in $Verbs) {
+                if ((($Action.Name).Replace("&", "")) -match $Verb) { $Action.Doit() }
+            } #end foreach
+        } #end else List
+    }
 } #End Invoke-ContextMenuAction

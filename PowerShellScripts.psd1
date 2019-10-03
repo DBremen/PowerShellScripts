@@ -122,6 +122,7 @@ NestedModules = @(
 '.\Utils\Get-Breaktimer.ps1',
 '.\Utils\Get-Field.ps1',
 '.\Utils\Get-FileAndExtract.ps1',
+'.\Utils\Get-FileEncoding.ps1',
 '.\Utils\Get-FirstPSVersion.ps1',
 '.\Utils\Get-FormatStrings.ps1',
 '.\Utils\Get-GoogleSuggestion.ps1',
@@ -192,6 +193,9 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
+
+
+
 
 
 

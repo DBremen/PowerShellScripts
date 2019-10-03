@@ -55,6 +55,7 @@ Some PowerShell scipts that can be hopefully also useful to others. Most of them
 | Get-Breaktimer | Utils\Get-Breaktimer.ps1 | Function to display a break timer with a countdown based on absolute or relative times. |  | [Link](https://github.com/DBremen/PowerShellScripts/blob/master/docs/Get-Breaktimer.md) |
 | Get-Field | Utils\Get-Field.ps1 | Gets the public and private fields of objects. |  | [Link](https://github.com/DBremen/PowerShellScripts/blob/master/docs/Get-Field.md) |
 | Get-FileAndExtract | Utils\Get-FileAndExtract.ps1 | Function to download and extract files. |  | [Link](https://github.com/DBremen/PowerShellScripts/blob/master/docs/Get-FileAndExtract.md) |
+| Get-FileEncoding | Utils\Get-FileEncoding.ps1 | Get the file encoding of a given file. |  | [Link](https://github.com/DBremen/PowerShellScripts/blob/master/docs/Get-FileEncoding.md) |
 | Get-FormatStrings | Utils\Get-FormatStrings.ps1 | Show common format strings for a given input and the respective outputs |  | [Link](https://github.com/DBremen/PowerShellScripts/blob/master/docs/Get-FormatStrings.md) |
 | Get-GoogleSuggestion | Utils\Get-GoogleSuggestion.ps1 | Function to get "Did you mean?" suggestions from Google. |  | [Link](https://github.com/DBremen/PowerShellScripts/blob/master/docs/Get-GoogleSuggestion.md) |
 | Get-MSDNInfo | Utils\Get-MSDNInfo.ps1 | Opens the MSDN web page of an object member: type, method or property. |  | [Link](https://github.com/DBremen/PowerShellScripts/blob/master/docs/Get-MSDNInfo.md) |
