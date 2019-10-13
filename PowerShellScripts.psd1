@@ -127,6 +127,7 @@ NestedModules = @(
 '.\Utils\Get-FormatStrings.ps1',
 '.\Utils\Get-GoogleSuggestion.ps1',
 '.\Utils\Get-MSDNInfo.ps1',
+'.\Utils\Get-OutputProducingCommand.ps1',
 '.\Utils\Get-ParamInfo.ps1',
 '.\Utils\Get-Uninstaller.ps1',
 '.\Utils\Get-WIFIPassword.ps1',
@@ -193,6 +194,9 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
+
+
+
 
 
 

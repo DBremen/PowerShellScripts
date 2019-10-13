@@ -1,5 +1,5 @@
 ﻿function Get-FileEncoding{
-      <#    
+    <#    
       .SYNOPSIS
         Get the file encoding of a given file.
       .DESCRIPTION
