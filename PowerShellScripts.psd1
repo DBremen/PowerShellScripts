@@ -81,6 +81,8 @@ NestedModules = @(
 '.\Data Wrangling\grep.ps1',
 '.\Data Wrangling\Group-ConsecutiveRanges.ps1',
 '.\Data Wrangling\Import-Excel.ps1',
+'.\Data Wrangling\Join-CSV.ps1',
+'.\Data Wrangling\Join-Linq.ps1',
 '.\Data Wrangling\Sort-CustomList.ps1',
 '.\Data Wrangling\Update-Content.ps1',
 '.\Extend Builtin\Compare-File.ps1',
@@ -194,6 +196,9 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
+
+
+
 
 
 
