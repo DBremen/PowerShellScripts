@@ -2,6 +2,7 @@
 
 ## SYNOPSIS
 Function to join two .csv files based on a common column.
+Based on a PowerShellMagazine article from Chrissy LeMaire (see link).
 
 ## Script file
 Data Wrangling\Join-CSV.ps1
@@ -15,7 +16,7 @@ Join-CSV [-Path] <Object> [-FirstFileName] <Object> [-SecondFileName] <Object> [
 ```
 
 ## DESCRIPTION
-The join is done through the ACE.OLEDB driver therefor the function requires to Install/download ACE.OLEDB 2010 driver or higher version via the link.
+The join is done via the ACE.OLEDB driver hence the function requires to Install/download ACE.OLEDB 2010 driver or higher version via the link.
 The ACE.OLEDB works best when no header is present therefore the script dynamically creates a schema file to map the headings in case a header is present.
 
 ## EXAMPLES
@@ -198,7 +199,9 @@ Accept wildcard characters: False
 ```
 
 ### -NoHeaders
-Switch parameter, if set the .csv file are considered to have no header (column names will be supplemented as f1,f2...)
+Switch parameter.
+Used to indicate that the csv files do not contain headers in the first row.
+(column names will be supplemented as f1,f2...)
 
 ```yaml
 Type: SwitchParameter
@@ -220,7 +223,9 @@ Accept wildcard characters: False
 
 ## RELATED LINKS
 
-[https://www.microsoft.com/en-us/download/details.aspx?id=54920.](https://www.microsoft.com/en-us/download/details.aspx?id=54920.)
+[https://www.microsoft.com/en-us/download/details.aspx?id=54920](https://www.microsoft.com/en-us/download/details.aspx?id=54920)
+
+[https://www.powershellmagazine.com/2015/05/12/natively-query-csv-files-using-sql-syntax-in-powershell/](https://www.powershellmagazine.com/2015/05/12/natively-query-csv-files-using-sql-syntax-in-powershell/)
 
 
 

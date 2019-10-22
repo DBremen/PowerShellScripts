@@ -2,8 +2,9 @@
   <#    
       .SYNOPSIS
         Function to join two .csv files based on a common column.
+        Based on a PowerShellMagazine article from Chrissy LeMaire (see link).
       .DESCRIPTION
-        The join is done through the ACE.OLEDB driver therefor the function requires to Install/download ACE.OLEDB 2010 driver or higher version via the link.
+        The join is done via the ACE.OLEDB driver hence the function requires to Install/download ACE.OLEDB 2010 driver or higher version via the link.
         The ACE.OLEDB works best when no header is present therefore the script dynamically creates a schema file to map the headings in case a header is present.
       .PARAMETER Path
         The path to the folder the .csv filesto join reside in.
@@ -27,7 +28,7 @@
         Array to provide the datatype for each column of the first file.
         Defaults to text width = 20. See https://docs.microsoft.com/en-us/sql/odbc/microsoft/schema-ini-file-text-file-driver?view=sql-server-ver15.
       .PARAMETER NoHeaders
-        Switch parameter, if set the .csv file are considered to have no header (column names will be supplemented as f1,f2...)
+        Switch parameter. Used to indicate that the csv files do not contain headers in the first row. (column names will be supplemented as f1,f2...)
       .EXAMPLE
         #folder to store the .csv in
         $folder = mkdir "$env:TEMP\joincsv"
@@ -57,7 +58,9 @@ UserID,UserName
         # 3         LitWare     3      Bob     
         #                       4      Mary
       .LINK
-        https://www.microsoft.com/en-us/download/details.aspx?id=54920.
+        https://www.microsoft.com/en-us/download/details.aspx?id=54920
+      .LINK
+        https://www.powershellmagazine.com/2015/05/12/natively-query-csv-files-using-sql-syntax-in-powershell/
     #>
   [CmdletBinding()]
   param( 
