@@ -143,7 +143,8 @@ NestedModules = @(
 '.\Utils\Monitor-Folder.ps1',
 '.\Utils\New-PSObject.ps1',
 '.\Utils\Open-Registry.ps1',
-'.\Utils\Restart-Process.ps1'
+'.\Utils\Restart-Process.ps1',
+'.\Utils\Start-ProcessUnelevated.ps1'
 )
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @('*')
@@ -197,6 +198,11 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
+
+
+
+
+
 
 
 
