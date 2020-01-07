@@ -41,6 +41,8 @@ function SilverSearcher {
 	    Only search files matching extension(s).
     .PARAMETER Exclude
 	    Only search files not matching extension(s).Default @('lnk','exe','bpm','1','log','jar','tis','tii','prx')
+    .PARAMETER FullLine
+        Switch parameter, if specified the entire line of the match is returned. 
     .EXAMPLE
     	
     .EXAMPLE
@@ -68,7 +70,8 @@ function SilverSearcher {
         [switch]$FullWord,
         [switch]$SearchZip,
         [string[]]$Include,
-        [string[]]$Exclude=@('lnk','exe','bpm','1','log','jar','tis','tii','prx')
+        [string[]]$Exclude=@('lnk','exe','bpm','1','log','jar','tis','tii','prx'),
+        [switch]$FullLine
     )
 
     $agPath = 'C:\ProgramData\chocolatey\bin\ag.exe'
@@ -172,15 +175,17 @@ or install ag.exe via chocolatey "cinst ag"
                     $val = Join-Path $basePath $val
                 }
                 elseif ($i -eq 2 -and $val -ne ''){
-                    $index = [Regex]::Match($val, $Pattern).Index
-                    $start = ($index - 10)
-                    if ($start -lt 0) {$start = 0}
-                    $patLen = $Pattern.Length
-                    $len = $patLen + 20
-                    if ($start+$len -gt $val.Length){
-                        $len = $val.Length - $start
+                    if (!$FullLine){
+                        $index = [Regex]::Match($val, $Pattern).Index
+                        $start = ($index - 10)
+                        if ($start -lt 0) {$start = 0}
+                        $patLen = $Pattern.Length
+                        $len = $patLen + 20
+                        if ($start+$len -gt $val.Length){
+                            $len = $val.Length - $start
+                        }
+                        $val = $val.Substring($start,$len)
                     }
-                    $val = $val.Substring($start,$len)
                 }
                
                 $ht.Add($properties[$i],$val)
