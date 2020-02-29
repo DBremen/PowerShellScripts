@@ -50,7 +50,7 @@ function Get-ESSearchResult {
     $esPath = 'C:\Program Files*\es\es.exe'
     if (!(Resolve-Path $esPath) -or !(Test-Path (Resolve-Path $esPath).Path)){
         Write-Warning "Everything commandline es.exe could not be found on the system please download and install via http://www.voidtools.com/es.zip"
-        exit
+        break
     }
 	$result = & (Resolve-Path $esPath).Path $SearchTerm
     if($result.Count -gt 1){
