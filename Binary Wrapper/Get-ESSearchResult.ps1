@@ -47,12 +47,20 @@ function Get-ESSearchResult {
         [switch]$OpenFolder,
         [switch]$AsObject
     )
-    $esPath = 'C:\Program Files*\es\es.exe'
-    if (!(Test-Path (Resolve-Path $esPath).Path)){
-        Write-Warning "Everything commandline es.exe could not be found on the system please download and install via http://www.voidtools.com/es.zip"
-        exit
+    $esPaths = @('C:\Program Files*\es\es.exe','c:\ProgramData\chocolatey\bin\es.exe')
+    foreach($esPath in $esPaths){
+        $esPath = (Resolve-Path $esPath -ErrorAction SilentlyContinue)
+        if (!$esPath -or !(Test-Path $esPath.Path)){
+            $esPath = ""
+        } else {
+            break
+        }
     }
-	$result = & (Resolve-Path $esPath).Path $SearchTerm
+    if ($esPath -eq ""){
+        Write-Warning "Everything commandline es.exe could not be found on the system please download and install via http://www.voidtools.com/es.zip or using Chocolatey ('choco install everything')"
+        break
+    }
+    $result = & $esPath.Path $SearchTerm
     if($result.Count -gt 1){
         $result = $result | Out-GridView -PassThru
     }
