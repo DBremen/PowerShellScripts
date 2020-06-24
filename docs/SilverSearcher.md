@@ -13,7 +13,7 @@ Binary wrapper\SilverSearcher.ps1
 ```
 SilverSearcher [-Pattern] <Object> [[-Path] <Object>] [-Context <Object>] [-PathPattern <Object>]
  [-Depth <Object>] [-CountOnly] [-SimpleMatch] [-List] [-CaseSensitive] [-NoRecurse] [-FollowSymLinks]
- [-NotMatch] [-FullWord] [-SearchZip] [-Include <String[]>] [-Exclude <String[]>]
+ [-NotMatch] [-FullWord] [-SearchZip] [-Include <String[]>] [-Exclude <String[]>] [-FullLine]
 ```
 
 ## DESCRIPTION
@@ -275,6 +275,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: @('lnk','exe','bpm','1','log','jar','tis','tii','prx')
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FullLine
+Switch parameter, if specified the entire line of the match is returned.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

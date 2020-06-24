@@ -8,14 +8,8 @@ Data Wrangling\Convert-CsvToXls.ps1
 
 ## SYNTAX
 
-### fromstring (Default)
 ```
-Convert-CsvToXls [-Path] <String> [-DeleteSource] [-Delimiter <String>] [-Name <String>] [-Show]
-```
-
-### fromfile
-```
-Convert-CsvToXls [-File] <FileInfo> [-DeleteSource] [-Delimiter <String>] [-Name <String>] [-Show]
+Convert-CsvToXls [[-Path] <String>] [-DeleteSource] [-Delimiter <String>] [-Name <String>] [-Show]
 ```
 
 ## DESCRIPTION
@@ -34,33 +28,18 @@ $csvFile | Convert-CsvToXls
 ## PARAMETERS
 
 ### -Path
-Path of the CSV file to be converted.
+Path of the CSV file to be converted (accepts pipeline input via dir).
+If no path is provided an open file dialog is opened to select the path.
 
 ```yaml
 Type: String
-Parameter Sets: fromstring
-Aliases: 
+Parameter Sets: (All)
+Aliases: FullName
 
-Required: True
+Required: False
 Position: 1
 Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -File
-The .csv file to be converted.
-Accepts pipeline.
-
-```yaml
-Type: FileInfo
-Parameter Sets: fromfile
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 

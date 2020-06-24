@@ -130,6 +130,7 @@ NestedModules = @(
 '.\Utils\Get-FormatStrings.ps1',
 '.\Utils\Get-GoogleSuggestion.ps1',
 '.\Utils\Get-MSDNInfo.ps1',
+'.\Utils\Get-OutlookSentItems.ps1',
 '.\Utils\Get-OutputProducingCommand.ps1',
 '.\Utils\Get-ParamInfo.ps1',
 '.\Utils\Get-Uninstaller.ps1',
@@ -144,6 +145,7 @@ NestedModules = @(
 '.\Utils\New-PSObject.ps1',
 '.\Utils\Open-Registry.ps1',
 '.\Utils\Restart-Process.ps1',
+'.\Utils\Set-IPAddress.ps1',
 '.\Utils\Start-ProcessUnelevated.ps1'
 )
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
@@ -198,6 +200,10 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
+
+
+
+
 
 
 
