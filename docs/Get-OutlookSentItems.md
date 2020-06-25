@@ -37,7 +37,7 @@ Get-OutlookSentItems -LastXDays 7 -Group
 ## PARAMETERS
 
 ### -LastXDays
-The last x days the Sent Emails should be retrieved for.
+The last x days (betwenn 1-30) the Sent Emails should be retrieved for.
 By default the last five days are retrieved.
 
 ```yaml

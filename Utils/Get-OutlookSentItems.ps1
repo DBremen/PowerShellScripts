@@ -10,7 +10,7 @@
         is currently running and the current PowerShell session is elevated.
 		
     .PARAMETER LastXDays
-        The last x days the Sent Emails should be retrieved for. By default the last five days are retrieved.
+        The last x days (betwenn 1-30) the Sent Emails should be retrieved for. By default the last five days are retrieved.
 
     .PARAMETER Group
         Switch parameter. If used only the count of emails per day is returned instead of the individual items.
@@ -50,7 +50,9 @@
             $emails = $emails | Group-Object { $_.SentOn.Date }
         }
         $emails
-        Stop-Process -Name Outlook
+        if (!$runningOutlook){
+            Stop-Process -Name Outlook
+        }
     }
 }
 
