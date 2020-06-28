@@ -34,14 +34,14 @@
 
 #>
     [CmdletBinding()]
-	param(
-       $AdapterName = 'Wi-Fi',
-       $BaseAddress = '192.168.15',
-       [ValidateRange(1,255)]
-       $LastTriplet, 
-       $GateWayAddress = '192.168.15.1',
-       $DNSServerAddress = ('1.1.1.1', '1.0.0.1'),
-       [switch]$Dynamic
+    param(
+        $AdapterName = 'Wi-Fi',
+        $BaseAddress = '192.168.15',
+        [ValidateRange(1, 255)]
+        $LastTriplet, 
+        $GateWayAddress = '192.168.15.1',
+        $DNSServerAddress = ('1.1.1.1', '1.0.0.1'),
+        [switch]$Dynamic
     )
     $adapter = Get-NetAdapter  -Name $AdapterName
     $ipType = 'IPv4'

@@ -44,19 +44,19 @@ function WhereEx {
             }
             $openParens = $tokens | where Kind -eq 'LParen'
             foreach ($openParen in $openParens) {
-                $closeParen = ($tokens | where {$_.Kind -eq 'RParen' -and $_.Start -gt $openParen.Start} | sort -Descending)[0]
-                $tokensInBlock = $tokens | where {$_.Start -gt $openParen.Start -and $_.Start -lt $closeParen.Start}
+                $closeParen = ($tokens | where { $_.Kind -eq 'RParen' -and $_.Start -gt $openParen.Start } | sort -Descending)[0]
+                $tokensInBlock = $tokens | where { $_.Start -gt $openParen.Start -and $_.Start -lt $closeParen.Start }
                 $variableTxt = ($tokens[[Array]::IndexOf($tokens, $openParens) - 1]).Text
                 #check if we are dealing with qualified membernames (e.g. $_.Name)
                 if (!$variableTxt.StartsWith('$')) {
                     #go back until variable is found and join the txt
-                    $variable = ($tokens | where {$_.Start -lt $openParen.Start -and $_.Kind -eq 'Variable'} | sort Start -Descending)[0]
-                    $name = ($tokens | where {$_.Start -lt $openParen.Start -and $_.Start -gt $variable.Start}).Text
+                    $variable = ($tokens | where { $_.Start -lt $openParen.Start -and $_.Kind -eq 'Variable' } | sort Start -Descending)[0]
+                    $name = ($tokens | where { $_.Start -lt $openParen.Start -and $_.Start -gt $variable.Start }).Text
                     $variableTxt = $variable.Text + ($name -join '')
                 }
 
                 #check for consecutive parameter tokens
-                $operators = $tokensInBlock | where {$_.Kind -eq 'Parameter' -and $_.Text -ne '-not'} 
+                $operators = $tokensInBlock | where { $_.Kind -eq 'Parameter' -and $_.Text -ne '-not' } 
                 foreach ($operator in $operators ) {
                     $nextToken = $tokens[[Array]::IndexOf($tokens, $operator) + 1]
                     if ($nextToken.Kind -eq 'Parameter') {
