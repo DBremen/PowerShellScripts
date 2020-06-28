@@ -24,7 +24,6 @@ class DateTransformAttribute : System.Management.Automation.ArgumentTransformati
         throw [System.InvalidOperationException]::new('No valid date time.')
     }
 }
-
 function ConvertTo-Localtime {
     <#
     .SYNOPSIS
@@ -60,7 +59,7 @@ function ConvertTo-Localtime {
     [outputtype("DateTime")]
     Param(
         [Parameter(Position = 0, Mandatory)]
-        [DateTime][DateTransform()]$Datetime,
+        [DateTime][DateTransformAttribute()]$Datetime,
         [Parameter(Mandatory)]
         [ArgumentCompleter(
             {
@@ -100,3 +99,4 @@ function ConvertTo-Localtime {
     End {
     }
 }
+

@@ -100,4 +100,3 @@ Accept wildcard characters: False
 [https://powershellone.wordpress.com/2015/06/30/comparing-two-objects-or-csv-files-column-by-column/](https://powershellone.wordpress.com/2015/06/30/comparing-two-objects-or-csv-files-column-by-column/)
 
 
-

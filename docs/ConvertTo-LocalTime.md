@@ -1,4 +1,4 @@
-# ConvertTo-LocalTime
+# ConvertTo-Localtime
 
 ## SYNOPSIS
 Convert a datetime from a remote timezone to the local time.
@@ -9,7 +9,7 @@ Utils\ConvertTo-Localtime.ps1
 ## SYNTAX
 
 ```
-ConvertTo-LocalTime [-Datetime] <DateTime> -RemoteTimeZone <Object>
+ConvertTo-Localtime [-Datetime] <DateTime> -RemoteTimeZone <Object>
 ```
 
 ## DESCRIPTION
@@ -80,8 +80,6 @@ Accept wildcard characters: False
 [https://community.idera.com/database-tools/powershell/powertips/b/tips/posts/world-time-clock](https://community.idera.com/database-tools/powershell/powertips/b/tips/posts/world-time-clock)
 
 [https://powershell.one/powershell-internals/attributes/transformation](https://powershell.one/powershell-internals/attributes/transformation)
-
-
 
 
 

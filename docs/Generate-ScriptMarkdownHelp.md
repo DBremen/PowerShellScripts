@@ -22,7 +22,7 @@ Functions are extracted via Get-FunctionFromScript, dot sourced and parsed using
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
 #because the functions are dot sourced within the function they are not visible wihtin the global scope
-
+```
 
 #therefore the script needs to be called by dot-sourcing itself
 #open console
@@ -32,7 +32,7 @@ Functions are extracted via Get-FunctionFromScript, dot sourced and parsed using
 $path = \<PATHTOSCRIPTSTOBEDOCUMENTED\>
 .
 Generate-ScriptMarkdownHelp($path)
-```
+
 ## PARAMETERS
 
 ### -Path
@@ -57,5 +57,4 @@ Accept wildcard characters: False
 ## NOTES
 
 ## RELATED LINKS
-
 

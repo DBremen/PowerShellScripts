@@ -77,5 +77,3 @@ Accept wildcard characters: False
 
 
 
-
-

@@ -26,7 +26,7 @@ Gets the functions exactly as they are written within a script or file
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
 Get-FunctionFromScript {
-
+```
 
 function foo() {
         "foo"
@@ -35,7 +35,7 @@ function foo() {
         "bar"
     }
 }
-```
+
 ## PARAMETERS
 
 ### -ScriptBlock
@@ -96,5 +96,4 @@ Accept wildcard characters: False
 ## RELATED LINKS
 
 [http://powershellpipeworks.com/](http://powershellpipeworks.com/)
-
 

@@ -228,4 +228,3 @@ Accept wildcard characters: False
 [https://www.powershellmagazine.com/2015/05/12/natively-query-csv-files-using-sql-syntax-in-powershell/](https://www.powershellmagazine.com/2015/05/12/natively-query-csv-files-using-sql-syntax-in-powershell/)
 
 
-
