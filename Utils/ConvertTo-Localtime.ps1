@@ -1,29 +1,60 @@
 class DateTransformAttribute : System.Management.Automation.ArgumentTransformationAttribute {
+   
+    # property to take additional format strings for transformations
+    [string[]]$AdditionalFormatStrings 
+
+    # default constructor:
+    DateTransformAttribute() : base() { }
+
+    # 2nd constructor with parameter AdditionalFormatStrings
+    DateTransformAttribute([string[]]$AdditionalFormatStrings) : base() {
+        $this.AdditionalFormatStrings = $AdditionalFormatStrings
+    }
+
+    # Transform() method is called whenever there is a variable or parameter assignment.
+
     [object] Transform([System.Management.Automation.EngineIntrinsics]$engineIntrinsics, [object] $inputData) {
         if ($inputData -as [datetime]) {
             # return as-is:
             return ($inputData -as [datetime])
         }
-        #try to convert the string using different variations of ::parseexact
-        elseif ($inputData -is [string]) {
-            try { $newDate = [datetime]::ParseExact($inputData, 'M/dd h:mmtt', $Null) }
-            catch {
-                try { $newDate = [datetime]::ParseExact($inputData, 'MM/dd hh:mmtt', $Null) } 
-                catch {
-                    try { $newDate = [datetime]::ParseExact($inputData, 'M/dd hh:mm tt', $Null) }
-                    catch {
-                        try { $newDate = [datetime]::ParseExact($inputData, 'dd/M h:mmtt', $Null) } 
-                        catch { throw [System.InvalidOperationException]::new('No valid date time.') }
-                    }
-                }
-            }
-            if ($newDate) { return $newDate }
+        # get the provided format strings first for them to take precedence
+        $dateFormatStrings = $this.AdditionalFormatStrings
+        # add the static date format strings
+        $dayFirstFormats = 'd/M h:mtt', 'dd/MM hh:mmtt', 'dd/MM hh:mm:ss tt'
+        # add same with '.' as delimiter
+        $dayFirstFormats = $dayFirstFormats.foreach{ $_; $_.Replace('/', '.') }
+        $monthFirstFormats = 'M/d h:mtt', 'MM/dd hh:mmtt', 'MM/dd hh:mm:ss tt'
+        # check if the local date is in M/d or d/M format
+        # check for this format first
+        if ('14/6' -as [datetime]) { 
+            # local date is d/M
+            $dateFormatStrings += $dayFirstFormats + $monthFirstFormats
+        }
+        else {
+            $dateFormatStrings += $monthFirstFormats + $dayFirstFormats
         }
         
-        # anything else throws an exception:
+        #try to convert a provided string with ParseExact using the different format strings
+        if ($inputData -is [string]) {
+            foreach ($format in $dateFormatStrings) {
+                try {
+                    $newDate = [datetime]::ParseExact($inputData, $format, $Null)
+                }
+                catch {
+                    # if the conversion attempt fails keep trying the other formats
+                    continue
+                }
+                # if the conversion succeeds return the date
+                if ($newDate) { return $newDate }
+            }
+        }
+        
+        # conversion faild throw an exception.
         throw [System.InvalidOperationException]::new('No valid date time.')
     }
 }
+
 function ConvertTo-Localtime {
     <#
     .SYNOPSIS
@@ -53,6 +84,9 @@ function ConvertTo-Localtime {
     .LINK
         https://powershell.one/powershell-internals/attributes/transformation
 
+    .LINK
+        https://powershell.one/powershell-internals/attributes/custom-attributes#custom-transformation-attribute
+
 #>
     [cmdletbinding()]
     [alias("clt")]
@@ -80,19 +114,15 @@ function ConvertTo-Localtime {
         $RemoteTimeZone
     )
     Begin {
-        $timeZoneInfo = Get-TimeZone -id $RemoteTimeZone
-        $offset = $timeZoneInfo.BaseUtcOffset
-        $dst = $timeZoneInfo.SupportsDaylightSavingTime
+        $remoteTz = Get-TimeZone -id $RemoteTimeZone
     }
     Process {
-        $localTime = ($Datetime).AddMinutes( - ($offset.TotalMinutes))
-        if ($dst -and $localTime.IsDaylightSavingTime()) {
-            $localTime = $localTime.AddHours(-1)
-        }
+        $localTz = Get-TimeZone
+        $localTime = [System.TimeZoneInfo]::ConvertTime($Datetime, $remoteTz, $localTz)
         [PSCustomObject][ordered]@{
-            'Remote time zone' = $timeZoneInfo.Id
+            'Remote time zone' = $remoteTz.Id
             'Remote time'      = $Datetime
-            'Local time zone'  = (Get-TimeZone).Id
+            'Local time zone'  = $localTz.Id
             'Local time'       = $localTime
         }
     }

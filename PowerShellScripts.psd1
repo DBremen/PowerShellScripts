@@ -119,7 +119,7 @@ NestedModules = @(
 '.\Utils\Add-PowerShellContextMenu.ps1',
 '.\Utils\ConvertFrom-ExcelClipboard.ps1',
 '.\Utils\ConvertFrom-HtmlToText.ps1',
-'.\Utils\ConvertTo-Localtime.ps1',
+'.\Utils\ConvertTo-LocalTime.ps1',
 '.\Utils\ConvertTo-PSFunction.ps1',
 '.\Utils\Delete-ComputerRestorePoint.ps1',
 '.\Utils\ForeachFor2.ps1',
@@ -201,6 +201,9 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
+
+
+
 
 
 

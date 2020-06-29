@@ -81,3 +81,4 @@ Accept wildcard characters: False
 [https://powershellone.wordpress.com/2016/02/13/retrieve-uninstallstrings-to-fix-installer-issues/](https://powershellone.wordpress.com/2016/02/13/retrieve-uninstallstrings-to-fix-installer-issues/)
 
 
+
