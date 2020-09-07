@@ -10,7 +10,7 @@ Data Wrangling\Get-TextWithin.ps1
 ## SYNTAX
 
 ```
-Get-TextWithin [-Text] <Object> [-WithinChar <Char>]
+Get-TextWithin [-Text] <Object> [[-WithinChar] <Char>]
 ```
 
 ## DESCRIPTION
@@ -56,7 +56,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 2
 Default value: "
 Accept pipeline input: False
 Accept wildcard characters: False

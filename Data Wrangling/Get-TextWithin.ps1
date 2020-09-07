@@ -23,10 +23,20 @@ this is 'even more data'
             ValueFromPipeline = $true,
             Position = 0)]   
         $Text,
+        [Parameter(Position = 1)] 
         [char]$WithinChar = '"'
     )
-    $pattern = @"
-(?<=\$WithinChar).+?(?=\$WithinChar)
+    $htPairs = @{
+        '(' = ')'
+        '[' = ']'
+        '{' = '}'
+    }
+    $withinChar2 = $WithinChar
+    if ($htPairs.ContainsKey([string]$WithinChar)) {
+        $withinChar2 = $htPairs[[string]$WithinChar]
+    }
+     $pattern = @"
+(?<=\$WithinChar).+?(?=\$WithinChar2)
 "@
     [regex]::Matches($Text, $pattern).Value
 }
