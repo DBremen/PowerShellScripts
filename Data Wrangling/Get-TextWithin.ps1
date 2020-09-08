@@ -30,6 +30,7 @@ this is 'even more data'
         '(' = ')'
         '[' = ']'
         '{' = '}'
+	'<' = '>'
     }
     $withinChar2 = $WithinChar
     if ($htPairs.ContainsKey([string]$WithinChar)) {
