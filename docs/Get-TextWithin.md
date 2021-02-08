@@ -1,16 +1,22 @@
 # Get-TextWithin
 
 ## SYNOPSIS
-Get the text between two (balanced) surrounding characters (e.g.
-brackets, quotes...)
+Get the text between two surrounding characters (e.g.
+brackets, quotes, or custom characters)
 
 ## Script file
 Data Wrangling\Get-TextWithin.ps1
 
 ## SYNTAX
 
+### Single
 ```
 Get-TextWithin [-Text] <Object> [[-WithinChar] <Char>]
+```
+
+### Double
+```
+Get-TextWithin [-Text] <Object> [-StartChar <Char>] [-EndChar <Char>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +36,18 @@ this is 'even more data'
 '@
 Get-TextWithin $s "'"
 ```
+### -------------------------- EXAMPLE 2 --------------------------
+```
+# Retrieve all text within custom start and end characters
+
+
+$s=@'
+here is /some data\
+here is /some other data/
+this is /even more data\
+'@
+Get-TextWithin $s -StartChar / -EndChar \
+```
 ## PARAMETERS
 
 ### -Text
@@ -48,16 +66,48 @@ Accept wildcard characters: False
 ```
 
 ### -WithinChar
-Single character, indicating the surrounding characters to retrieve the enclosing text for.
+Single character, indicating the surrounding characters to retrieve the enclosing text for. 
+If this paramater is used the matching ending character is "guessed" (e.g.
+'(' = ')')
 
 ```yaml
 Type: Char
-Parameter Sets: (All)
+Parameter Sets: Single
 Aliases: 
 
 Required: False
 Position: 2
 Default value: "
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StartChar
+Single character, indicating the start surrounding characters to retrieve the enclosing text for.
+
+```yaml
+Type: Char
+Parameter Sets: Double
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EndChar
+Single character, indicating the end surrounding characters to retrieve the enclosing text for.
+
+```yaml
+Type: Char
+Parameter Sets: Double
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -69,6 +119,10 @@ Accept wildcard characters: False
 ## NOTES
 
 ## RELATED LINKS
+
+
+
+
 
 
 
