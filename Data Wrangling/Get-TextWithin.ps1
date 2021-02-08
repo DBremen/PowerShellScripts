@@ -47,11 +47,7 @@ this is /even more data\
         '(' = ')'
         '[' = ']'
         '{' = '}'
-<<<<<<< HEAD
         '<' = '>'
-=======
-	'<' = '>'
->>>>>>> 796556fd01960a063ed7c0a4627f8f2f8126811a
     }
     if ($PSBoundParameters.ContainsKey('WithinChar')) {
         $StartChar = $EndChar = $WithinChar
