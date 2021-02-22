@@ -15,7 +15,9 @@
         (Optional) A prefix to identify the events that are created. The eventIdentifier is name is "$EventName_$EventIdentifierPrefix". Default = (Get-Random)
     .PARAMETER Action
         (Optional in case DefaultOutput is specified) The scriptblock to invoke when the event is triggered. Default variables within the scriptblock are ($fullName, $name, $time, $changeType and for Renamed $oldFullName, $oldName)
-    .PARAMETER Recurse
+    .PARAMETER NotifyFilter
+		(Optional) specifiy a notifiy filter for the file system watcher of type [IO.NotifyFilters]. Defaults to 'FileName, LastWrite'.
+	.PARAMETER Recurse
         Switch if specified will include monitoring subdirectories of the folder
     .PARAMETER DefaultOutput
         Switch if specified will assign action scriptblocks to the event(s) that output "The file '$name' was $changeType at $time" and "The file '$oldName' was $changeType to '$name' at $time" (for Renamed events)
@@ -64,6 +66,8 @@
         [string]$EventIdentifierPrefix = (Get-Random),
 
         [scriptblock]$Action,
+		
+		[IO.NotifyFilters]$NotifyFilter =  'FileName, LastWrite',
 
         [switch]$Recurse,
 
@@ -74,9 +78,8 @@
     }
     $fsw = New-Object IO.FileSystemWatcher $Folder, $Filter -Property @{
         IncludeSubdirectories = $Recurse
-        NotifyFilter          = [IO.NotifyFilters]'FileName, LastWrite'
+        NotifyFilter          = $NotifyFilter
     }
-
     $defaultAction = {
         $name = $event.SourceEventArgs.Name
         $fullName = $event.SourceEventArgs.FullPath

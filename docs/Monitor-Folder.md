@@ -10,7 +10,8 @@ Utils\Monitor-Folder.ps1
 
 ```
 Monitor-Folder [-Folder] <Object> [[-EventName] <String[]>] [-Filter <Object>]
- [-EventIdentifierPrefix <String>] [-Action <ScriptBlock>] [-Recurse] [-DefaultOutput]
+ [-EventIdentifierPrefix <String>] [-Action <ScriptBlock>] [-NotifyFilter <NotifyFilters>] [-Recurse]
+ [-DefaultOutput]
 ```
 
 ## DESCRIPTION
@@ -126,6 +127,23 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NotifyFilter
+(Optional) specifiy a notifiy filter for the file system watcher of type \[IO.NotifyFilters\].
+Defaults to 'FileName, LastWrite'.
+
+```yaml
+Type: NotifyFilters
+Parameter Sets: (All)
+Aliases: 
+Accepted values: FileName, DirectoryName, Attributes, Size, LastWrite, LastAccess, CreationTime, Security
+
+Required: False
+Position: Named
+Default value: FileName, LastWrite
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
