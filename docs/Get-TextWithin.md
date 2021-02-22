@@ -34,7 +34,7 @@ here is 'some data'
 here is "some other data"
 this is 'even more data'
 '@
-Get-TextWithin $s "'"
+ Get-TextWithin $s "'"
 ```
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
@@ -119,8 +119,6 @@ Accept wildcard characters: False
 ## NOTES
 
 ## RELATED LINKS
-
-
 
 
 

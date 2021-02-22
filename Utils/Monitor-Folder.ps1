@@ -1,9 +1,10 @@
-﻿function Monitor-Folder{
-     <#
+﻿function Monitor-Folder {
+    <#
     .SYNOPSIS
         Monitors a folder for changes using non-persistent asynchronous events
     .DESCRIPTION
-        A wrapper around IO.FileSystemWatcher and Register-ObjectEvent to monitor a folder for file system events (Created, Deleted, Changed, and/or Renamed)
+        A wrapper around IO.FileSystemWatcher and Register-ObjectEvent to monitor a folder for file system events (Created, Deleted, Changed, and/or Renamed).
+        The function returns a custom object with a Watcher and an Events property which can be used to dispose of the events and the filesystemwatcher.
     .PARAMETER Folder
         The Name of the folder to monitor
     .PARAMETER EventName
@@ -15,84 +16,103 @@
     .PARAMETER Action
         (Optional in case DefaultOutput is specified) The scriptblock to invoke when the event is triggered. Default variables within the scriptblock are ($fullName, $name, $time, $changeType and for Renamed $oldFullName, $oldName)
     .PARAMETER Recurse
-        Switch if specified will include monitoring subdirectories of the folder 
+        Switch if specified will include monitoring subdirectories of the folder
     .PARAMETER DefaultOutput
         Switch if specified will assign action scriptblocks to the event(s) that output "The file '$name' was $changeType at $time" and "The file '$oldName' was $changeType to '$name' at $time" (for Renamed events)
     .EXAMPLE
-        $events = Monitor-Folder "$env:USERNAME\Desktop\test" -EventName All -DefaultOutput
+        $monitor = Monitor-Folder "$env:USERNAME\Desktop\test" -EventName All -DefaultOutput
         #Will start monitoring the folder for all events outputting the default output as action
-        $events.Dispose()
+
         #stop monitoring the folder
+        $monitor.Watcher.EnableRaisingEvents = $false
+        $monitor.Events | ForEach-Object {
+            Unregister-Event -SourceIdentifier $_.Name
+        }
+        $monitor.Events| Remove-Job
+        $monitor.Watcher.Dispose()
     .EXAMPLE
         $events = Monitor-Folder "$env:USERNAME\Desktop\test -EventName Deleted -Action {write-host "$fullName was deleted at $time";[console]::beep(500,500)}
         #Will start monitoring the folder for file deletion and invoke the custom action using the default variables
+
+        #stop monitoring the folder
+        $monitor.Watcher.EnableRaisingEvents = $false
+        $monitor.Events | ForEach-Object {
+            Unregister-Event -SourceIdentifier $_.Name
+        }
+        $monitor.Events| Remove-Job
+        $monitor.Watcher.Dispose()
     #>
     [CmdletBinding()]
     Param
     (
-        [Parameter(Mandatory=$true, ValueFromPipeline=$true, Position=0)]
-        [ValidateScript({
-            if (-not (Test-Path $_ -PathType Container)) {
-                throw “Path ‘${_}’ does not exist. Please provide the path to a an existing folder.”
-            }
-            $true
-        })]
+        [Parameter(Mandatory = $true, ValueFromPipeline = $true, Position = 0)]
+        [ValidateScript( {
+                if (-not (Test-Path $_ -PathType Container)) {
+                    throw “Path ‘${_}’ does not exist. Please provide the path to a an existing folder.”
+                }
+                $true
+            })]
         $Folder,
 
-        [Parameter(Position=1)]
-        [ValidateSet('All','Changed', 'Created', 'Deleted', 'Renamed')]
+        [Parameter(Position = 1)]
+        [ValidateSet('All', 'Changed', 'Created', 'Deleted', 'Renamed')]
         [String[]]
         $EventName = 'All',
 
-        $Filter="*",
+        $Filter = "*",
 
-        [string]$EventIdentifierPrefix=(Get-Random),
+        [string]$EventIdentifierPrefix = (Get-Random),
 
         [scriptblock]$Action,
 
         [switch]$Recurse,
 
         [switch]$DefaultOutput
-    ) 
-    if (!$DefaultOutput -and !$Action) {   
+    )
+    if (!$DefaultOutput -and !$Action) {
         throw "Please provide a scriptblock for the action parameter or use the 'defaultOutput' switch for the default output"
-    }               
+    }
     $fsw = New-Object IO.FileSystemWatcher $Folder, $Filter -Property @{
-    IncludeSubdirectories = $Recurse
-    NotifyFilter = [IO.NotifyFilters]'FileName, LastWrite'
-    } 
+        IncludeSubdirectories = $Recurse
+        NotifyFilter          = [IO.NotifyFilters]'FileName, LastWrite'
+    }
 
-    $defaultAction = { 
-        $name = $eventArgs.Name
-        $fullName = $eventArgs.FullPath
-        $changeType = $eventArgs.ChangeType
+    $defaultAction = {
+        $name = $event.SourceEventArgs.Name
+        $fullName = $event.SourceEventArgs.FullPath
+        $changeType = $event.SourceEventArgs.ChangeType
         $time = $event.TimeGenerated
     }
-    $renameAction = { 
-        $name = $eventArgs.Name
-        $fullName = $eventArgs.FullPath
-        $oldName = $eventArgs.OldName
-        $oldFullName = $eventArgs.OldFullName
-        $changeType = $eventArgs.ChangeType
+    $renameAction = {
+        $name = $event.SourceEventArgs.Name
+        $fullName = $event.SourceEventArgs.FullPath
+        $oldName = $event.SourceEventArgs.OldName
+        $oldFullName = $event.SourceEventArgs.OldFullName
+        $changeType = $event.SourceEventArgs.ChangeType
         $time = $event.TimeGenerated
     }
-    if ($DefaultOutput){
-        $defaultAction = [scriptblock]::Create($defaultAction.ToString()  + ';' + 'Write-Host "The file ''$name'' was $changeType at $time"')
-        $renameAction = [scriptblock]::Create($renameAction.ToString()  + ';' + 'Write-Host "The file ''$oldName'' was $changeType to ''$name'' at $time"')
+    if ($DefaultOutput) {
+        $defaultAction = [scriptblock]::Create($defaultAction.ToString() + ';' + 'Write-Host "The file ''$name'' was $changeType at $time"')
+        $renameAction = [scriptblock]::Create($renameAction.ToString() + ';' + 'Write-Host "The file ''$oldName'' was $changeType to ''$name'' at $time"')
     }
-    if ($Action){
-        $defaultAction = [scriptblock]::Create($defaultAction.ToString()  + "`n" + $Action.ToString())
+    if ($Action) {
+        $defaultAction = [scriptblock]::Create($defaultAction.ToString() + "`n" + $Action.ToString())
         $renameAction = [scriptblock]::Create($renameAction.ToString() + "`n" + $Action.ToString())
     }
-    
+
     if ($EventName -eq 'All') { $EventName = 'Changed', 'Created', 'Deleted', 'Renamed' }
-    foreach ($event in $EventName){
-        if ($event -eq 'Renamed'){
-             Register-ObjectEvent $fsw $event -SourceIdentifier ($EventIdentifierPrefix + "_" + $event) -Action $renameAction
+
+    $eventHandlers = foreach ($evt in $EventName) {
+        if ($evt -eq 'Renamed') {
+            Register-ObjectEvent $fsw $evt -SourceIdentifier ($EventIdentifierPrefix + "_" + $evt) -Action $renameAction
         }
-        else{
-            Register-ObjectEvent $fsw $event -SourceIdentifier ($EventIdentifierPrefix + "_" + $event) -Action $defaultAction
+        else {
+            Register-ObjectEvent $fsw $evt -SourceIdentifier ($EventIdentifierPrefix + "_" + $evt) -Action $defaultAction
         }
     }
+    $fsw.EnableRaisingEvents = $true
+    [PSCustomObject][ordered]@{
+        Watcher = $fsw
+        Events  = $eventHandlers
+    }
 }
-

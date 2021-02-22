@@ -14,18 +14,25 @@ Monitor-Folder [-Folder] <Object> [[-EventName] <String[]>] [-Filter <Object>]
 ```
 
 ## DESCRIPTION
-A wrapper around IO.FileSystemWatcher and Register-ObjectEvent to monitor a folder for file system events (Created, Deleted, Changed, and/or Renamed)
+A wrapper around IO.FileSystemWatcher and Register-ObjectEvent to monitor a folder for file system events (Created, Deleted, Changed, and/or Renamed).
+The function returns a custom object with a Watcher and an Events property which can be used to dispose of the events and the filesystemwatcher.
 
 ## EXAMPLES
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-$events = Monitor-Folder "$env:USERNAME\Desktop\test" -EventName All -DefaultOutput
+$monitor = Monitor-Folder "$env:USERNAME\Desktop\test" -EventName All -DefaultOutput
 
 
 #Will start monitoring the folder for all events outputting the default output as action
-$events.Dispose()
+
 #stop monitoring the folder
+$monitor.Watcher.EnableRaisingEvents = $false
+$monitor.Events | ForEach-Object {
+    Unregister-Event -SourceIdentifier $_.Name
+}
+$monitor.Events| Remove-Job
+$monitor.Watcher.Dispose()
 ```
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
@@ -33,6 +40,14 @@ $events = Monitor-Folder "$env:USERNAME\Desktop\test -EventName Deleted -Action 
 
 
 #Will start monitoring the folder for file deletion and invoke the custom action using the default variables
+
+#stop monitoring the folder
+$monitor.Watcher.EnableRaisingEvents = $false
+$monitor.Events | ForEach-Object {
+    Unregister-Event -SourceIdentifier $_.Name
+}
+$monitor.Events| Remove-Job
+$monitor.Watcher.Dispose()
 ```
 ## PARAMETERS
 
@@ -152,8 +167,6 @@ Accept wildcard characters: False
 ## NOTES
 
 ## RELATED LINKS
-
-
 
 
 

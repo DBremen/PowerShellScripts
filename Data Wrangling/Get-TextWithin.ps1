@@ -20,7 +20,7 @@ here is 'some data'
 here is "some other data"
 this is 'even more data'
 '@
-            Get-TextWithin $s "'"
+             Get-TextWithin $s "'"
     .EXAMPLE
     # Retrieve all text within custom start and end characters
     $s=@'

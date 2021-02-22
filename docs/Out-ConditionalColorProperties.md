@@ -66,5 +66,3 @@ Accept wildcard characters: False
 
 
 
-
-
