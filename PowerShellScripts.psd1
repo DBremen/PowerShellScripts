@@ -122,6 +122,7 @@ NestedModules = @(
 '.\Utils\ConvertTo-LocalTime.ps1',
 '.\Utils\ConvertTo-PSFunction.ps1',
 '.\Utils\Delete-ComputerRestorePoint.ps1',
+'.\Utils\Expand-ArchiveAutomamtically.ps1',
 '.\Utils\ForeachFor2.ps1',
 '.\Utils\Get-Breaktimer.ps1',
 '.\Utils\Get-Field.ps1',
@@ -201,6 +202,8 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
+
+
 
 
 

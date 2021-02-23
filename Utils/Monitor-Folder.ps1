@@ -22,7 +22,7 @@
     .PARAMETER DefaultOutput
         Switch if specified will assign action scriptblocks to the event(s) that output "The file '$name' was $changeType at $time" and "The file '$oldName' was $changeType to '$name' at $time" (for Renamed events)
     .EXAMPLE
-        $monitor = Monitor-Folder "$env:USERNAME\Desktop\test" -EventName All -DefaultOutput
+        $monitor = Monitor-Folder "$env:USERPROFILE\Desktop\test" -EventName All -DefaultOutput
         #Will start monitoring the folder for all events outputting the default output as action
 
         #stop monitoring the folder
@@ -33,7 +33,7 @@
         $monitor.Events| Remove-Job
         $monitor.Watcher.Dispose()
     .EXAMPLE
-        $events = Monitor-Folder "$env:USERNAME\Desktop\test -EventName Deleted -Action {write-host "$fullName was deleted at $time";[console]::beep(500,500)}
+        $monitor = Monitor-Folder "$env:USERPROFILE\Desktop\test\Desktop\test" -EventName Deleted -Action {write-host "$fullName was deleted at $time";[console]::beep(500,500)}
         #Will start monitoring the folder for file deletion and invoke the custom action using the default variables
 
         #stop monitoring the folder
@@ -50,7 +50,7 @@
         [Parameter(Mandatory = $true, ValueFromPipeline = $true, Position = 0)]
         [ValidateScript( {
                 if (-not (Test-Path $_ -PathType Container)) {
-                    throw “Path ‘${_}’ does not exist. Please provide the path to a an existing folder.”
+                    throw throw "Path '$_' does not exist. Please provide the path to a an existing folder."
                 }
                 $true
             })]
