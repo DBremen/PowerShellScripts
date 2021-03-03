@@ -79,6 +79,9 @@ function ConvertTo-Localtime {
         clt -TimeZoneArea 'W. Europe Standard Time' -Datetime "14/6 9:35AM"
 
     .LINK
+        https://powershellone.wordpress.com/2020/06/30/convert-remote-time-to-local-time-with-argumentcompleter-and-argumenttransformation-attributes/
+
+    .LINK
         https://community.idera.com/database-tools/powershell/powertips/b/tips/posts/world-time-clock
     
     .LINK

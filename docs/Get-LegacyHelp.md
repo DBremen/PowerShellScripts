@@ -6,6 +6,9 @@ Display help for windows commandline commands
 ## Script file
 Get-LegacyHelp\Get-LegacyHelp.psm1
 
+## Related blog post
+https://powershellone.wordpress.com/2016/05/23/get-help-for-windows-built-in-command-line-tools-with-powershell/
+
 ## SYNTAX
 
 ### Set1 (Default)
@@ -111,6 +114,8 @@ Accept wildcard characters: False
 ## NOTES
 
 ## RELATED LINKS
+
+[https://powershellone.wordpress.com/2016/05/23/get-help-for-windows-built-in-command-line-tools-with-powershell/](https://powershellone.wordpress.com/2016/05/23/get-help-for-windows-built-in-command-line-tools-with-powershell/)
 
 
 

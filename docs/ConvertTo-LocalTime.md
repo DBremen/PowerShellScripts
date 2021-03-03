@@ -6,6 +6,9 @@ Convert a datetime from a remote timezone to the local time.
 ## Script file
 Utils\ConvertTo-LocalTime.ps1
 
+## Related blog post
+https://powershellone.wordpress.com/2020/06/30/convert-remote-time-to-local-time-with-argumentcompleter-and-argumenttransformation-attributes/
+
 ## SYNTAX
 
 ```
@@ -76,6 +79,8 @@ Accept wildcard characters: False
 ## NOTES
 
 ## RELATED LINKS
+
+[https://powershellone.wordpress.com/2020/06/30/convert-remote-time-to-local-time-with-argumentcompleter-and-argumenttransformation-attributes/](https://powershellone.wordpress.com/2020/06/30/convert-remote-time-to-local-time-with-argumentcompleter-and-argumenttransformation-attributes/)
 
 [https://community.idera.com/database-tools/powershell/powertips/b/tips/posts/world-time-clock](https://community.idera.com/database-tools/powershell/powertips/b/tips/posts/world-time-clock)
 

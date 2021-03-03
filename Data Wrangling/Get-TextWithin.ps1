@@ -29,6 +29,9 @@ here is /some other data/
 this is /even more data\
 '@
     Get-TextWithin $s -StartChar / -EndChar \
+
+    .LINK
+        https://powershellone.wordpress.com/2021/02/24/using-powershell-and-regex-to-extract-text-between-delimiters/
 #>
     [CmdletBinding()]
     param( 

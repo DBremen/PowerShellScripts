@@ -6,7 +6,7 @@ The function that generated the Markdown help in this repository.
 Generates markdown help for Github for each function containing comment based help (Description not empty) within a folder recursively and a summary table for the main README.md Generate-ScriptMarkdownHelp.ps1
 
 ## Script file
-PowerShellScripts\Generate-ScriptMarkdownHelp.ps1
+powershellscripts\Generate-ScriptMarkdownHelp.ps1
 
 ## SYNTAX
 

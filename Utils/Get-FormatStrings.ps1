@@ -19,6 +19,8 @@
         '{0:g}'       -f 05/15/2018 15:33:46  5/15/2018 3:33 PM               
         '{0:G}'       -f 05/15/2018 15:33:46  5/15/2018 3:33:46 PM    
         ...   
+    .LINK
+        https://powershellone.wordpress.com/2018/07/19/get-net-format-strings-for-given-input/
     #>
     [CmdletBinding()]
     Param

@@ -283,7 +283,7 @@ function Get-LegacyHelp {
         .EXAMPLE
             Get-LegacHelp chkd* -Parameter *
         .LINK
-          
+            https://powershellone.wordpress.com/2016/05/23/get-help-for-windows-built-in-command-line-tools-with-powershell/ 
     #>
     [CmdletBinding(DefaultParameterSetName='Set1')]
     [Alias('glh')]

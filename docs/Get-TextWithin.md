@@ -7,6 +7,9 @@ brackets, quotes, or custom characters)
 ## Script file
 Data Wrangling\Get-TextWithin.ps1
 
+## Related blog post
+https://powershellone.wordpress.com/2021/02/24/using-powershell-and-regex-to-extract-text-between-delimiters/
+
 ## SYNTAX
 
 ### Single
@@ -119,6 +122,8 @@ Accept wildcard characters: False
 ## NOTES
 
 ## RELATED LINKS
+
+[https://powershellone.wordpress.com/2021/02/24/using-powershell-and-regex-to-extract-text-between-delimiters/](https://powershellone.wordpress.com/2021/02/24/using-powershell-and-regex-to-extract-text-between-delimiters/)
 
 
 

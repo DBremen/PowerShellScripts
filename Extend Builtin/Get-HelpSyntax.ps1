@@ -9,6 +9,8 @@
 		Name of the command to get the syntax for.
 	.EXAMPLE
 		Get-HelpSyntax Get-Command
+    .LINK
+        https://powershellone.wordpress.com/2018/07/25/powershell-get-command-syntax-output-explained/
     #>
     [CmdletBinding()]
     Param(

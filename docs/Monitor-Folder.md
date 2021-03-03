@@ -22,7 +22,7 @@ The function returns a custom object with a Watcher and an Events property which
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-$monitor = Monitor-Folder "$env:USERNAME\Desktop\test" -EventName All -DefaultOutput
+$monitor = Monitor-Folder "$env:USERPROFILE\Desktop\test" -EventName All -DefaultOutput
 
 
 #Will start monitoring the folder for all events outputting the default output as action
@@ -37,7 +37,7 @@ $monitor.Watcher.Dispose()
 ```
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
-$events = Monitor-Folder "$env:USERNAME\Desktop\test -EventName Deleted -Action {write-host "$fullName was deleted at $time";[console]::beep(500,500)}
+$monitor = Monitor-Folder "$env:USERPROFILE\Desktop\test\Desktop\test" -EventName Deleted -Action {write-host "$fullName was deleted at $time";[console]::beep(500,500)}
 
 
 #Will start monitoring the folder for file deletion and invoke the custom action using the default variables

@@ -6,6 +6,9 @@ Show common format strings for a given input and the respective outputs
 ## Script file
 Utils\Get-FormatStrings.ps1
 
+## Related blog post
+https://powershellone.wordpress.com/2018/07/19/get-net-format-strings-for-given-input/
+
 ## SYNTAX
 
 ```
@@ -59,6 +62,8 @@ Accept wildcard characters: False
 ## NOTES
 
 ## RELATED LINKS
+
+[https://powershellone.wordpress.com/2018/07/19/get-net-format-strings-for-given-input/](https://powershellone.wordpress.com/2018/07/19/get-net-format-strings-for-given-input/)
 
 
 

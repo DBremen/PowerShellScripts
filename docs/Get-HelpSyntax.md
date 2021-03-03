@@ -6,6 +6,9 @@ Get the syntax for a cmdlet pretty printed + explanation
 ## Script file
 Extend Builtin\Get-HelpSyntax.ps1
 
+## Related blog post
+https://powershellone.wordpress.com/2018/07/25/powershell-get-command-syntax-output-explained/
+
 ## SYNTAX
 
 ```
@@ -46,6 +49,8 @@ Accept wildcard characters: False
 ## NOTES
 
 ## RELATED LINKS
+
+[https://powershellone.wordpress.com/2018/07/25/powershell-get-command-syntax-output-explained/](https://powershellone.wordpress.com/2018/07/25/powershell-get-command-syntax-output-explained/)
 
 
 
