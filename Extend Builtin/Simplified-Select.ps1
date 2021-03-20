@@ -145,8 +145,7 @@ param(
             }
             #only if the property array contains a hashtable property
             if ( ($Property | where { $_ -is [System.Collections.Hashtable] }) ) {
-                $newProperty = @()
-                foreach ($prop in $Property){
+                 $PSBoundParameters.Property = foreach ($prop in $Property){
                     <#
                     if ($prop -is [System.Management.Automation.ScriptBlock]){
                         $name, $expression = $prop.ToString().split('=',2)
@@ -155,14 +154,13 @@ param(
                     #>
                     if ($prop -is [System.Collections.Hashtable]){
                         foreach ($htEntry in $prop.GetEnumerator()){
-                           $newProperty += @{n=$htEntry.Key;e=$htEntry.Value}
+                           @{n=$htEntry.Key;e=$htEntry.Value}
                         }
                     }
                     else{
-                        $newProperty += $prop
+                        $prop
                     }
                 }
-                $PSBoundParameters.Property = $newProperty
             }
             $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand('Microsoft.PowerShell.Utility\Select-Object', [System.Management.Automation.CommandTypes]::Cmdlet)
             $scriptCmd = {& $wrappedCmd @PSBoundParameters }

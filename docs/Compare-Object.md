@@ -48,16 +48,54 @@ specified, in both objects (indicated by the
 Or compact output (through Compact switch) with 
 'Property', 'ReferenceValue', 'DifferenceValue' in one row.
 
-The Compare-Object cmdlet compares two sets of objects.
-One set of objects is the "reference set," and the other set is the "difference set."
+The \`Compare-Object\` cmdlet compares two sets of objects.
+One set of objects is the reference , and the other set of objects is the difference .
 
-The result of the comparison indicates whether a property value appeared only in the object from the reference set (indicated by the \<= symbol), only in the object from the difference set (indicated by the =\> symbol) or, if the IncludeEqual parameter is specified, in both objects (indicated by the == symbol).
+\`Compare-Object\` checks for available methods of comparing a whole object.
+If it can't find a suitable method, it calls the ToString() methods of the input objects and compares the string results.
+You can provide one or more properties to be used for comparison.
+When properties are provided, the cmdlet compares the values of those properties only.
 
-If the reference set or the difference set is null ($null), this cmdlet generates a terminating error.
+The result of the comparison indicates whether a property value appeared only in the reference object (\`\<=\`) or only in the difference object (\`=\>\`).
+If the IncludeEqual parameter is used, (\`==\`) indicates the value is in both objects.
+
+If the reference or the difference objects are null (\`$null\`), \`Compare-Object\` generates a terminating error.
+
+Some examples use splatting to reduce the line length of the code samples.
+For more information, see about_Splatting (../Microsoft.PowerShell.Core/About/about_Splatting.md).
 
 ## EXAMPLES
 
 ### -------------------------- EXAMPLE 1 --------------------------
+```
+class Person {
+
+
+\[String\]$Name
+	\[String\]$LastName
+	\[String\[\]\]$Age
+	\[Person\[\]\]$Parents
+
+	Person($Name, $LastName, $Age) {
+		$this.Name = $Name
+		$this.LastName = $LastName
+		$this.Age = $Age
+	}
+}
+
+$psmith = \[Person\]::new('Paul', 'Smith', (46, 66, 77))
+$msmith = \[Person\]::new('Mary', 'Smith', 35)
+$nsmith = \[Person\]::new('Nigel', 'Smith', 11)
+$nsmith.Parents = $psmith, $msmith
+
+$pdoe = \[Person\]::new('Jon', 'Doe', 46)
+$ldoe = \[Person\]::new('Mary', 'Doe', 51)
+$adoe = \[Person\]::new('Aidan', 'Doe', 23)
+$adoe.Parents = $pdoe, $ldoe
+
+Compare-Object $nsmith $adoe -IncludeEqual
+```
+### -------------------------- EXAMPLE 2 --------------------------
 ```
 #create two custom objects
 
@@ -67,50 +105,157 @@ $two = \[PSCustomObject\]@{Name='Paul';Age=23;Colors='blue','yellow','green'}
 #compare them with compact output including equal property values
 Compare-Object $one $two -Compact -IncludeEqual
 ```
-### Example 1
-
+### ------ Example 1 -
 ```
-: Compare the content of two text files
+Compare the content of two text files ------
 
-PS C:\>Compare-Object -ReferenceObject $(Get-Content C:\test\testfile1.txt) -DifferenceObject $(Get-Content C:\test\testfile2.txt)
+Compare-Object -ReferenceObject (Get-Content -Path C:\Test\Testfile1.txt) -DifferenceObject (Get-Content -Path C:\Test\Testfile2.txt)
 
-
-This command compares the contents of two text files.
-It displays only the lines that appear in one file or in the other file, not lines that appear in both files.
+InputObject SideIndicator
+----------- -------------
+cat         =>
+racoon      =>
+dog         <=
+squirrel    <=
 ```
-### Example 2
-
+### Example 2 -
 ```
-: Compare each line of content in two text files
+Compare each line of content and exclude the differences
 
-PS C:\>Compare-Object -ReferenceObject $(Get-Content C:\Test\testfile1.txt) -DifferenceObject $(Get-Content C:\Test\testfile2.txt) -IncludeEqual
+$objects = @{
+  ReferenceObject = (Get-Content -Path C:\Test\Testfile1.txt)
+  DifferenceObject = (Get-Content -Path C:\Test\Testfile2.txt)
+}
+Compare-Object @objects -IncludeEqual -ExcludeDifferent
+
+InputObject SideIndicator
+----------- -------------
+bird        ==
 
 
-This command compares each line of content in two text files.
-It displays all lines of content from both files, indicating whether each line appears in only Textfile1.txt or Textfile2.txt or whether each line appears in both files.
+\<a id="ex3" /\>
 ```
-### Example 3
-
+### Example 3 -
 ```
-: Compare two sets of process objects
+Show the difference when using the PassThru parameter
 
-PS C:\>$Processes_Before = Get-Process
-PS C:\> notepad
-PS C:\> $Processes_After = Get-Process
-PS C:\> Compare-Object -ReferenceObject $Processes_Before -DifferenceObject $Processes_After
+$a = $True
+Compare-Object -IncludeEqual $a $a
+(Compare-Object -IncludeEqual $a $a) | Get-Member
+
+InputObject SideIndicator
+----------- -------------
+       True ==
+
+   TypeName: System.Management.Automation.PSCustomObject
+Name          MemberType   Definition
+----          ----------   ----------
+Equals        Method       bool Equals(System.Object obj)
+GetHashCode   Method       int GetHashCode()
+GetType       Method       type GetType()
+ToString      Method       string ToString()
+InputObject   NoteProperty System.Boolean InputObject=True
+SideIndicator NoteProperty string SideIndicator===
+
+Compare-Object -IncludeEqual $a $a -PassThru
+(Compare-Object -IncludeEqual $a $a -PassThru) | Get-Member
+
+True
+
+   TypeName: System.Boolean
+Name          MemberType   Definition
+----          ----------   ----------
+CompareTo     Method       int CompareTo(System.Object obj), int CompareTo(bool value), int IComparable.CompareTo(Syst
+Equals        Method       bool Equals(System.Object obj), bool Equals(bool obj), bool IEquatable[bool].Equals(bool ot
+GetHashCode   Method       int GetHashCode()
+GetType       Method       type GetType()
+GetTypeCode   Method       System.TypeCode GetTypeCode(), System.TypeCode IConvertible.GetTypeCode()
+ToBoolean     Method       bool IConvertible.ToBoolean(System.IFormatProvider provider)
+ToByte        Method       byte IConvertible.ToByte(System.IFormatProvider provider)
+ToChar        Method       char IConvertible.ToChar(System.IFormatProvider provider)
+ToDateTime    Method       datetime IConvertible.ToDateTime(System.IFormatProvider provider)
+ToDecimal     Method       decimal IConvertible.ToDecimal(System.IFormatProvider provider)
+ToDouble      Method       double IConvertible.ToDouble(System.IFormatProvider provider)
+ToInt16       Method       short IConvertible.ToInt16(System.IFormatProvider provider)
+ToInt32       Method       int IConvertible.ToInt32(System.IFormatProvider provider)
+ToInt64       Method       long IConvertible.ToInt64(System.IFormatProvider provider)
+ToSByte       Method       sbyte IConvertible.ToSByte(System.IFormatProvider provider)
+ToSingle      Method       float IConvertible.ToSingle(System.IFormatProvider provider)
+ToString      Method       string ToString(), string ToString(System.IFormatProvider provider), string IConvertible.To
+ToType        Method       System.Object IConvertible.ToType(type conversionType, System.IFormatProvider provider)
+ToUInt16      Method       ushort IConvertible.ToUInt16(System.IFormatProvider provider)
+ToUInt32      Method       uint IConvertible.ToUInt32(System.IFormatProvider provider)
+ToUInt64      Method       ulong IConvertible.ToUInt64(System.IFormatProvider provider)
+TryFormat     Method       bool TryFormat(System.Span[char] destination, [ref] int charsWritten)
+SideIndicator NoteProperty string SideIndicator===
 
 
-These commands compare two sets of process objects.
+When using PassThru , the original object type ( System.Boolean ) is returned.
+Note how the output displayed by the default format for System.Boolean objects didn't display the SideIndicator property.
+However, the returned System.Boolean object has the added NoteProperty .
+```
+### --- Example 4 -
+```
+Compare two simple objects using properties ---
 
-The first command uses the Get-Process cmdlet to get the processes on the computer.
-It stores them in the $processes_before variable.
+Compare-Object -ReferenceObject 'abc' -DifferenceObject 'xyz' -Property Length -IncludeEqual
 
-The second command starts Notepad.
+Length SideIndicator
+------ -------------
+     3 ==
+```
+### ---- Example 5 -
+```
+Comparing complex objects using properties ----
 
-The third command uses the Get-Process cmdlet again and stores the resulting processes in the $processes_after variable.
+PS> Get-Process pwsh
 
-The fourth command uses the Compare-Object cmdlet to compare the two sets of process objects.
-It displaysthe differences between them, which include the new instance of Notepad.
+ NPM(K)    PM(M)      WS(M)     CPU(s)      Id  SI ProcessName
+ ------    -----      -----     ------      --  -- -----------
+    101   123.32     139.10      35.81   11168   1 pwsh
+     89   107.55      66.97      11.44   17600   1 pwsh
+
+PS> $a = Get-Process -Id 11168
+PS> $b = Get-Process -Id 17600
+PS> $a.ToString()
+System.Diagnostics.Process (pwsh)
+PS> $b.ToString()
+System.Diagnostics.Process (pwsh)
+PS> Compare-Object $a $b -IncludeEqual
+
+InputObject                       SideIndicator
+-----------                       -------------
+System.Diagnostics.Process (pwsh) ==
+
+PS> Compare-Object $a $b -Property ProcessName, Id, CPU
+
+ProcessName    Id       CPU SideIndicator
+-----------    --       --- -------------
+pwsh        17600   11.4375 =>
+pwsh        11168 36.203125 <=
+
+
+When you specify properties to be compared, the cmdlet shows the differences.
+```
+### Example 6 -
+```
+Comparing complex objects that implement IComparable
+
+Compare-Object ([TimeSpan]"0:0:1") "0:0:1" -IncludeEqual
+
+InputObject SideIndicator
+----------- -------------
+00:00:01    ==
+
+Compare-Object "0:0:1" ([TimeSpan]"0:0:1")
+
+InputObject SideIndicator
+----------- -------------
+00:00:01    =>
+0:0:1       <=
+
+
+In the second case, the TimeSpan is converted to a string so the object are different.
 ```
 ## PARAMETERS
 
@@ -160,9 +305,9 @@ The default value is
 \[Int32\]::MaxValue, which means that this
 cmdlet examines the entire object collection.
 
-Specifies the number of adjacent objects that this cmdlet inspects while looking for a match in a collection of objects.
-This cmdlet examines adjacent objects when it does not find the object in the same position in a collection.
-The default value is \[Int32\]::MaxValue, which means that this cmdlet examines the entire object collection.
+Specifies the number of adjacent objects that \`Compare-Object\` inspects while looking for a match in a collection of objects.
+\`Compare-Object\` examines adjacent objects when it doesn't find the object in the same position in a collection.
+The default value is \`\[Int32\]::MaxValue\`, which means that \`Compare-Object\` examines the entire object collection.
 
 ```yaml
 Type: Int32
@@ -171,7 +316,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: [Int32]::MaxValue
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -180,6 +325,14 @@ Accept wildcard characters: False
 Specifies an array of properties of the reference and difference objects to compare.
 
 Specifies an array of properties of the reference and difference objects to compare.
+
+The value of the Property parameter can be a new calculated property.
+The calculated property can be a script block or a hash table.
+Valid key-value pairs are:
+
+- Expression - \`\<string\>\` or \`\<script block\>\`
+
+For more information, see about_Calculated_Properties (../Microsoft.PowerShell.Core/About/about_Calculated_Properties.md).
 
 ```yaml
 Type: Object[]
@@ -241,6 +394,11 @@ Accept wildcard characters: False
 
 ### -ExcludeDifferent
 Indicates that this cmdlet displays only the characteristics of compared objects that are equal.
+The differences between the objects are discarded.
+
+Use ExcludeDifferent with IncludeEqual to display only the lines that match between the reference and difference objects.
+
+If ExcludeDifferent is specified without IncludeEqual , there's no output.
 
 ```yaml
 Type: SwitchParameter
@@ -262,8 +420,9 @@ By default, only characteristics that
 differ between the reference and difference
 objects are displayed.
 
-Indicates that this cmdlet displays characteristics of compared objects that are equal.
-By default, only characteristics that differ between the reference and difference objects are displayed.
+IncludeEqual displays the matches between the reference and difference objects.
+
+By default, the output also includes the differences between the reference and difference objects.
 
 ```yaml
 Type: SwitchParameter
@@ -283,8 +442,7 @@ which you are working.
 By default, this
 cmdlet does not generate any output.
 
-Returns an object representing the item with which you are working.
-By default, this cmdlet does not generate any output.
+When you use the PassThru parameter, \`Compare-Object\` omits the PSCustomObject wrapper around the compared objects and returns the differing objects, unchanged.
 
 ```yaml
 Type: SwitchParameter
@@ -350,21 +508,33 @@ Accept wildcard characters: False
 ## INPUTS
 
 ### System.Management.Automation.PSObject
-You can pipe a DifferenceObject object to this cmdlet.
+You can send an object down the pipeline to the DifferenceObject parameter.
 
 ## OUTPUTS
 
-### None, or the objects that are different
-When you use the PassThru parameter, Compare-Object returns the objects that differed.
-Otherwise, this cmdlet does not generate any output.
+### None
+If the reference object and the difference object are the same, there's no output, unless you use the IncludeEqual parameter.
+
+### System.Management.Automation.PSCustomObject
+If the objects are different, \`Compare-Object\` wraps the differing objects in a \`PSCustomObject\` wrapper with a SideIndicator property to reference the differences.
+
+When you use the PassThru parameter, the Type of the object is not changed but the instance of the object returned has an added NoteProperty named SideIndicator .
+SideIndicator shows which input object the output belongs to.
 
 ## NOTES
+When using the PassThru parameter, the output displayed in the console may not include the SideIndicator property.
+The default format view of the for the object type output by \`Compare-Object\` does not include the SideIndicator property.
+For more information see Example 3 (#ex3)in this article.
 
 ## RELATED LINKS
 
 [https://powershellone.wordpress.com/2021/03/16/extending-powershells-compare-object-to-handle-custom-classes-and-arrays/](https://powershellone.wordpress.com/2021/03/16/extending-powershells-compare-object-to-handle-custom-classes-and-arrays/)
 
-[Online Version:](http://go.microsoft.com/fwlink/?LinkId=821751)
+[Online Version:](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/compare-object?view=powershell-5.1&WT.mc_id=ps-gethelp)
+
+[about_Calculated_Properties]()
+
+[ForEach-Object]()
 
 [Group-Object]()
 
@@ -377,6 +547,18 @@ Otherwise, this cmdlet does not generate any output.
 [Sort-Object]()
 
 [Tee-Object]()
+
+[Where-Object]()
+
+[Get-Process]()
+
+
+
+
+
+
+
+
 
 
 

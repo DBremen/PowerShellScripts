@@ -75,7 +75,31 @@
 
     .PARAMETER Compact
         Switch parameter, if specified puts output into 'Property', 'ReferenceValue', 'DifferenceValue' form instead of long form.
+	.EXAMPLE
+		class Person {
+			[String]$Name
+			[String]$LastName
+			[String[]]$Age
+			[Person[]]$Parents
 
+			Person($Name, $LastName, $Age) {
+				$this.Name = $Name
+				$this.LastName = $LastName
+				$this.Age = $Age
+			}
+		}
+
+		$psmith = [Person]::new('Paul', 'Smith', (46, 66, 77))
+		$msmith = [Person]::new('Mary', 'Smith', 35)
+		$nsmith = [Person]::new('Nigel', 'Smith', 11)
+		$nsmith.Parents = $psmith, $msmith
+
+		$pdoe = [Person]::new('Jon', 'Doe', 46)
+		$ldoe = [Person]::new('Mary', 'Doe', 51)
+		$adoe = [Person]::new('Aidan', 'Doe', 23)
+		$adoe.Parents = $pdoe, $ldoe
+
+		Compare-Object $nsmith $adoe -IncludeEqual
     .EXAMPLE
         #create two custom objects
         $one = [PSCustomObject]@{Name='Peter';Age=23;Colors='blue','black','green'}
@@ -259,28 +283,3 @@
         }
     }
 }
-
-class Person {
-    [String]$Name
-    [String]$LastName
-    [String[]]$Age
-    [Person[]]$Parents
-
-    Person($Name, $LastName, $Age) {
-        $this.Name = $Name
-        $this.LastName = $LastName
-        $this.Age = $Age
-    }
-}
-
-$psmith = [Person]::new('Paul', 'Smith', (46, 66, 77))
-$msmith = [Person]::new('Mary', 'Smith', 35)
-$nsmith = [Person]::new('Nigel', 'Smith', 11)
-$nsmith.Parents = $psmith, $msmith
-
-$pdoe = [Person]::new('Jon', 'Doe', 46)
-$ldoe = [Person]::new('Mary', 'Doe', 51)
-$adoe = [Person]::new('Aidan', 'Doe', 23)
-$adoe.Parents = $pdoe, $ldoe
-
-Compare-Object $nsmith $adoe -IncludeEqual

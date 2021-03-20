@@ -4,7 +4,7 @@
 Gets the functions and filters declared within a script block or a file
 
 ## Script file
-powershellscripts\Generate-ScriptMarkdownHelp.ps1
+PowerShellScripts\Generate-ScriptMarkdownHelp.ps1
 
 ## SYNTAX
 
