@@ -42,8 +42,21 @@
     else {
         $syntax = (Get-Command -syntax $Command) 
     }
-    $syntax -split ' (?=\[{1,2}[-<])' -replace '^[\[-]', '   $0'
+	$parameterSets = @((Get-Command $Command).parametersets.Name)
+	$syntax = ($syntax -split ' (?=(\[{1,2}[-<]|-))' -replace '^[\[-]', '   $0').where{$_ -match '.*\w'}
+	if ($parameterSets[0] -eq '__AllParameterSets'){
+		$syntax
+	}
+	else{
+		$syntax = (($syntax -join "`r`n").Trim() -split "($command)").where{$_.Trim() -ne ''}
+		$i = 0
+		$syntax | foreach {
+			if ($_.Trim() -eq $command){
+				"`nParameterSet:$($parameterSets[$i])"
+				$_
+				$i++
+			}
+			else{ $_.TrimEnd() } 
+		}
+	}
 }
-
-
-
